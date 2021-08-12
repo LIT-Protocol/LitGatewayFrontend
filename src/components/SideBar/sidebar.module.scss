@@ -39,6 +39,9 @@
     width: 100%;
     margin-bottom: var(--space-2xl);
   }
+  .user {
+    margin-bottom: 40px;
+  }
   box-sizing: border-box;
   width: 350px;
   background: var(--color-bg-secondary);
@@ -50,8 +53,10 @@
     left: -100%;
     transition: all 0.7s;
     z-index: 1000;
-    height: auto;
-
+    height: 100vh;
+    .user {
+      display: none;
+    }
   }
 }
 .activeSideBar {
