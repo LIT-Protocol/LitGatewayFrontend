@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import styles from './app.module.scss'
+
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+
+import DiscoverPage from "./pages/DiscoverPage";
+import GuidePage from "./pages/GuidePage";
+import SingleAppPage from "./pages/SingleAppPage";
+import SingleGuidePage from "./pages/GuidePage/SingleGuidePage";
+
+import SideBar from './components/SideBar'
+import Header from "./components/Header";
+
+import useWindowDimensions from './hooks/useWindowDimensions'
+
+import { AppContextProvider } from './context/app'
 
 function App() {
+
+  const { width } = useWindowDimensions();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AppContextProvider>
+        <Theme preset={presetGpnDefault}>
+          <div className={styles.app}>
+            {width < 1040?  <Header /> : null}
+            <SideBar />
+            <div className={styles.wrap}>
+              <Switch>
+                <Route path="/discover" component={DiscoverPage} />
+                <Route path="/app" component={SingleAppPage} />
+                <Route path="/guide" component={GuidePage} />
+                <Route path="/requirement" component={SingleGuidePage} />
+              </Switch>
+            </div>
+          </div>
+        </Theme>
+      </AppContextProvider>
+    </BrowserRouter>
   );
 }
 

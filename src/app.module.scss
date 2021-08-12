@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+  @media (max-width: 1040px) {
+    display: block;
+  }
+}
+
+.wrap {
+  height: 100vh;
+  overflow-y: auto;
+  width: 100%;
+}
