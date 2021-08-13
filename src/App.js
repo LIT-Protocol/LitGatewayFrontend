@@ -8,6 +8,7 @@ import DiscoverPage from "./pages/DiscoverPage";
 import GuidePage from "./pages/GuidePage";
 import SingleAppPage from "./pages/SingleAppPage";
 import SingleGuidePage from "./pages/GuidePage/SingleGuidePage";
+import FilesPage from './pages/FilesPage'
 
 import SideBar from './components/SideBar'
 import Header from "./components/Header";
@@ -25,7 +26,7 @@ function App() {
       <AppContextProvider>
         <Theme preset={presetGpnDefault}>
           <div className={styles.app}>
-            {width < 1040?  <Header /> : null}
+            {width < 1040 ? <Header /> : null}
             <SideBar />
             <div className={styles.wrap}>
               <Switch>
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/app" component={SingleAppPage} />
                 <Route path="/guide" component={GuidePage} />
                 <Route path="/requirement" component={SingleGuidePage} />
+                <Route path="/files" component={FilesPage} />
               </Switch>
             </div>
           </div>

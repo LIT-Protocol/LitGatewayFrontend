@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import LitJsSdk from 'lit-js-sdk'
+
+window.litNodeClient = new LitJsSdk.LitNodeClient()
+window.litNodeClient.connect()
+
 
 ReactDOM.render(
   <React.StrictMode>
