@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "classnames": "^2.3.1",
     "feather-icons": "^4.28.0",
+    "gun": "^0.2020.1232",
     "lit-js-sdk": "^1.1.35",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
@@ -21,6 +22,7 @@
     "sass": "^1.37.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
+    "uint8arrays": "^2.1.10",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
