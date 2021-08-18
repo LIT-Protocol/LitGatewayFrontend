@@ -1,3 +1,5 @@
+import LitJsSdk from 'lit-js-sdk'
+
 /**
  * Format bytes as human-readable text.
  * 
@@ -28,4 +30,37 @@ export function humanFileSize(bytes, si = true, dp = 0) {
 
 
   return bytes.toFixed(dp) + ' ' + units[u];
+}
+
+
+export const decryptAndDownload = async ({ file, chain }) => {
+  console.log('decryptAndDownload ', file)
+
+  const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+
+  //get the file
+  const ipfsGateway = "https://ipfs.litgateway.com/ipfs/"
+  const url = ipfsGateway + file.ipfsHash
+
+  const fileAsArrayBuffer = await fetch(url, {
+    method: 'GET'
+  }).then(response => response.arrayBuffer())
+
+  const { decryptedFile, metadata } = await LitJsSdk.decryptZipFileWithMetadata({
+    authSig,
+    file: fileAsArrayBuffer,
+    litNodeClient: window.litNodeClient
+  })
+
+  LitJsSdk.downloadFile({
+    filename: metadata.name,
+    mimetype: metadata.type,
+    data: new Uint8Array(decryptedFile)
+  })
+}
+
+
+export const getFileLink = (fileId) => {
+  const host = process.env.REACT_APP_LIT_GATEWAY_FRONTEND_HOST
+  return `${host}/files/view/${fileId}`
 }
