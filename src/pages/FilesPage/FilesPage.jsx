@@ -5,10 +5,13 @@ import styles from './files-page.module.scss'
 import { Grid, GridItem } from "@consta/uikit/Grid";
 import { Button } from "@consta/uikit/Button";
 import { Table } from '@consta/uikit/Table';
+import { IconDownload } from "@consta/uikit/IconDownload";
 import FileDropper from './FileDropper'
 import LitJsSdk from 'lit-js-sdk'
 import uint8arrayFromString from 'uint8arrays/from-string'
+import uint8arrayToString from 'uint8arrays/to-string'
 import { loginToDb } from '../../utils/auth'
+import { humanFileSize } from '../../utils/files'
 import Gun from 'gun/gun'
 import 'gun/sea'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
@@ -19,7 +22,7 @@ const PINATA_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXR
 
 
 const FilesPage = () => {
-  const [rows, setRows] = useState(null)
+  const [rows, setRows] = useState({})
   const [user, setUser] = useState(null)
 
   // pick the access control conditions
@@ -46,9 +49,9 @@ const FilesPage = () => {
     }
     const files = []
     // list to check that it showed up
-    user.get('files').map().on(d => {
-      console.log(d)
-      setRows(prevFiles => [...prevFiles, d])
+    user.get('files').map().on(f => {
+      console.log(f)
+      setRows(prevFiles => ({ ...prevFiles, [f.ipfsHash]: f }))
     })
   }, [user])
 
@@ -77,9 +80,6 @@ const FilesPage = () => {
     // get the auth sig first, because if the user denies this, we have nothing to do
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
 
-
-
-
     const fileUploadPromises = []
     for (let i = 0; i < acceptedFiles.length; i++) {
       const file = acceptedFiles[i]
@@ -92,10 +92,6 @@ const FilesPage = () => {
         litNodeClient: window.litNodeClient
       })
 
-      // const encryptedZipBlob = new Blob(
-      //   [encryptedZip],
-      //   { type: 'application/octet-stream' }
-      // )
       const formData = new FormData()
       formData.append('file', zipBlob)
 
@@ -137,29 +133,74 @@ const FilesPage = () => {
 
   }, [user])
 
+  const decryptAndDownload = async (row) => {
+    console.log('decryptAndDownload ', row)
+
+    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+
+    //get the file
+    const ipfsGateway = "https://ipfs.litgateway.com/ipfs/"
+    const url = ipfsGateway + row.ipfsHash
+
+    const fileAsArrayBuffer = await fetch(url, {
+      method: 'GET'
+    }).then(response => response.arrayBuffer())
+
+    const { decryptedFile, metadata } = await LitJsSdk.decryptZipFileWithMetadata({
+      authSig,
+      file: fileAsArrayBuffer,
+      litNodeClient: window.litNodeClient
+    })
+
+    LitJsSdk.downloadFile({
+      filename: metadata.name,
+      mimetype: metadata.type,
+      data: new Uint8Array(decryptedFile)
+    })
+
+
+  }
+
   const fileTableColumns = [
     {
       title: 'Name',
       accessor: 'name',
       align: 'left',
-      width: 100,
       sortable: true,
     },
-    {
-      title: 'Extension',
-      accessor: 'extension',
-      sortable: true,
-    },
+    // {
+    //   title: 'Extension',
+    //   accessor: 'extension',
+    //   sortable: true,
+    // },
     {
       title: 'Size',
       accessor: 'size',
       sortable: true,
+      renderCell: (row) => {
+        return humanFileSize(row.size)
+      }
     },
     {
       title: 'Uploaded',
       accessor: 'uploadedAt',
       sortable: true,
+      renderCell: (row) => {
+        return new Date(row.uploadedAt * 1000).toLocaleString()
+      }
     },
+    {
+      title: 'Actions',
+      renderCell: (row) => {
+        return <Button
+          label='Download'
+          onClick={() => decryptAndDownload(row)}
+          iconLeft={IconDownload}
+          onlyIcon
+          size='s'
+        />
+      }
+    }
   ];
 
   return (
@@ -171,15 +212,13 @@ const FilesPage = () => {
 
       <div style={{ height: 32 }} />
 
-      {
-        rows === null
-          ? <ProgressSpin size='m' />
-          : <Table
-            columns={fileTableColumns}
-            rows={rows}
-            emptyRowsPlaceholder='No files yet.  Upload some and they will show up here.'
-          />
-      }
+
+      <Table
+        columns={fileTableColumns}
+        rows={Object.values(rows)}
+        emptyRowsPlaceholder='No files yet.  Upload some and they will show up here.'
+      />
+
 
 
     </div>
