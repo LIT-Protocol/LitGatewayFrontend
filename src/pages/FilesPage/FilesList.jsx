@@ -7,16 +7,26 @@ import { IconDocFilled } from '@consta/uikit/IconDocFilled'
 import { IconConnection } from '@consta/uikit/IconConnection'
 import { Modal } from '@consta/uikit/Modal';
 import ShareFile from './ShareFile'
+import { ProgressSpin } from '@consta/uikit/ProgressSpin';
+import { downloadFile } from 'lit-js-sdk';
+
 
 
 const FilesList = (props) => {
   const { rows, chain } = props
   const [sharingFileLink, setSharingFileLink] = useState(null)
+  const [downloadingIds, setDownloadingIds] = useState([])
 
   const showFileLink = (file) => {
     const url = getFileLink(file.id)
     console.log('file url is ', url)
     setSharingFileLink(url)
+  }
+
+  const downloadFile = async (file) => {
+    setDownloadingIds(prev => [...prev, file.id])
+    await decryptAndDownload({ file, chain })
+    setDownloadingIds(prev => prev.filter(f => f !== file.id))
   }
 
   const fileTableColumns = [
@@ -53,14 +63,19 @@ const FilesList = (props) => {
       title: 'Actions',
       renderCell: (row) => {
         return (<>
-          <Button
-            label='Download'
-            onClick={() => decryptAndDownload({ file: row, chain })}
-            iconLeft={IconDownload}
-            onlyIcon
-            size='s'
-            view='clear'
-          />
+          {downloadingIds.includes(row.id)
+            ?
+            <ProgressSpin />
+            : <Button
+              label='Download'
+              onClick={() => downloadFile(row)}
+              iconLeft={IconDownload}
+              onlyIcon
+              size='s'
+              view='clear'
+            />
+          }
+
           <Button
             label='Share'
             onClick={() => showFileLink(row)}

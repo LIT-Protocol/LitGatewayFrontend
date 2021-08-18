@@ -1,10 +1,11 @@
-import React, { useMemo, useCallback } from 'react'
+import React, { useMemo, useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import uint8arrayToString from 'uint8arrays/to-string'
 import LitJsSdk from 'lit-js-sdk'
 import { v4 as uuidv4 } from 'uuid';
 import { putFile } from '../../api/files'
 import { getFileLink } from '../../utils/files'
+import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 
 const baseStyle = {
   flex: 1,
@@ -41,10 +42,13 @@ const PINATA_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXR
 const FileDropper = (props) => {
 
   const { accessControlConditions, chain, onUploaded } = props
+  const [uploading, setUploading] = useState(false)
 
   const onDrop = useCallback(async (acceptedFiles) => {
     // get the auth sig first, because if the user denies this, we have nothing to do
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+
+    setUploading(true)
 
     const fileUploadPromises = []
     for (let i = 0; i < acceptedFiles.length; i++) {
@@ -105,7 +109,7 @@ const FileDropper = (props) => {
 
     const fileUploads = await Promise.all(fileUploadPromises)
     console.log('file upload complete:', fileUploads)
-
+    setUploading(false)
     onUploaded()
   }, [])
 
@@ -129,12 +133,18 @@ const FileDropper = (props) => {
     isDragAccept
   ]);
 
-  return (
-    <div {...getRootProps({ style })}>
-      <input {...getInputProps()} />
-      <p>Drag 'n' drop some files here, or click to select files</p>
-    </div>
-  )
+  return uploading
+    ? (
+      <ProgressSpin />
+    )
+    : (
+      <div {...getRootProps({ style })}>
+        <input {...getInputProps()} />
+        <p>Drag 'n' drop some files here, or click to select files</p>
+      </div>
+    )
+
+
 }
 
 
