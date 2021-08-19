@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import styles from './files-page.module.scss'
 
@@ -9,6 +9,7 @@ import { TextField } from '@consta/uikit/TextField';
 import { IconAdd } from "@consta/uikit/IconAdd";
 import { IconUpload } from "@consta/uikit/IconUpload";
 import { Modal } from '@consta/uikit/Modal';
+import { Breadcrumbs } from '@consta/uikit/Breadcrumbs';
 
 import LitJsSdk from 'lit-js-sdk'
 import uint8arrayToString from 'uint8arrays/to-string'
@@ -23,6 +24,7 @@ const chain = 'fantom'
 const FilesPage = () => {
   const params = useParams()
   const { folderId } = params
+  const history = useHistory()
   const [parentFolders, setParentFolders] = useState([])
   const [rows, setRows] = useState([])
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
@@ -57,7 +59,16 @@ const FilesPage = () => {
       ...folders.map(f => ({ ...f, key: f.id })),
       ...files.map(f => ({ ...f, key: f.id }))
     ])
-    setParentFolders(parentFolders)
+    setParentFolders([
+      {
+        label: 'Home',
+        link: '/files'
+      },
+      ...parentFolders.map(f => ({
+        label: f.name,
+        link: `/files/folders/${f.id}`
+      }))
+    ])
   }
 
   useEffect(() => {
@@ -88,19 +99,16 @@ const FilesPage = () => {
       <h3 className={styles.subtitle}>View and upload files</h3>
       <div className={styles.path}>
         {parentFolders.length > 0
-          ? [
-            <>
-              <Link to={`/files/`}>Home</Link>
-              {' / '}
-            </>,
-            ...parentFolders.map((f, i) => (
-              <>
-                <Link to={`/files/folders/${f.id}`}>{f.name}</Link>
-                {i !== parentFolders.length - 1 ? ' / ' : ''}
-              </>
-            ))
-          ]
-          : ''
+          ? <Breadcrumbs
+            pages={parentFolders}
+            getLabel={(page) => page.label}
+            getLink={(page) => page.link}
+            onClick={(page, e) => {
+              e.preventDefault();
+              history.push(page.link)
+            }}
+          />
+          : null
         }
       </div>
       <div style={{ height: 16 }} />
