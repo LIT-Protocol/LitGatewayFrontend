@@ -1,26 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 import styles from './files-page.module.scss'
-import { Grid, GridItem } from "@consta/uikit/Grid";
+
 import { Button } from "@consta/uikit/Button";
 import { TextField } from '@consta/uikit/TextField';
 import { IconAdd } from "@consta/uikit/IconAdd";
 import { IconUpload } from "@consta/uikit/IconUpload";
-import FileDropper from './FileDropper'
-import LitJsSdk from 'lit-js-sdk'
-import uint8arrayFromString from 'uint8arrays/from-string'
-import uint8arrayToString from 'uint8arrays/to-string'
-import { humanFileSize } from '../../utils/files'
-import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 import { Modal } from '@consta/uikit/Modal';
+
+import LitJsSdk from 'lit-js-sdk'
+import uint8arrayToString from 'uint8arrays/to-string'
+
 import { putFolder, getFolder } from '../../api/files'
 import FilesList from './FilesList'
-import ShareFile from './ShareFile'
+import FileDropper from './FileDropper'
+
 
 const chain = 'fantom'
 
 const FilesPage = () => {
+  const params = useParams()
+  const { folderId } = params
+  const [parentFolders, setParentFolders] = useState([])
   const [rows, setRows] = useState([])
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [newFolderModalOpen, setNewFolderModalOpen] = useState(false);
@@ -29,17 +32,17 @@ const FilesPage = () => {
   // pick the access control conditions
   const accessControlConditions = [
     {
-      contractAddress: '0x5bd3fe8ab542f0aabf7552faaf376fd8aa9b3869',
-      standardContractType: 'ERC1155',
+      contractAddress: '',
+      standardContractType: '',
       chain,
-      method: 'balanceOf',
+      method: 'eth_getBalance',
       parameters: [
         ':userAddress',
-        '1'
+        'latest'
       ],
       returnValueTest: {
-        comparator: '>',
-        value: '0'
+        comparator: '>=',
+        value: '10000000000000'
       }
     }
   ]
@@ -47,15 +50,19 @@ const FilesPage = () => {
   const loadFiles = async () => {
     const accessControlConditionsHashAsArrayBuffer = await LitJsSdk.hashAccessControlConditions(accessControlConditions)
     const accessControlConditionsHash = uint8arrayToString(new Uint8Array(accessControlConditionsHashAsArrayBuffer), 'base16')
-    const { files } = await getFolder('')
-    console.log('got files', files)
+    const { files, folders, parentFolders } = await getFolder(folderId || '')
+    // console.log('got files', files)
     // add key
-    setRows(files.map(f => ({ ...f, key: f.id })))
+    setRows([
+      ...folders.map(f => ({ ...f, key: f.id })),
+      ...files.map(f => ({ ...f, key: f.id }))
+    ])
+    setParentFolders(parentFolders)
   }
 
   useEffect(() => {
     loadFiles()
-  }, [])
+  }, [folderId])
 
   const onUploaded = () => {
     loadFiles()
@@ -68,9 +75,10 @@ const FilesPage = () => {
     console.log('creating folder with name ', newFolderName)
     await putFolder({
       name: newFolderName,
-      folderId: null,
+      folderId: folderId ? folderId : null,
       authSig
     })
+    loadFiles()
     setNewFolderName('')
   }
 
@@ -78,11 +86,29 @@ const FilesPage = () => {
     <div className={styles.main}>
       <h1 className={styles.title}>Files - Decentralized cloud dropbox</h1>
       <h3 className={styles.subtitle}>View and upload files</h3>
-
+      <div className={styles.path}>
+        {parentFolders.length > 0
+          ? [
+            <>
+              <Link to={`/files/`}>Home</Link>
+              {' / '}
+            </>,
+            ...parentFolders.map((f, i) => (
+              <>
+                <Link to={`/files/folders/${f.id}`}>{f.name}</Link>
+                {i !== parentFolders.length - 1 ? ' / ' : ''}
+              </>
+            ))
+          ]
+          : ''
+        }
+      </div>
+      <div style={{ height: 16 }} />
       <Button
         label="Upload"
         iconLeft={IconUpload}
         onClick={() => setUploadModalOpen(true)}
+        size='m'
       />
       <span style={{ width: 8, display: 'inline-block' }} />
       <Button
@@ -90,6 +116,7 @@ const FilesPage = () => {
         iconLeft={IconAdd}
         view='secondary'
         onClick={() => setNewFolderModalOpen(true)}
+        size='m'
       />
 
       <Modal
@@ -103,6 +130,7 @@ const FilesPage = () => {
             onUploaded={onUploaded}
             accessControlConditions={accessControlConditions}
             chain={chain}
+            folderId={folderId}
           />
         </div>
 

@@ -36,6 +36,7 @@ function App() {
                 <Route path="/guide" component={GuidePage} />
                 <Route path="/requirement" component={SingleGuidePage} />
                 <Route path="/files/view/:fileId" component={ViewFilePage} />
+                <Route path="/files/folders/:folderId" component={FilesPage} />
                 <Route path="/files" component={FilesPage} />
               </Switch>
             </div>

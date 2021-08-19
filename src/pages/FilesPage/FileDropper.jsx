@@ -41,7 +41,12 @@ const PINATA_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXR
 
 const FileDropper = (props) => {
 
-  const { accessControlConditions, chain, onUploaded } = props
+  const {
+    accessControlConditions,
+    chain,
+    onUploaded,
+    folderId
+  } = props
   const [uploading, setUploading] = useState(false)
 
   const onDrop = useCallback(async (acceptedFiles) => {
@@ -100,7 +105,7 @@ const FileDropper = (props) => {
                   accessControlConditionsHash,
                   fileId,
                   chain,
-                  folderId: null
+                  folderId: folderId ? folderId : null
                 }
 
                 return putFile({ file: fileMetadata, authSig })

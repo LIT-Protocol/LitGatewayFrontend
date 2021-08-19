@@ -1,15 +1,20 @@
 import React, { useCallback, useEffect, useState } from 'react'
+
+import { Link } from 'react-router-dom'
+
 import { Button } from "@consta/uikit/Button";
 import { Table } from '@consta/uikit/Table';
 import { IconDownload } from "@consta/uikit/IconDownload";
-import { humanFileSize, decryptAndDownload, getFileLink } from '../../utils/files'
 import { IconDocFilled } from '@consta/uikit/IconDocFilled'
 import { IconConnection } from '@consta/uikit/IconConnection'
+import { IconFolders } from '@consta/uikit/IconFolders'
 import { Modal } from '@consta/uikit/Modal';
-import ShareFile from './ShareFile'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
-import { downloadFile } from 'lit-js-sdk';
 
+import { humanFileSize, decryptAndDownload, getFileLink } from '../../utils/files'
+
+import ShareFile from './ShareFile'
+import { downloadFile } from 'lit-js-sdk';
 
 
 const FilesList = (props) => {
@@ -37,9 +42,17 @@ const FilesList = (props) => {
       sortable: true,
       renderCell: (row) => {
         return (<>
-          <IconDocFilled />
+          {row.ipfsHash // folders don't have an ipfs hash
+            ? <IconDocFilled />
+            : <IconFolders />
+          }
+
           <span style={{ width: 8, display: 'inline-block' }} />
-          {row.name}
+
+          {row.ipfsHash // folders don't have an ipfs hash
+            ? row.name //<Link to={`/files/view/${row.id}`}>{row.name}</Link>
+            : <Link to={`/files/folders/${row.id}`}>{row.name}</Link>
+          }
         </>)
       }
     },
@@ -48,7 +61,7 @@ const FilesList = (props) => {
       accessor: 'size',
       sortable: true,
       renderCell: (row) => {
-        return humanFileSize(row.size)
+        return row.ipfsHash ? humanFileSize(row.size) : ''
       }
     },
     {
@@ -56,7 +69,7 @@ const FilesList = (props) => {
       accessor: 'uploadedAt',
       sortable: true,
       renderCell: (row) => {
-        return new Date(parseInt(row.uploadedAt) * 1000).toLocaleString()
+        return row.ipfsHash ? new Date(parseInt(row.uploadedAt) * 1000).toLocaleString() : ''
       }
     },
     {
