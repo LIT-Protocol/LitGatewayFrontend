@@ -14,7 +14,7 @@ import uint8arrayToString from 'uint8arrays/to-string'
 import { humanFileSize } from '../../utils/files'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 import { Modal } from '@consta/uikit/Modal';
-import { putFile, getFiles } from '../../api/files'
+import { putFolder, getFolder } from '../../api/files'
 import FilesList from './FilesList'
 import ShareFile from './ShareFile'
 
@@ -47,7 +47,7 @@ const FilesPage = () => {
   const loadFiles = async () => {
     const accessControlConditionsHashAsArrayBuffer = await LitJsSdk.hashAccessControlConditions(accessControlConditions)
     const accessControlConditionsHash = uint8arrayToString(new Uint8Array(accessControlConditionsHashAsArrayBuffer), 'base16')
-    const { files } = await getFiles(accessControlConditionsHash)
+    const { files } = await getFolder('')
     console.log('got files', files)
     // add key
     setRows(files.map(f => ({ ...f, key: f.id })))
@@ -62,9 +62,15 @@ const FilesPage = () => {
     setUploadModalOpen(false)
   }
 
-  const createNewFolder = () => {
+  const createNewFolder = async () => {
+    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
     setNewFolderModalOpen(false)
     console.log('creating folder with name ', newFolderName)
+    await putFolder({
+      name: newFolderName,
+      folderId: null,
+      authSig
+    })
     setNewFolderName('')
   }
 

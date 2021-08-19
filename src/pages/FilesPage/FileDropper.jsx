@@ -98,7 +98,9 @@ const FileDropper = (props) => {
                   uploadedAt: Math.floor(Date.now() / 1000),
                   accessControlConditions,
                   accessControlConditionsHash,
-                  fileId
+                  fileId,
+                  chain,
+                  folderId: null
                 }
 
                 return putFile({ file: fileMetadata, authSig })

@@ -9,6 +9,7 @@ import GuidePage from "./pages/GuidePage";
 import SingleAppPage from "./pages/SingleAppPage";
 import SingleGuidePage from "./pages/GuidePage/SingleGuidePage";
 import FilesPage from './pages/FilesPage'
+import ViewFilePage from './pages/ViewFilePage'
 
 import SideBar from './components/SideBar'
 import Header from "./components/Header";
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/app" component={SingleAppPage} />
                 <Route path="/guide" component={GuidePage} />
                 <Route path="/requirement" component={SingleGuidePage} />
+                <Route path="/files/view/:fileId" component={ViewFilePage} />
                 <Route path="/files" component={FilesPage} />
               </Switch>
             </div>
