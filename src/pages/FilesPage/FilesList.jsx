@@ -14,6 +14,7 @@ import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 import { humanFileSize, decryptAndDownload, getFileLink } from '../../utils/files'
 
 import ShareFile from './ShareFile'
+import ShareModal from './ShareModal'
 import { downloadFile } from 'lit-js-sdk';
 
 
@@ -21,11 +22,13 @@ const FilesList = (props) => {
   const { rows, chain } = props
   const [sharingFileLink, setSharingFileLink] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
+  const [showShareModal, setShowShareModal] = useState(true)
 
   const showFileLink = (file) => {
     const url = getFileLink(file.id)
     console.log('file url is ', url)
     setSharingFileLink(url)
+    setShowShareModal(true)
   }
 
   const downloadFile = async (file) => {
@@ -122,6 +125,10 @@ const FilesList = (props) => {
         </div>
 
       </Modal>
+
+      {showShareModal ? (
+        <ShareModal onClose={() => setShowShareModal(false)} />
+      ) : null}
     </>
   )
 }

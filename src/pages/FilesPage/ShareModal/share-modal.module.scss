@@ -1,0 +1,258 @@
+@import '../../../vars.scss';
+
+.fileModal {
+  width: 900px;
+  padding: $space-3xl;
+  height: 600px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $border;
+  padding-bottom: $space-2xl;
+  justify-content: space-between;
+  .close {
+    cursor: pointer;
+  }
+  >div {
+    display: flex;
+    align-items: center;
+  }
+  .icon {
+    width: 3.5em;
+    height: 3.5em;
+    padding-right: $space-xl;
+  }
+  h3 {
+    color: $primary-text;
+    font-size: 1.5em;
+    margin: 0 0 $space-s;
+  }
+  a {
+    font-size: 1.2em;
+  }
+}
+
+.link {
+  color: $link;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    color: $link-hover;
+  }
+}
+
+.body {
+  padding: $space-2xl 0;
+  .back {
+    margin: 0 0 $space-xl;
+    display: flex;
+    align-items: center;
+    color: $link;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      color: $link-hover;
+    }
+    .icon {
+      margin-right: $space-s;
+    }
+  }
+  .titles {
+    margin: 0 0 $space-xl;
+  }
+  .titles h3 {
+    color: $primary-text;
+    font-size: 1.5em;
+    margin: 0 0 $space-s;
+  }
+  .link {
+    color: $link;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      color: $link-hover;
+    }
+  }
+  .types {
+    margin-top: $space-m;
+    display: flex;
+    justify-content: center;
+  }
+  .type {
+    flex: 0 1 200px;
+    margin: $space-s;
+    h4 {
+      font-size: 1.2em;
+      text-align: center;
+      margin: 0 0 $space-m;
+      color: $primary-text;
+    }
+    .btnBock {
+      border-radius: 4px;
+      border: 1px solid $brand;
+      padding: $space-xl;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 250px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background: $brand;
+        svg {
+          path {
+            fill: white;
+          }
+        }
+        h5 {
+          color: white;
+        }
+        .link {
+          color: white;
+        }
+        .lockIcon {
+          background-image: url('./assets/lock.png');
+        }
+        .linkIcon {
+          background-image: url('./assets/link.png');
+        }
+        .daoIcon {
+          background-image: url('./assets/dao-hover.png');
+        }
+        
+        .tokenIcon {
+          background-image: url('./assets/token-hover.png');
+        }
+        
+        .walletIcon {
+          background-image: url('./assets/wallet-hover.png');
+        }
+      }
+      .img {
+        margin-bottom: 20px;
+        position: relative;
+      }
+      svg {
+        path {
+          fill: $brand;
+        }
+      }
+      h5 {
+        text-align: center;
+        margin: 0;
+        color: $primary-text;
+      }
+    }
+  }
+}
+
+.title {
+  font-size: 3em;
+  color: var(--color-typo-primary);
+  border-bottom: 1px solid var(--color-typo-ghost);
+  padding-bottom: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+  @media (max-width: 640px) {
+    font-size: 40px;
+  }
+}
+
+.form {
+  margin-top: 50px;
+  .input {
+    margin-bottom: $space-m;
+  }
+  .btn {
+    margin-top: $space-2xl;
+  }
+  p {
+    color: $typo-link-minor;
+  }
+}
+
+.lockIcon {
+  background-image: url('./assets/lock-hover.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center center;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 44%;
+  left: 27%;
+  transition: all 0.3s;
+}
+
+.linkIcon {
+  background-image: url('./assets/link-hover.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center center;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 44%;
+  left: 27%;
+  transition: all 0.3s;
+}
+
+.imgIcon {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  margin-bottom: $space-m;
+}
+
+.daoIcon, .tokenIcon, .walletIcon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position:center center;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+}
+
+.daoIcon {
+  background-image: url('./assets/DAO.png');
+}
+
+.tokenIcon {
+  background-image: url('./assets/token.png');
+}
+
+.walletIcon {
+  background-image: url('./assets/wallet.png');
+}
+
+.selectIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+.select {
+  .label {
+    font-size: 18px;
+    line-height: 150%;
+    margin-bottom: 8px;
+    color: $secondary-text;
+    display: inline-block;
+  }
+  margin-bottom: $space-xl;
+}
+
+.table {
+  margin-top: $space-3xl;
+}
