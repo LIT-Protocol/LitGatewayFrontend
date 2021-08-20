@@ -22,7 +22,7 @@ const FilesList = (props) => {
   const { rows, chain } = props
   const [sharingFileLink, setSharingFileLink] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
-  const [showShareModal, setShowShareModal] = useState(true)
+  const [showShareModal, setShowShareModal] = useState(false)
 
   const showFileLink = (file) => {
     const url = getFileLink(file.id)

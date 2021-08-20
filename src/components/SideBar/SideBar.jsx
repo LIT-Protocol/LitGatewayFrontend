@@ -85,8 +85,8 @@ const SideBar = () => {
 
     return (
         <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
-            <User size="m" className={styles.user} avatarUrl="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png" name="Sneider.ETH" />
-            <TextField placeholder="Search..." className={styles.input} leftSide={IconSearch} value={search} onChange={({ value }) => setSearch(value)} />
+            {/* <User size="m" className={styles.user} avatarUrl="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png" name="Sneider.ETH" />
+            <TextField placeholder="Search..." className={styles.input} leftSide={IconSearch} value={search} onChange={({ value }) => setSearch(value)} /> */}
             <div className={styles.menu}>
                 <ul>
                     {
