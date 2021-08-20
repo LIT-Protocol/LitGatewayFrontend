@@ -1,34 +1,54 @@
 import React, { useState } from 'react'
-import Select from 'react-select'
+import CreatableSelect from 'react-select/creatable';
 
 import styles from '../share-modal.module.scss'
+import tokens from '../../../../tokens.json'
 
 import { Button } from "@consta/uikit/Button"
 import { IconBackward } from "@consta/uikit/IconBackward"
 
 import { InputWrapper } from '../../../../components'
 
-const wallets = [
-  { value: "PancakeSwap", label: "PancakeSwap", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/7186.png" },
-  { value: "Dai", label: "Dai", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/4943.png" },
-  { value: "1inch", label: "1inch", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/8104.png" }
-];
+// const addresses = [
+//   { value: "PancakeSwap", label: "PancakeSwap", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/7186.png" },
+//   { value: "Dai", label: "Dai", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/4943.png" },
+//   { value: "1inch", label: "1inch", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/8104.png" }
+// ];
 
 const SelectTokens = ({ setActiveStep }) => {
   const [amount, setAmount] = useState('')
-  const [selectedTokens, setSelectedTokens] = useState([])
+  const [selectedToken, setSelectedToken] = useState(null)
 
 
   const handleSubmit = () => {
     setActiveStep('accessCreated')
   }
 
-  const formatOptionLabel = ({ value, label, image }) => (
-    <div style={{ display: "flex" }}>
-      <img className={styles.selectIcon} src={image} alt="img" />
-      <div>{label}</div>
-    </div>
-  );
+  const formatOptionLabel = (option, extra) => {
+    const { name, logoURI, value } = option
+    const { inputValue } = extra
+
+    console.log('option', option)
+    console.log('extra', extra)
+
+    if (inputValue) {
+      return inputValue
+    }
+
+    if (value) {
+      return value
+    }
+
+    return (
+      <div style={{ display: "flex" }}>
+        {logoURI ?
+          <img className={styles.selectIcon} src={logoURI} alt="img" />
+          : null
+        }
+        <div>{name}</div>
+      </div>
+    )
+  };
 
   return (
     <div>
@@ -41,13 +61,18 @@ const SelectTokens = ({ setActiveStep }) => {
       <div className={styles.form}>
         <div className={styles.select}>
           <span className={styles.label}>Select token</span>
-          <Select
-            defaultValue={wallets[0]}
+          <CreatableSelect
+            isClearable
+            defaultValue={''}
             formatOptionLabel={formatOptionLabel}
-            options={wallets}
-            isMulti
-            value={selectedTokens}
-            onChange={value => setSelectedTokens(value)}
+            getOptionValue={(option) => option.address}
+            options={[{
+              name: 'Ethereum',
+              logoURI: null
+            }, ...tokens.tokens]}
+            value={selectedToken}
+            // getNewOptionData={inputValue => ({ name: inputValue })}
+            onChange={value => setSelectedToken(value)}
           />
         </div>
         <InputWrapper
@@ -59,7 +84,7 @@ const SelectTokens = ({ setActiveStep }) => {
           size="m"
           handleChange={(value) => setAmount(value)}
         />
-        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedTokens.length } />
+        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken} />
       </div>
     </div>
   )
