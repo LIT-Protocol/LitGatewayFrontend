@@ -5,9 +5,9 @@ import cx from 'classnames'
 
 import styles from './sidebar.module.scss'
 
-import { TextField } from '@consta/uikit/TextField'
-import { IconSearch } from "@consta/uikit/IconSearch";
-import { User } from "@consta/uikit/User";
+import {IconArrowDown} from '@consta/uikit/IconArrowDown'
+
+import UserBlock from "../UserBlock";
 
 import { useAppContext } from "../../context/app";
 
@@ -77,16 +77,32 @@ const IconComponent = (icon) => {
 }
 
 const SideBar = () => {
-    const [search, setSearch] = useState('')
+    //const [search, setSearch] = useState('')
 
     const {
         sideBar
     } = useAppContext()
 
+    const userItems = [
+        {
+            name: 'Logout',
+            action: () => false,
+        },
+    ]
+
     return (
         <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
-            {/* <User size="m" className={styles.user} avatarUrl="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png" name="Sneider.ETH" />
-            <TextField placeholder="Search..." className={styles.input} leftSide={IconSearch} value={search} onChange={({ value }) => setSearch(value)} /> */}
+            <UserBlock
+              withMenu
+              iconRight={IconArrowDown}
+              size="l"
+              view="clear"
+              items={userItems}
+              className={styles.user}
+              username="Sneider.ETH"
+              avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
+            />
+            {/*<TextField placeholder="Search..." className={styles.input} leftSide={IconSearch} value={search} onChange={({ value }) => setSearch(value)} />*/}
             <div className={styles.menu}>
                 <ul>
                     {
