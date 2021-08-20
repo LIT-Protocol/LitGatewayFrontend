@@ -84,7 +84,7 @@ const SelectTokens = ({ setActiveStep }) => {
           size="m"
           handleChange={(value) => setAmount(value)}
         />
-        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken} />
+        <Button label="Create  Requirement" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken} />
       </div>
     </div>
   )
