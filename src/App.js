@@ -31,7 +31,7 @@ function App() {
             <SideBar />
             <div className={styles.wrap}>
               <Switch>
-                <Route path="/discover" component={DiscoverPage} />
+                <Route path={['/', "/discover"]} exact component={DiscoverPage} />
                 <Route path="/app" component={SingleAppPage} />
                 <Route path="/guide" component={GuidePage} />
                 <Route path="/requirement" component={SingleGuidePage} />
