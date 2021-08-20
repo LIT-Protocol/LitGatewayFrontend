@@ -19,7 +19,7 @@ const menuItems = [
     },
     {
         title: 'guide',
-        icon: 'file',
+        icon: 'book',
         to: '/guide'
     },
     {
@@ -28,20 +28,22 @@ const menuItems = [
         to: '/gallery'
     },
     {
-        title: 'files',
-        icon: 'file',
-        to: '/files'
+        title: 'apps',
+        icon: 'box',
+        to: '/apps'
     },
-    // {
-    //     title: 'social',
-    //     icon: 'message',
-    //     to: '/social'
-    // },
     {
         title: 'earn',
         icon: 'chart',
         to: '/earn'
     },
+    {
+        title: 'files',
+        icon: 'file',
+        to: '/files'
+    },
+
+
     {
         title: 'minter',
         icon: 'briefcase',
@@ -54,7 +56,7 @@ const menuItems = [
     // },
     {
         title: 'build',
-        icon: 'hash',
+        icon: 'code',
         to: '/build'
     }
 ]
@@ -68,7 +70,9 @@ const componentsIcons = {
     briefcase: Icon.Briefcase,
     file: Icon.File,
     login: Icon.LogIn,
-    hash: Icon.Hash,
+    code: Icon.Code,
+    box: Icon.Box,
+    book: Icon.BookOpen
 };
 
 const IconComponent = (icon) => {

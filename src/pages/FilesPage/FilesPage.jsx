@@ -95,8 +95,8 @@ const FilesPage = () => {
 
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>Files - Decentralized cloud dropbox</h1>
-      <h3 className={styles.subtitle}>View and upload files</h3>
+      <h1 className={styles.title}>Files</h1>
+      <h3 className={styles.subtitle}>Collaborative Decentralized Encrypted File Storage</h3>
       <div className={styles.path}>
         {parentFolders.length > 0
           ? <Breadcrumbs
