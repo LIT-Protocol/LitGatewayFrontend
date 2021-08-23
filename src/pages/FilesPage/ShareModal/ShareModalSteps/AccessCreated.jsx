@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import styles from '../share-modal.module.scss'
 
-const AccessCreated = ({ setActiveStep }) => {
+const AccessCreated = ({ setActiveStep, copyToClipboard }) => {
 
   return (
     <div>
@@ -11,7 +11,7 @@ const AccessCreated = ({ setActiveStep }) => {
         <a className={styles.link} onClick={() => setActiveStep('whatToDo')}>Create Another</a>
       </div>
       <div className={styles.types}>
-        <div className={styles.type}>
+        <div className={styles.type} onClick={copyToClipboard}>
           <h4>Share</h4>
           <div className={styles.btnBock}>
             <div className={styles.img}>
@@ -25,7 +25,7 @@ const AccessCreated = ({ setActiveStep }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

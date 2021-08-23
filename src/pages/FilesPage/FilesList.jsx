@@ -118,7 +118,8 @@ const FilesList = (props) => {
       {showShareModal ? (
         <ShareModal
           onClose={() => closeShareModal()}
-          sharingItem={selectedItem}
+          sharingItems={[selectedItem]}
+          awaitingUpload={false}
         />
       ) : null}
     </>

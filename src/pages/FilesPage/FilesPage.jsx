@@ -17,6 +17,7 @@ import uint8arrayToString from 'uint8arrays/to-string'
 import { putFolder, getFolder } from '../../api/files'
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
+import ShareModal from './ShareModal'
 
 
 const chain = 'fantom'
@@ -30,6 +31,8 @@ const FilesPage = () => {
   const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [newFolderModalOpen, setNewFolderModalOpen] = useState(false);
   const [newFolderName, setNewFolderName] = useState('')
+  const [selectedFiles, setSelectedFiles] = useState(null)
+  const [shareModalOpen, setShareModalOpen] = useState(false)
 
   // pick the access control conditions
   const accessControlConditions = [
@@ -75,9 +78,15 @@ const FilesPage = () => {
     loadFiles()
   }, [folderId])
 
-  const onUploaded = () => {
-    loadFiles()
+  const onFilesSelected = (selectedFiles) => {
+    setSelectedFiles(selectedFiles)
     setUploadModalOpen(false)
+    setShareModalOpen(true)
+  }
+
+  const closeShareModal = () => {
+    setShareModalOpen(false)
+    setSelectedFiles(null)
   }
 
   const createNewFolder = async () => {
@@ -135,7 +144,7 @@ const FilesPage = () => {
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>Upload Files</h3>
           <FileDropper
-            onUploaded={onUploaded}
+            onFilesSelected={onFilesSelected}
             accessControlConditions={accessControlConditions}
             chain={chain}
             folderId={folderId}
@@ -164,6 +173,14 @@ const FilesPage = () => {
         </div>
 
       </Modal>
+
+      {shareModalOpen ? (
+        <ShareModal
+          onClose={() => closeShareModal()}
+          sharingItems={selectedFiles}
+          awaitingUpload={true}
+        />
+      ) : null}
 
       <div style={{ height: 32 }} />
 

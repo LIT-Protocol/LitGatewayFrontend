@@ -7,7 +7,7 @@ import { IconBackward } from "@consta/uikit/IconBackward"
 
 import { InputWrapper } from '../../../../components'
 
-const DAOMembers = ({setActiveStep}) => {
+const DAOMembers = ({ setActiveStep }) => {
   const [DAOAdress, setDAOAdress] = useState('')
 
   const handleSubmit = () => {
@@ -17,7 +17,7 @@ const DAOMembers = ({setActiveStep}) => {
   return (
     <div>
       <div className={styles.back} onClick={() => setActiveStep('ableToAccess')}>
-        <IconBackward view="link" className={styles.icon}/> Back
+        <IconBackward view="link" className={styles.icon} /> Back
       </div>
       <div className={styles.titles}>
         <h3>Which DAO’s members should be able to access this file?</h3>
@@ -30,9 +30,9 @@ const DAOMembers = ({setActiveStep}) => {
           id="DAOAdress"
           autoFocus
           size="m"
-          handleChange = {(value) => setDAOAdress(value)}
+          handleChange={(value) => setDAOAdress(value)}
         />
-        <p>Lit Gateway currently DAOS using the Molochv2.1 contract </p>
+        <p>Lit Gateway currently supports DAOs using the Molochv2.1 contract (includes DAOhaus) </p>
         <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!DAOAdress} />
       </div>
     </div>

@@ -5,8 +5,12 @@ import styles from './share-modal.module.scss'
 import { IconDocFilled } from '@consta/uikit/IconDocFilled'
 import { Modal } from '@consta/uikit/Modal'
 import { IconClose } from "@consta/uikit/IconClose"
+import { SnackBar } from '@consta/uikit/SnackBar';
 
 import { WhatToDo, AbleToAccess, WhichWallet, AssetWallet, DAOMembers, AccessCreated, SelectTokens, RecentRequirement } from './ShareModalSteps'
+
+import { getSharingLink } from '../../../utils/files'
+
 
 const ModalComponents = {
   whatToDo: WhatToDo,
@@ -20,17 +24,29 @@ const ModalComponents = {
 }
 
 const ShareModal = (props) => {
+  const { onClose, sharingItems, awaitingUpload } = props
 
-  const { onClose, sharingItem } = props
-
+  const [showingSnackbar, setShowingSnackbar] = useState(false)
   const [activeStep, setActiveStep] = useState('whatToDo')
+
+  const copyToClipboard = async () => {
+    const fileUrl = getSharingLink(sharingItems[0])
+    await navigator.clipboard.writeText(fileUrl)
+    setShowingSnackbar(true)
+    setTimeout(() => setShowingSnackbar(false), 5000)
+  }
 
   const ModalComponent = (props) => {
     const { type } = props;
 
     let Component = ModalComponents[type]
 
-    return <Component {...props} sharingItem={sharingItem} />
+    return <Component
+      {...props}
+      sharingItems={sharingItems}
+      awaitingUpload={awaitingUpload}
+      copyToClipboard={copyToClipboard}
+    />
   }
 
   return (
@@ -40,16 +56,24 @@ const ShareModal = (props) => {
           <div>
             <IconDocFilled className={styles.icon} view="brand" />
             <div className={styles.fileName}>
-              <h3>{sharingItem.name} </h3>
-              <a className={styles.link} onClick={() => setActiveStep('recentRequirement')}>5 acceptable access requiments</a>
+              <h3>
+                {sharingItems.length > 1
+                  ? `${sharingItems.length} files`
+                  : sharingItems[0].name}
+              </h3>
+              {sharingItems.length === 1 && !awaitingUpload
+                ? <a className={styles.link} onClick={() => setActiveStep('recentRequirement')}>5 acceptable access requiments</a>
+                : null}
             </div>
           </div>
           <IconClose className={styles.close} onClick={onClose} />
         </div>
         <div className={styles.body}>
           <ModalComponent type={activeStep} setActiveStep={setActiveStep} />
+          {showingSnackbar ? <SnackBar styles={styles.snackbar} items={[{ key: 1, message: 'Copied!' }]} /> : null}
         </div>
       </div>
+
     </Modal>
   )
 }
