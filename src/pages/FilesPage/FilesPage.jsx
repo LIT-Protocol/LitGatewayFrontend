@@ -179,6 +179,7 @@ const FilesPage = () => {
           onClose={() => closeShareModal()}
           sharingItems={selectedFiles}
           awaitingUpload={true}
+          folderId={folderId}
         />
       ) : null}
 

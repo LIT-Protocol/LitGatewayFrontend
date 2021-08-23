@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CreatableSelect from 'react-select/creatable';
+import { parseEther } from '@ethersproject/units'
 
 import styles from '../share-modal.module.scss'
 import tokens from '../../../../tokens.json'
@@ -15,13 +16,60 @@ import { InputWrapper } from '../../../../components'
 //   { value: "1inch", label: "1inch", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/8104.png" }
 // ];
 
-const SelectTokens = ({ setActiveStep }) => {
+const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlConditions }) => {
   const [amount, setAmount] = useState('')
   const [selectedToken, setSelectedToken] = useState(null)
 
+  const chain = 'fantom'
 
   const handleSubmit = () => {
-    setActiveStep('accessCreated')
+    console.log('handleSubmit and selectedToken is', selectedToken)
+    if (selectedToken.value === 'ethereum') {
+      // ethereum
+      const amountInWei = parseEther(amount)
+      const accessControlConditions = [
+        {
+          contractAddress: '',
+          standardContractType: '',
+          chain,
+          method: 'eth_getBalance',
+          parameters: [
+            ':userAddress',
+            'latest'
+          ],
+          returnValueTest: {
+            comparator: '>=',
+            value: amountInWei.toString()
+          }
+        }
+      ]
+      setAccessControlConditions(accessControlConditions)
+    } else {
+      // erc20 token
+      // get number of decimals in the token and convert
+      const amountInWei = parseEther(amount)
+      const accessControlConditions = [
+        {
+          contractAddress: selectedToken.address,
+          standardContractType: 'ERC20',
+          chain,
+          method: 'balanceOf',
+          parameters: [
+            ':userAddress'
+          ],
+          returnValueTest: {
+            comparator: '>=',
+            value: amountInWei.toString()
+          }
+        }
+      ]
+      setAccessControlConditions(accessControlConditions)
+    }
+    if (awaitingUpload) {
+      setActiveStep('uploading')
+    } else {
+      setActiveStep('accessCreated')
+    }
   }
 
   const formatOptionLabel = (option, extra) => {
@@ -66,10 +114,14 @@ const SelectTokens = ({ setActiveStep }) => {
             defaultValue={''}
             formatOptionLabel={formatOptionLabel}
             getOptionValue={(option) => option.address}
-            options={[{
-              name: 'Ethereum',
-              logoURI: null
-            }, ...tokens.tokens]}
+            options={[
+              {
+                name: 'Ethereum',
+                logoURI: null,
+                address: 'ethereum'
+              },
+              ...tokens.tokens
+            ]}
             value={selectedToken}
             // getNewOptionData={inputValue => ({ name: inputValue })}
             onChange={value => setSelectedToken(value)}
@@ -78,13 +130,13 @@ const SelectTokens = ({ setActiveStep }) => {
         <InputWrapper
           value={amount}
           className={styles.input}
-          label="How Many ETH Does the Wallet need to Own?"
+          label="How many tokens does the wallet need to own?"
           id="amount"
           autoFocus
           size="m"
           handleChange={(value) => setAmount(value)}
         />
-        <Button label="Create  Requirement" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken} />
+        <Button label="Create Requirement" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken} />
       </div>
     </div>
   )

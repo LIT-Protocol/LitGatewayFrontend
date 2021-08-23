@@ -7,7 +7,7 @@ import { Modal } from '@consta/uikit/Modal'
 import { IconClose } from "@consta/uikit/IconClose"
 import { SnackBar } from '@consta/uikit/SnackBar';
 
-import { WhatToDo, AbleToAccess, WhichWallet, AssetWallet, DAOMembers, AccessCreated, SelectTokens, RecentRequirement } from './ShareModalSteps'
+import { WhatToDo, AbleToAccess, WhichWallet, AssetWallet, DAOMembers, AccessCreated, SelectTokens, RecentRequirement, Uploading } from './ShareModalSteps'
 
 import { getSharingLink } from '../../../utils/files'
 
@@ -20,20 +20,28 @@ const ModalComponents = {
   DAOMembers: DAOMembers,
   accessCreated: AccessCreated,
   selectTokens: SelectTokens,
-  recentRequirement: RecentRequirement
+  recentRequirement: RecentRequirement,
+  uploading: Uploading
 }
 
 const ShareModal = (props) => {
-  const { onClose, sharingItems, awaitingUpload } = props
+  const { onClose, sharingItems, awaitingUpload, folderId } = props
+
+  console.log('rendering ShareModal and sharingItems is', sharingItems)
 
   const [showingSnackbar, setShowingSnackbar] = useState(false)
   const [activeStep, setActiveStep] = useState('whatToDo')
+  const [accessControlConditions, setAccessControlConditions] = useState(null)
 
   const copyToClipboard = async () => {
     const fileUrl = getSharingLink(sharingItems[0])
     await navigator.clipboard.writeText(fileUrl)
     setShowingSnackbar(true)
     setTimeout(() => setShowingSnackbar(false), 5000)
+  }
+
+  const onUploaded = () => {
+    console.log('files uploaded!')
   }
 
   const ModalComponent = (props) => {
@@ -46,6 +54,10 @@ const ShareModal = (props) => {
       sharingItems={sharingItems}
       awaitingUpload={awaitingUpload}
       copyToClipboard={copyToClipboard}
+      accessControlConditions={accessControlConditions}
+      setAccessControlConditions={setAccessControlConditions}
+      onUploaded={onUploaded}
+      folderId={folderId}
     />
   }
 
