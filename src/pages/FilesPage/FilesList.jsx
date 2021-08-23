@@ -27,7 +27,7 @@ const FilesList = (props) => {
   const showFileLink = (file) => {
     const url = getFileLink(file.id)
     console.log('file url is ', url)
-    setSharingFileLink(url)
+    // setSharingFileLink(url)
     setShowShareModal(true)
   }
 

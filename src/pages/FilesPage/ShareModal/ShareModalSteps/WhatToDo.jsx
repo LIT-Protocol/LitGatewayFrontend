@@ -3,8 +3,21 @@ import React, { useState } from 'react'
 import styles from '../share-modal.module.scss'
 
 import { IconBackward } from "@consta/uikit/IconBackward"
+import { SnackBar } from '@consta/uikit/SnackBar';
 
-const WhatToDo = ({setActiveStep}) => {
+
+
+
+const WhatToDo = ({ setActiveStep }) => {
+  const [showingSnackbar, setShowingSnackbar] = useState(false)
+
+  const copyToClipboard = async () => {
+    const fileUrl = "test"
+    await navigator.clipboard.writeText(fileUrl)
+    setShowingSnackbar(true)
+    setTimeout(() => setShowingSnackbar(false), 5000)
+  }
+
   return (
     <div>
       <div className={styles.titles}>
@@ -25,7 +38,7 @@ const WhatToDo = ({setActiveStep}) => {
             <h5>Lock this content with an  existing token, NFT, or contract</h5>
           </div>
         </div>
-        <div className={styles.type}>
+        <div className={styles.type} onClick={() => copyToClipboard()}>
           <h4>Share</h4>
           <div className={styles.btnBock}>
             <div className={styles.img}>
@@ -35,10 +48,12 @@ const WhatToDo = ({setActiveStep}) => {
               </svg>
               <div className={styles.linkIcon}></div>
             </div>
-            <h5><a className={styles.link}>Click to copy link.</a>  <br /> Only authorized wallets  can open the file</h5>
+            <h5><a className={styles.link}>Click to copy link.</a>  <br /> Only authorized wallets can open the file</h5>
           </div>
         </div>
       </div>
+      {showingSnackbar ? <SnackBar items={[{ key: 1, message: 'Copied!' }]} /> : null}
+
     </div>
   )
 }
