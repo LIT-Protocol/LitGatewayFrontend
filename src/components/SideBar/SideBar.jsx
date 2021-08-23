@@ -100,6 +100,7 @@ const SideBar = () => {
           return {
               label: item.replace(/^\w/, (c) => c.toUpperCase()),
               id: item,
+              value: item
           };
       }), [LitJsSdk.LIT_CHAINS])
 
