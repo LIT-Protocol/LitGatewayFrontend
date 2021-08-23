@@ -11,23 +11,19 @@ import { IconFolders } from '@consta/uikit/IconFolders'
 import { Modal } from '@consta/uikit/Modal';
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 
-import { humanFileSize, decryptAndDownload, getFileLink } from '../../utils/files'
+import { humanFileSize, decryptAndDownload } from '../../utils/files'
 
-import ShareFile from './ShareFile'
 import ShareModal from './ShareModal'
-import { downloadFile } from 'lit-js-sdk';
 
 
 const FilesList = (props) => {
   const { rows, chain } = props
-  const [sharingFileLink, setSharingFileLink] = useState(null)
+  const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
   const [showShareModal, setShowShareModal] = useState(false)
 
   const showFileLink = (file) => {
-    const url = getFileLink(file.id)
-    console.log('file url is ', url)
-    // setSharingFileLink(url)
+    setSelectedItem(file)
     setShowShareModal(true)
   }
 
@@ -35,6 +31,11 @@ const FilesList = (props) => {
     setDownloadingIds(prev => [...prev, file.id])
     await decryptAndDownload({ file, chain })
     setDownloadingIds(prev => prev.filter(f => f !== file.id))
+  }
+
+  const closeShareModal = () => {
+    setShowShareModal(false)
+    setSelectedItem(null)
   }
 
   const fileTableColumns = [
@@ -113,21 +114,12 @@ const FilesList = (props) => {
         rows={rows}
         emptyRowsPlaceholder='No files yet.  Upload some and they will show up here.'
       />
-      <Modal
-        isOpen={Boolean(sharingFileLink)}
-        hasOverlay
-        onOverlayClick={() => setSharingFileLink(null)}
-      >
-        <div style={{ margin: 16 }}>
-          <ShareFile
-            fileUrl={sharingFileLink}
-          />
-        </div>
-
-      </Modal>
 
       {showShareModal ? (
-        <ShareModal onClose={() => setShowShareModal(false)} />
+        <ShareModal
+          onClose={() => closeShareModal()}
+          sharingItem={selectedItem}
+        />
       ) : null}
     </>
   )

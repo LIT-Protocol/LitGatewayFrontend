@@ -4,7 +4,7 @@ import uint8arrayToString from 'uint8arrays/to-string'
 import LitJsSdk from 'lit-js-sdk'
 import { v4 as uuidv4 } from 'uuid';
 import { putFile } from '../../api/files'
-import { getFileLink } from '../../utils/files'
+import { getSharingLink } from '../../utils/files'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 
 const baseStyle = {
@@ -61,7 +61,7 @@ const FileDropper = (props) => {
 
       const file = acceptedFiles[i]
       const fileId = uuidv4()
-      const fileShareUrl = getFileLink(fileId)
+      const fileShareUrl = getSharingLink({ id: fileId, ipfsHash: true })
       const readme = `Well hello there!  If you're reading this, then you are looking at a zip file with assets encrypted via the Lit Protocol.  You won't be able to open these encrypted assets unless you meet the on-chain access control conditions and use the Lit JS SDK to decrypt them.  To decrypt this file, please visit this url in your browser: ${fileShareUrl}`
       const zipBlob = await LitJsSdk.encryptFileAndZipWithMetadata({
         authSig,

@@ -60,7 +60,13 @@ export const decryptAndDownload = async ({ file, chain }) => {
 }
 
 
-export const getFileLink = (fileId) => {
+export const getSharingLink = (sharingItem) => {
   const host = process.env.REACT_APP_LIT_GATEWAY_FRONTEND_HOST
-  return `${host}/files/view/${fileId}`
+  if (sharingItem.ipfsHash) {
+    // item is a file
+    return `${host}/files/view/${sharingItem.id}`
+  } else {
+    // item is a folder
+    return `${host}/files/folders/${sharingItem.id}`
+  }
 }

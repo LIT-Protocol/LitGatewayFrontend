@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 
 import styles from '../share-modal.module.scss'
 
+import { getSharingLink } from '../../../../utils/files'
+
 import { IconBackward } from "@consta/uikit/IconBackward"
 import { SnackBar } from '@consta/uikit/SnackBar';
 
 
 
 
-const WhatToDo = ({ setActiveStep }) => {
+const WhatToDo = ({ setActiveStep, sharingItem }) => {
   const [showingSnackbar, setShowingSnackbar] = useState(false)
 
   const copyToClipboard = async () => {
-    const fileUrl = "test"
+    const fileUrl = getSharingLink(sharingItem)
     await navigator.clipboard.writeText(fileUrl)
     setShowingSnackbar(true)
     setTimeout(() => setShowingSnackbar(false), 5000)

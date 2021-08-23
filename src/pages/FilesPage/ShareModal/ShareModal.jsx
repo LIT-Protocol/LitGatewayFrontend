@@ -21,16 +21,16 @@ const ModalComponents = {
 
 const ShareModal = (props) => {
 
-  const {onClose} = props
+  const { onClose, sharingItem } = props
 
   const [activeStep, setActiveStep] = useState('whatToDo')
 
   const ModalComponent = (props) => {
-    const {type} = props;
+    const { type } = props;
 
     let Component = ModalComponents[type]
 
-    return <Component {...props} />
+    return <Component {...props} sharingItem={sharingItem} />
   }
 
   return (
@@ -40,7 +40,7 @@ const ShareModal = (props) => {
           <div>
             <IconDocFilled className={styles.icon} view="brand" />
             <div className={styles.fileName}>
-              <h3>Whitepaper Draft </h3>
+              <h3>{sharingItem.name} </h3>
               <a className={styles.link} onClick={() => setActiveStep('recentRequirement')}>5 acceptable access requiments</a>
             </div>
           </div>
