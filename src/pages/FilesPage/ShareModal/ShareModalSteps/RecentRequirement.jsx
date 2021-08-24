@@ -9,7 +9,7 @@ const RecentRequirement = ({ setActiveStep }) => {
 
   const columns = [
     {
-      title: 'Requiment',
+      title: 'Requirement',
       accessor: 'requiment',
       width: 600
     },
@@ -18,7 +18,7 @@ const RecentRequirement = ({ setActiveStep }) => {
       accessor: 'date',
     },
   ];
-  
+
   const rows = [
     {
       date: '01/01/2021',

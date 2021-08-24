@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import CreatableSelect from 'react-select/creatable';
-import { parseEther } from '@ethersproject/units'
+import React, { useState, useMemo } from 'react'
+import CreatableSelect from 'react-select/creatable'
+import { ethers } from 'ethers'
+import LitJsSdk from 'lit-js-sdk'
 
 import styles from '../share-modal.module.scss'
 import tokens from '../../../../tokens.json'
@@ -9,29 +10,25 @@ import { Button } from "@consta/uikit/Button"
 import { IconBackward } from "@consta/uikit/IconBackward"
 
 import { InputWrapper } from '../../../../components'
+import ChainSelector from '../../../../components/ChainSelector'
 
-// const addresses = [
-//   { value: "PancakeSwap", label: "PancakeSwap", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/7186.png" },
-//   { value: "Dai", label: "Dai", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/4943.png" },
-//   { value: "1inch", label: "1inch", image: "https://s2.coinmarketcap.com/static/img/coins/64x64/8104.png" }
-// ];
 
 const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlConditions }) => {
   const [amount, setAmount] = useState('')
   const [selectedToken, setSelectedToken] = useState(null)
+  const [chain, setChain] = useState(null)
 
-  const chain = 'fantom'
-
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('handleSubmit and selectedToken is', selectedToken)
+
     if (selectedToken.value === 'ethereum') {
       // ethereum
-      const amountInWei = parseEther(amount)
+      const amountInWei = ethers.utils.parseEther(amount)
       const accessControlConditions = [
         {
           contractAddress: '',
           standardContractType: '',
-          chain,
+          chain: chain.value,
           method: 'eth_getBalance',
           parameters: [
             ':userAddress',
@@ -46,8 +43,23 @@ const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlCondition
       setAccessControlConditions(accessControlConditions)
     } else {
       // erc20 token
-      // get number of decimals in the token and convert
-      const amountInWei = parseEther(amount)
+      console.log('selectedToken', selectedToken)
+      let amountInBaseUnit
+      if (selectedToken.decimals) {
+        amountInBaseUnit = ethers.utils.parseUnits(amount, selectedToken.decimals)
+      } else {
+        // need to check the contract for decimals
+        // this will auto switch the chain to the selected one in metamask
+        const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: chain.value })
+        let decimals = 0
+        try {
+          decimals = await LitJsSdk.decimalPlaces({ contractAddress: selectedToken.value })
+        } catch (e) {
+          console.log(e)
+        }
+        console.log(`decimals in ${selectedToken.value}`, decimals)
+        amountInBaseUnit = ethers.utils.parseUnits(amount, decimals)
+      }
       const accessControlConditions = [
         {
           contractAddress: selectedToken.address,
@@ -59,7 +71,7 @@ const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlCondition
           ],
           returnValueTest: {
             comparator: '>=',
-            value: amountInWei.toString()
+            value: amountInBaseUnit.toString()
           }
         }
       ]
@@ -76,8 +88,8 @@ const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlCondition
     const { name, logoURI, value } = option
     const { inputValue } = extra
 
-    console.log('option', option)
-    console.log('extra', extra)
+    // console.log('option', option)
+    // console.log('extra', extra)
 
     if (inputValue) {
       return inputValue
@@ -108,6 +120,10 @@ const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlCondition
       </div>
       <div className={styles.form}>
         <div className={styles.select}>
+          <span className={styles.label}>Select blockchain</span>
+          <ChainSelector chain={chain} setChain={setChain} />
+        </div>
+        <div className={styles.select}>
           <span className={styles.label}>Select token</span>
           <CreatableSelect
             isClearable
@@ -136,7 +152,7 @@ const SelectTokens = ({ setActiveStep, awaitingUpload, setAccessControlCondition
           size="m"
           handleChange={(value) => setAmount(value)}
         />
-        <Button label="Create Requirement" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken} />
+        <Button label="Create Requirement" className={styles.btn} size="l" onClick={handleSubmit} disabled={!amount || !selectedToken || !chain} />
       </div>
     </div>
   )

@@ -25,13 +25,14 @@ const ModalComponents = {
 }
 
 const ShareModal = (props) => {
-  const { onClose, sharingItems, awaitingUpload, folderId } = props
+  const { onClose, sharingItems, awaitingUpload, folderId, accessControlConditions, setAccessControlConditions } = props
 
-  console.log('rendering ShareModal and sharingItems is', sharingItems)
+  // console.log('rendering ShareModal and sharingItems is', sharingItems)
 
   const [showingSnackbar, setShowingSnackbar] = useState(false)
   const [activeStep, setActiveStep] = useState('whatToDo')
-  const [accessControlConditions, setAccessControlConditions] = useState(null)
+
+  // console.log('accessControlConditions', accessControlConditions)
 
   const copyToClipboard = async () => {
     const fileUrl = getSharingLink(sharingItems[0])

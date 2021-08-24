@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@consta/uikit": "^2.2.0",
-    "@ethersproject/units": "^5.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
+    "ethers": "^5.4.5",
     "feather-icons": "^4.28.0",
     "lit-js-sdk": "^1.1.39",
     "node-sass": "^6.0.1",

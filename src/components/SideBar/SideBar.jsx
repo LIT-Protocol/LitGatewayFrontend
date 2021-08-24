@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { NavLink } from "react-router-dom";
 import * as Icon from 'react-feather';
 import cx from 'classnames'
@@ -6,8 +6,7 @@ import LitJsSdk from 'lit-js-sdk'
 
 import styles from './sidebar.module.scss'
 
-import {IconArrowDown} from '@consta/uikit/IconArrowDown'
-import {Select} from '@consta/uikit/Select'
+import { IconArrowDown } from '@consta/uikit/IconArrowDown'
 
 import UserBlock from "../UserBlock";
 
@@ -83,7 +82,6 @@ const IconComponent = (icon) => {
 }
 
 const SideBar = () => {
-    const [chain, setChain] = useState(null)
 
     const {
         sideBar
@@ -95,34 +93,20 @@ const SideBar = () => {
             action: () => false,
         },
     ]
-    const chainOptions = useMemo(() =>
-      Object.keys(LitJsSdk.LIT_CHAINS).map(item => {
-          return {
-              label: item.replace(/^\w/, (c) => c.toUpperCase()),
-              id: item,
-              value: item
-          };
-      }), [LitJsSdk.LIT_CHAINS])
+
 
     return (
         <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
-            <Select
-              placeholder="Select chain"
-              size="m"
-              items={chainOptions}
-              value={chain}
-              onChange={({ value }) => setChain(value)}
-              className={styles.select}
-            />
+
             <UserBlock
-              withMenu
-              iconRight={IconArrowDown}
-              size="l"
-              view="clear"
-              items={userItems}
-              className={styles.user}
-              username="Sneider.ETH"
-              avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
+                withMenu
+                iconRight={IconArrowDown}
+                size="l"
+                view="clear"
+                items={userItems}
+                className={styles.user}
+                username="Sneider.ETH"
+                avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
             />
             <div className={styles.menu}>
                 <ul>

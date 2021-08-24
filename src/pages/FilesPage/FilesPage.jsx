@@ -17,7 +17,7 @@ import uint8arrayToString from 'uint8arrays/to-string'
 import { putFolder, getFolder } from '../../api/files'
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
-import ShareModal from './ShareModal'
+import ShareModal from 'access-control-conditions-modal'
 
 
 const chain = 'fantom'
@@ -33,24 +33,7 @@ const FilesPage = () => {
   const [newFolderName, setNewFolderName] = useState('')
   const [selectedFiles, setSelectedFiles] = useState(null)
   const [shareModalOpen, setShareModalOpen] = useState(false)
-
-  // pick the access control conditions
-  const accessControlConditions = [
-    {
-      contractAddress: '',
-      standardContractType: '',
-      chain,
-      method: 'eth_getBalance',
-      parameters: [
-        ':userAddress',
-        'latest'
-      ],
-      returnValueTest: {
-        comparator: '>=',
-        value: '10000000000000'
-      }
-    }
-  ]
+  const [accessControlConditions, setAccessControlConditions] = useState(null)
 
   const loadFiles = async () => {
     const accessControlConditionsHashAsArrayBuffer = await LitJsSdk.hashAccessControlConditions(accessControlConditions)
@@ -180,6 +163,8 @@ const FilesPage = () => {
           sharingItems={selectedFiles}
           awaitingUpload={true}
           folderId={folderId}
+          accessControlConditions={accessControlConditions}
+          setAccessControlConditions={setAccessControlConditions}
         />
       ) : null}
 

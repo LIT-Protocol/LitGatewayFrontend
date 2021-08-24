@@ -6,12 +6,34 @@ import { Button } from "@consta/uikit/Button";
 import { IconBackward } from "@consta/uikit/IconBackward"
 
 import { InputWrapper } from '../../../../components'
+import ChainSelector from '../../../../components/ChainSelector'
 
-const DAOMembers = ({ setActiveStep }) => {
-  const [DAOAdress, setDAOAdress] = useState('')
+const DAOMembers = ({ setActiveStep, awaitingUpload, setAccessControlConditions }) => {
+  const [DAOAddress, setDAOAddress] = useState('')
+  const [chain, setChain] = useState(null)
 
   const handleSubmit = () => {
-    setActiveStep('accessCreated')
+    const accessControlConditions = [
+      {
+        contractAddress: DAOAddress,
+        standardContractType: 'MolochDAOv2.1',
+        chain: chain.value,
+        method: 'members',
+        parameters: [
+          ':userAddress',
+        ],
+        returnValueTest: {
+          comparator: '==',
+          value: 'true'
+        }
+      }
+    ]
+    setAccessControlConditions(accessControlConditions)
+    if (awaitingUpload) {
+      setActiveStep('uploading')
+    } else {
+      setActiveStep('accessCreated')
+    }
   }
 
   return (
@@ -23,17 +45,21 @@ const DAOMembers = ({ setActiveStep }) => {
         <h3>Which DAO’s members should be able to access this file?</h3>
       </div>
       <div className={styles.form}>
+        <div className={styles.select}>
+          <span className={styles.label}>Select blockchain</span>
+          <ChainSelector chain={chain} setChain={setChain} />
+        </div>
         <InputWrapper
-          value={DAOAdress}
+          value={DAOAddress}
           className={styles.input}
           label="Add DAO contract address"
-          id="DAOAdress"
+          id="DAOAddress"
           autoFocus
           size="m"
-          handleChange={(value) => setDAOAdress(value)}
+          handleChange={(value) => setDAOAddress(value)}
         />
-        <p>Lit Gateway currently supports DAOs using the Molochv2.1 contract (includes DAOhaus) </p>
-        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!DAOAdress} />
+        <p>Lit Gateway currently supports DAOs using the MolochDAOv2.1 contract (includes DAOhaus) </p>
+        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!DAOAddress || !chain} />
       </div>
     </div>
   )

@@ -6,9 +6,11 @@ import { Button } from "@consta/uikit/Button"
 import { IconBackward } from "@consta/uikit/IconBackward"
 
 import { InputWrapper } from '../../../../components'
+import ChainSelector from '../../../../components/ChainSelector'
 
-const WhichWallet = ({setActiveStep}) => {
+const WhichWallet = ({ setActiveStep }) => {
   const [walletAddress, setWalletAddress] = useState('')
+  const [chain, setChain] = useState(null)
 
   const handleSubmit = () => {
     setActiveStep('accessCreated')
@@ -17,13 +19,17 @@ const WhichWallet = ({setActiveStep}) => {
   return (
     <div>
       <div className={styles.back} onClick={() => setActiveStep('ableToAccess')}>
-        <IconBackward view="link" className={styles.icon}/> Back
+        <IconBackward view="link" className={styles.icon} /> Back
       </div>
       <div className={styles.titles}>
         <h3>Which wallet should be able to access this file?</h3>
-        <a className={styles.link}  onClick={() => setActiveStep('assetWallet')}>Grant Access on NFT Ownership</a>
+        <a className={styles.link} onClick={() => setActiveStep('assetWallet')}>Grant Access on NFT Ownership</a>
       </div>
       <div className={styles.form}>
+        <div className={styles.select}>
+          <span className={styles.label}>Select blockchain</span>
+          <ChainSelector chain={chain} setChain={setChain} />
+        </div>
         <InputWrapper
           value={walletAddress}
           className={styles.input}
@@ -31,9 +37,9 @@ const WhichWallet = ({setActiveStep}) => {
           id="walletAddress"
           autoFocus
           size="m"
-          handleChange = {(value) => setWalletAddress(value)}
+          handleChange={(value) => setWalletAddress(value)}
         />
-        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!walletAddress} />
+        <Button label="Create  Requirment" className={styles.btn} size="l" onClick={handleSubmit} disabled={!walletAddress || !chain} />
       </div>
     </div>
   )
