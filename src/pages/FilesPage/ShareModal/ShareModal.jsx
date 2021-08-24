@@ -62,7 +62,7 @@ const ShareModal = (props) => {
   }
 
   return (
-    <Modal isOpen={true} hasOverlay>
+    <Modal className={styles.modal} isOpen={true} hasOverlay>
       <div className={styles.fileModal}>
         <div className={styles.top}>
           <div>

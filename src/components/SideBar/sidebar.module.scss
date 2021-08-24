@@ -57,10 +57,13 @@
     left: -100%;
     transition: all 0.7s;
     z-index: 1000;
-    height: 100vh;
+    height: auto;
     .user {
       display: none;
     }
+  }
+  @media (max-width: 450px) {
+    width: 100vw;
   }
 }
 .activeSideBar {

@@ -6,7 +6,7 @@ import { IconBackward } from "@consta/uikit/IconBackward"
 
 const AbleToAccess = ({setActiveStep}) => {
   return (
-    <div>
+    <div className={styles.ableToAccess}>
       <div className={styles.back} onClick={() => setActiveStep('whatToDo')}>
         <IconBackward view="link" className={styles.icon}/> Back
       </div>

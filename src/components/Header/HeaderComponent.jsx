@@ -5,7 +5,9 @@ import styles from './header-component.module.scss'
 import {Header, HeaderModule, HeaderButton} from '@consta/uikit/Header'
 import {IconAlignJustify} from '@consta/uikit/IconAlignJustify'
 import {IconClose} from '@consta/uikit/IconClose'
-import {User} from '@consta/uikit/User'
+import {IconArrowDown} from "@consta/uikit/IconArrowDown";
+
+import UserBlock from "../UserBlock";
 
 import { useAppContext } from '../../context/app'
 
@@ -16,8 +18,16 @@ const HeaderComponent = () => {
     sideBar
   } = useAppContext()
 
+  const userItems = [
+    {
+      name: 'Logout',
+      action: () => false,
+    },
+  ]
+
     return (
       <Header
+        className={styles.header}
         leftSide={
           <>
             <HeaderModule>
@@ -34,7 +44,16 @@ const HeaderComponent = () => {
         rightSide={
           <>
             <HeaderModule>
-              <User avatarUrl="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png" name="Sneider.ETH"/>
+              <UserBlock
+                withMenu
+                iconRight={IconArrowDown}
+                size="l"
+                view="clear"
+                items={userItems}
+                className={styles.user}
+                username="Sneider.ETH"
+                avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
+              />
             </HeaderModule>
           </>
         }
