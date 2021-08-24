@@ -17,7 +17,10 @@ import uint8arrayToString from 'uint8arrays/to-string'
 import { putFolder, getFolder } from '../../api/files'
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
-import ShareModal from 'access-control-conditions-modal'
+import { ShareModal } from 'lit-access-control-conditions-modal'
+import { getSharingLink } from '../../utils/files'
+import Uploader from './Uploader'
+
 
 
 const chain = 'fantom'
@@ -28,16 +31,18 @@ const FilesPage = () => {
   const history = useHistory()
   const [parentFolders, setParentFolders] = useState([])
   const [rows, setRows] = useState([])
-  const [uploadModalOpen, setUploadModalOpen] = useState(false);
+  const [fileDropperModalOpen, setFileDropperModalOpen] = useState(false);
   const [newFolderModalOpen, setNewFolderModalOpen] = useState(false);
   const [newFolderName, setNewFolderName] = useState('')
   const [selectedFiles, setSelectedFiles] = useState(null)
   const [shareModalOpen, setShareModalOpen] = useState(false)
   const [accessControlConditions, setAccessControlConditions] = useState(null)
+  const [uploadingModalOpen, setUploadingModalOpen] = useState(false)
+  const [shareModalStep, setShareModalStep] = useState(null)
 
   const loadFiles = async () => {
-    const accessControlConditionsHashAsArrayBuffer = await LitJsSdk.hashAccessControlConditions(accessControlConditions)
-    const accessControlConditionsHash = uint8arrayToString(new Uint8Array(accessControlConditionsHashAsArrayBuffer), 'base16')
+    // const accessControlConditionsHashAsArrayBuffer = await LitJsSdk.hashAccessControlConditions(accessControlConditions)
+    // const accessControlConditionsHash = uint8arrayToString(new Uint8Array(accessControlConditionsHashAsArrayBuffer), 'base16')
     const { files, folders, parentFolders } = await getFolder(folderId || '')
     // console.log('got files', files)
     // add key
@@ -63,13 +68,27 @@ const FilesPage = () => {
 
   const onFilesSelected = (selectedFiles) => {
     setSelectedFiles(selectedFiles)
-    setUploadModalOpen(false)
+    setFileDropperModalOpen(false)
     setShareModalOpen(true)
   }
 
   const closeShareModal = () => {
     setShareModalOpen(false)
     setSelectedFiles(null)
+    setShareModalStep(null)
+  }
+
+  const onAccessControlConditionsSelected = (conditions) => {
+    setAccessControlConditions(conditions)
+    setShareModalOpen(false)
+    setUploadingModalOpen(true)
+  }
+
+  const onUploaded = () => {
+    console.log('upload complete!')
+    setUploadingModalOpen(false)
+    setShareModalStep('accessCreated')
+    setShareModalOpen(true)
   }
 
   const createNewFolder = async () => {
@@ -107,7 +126,7 @@ const FilesPage = () => {
       <Button
         label="Upload"
         iconLeft={IconUpload}
-        onClick={() => setUploadModalOpen(true)}
+        onClick={() => setFileDropperModalOpen(true)}
         size='m'
       />
       <span style={{ width: 8, display: 'inline-block' }} />
@@ -120,9 +139,9 @@ const FilesPage = () => {
       />
 
       <Modal
-        isOpen={uploadModalOpen}
+        isOpen={fileDropperModalOpen}
         hasOverlay
-        onOverlayClick={() => setUploadModalOpen(false)}
+        onOverlayClick={() => setFileDropperModalOpen(false)}
       >
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>Upload Files</h3>
@@ -157,14 +176,29 @@ const FilesPage = () => {
 
       </Modal>
 
+      <Modal
+        isOpen={uploadingModalOpen}
+        hasOverlay
+        onOverlayClick={() => setUploadingModalOpen(false)}
+      >
+        <div style={{ margin: 16 }}>
+          <Uploader
+            uploadItems={selectedFiles}
+            accessControlConditions={accessControlConditions}
+            folderId={folderId}
+            onUploaded={onUploaded}
+          />
+        </div>
+
+      </Modal>
+
       {shareModalOpen ? (
         <ShareModal
           onClose={() => closeShareModal()}
           sharingItems={selectedFiles}
-          awaitingUpload={true}
-          folderId={folderId}
-          accessControlConditions={accessControlConditions}
-          setAccessControlConditions={setAccessControlConditions}
+          onAccessControlConditionsSelected={onAccessControlConditionsSelected}
+          getSharingLink={getSharingLink}
+          showStep={shareModalStep}
         />
       ) : null}
 

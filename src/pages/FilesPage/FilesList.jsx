@@ -11,9 +11,9 @@ import { IconFolders } from '@consta/uikit/IconFolders'
 import { Modal } from '@consta/uikit/Modal';
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 
-import { humanFileSize, decryptAndDownload } from '../../utils/files'
+import { humanFileSize, decryptAndDownload, getSharingLink } from '../../utils/files'
 
-import ShareModal from './ShareModal'
+import { ShareModal } from 'lit-access-control-conditions-modal'
 
 
 const FilesList = (props) => {
@@ -21,6 +21,10 @@ const FilesList = (props) => {
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
   const [showShareModal, setShowShareModal] = useState(false)
+
+  const onAccessControlConditionsSelected = (accessControlConditions) => {
+    console.log('in FilesList and onAccessControlConditionsSelected callback called with conditions', accessControlConditions)
+  }
 
   const showFileLink = (file) => {
     setSelectedItem(file)
@@ -119,7 +123,8 @@ const FilesList = (props) => {
         <ShareModal
           onClose={() => closeShareModal()}
           sharingItems={[selectedItem]}
-          awaitingUpload={false}
+          onAccessControlConditionsSelected={onAccessControlConditionsSelected}
+          getSharingLink={getSharingLink}
         />
       ) : null}
     </>

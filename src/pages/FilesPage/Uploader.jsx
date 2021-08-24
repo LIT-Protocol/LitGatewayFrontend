@@ -8,18 +8,19 @@ import uint8arrayToString from 'uint8arrays/to-string'
 import { Table } from '@consta/uikit/Table';
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 
-import styles from '../share-modal.module.scss'
+import styles from './files-page.module.scss'
 
-import { putFile } from '../../../../api/files'
-import { getSharingLink } from '../../../../utils/files'
+import { putFile } from '../../api/files'
+import { getSharingLink } from '../../utils/files'
 
 
 const PINATA_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkZTRlMWFkOC0xZDg3LTRlMzMtYmYyMC0zYWE3NjRhODc3YzQiLCJlbWFpbCI6ImNocmlzQGhlbGxvYXByaWNvdC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlfSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiM2IxMTViMmZjMmY2M2E5YTRmYTYiLCJzY29wZWRLZXlTZWNyZXQiOiIyYjU5YmMzODI3ZGVhZGJiMjI4NzA3YzBmY2Q1YmYxMzBmYmZkNmUyMmZlMDEzMTZkMWNhNDc2MTU2MGE5NmRkIiwiaWF0IjoxNjI4ODg5NjYxfQ.HPXygfPqPRBnGOtQbPRjE1AH7L3l2qqfkPKWodqwNHM'
 
 
-const Uploading = ({ setActiveStep, copyToClipboard, sharingItems, accessControlConditions, onUploaded, folderId }) => {
+const Uploader = ({ uploadItems, accessControlConditions, onUploaded, folderId }) => {
   const [uploading, setUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState({})
+  const [uploadComplete, setUploadComplete] = useState(false)
 
   useEffect(() => {
     const go = async () => {
@@ -30,10 +31,10 @@ const Uploading = ({ setActiveStep, copyToClipboard, sharingItems, accessControl
       setUploading(true)
 
       const fileUploadPromises = []
-      for (let i = 0; i < sharingItems.length; i++) {
-        console.log(`processing ${i + 1} of ${sharingItems.length}`)
+      for (let i = 0; i < uploadItems.length; i++) {
+        console.log(`processing ${i + 1} of ${uploadItems.length}`)
 
-        const file = sharingItems[i]
+        const file = uploadItems[i]
         const fileId = uuidv4()
         const fileShareUrl = getSharingLink({ id: fileId, ipfsHash: true })
         const readme = `Well hello there!  If you're reading this, then you are looking at a zip file with assets encrypted via the Lit Protocol.  You won't be able to open these encrypted assets unless you meet the on-chain access control conditions and use the Lit JS SDK to decrypt them.  To decrypt this file, please visit this url in your browser: ${fileShareUrl}`
@@ -93,12 +94,13 @@ const Uploading = ({ setActiveStep, copyToClipboard, sharingItems, accessControl
       const fileUploads = await Promise.all(fileUploadPromises)
       console.log('file upload complete:', fileUploads)
       setUploading(false)
+      setUploadComplete(true)
       onUploaded()
 
     }
 
     go()
-  }, [])
+  }, [uploadItems, accessControlConditions])
 
   const columns = [
     {
@@ -122,14 +124,19 @@ const Uploading = ({ setActiveStep, copyToClipboard, sharingItems, accessControl
   return (
     <div>
       <div className={styles.titles}>
-        <h3>Uploading...</h3>
+        <h3>
+          {uploadComplete
+            ? 'Upload complete'
+            : 'Uploading, please wait...'
+          }
+        </h3>
       </div>
       <Table
-        rows={sharingItems.map(s => ({ file: s, progress: uploadProgress[s.name] }))}
+        rows={uploadItems.map(s => ({ file: s, progress: uploadProgress[s.name] }))}
         columns={columns}
       />
     </div >
   )
 }
 
-export default Uploading
+export default Uploader
