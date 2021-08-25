@@ -86,9 +86,11 @@ const FilesPage = () => {
 
   const onUploaded = () => {
     console.log('upload complete!')
-    setUploadingModalOpen(false)
-    setShareModalStep('accessCreated')
-    setShareModalOpen(true)
+    if (selectedFiles.length === 1) {
+      setUploadingModalOpen(false)
+      setShareModalStep('accessCreated')
+      setShareModalOpen(true)
+    }
   }
 
   const createNewFolder = async () => {
