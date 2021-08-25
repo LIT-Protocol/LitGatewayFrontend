@@ -69,6 +69,7 @@ const FilesPage = () => {
   const onFilesSelected = (selectedFiles) => {
     setSelectedFiles(selectedFiles)
     setFileDropperModalOpen(false)
+    setShareModalStep('ableToAccess')
     setShareModalOpen(true)
   }
 
@@ -79,15 +80,17 @@ const FilesPage = () => {
   }
 
   const onAccessControlConditionsSelected = (conditions) => {
+    console.log('onAccessControlConditionsSelected:', conditions)
     setAccessControlConditions(conditions)
     setShareModalOpen(false)
     setUploadingModalOpen(true)
   }
 
-  const onUploaded = () => {
-    console.log('upload complete!')
+  const onUploaded = (fileMetadatas) => {
+    console.log('upload complete!', fileMetadatas)
     if (selectedFiles.length === 1) {
       setUploadingModalOpen(false)
+      setSelectedFiles(fileMetadatas)
       setShareModalStep('accessCreated')
       setShareModalOpen(true)
     }
@@ -178,21 +181,23 @@ const FilesPage = () => {
 
       </Modal>
 
-      <Modal
-        isOpen={uploadingModalOpen}
-        hasOverlay
-        onOverlayClick={() => setUploadingModalOpen(false)}
-      >
-        <div style={{ margin: 16 }}>
-          <Uploader
-            uploadItems={selectedFiles}
-            accessControlConditions={accessControlConditions}
-            folderId={folderId}
-            onUploaded={onUploaded}
-          />
-        </div>
+      {uploadingModalOpen ? (
+        <Modal
+          isOpen={uploadingModalOpen}
+          hasOverlay
+          onOverlayClick={() => setUploadingModalOpen(false)}
+        >
+          <div style={{ margin: 16 }}>
+            <Uploader
+              uploadItems={selectedFiles}
+              accessControlConditions={accessControlConditions}
+              folderId={folderId}
+              onUploaded={onUploaded}
+            />
+          </div>
 
-      </Modal>
+        </Modal>
+      ) : null}
 
       {shareModalOpen ? (
         <ShareModal

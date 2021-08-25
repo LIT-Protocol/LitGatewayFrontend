@@ -31,10 +31,12 @@ const Uploader = ({ uploadItems, accessControlConditions, onUploaded, folderId }
       setUploading(true)
 
       const fileUploadPromises = []
+      const fileMetadatas = []
       for (let i = 0; i < uploadItems.length; i++) {
         console.log(`processing ${i + 1} of ${uploadItems.length}`)
 
         const file = uploadItems[i]
+        console.log('file is ', file)
         const fileId = uuidv4()
         const fileShareUrl = getSharingLink({ id: fileId, ipfsHash: true })
         const readme = `Well hello there!  If you're reading this, then you are looking at a zip file with assets encrypted via the Lit Protocol.  You won't be able to open these encrypted assets unless you meet the on-chain access control conditions and use the Lit JS SDK to decrypt them.  To decrypt this file, please visit this url in your browser: ${fileShareUrl}`
@@ -84,6 +86,7 @@ const Uploader = ({ uploadItems, accessControlConditions, onUploaded, folderId }
                   chain,
                   folderId: folderId ? folderId : null
                 }
+                fileMetadatas.push({ ...fileMetadata, id: fileId })
 
                 return putFile({ file: fileMetadata, authSig })
               })
@@ -95,7 +98,7 @@ const Uploader = ({ uploadItems, accessControlConditions, onUploaded, folderId }
       console.log('file upload complete:', fileUploads)
       setUploading(false)
       setUploadComplete(true)
-      onUploaded()
+      onUploaded(fileMetadatas)
 
     }
 
