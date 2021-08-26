@@ -1,5 +1,16 @@
 const apiUrl = process.env.REACT_APP_LIT_GATEWAY_FRONTEND_API_URL
 
+export const patchFile = (fileId, body) => {
+  return fetch(apiUrl + '/files/' + fileId, {
+    method: 'PATCH',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(response => response.json())
+}
+
 export const putFile = (body) => {
   return fetch(apiUrl + '/files', {
     method: 'POST',

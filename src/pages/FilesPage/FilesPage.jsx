@@ -22,9 +22,6 @@ import { getSharingLink } from '../../utils/files'
 import Uploader from './Uploader'
 
 
-
-const chain = 'fantom'
-
 const FilesPage = () => {
   const params = useParams()
   const { folderId } = params
@@ -94,9 +91,11 @@ const FilesPage = () => {
       setShareModalStep('accessCreated')
       setShareModalOpen(true)
     }
+    loadFiles()
   }
 
   const createNewFolder = async () => {
+    const chain = 'ethereum'
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
     setNewFolderModalOpen(false)
     console.log('creating folder with name ', newFolderName)
@@ -152,9 +151,6 @@ const FilesPage = () => {
           <h3 className={styles.subtitle}>Upload Files</h3>
           <FileDropper
             onFilesSelected={onFilesSelected}
-            accessControlConditions={accessControlConditions}
-            chain={chain}
-            folderId={folderId}
           />
         </div>
 
@@ -211,7 +207,7 @@ const FilesPage = () => {
 
       <div style={{ height: 32 }} />
 
-      <FilesList rows={rows} chain={chain} />
+      <FilesList rows={rows} />
 
     </div>
   )

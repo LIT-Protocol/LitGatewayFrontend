@@ -34,11 +34,7 @@ const rejectStyle = {
   borderColor: '#ff1744'
 };
 
-const FileDropper = (props) => {
-
-  const {
-    onFilesSelected
-  } = props
+const FileDropper = ({ onFilesSelected }) => {
   const [uploading, setUploading] = useState(false)
   const [selectedFiles, setSelectedFiles] = useState([])
 
