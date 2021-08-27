@@ -11,7 +11,7 @@
     "classnames": "^2.3.1",
     "ethers": "^5.4.5",
     "feather-icons": "^4.28.0",
-    "lit-access-control-conditions-modal": "^1.0.3",
+    "lit-access-control-conditions-modal": "^1.0.6",
     "lit-js-sdk": "^1.1.39",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
