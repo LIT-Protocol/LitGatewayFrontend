@@ -13,7 +13,7 @@ export const patchFile = (fileId, body) => {
 
 export const putFile = (body) => {
   return fetch(apiUrl + '/files', {
-    method: 'POST',
+    method: 'PUT',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ export const putFile = (body) => {
 
 export const putFolder = (body) => {
   return fetch(apiUrl + '/folders', {
-    method: 'POST',
+    method: 'PUT',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
@@ -33,10 +33,14 @@ export const putFolder = (body) => {
   }).then(response => response.json())
 }
 
-export const getFolder = (accessControlConditionsHash) => {
-  return fetch(apiUrl + '/folders/' + accessControlConditionsHash, {
-    method: 'GET',
+export const getFolder = (folderId, body) => {
+  return fetch(apiUrl + '/folders/' + folderId, {
+    method: 'POST',
     mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
   }).then(response => response.json())
 }
 

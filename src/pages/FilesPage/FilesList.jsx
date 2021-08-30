@@ -30,6 +30,7 @@ const FilesList = (props) => {
 
   const onAccessControlConditionsSelected = async (accessControlConditions) => {
     console.log('in FilesList and onAccessControlConditionsSelected callback called with conditions', accessControlConditions)
+
     console.log('selectedItem is ', selectedItem)
     const chain = accessControlConditions[0].chain
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
@@ -65,8 +66,7 @@ const FilesList = (props) => {
 
   const downloadFile = async (file) => {
     setDownloadingIds(prev => [...prev, file.id])
-    const chain = file.accessControlConditions[0].chain
-    await decryptAndDownload({ file, chain })
+    await decryptAndDownload({ file })
     setDownloadingIds(prev => prev.filter(f => f !== file.id))
   }
 
@@ -158,6 +158,8 @@ const FilesList = (props) => {
           sharingItems={[selectedItem]}
           onAccessControlConditionsSelected={onAccessControlConditionsSelected}
           getSharingLink={getSharingLink}
+          onlyAllowCopySharingLink={!selectedItem.ipfsHash} // true if folder
+          copyLinkText={!selectedItem.ipfsHash ? "Anyone with the link can see the files, but only authorized wallets can open them" : null}
         />
       ) : null}
     </>

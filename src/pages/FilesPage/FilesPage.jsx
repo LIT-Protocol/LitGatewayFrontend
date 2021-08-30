@@ -38,9 +38,9 @@ const FilesPage = () => {
   const [shareModalStep, setShareModalStep] = useState(null)
 
   const loadFiles = async () => {
-    // const accessControlConditionsHashAsArrayBuffer = await LitJsSdk.hashAccessControlConditions(accessControlConditions)
-    // const accessControlConditionsHash = uint8arrayToString(new Uint8Array(accessControlConditionsHashAsArrayBuffer), 'base16')
-    const { files, folders, parentFolders } = await getFolder(folderId || '')
+    const chain = 'ethereum'
+    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+    const { files, folders, parentFolders } = await getFolder(folderId || '', { authSig })
     // console.log('got files', files)
     // add key
     setRows([

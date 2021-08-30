@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LitJsSdk from 'lit-js-sdk'
 
-window.litNodeClient = new LitJsSdk.LitNodeClient()
+window.litNodeClient = new LitJsSdk.LitNodeClient({ alertWhenUnauthorized: false })
 window.litNodeClient.connect()
 
 
