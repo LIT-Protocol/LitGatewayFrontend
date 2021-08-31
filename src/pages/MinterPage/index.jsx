@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from "react-router-dom";
 
 import styles from './minter-page.module.scss'
@@ -8,19 +8,14 @@ import {Tabs} from "@consta/uikit/Tabs";
 const MainPage = () => {
 
   const [activeTab, setActive] = useState({
-    label: 'main',
+    label: 'Main',
     path: '/minter/main',
     value: 'main'
-  })
+  },)
 
   const history = useHistory()
 
   const items = [
-    {
-      label: 'Main',
-      path: '/minter/main',
-      value: 'main'
-    },
     {
       label: 'My lits',
       path: '/minter/my-lits',
