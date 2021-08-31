@@ -12,7 +12,7 @@ import UserBlock from '../UserBlock'
 import { useAppContext } from '../../context/app'
 
 const HeaderComponent = () => {
-  const { setSideBar, sideBar } = useAppContext()
+  const { setSideBar, sideBar, authSig } = useAppContext()
 
   const userItems = [
     {
@@ -20,6 +20,9 @@ const HeaderComponent = () => {
       action: () => false,
     },
   ]
+
+  console.log('authSig')
+  console.log(authSig)
 
   return (
     <Header
@@ -46,16 +49,18 @@ const HeaderComponent = () => {
       rightSide={
         <>
           <HeaderModule>
-            <UserBlock
-              withMenu
-              iconRight={IconArrowDown}
-              size="l"
-              view="clear"
-              items={userItems}
-              className={styles.user}
-              username="Sneider.ETH"
-              avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
-            />
+            {authSig?.address ? (
+              <UserBlock
+                withMenu
+                iconRight={IconArrowDown}
+                size="l"
+                view="clear"
+                items={userItems}
+                className={styles.user}
+                username={authSig.address}
+                avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
+              />
+            ) : null}
           </HeaderModule>
         </>
       }

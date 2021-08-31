@@ -81,7 +81,7 @@ const IconComponent = (icon) => {
 }
 
 const SideBar = () => {
-  const { sideBar } = useAppContext()
+  const { sideBar, authSig } = useAppContext()
 
   const userItems = [
     {
@@ -92,16 +92,18 @@ const SideBar = () => {
 
   return (
     <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
-      <UserBlock
-        withMenu
-        iconRight={IconArrowDown}
-        size="l"
-        view="clear"
-        items={userItems}
-        className={styles.user}
-        username="Sneider.ETH"
-        avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
-      />
+      {authSig?.address ? (
+        <UserBlock
+          withMenu
+          iconRight={IconArrowDown}
+          size="l"
+          view="clear"
+          items={userItems}
+          className={styles.user}
+          username={authSig.address}
+          avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
+        />
+      ) : null}
       <div className={styles.menu}>
         <ul>
           {menuItems.map((item) => (

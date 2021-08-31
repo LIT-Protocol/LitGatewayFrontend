@@ -35,6 +35,7 @@ export const AppContextProvider = (props) => {
       value={{
         sideBar,
         setSideBar,
+        authSig,
         performWithAuthSig,
       }}
     >
