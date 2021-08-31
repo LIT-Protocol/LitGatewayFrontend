@@ -50,6 +50,10 @@
   width: 350px;
   background: var(--color-bg-secondary);
   height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
   padding: var(--space-4xl) var(--space-2xl);
   @media (max-width: 1024px) {
     position: absolute;

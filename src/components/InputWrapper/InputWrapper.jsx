@@ -22,6 +22,7 @@ const InputWrapper = ({
   leftSide,
   clearable = false,
   onClear = () => false,
+  rows
 }) => {
 
   const getState = () => {
@@ -49,6 +50,7 @@ const InputWrapper = ({
           rightSide={rightSide}
           size={size}
           leftSide={leftSide}
+          rows={rows}
         />
       </div>
       {error && <span className={styles.error}>{error}</span>}

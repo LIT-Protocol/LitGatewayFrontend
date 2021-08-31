@@ -7,6 +7,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.slick-list {
+  margin: 0 -15px !important;
+}
+
+.slick-slide > div {
+  padding: 0 15px !important;
+}
+
+.slick-track {
+  margin-left: 0 !important;
+  display: flex !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -42,3 +55,4 @@ code {
     min-width: 100%;
   }
 }
+

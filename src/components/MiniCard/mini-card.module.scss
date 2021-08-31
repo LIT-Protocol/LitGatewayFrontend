@@ -1,0 +1,66 @@
+@import '../../vars.scss';
+.link {
+  text-decoration: none;
+}
+.minicard {
+  border: 1px solid $border;
+  border-radius: 4px;
+  height: 300px;
+  cursor: pointer;
+  &:hover {
+    .img {
+      transform: scale(1.15);
+    }
+
+  }
+  h4 {
+    margin: 0 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .imgWrap {
+    overflow: hidden;
+    height: 70%;
+    width: 100%;
+  }
+  .img {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    transition: all 0.3s;
+  }
+  .cardBody {
+    padding: $space-m;
+  }
+  .bottom {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+  }
+  .date {
+    color: $secondary-text;
+  }
+  .count {
+    display: flex;
+    align-items: center;
+    color: $brand;
+    font-weight: 600;
+    text-decoration: none;
+    .cardIcon {
+      margin-right: 5px;
+    }
+  }
+  @media (max-width: 500px) {
+    h4 {
+      font-size: 1.1em;
+    }
+    .bottom {
+      font-size: 16px;
+    }
+  }
+}

@@ -1,2 +1,7 @@
 export { default as SideBar } from './SideBar'
+export { default as Header } from './Header'
+export { default as UserBlock } from './UserBlock'
 export { default as InputWrapper } from './InputWrapper'
+export { default as QuantityInputWrapper } from './QuantityInputWrapper'
+export { default as FileDropper } from './FileDropper'
+export { default as MiniCard } from './MiniCard'

@@ -1,0 +1,50 @@
+@import '../../vars';
+
+.quantity {
+  display: flex;
+  width: 100%;
+  .textField {
+    width: 100%;
+    position: relative;
+  }
+  .btn {
+    width: 20px;
+    height: 20px;
+  }
+  .btns {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 3px;
+    top: 0;
+    justify-content: space-evenly;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  > div {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.input {
+  label {
+    color: $secondary-text;
+    font-size: 18px;
+    line-height: 150%;
+    margin-bottom: 8px;
+    @media (max-width: 700px) {
+      font-size: 16px;
+      line-height: 150%;
+    }
+    @media (max-width: 450px) {
+      font-size: 14px;
+      line-height: 150%;
+    }
+  }
+}

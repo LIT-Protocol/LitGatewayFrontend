@@ -1,0 +1,34 @@
+@import '../../vars';
+
+.previews {
+  display: flex;
+  margin-top: 16px;
+}
+
+.imgWrap {
+  height: 120px;
+  width: 120px;
+  margin-right: 16px;
+  position: relative;
+  .icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.fileSize {
+  color: $secondary-text;
+  margin: 4px 0;
+}
+
+.fileName {
+  margin: 0;
+  font-size: 16px;
+}

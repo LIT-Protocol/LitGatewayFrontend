@@ -86,7 +86,7 @@ const SideBar = () => {
     const [chain, setChain] = useState(null)
 
     const {
-        sideBar
+        sideBar,
     } = useAppContext()
 
     const userItems = [

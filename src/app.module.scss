@@ -1,19 +1,51 @@
 .app {
-  display: flex;
-  @media (max-width: 1040px) {
-    display: block;
-  }
 }
 
 .wrap {
   height: 100vh;
   overflow-y: auto;
+  width: calc(100% - 350px);
+  margin-left: 350px;
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.minter {
+  height: auto;
+}
+
+.minterWrap {
+  max-width: 1260px;
+  padding: 0 15px;
   width: 100%;
+  margin: 50px auto;
+  box-sizing: border-box;
 }
 
 body {
   .Modal {
     padding: 10px;
+  }
+  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none;}
+  h2 {
+    font-size: 2em;
+    color: var(--color-typo-primary);
+    @media (max-width: 450px) {
+      font-size: 1.7em;
+    }
+    @media (max-width: 380px) {
+      font-size: 1.5em;
+    }
+  }
+
+  h3 {
+    font-size: 1.5em;
+    color: var(--color-typo-primary);
+  }
+  h4 {
+    font-size: 1.2em;
+    color: var(--color-typo-primary);
   }
 }
 
