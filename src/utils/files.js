@@ -35,28 +35,28 @@ export function humanFileSize(bytes, si = true, dp = 0) {
 
 export const decryptAndDownload = async ({ file, chain }) => {
   console.log('decryptAndDownload ', file)
+  
+  window.performWithAuthSig(async (authSig) => {
+    //get the file
+    const ipfsGateway = "https://ipfs.litgateway.com/ipfs/"
+    const url = ipfsGateway + file.ipfsHash
 
-  const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+    const fileAsArrayBuffer = await fetch(url, {
+      method: 'GET'
+    }).then(response => response.arrayBuffer())
 
-  //get the file
-  const ipfsGateway = "https://ipfs.litgateway.com/ipfs/"
-  const url = ipfsGateway + file.ipfsHash
+    const { decryptedFile, metadata } = await LitJsSdk.decryptZipFileWithMetadata({
+      authSig,
+      file: fileAsArrayBuffer,
+      litNodeClient: window.litNodeClient
+    })
 
-  const fileAsArrayBuffer = await fetch(url, {
-    method: 'GET'
-  }).then(response => response.arrayBuffer())
-
-  const { decryptedFile, metadata } = await LitJsSdk.decryptZipFileWithMetadata({
-    authSig,
-    file: fileAsArrayBuffer,
-    litNodeClient: window.litNodeClient
-  })
-
-  LitJsSdk.downloadFile({
-    filename: metadata.name,
-    mimetype: metadata.type,
-    data: new Uint8Array(decryptedFile)
-  })
+    LitJsSdk.downloadFile({
+      filename: metadata.name,
+      mimetype: metadata.type,
+      data: new Uint8Array(decryptedFile)
+    })
+  }, { chain })
 }
 
 

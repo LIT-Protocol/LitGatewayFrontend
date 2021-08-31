@@ -1,31 +1,30 @@
-import React, { useCallback, useEffect, useState } from 'react'
-
-import { useParams, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useParams, useHistory } from "react-router-dom"
+import { ShareModal } from 'lit-access-control-conditions-modal'
 
 import styles from './files-page.module.scss'
 
-import { Button } from "@consta/uikit/Button";
+import { Button } from "@consta/uikit/Button"
 import { TextField } from '@consta/uikit/TextField';
 import { IconAdd } from "@consta/uikit/IconAdd";
 import { IconUpload } from "@consta/uikit/IconUpload";
 import { Modal } from '@consta/uikit/Modal';
 import { Breadcrumbs } from '@consta/uikit/Breadcrumbs';
 
-import LitJsSdk from 'lit-js-sdk'
-import uint8arrayToString from 'uint8arrays/to-string'
-
-import { putFolder, getFolder } from '../../api/files'
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
-import { ShareModal } from 'lit-access-control-conditions-modal'
-import { getSharingLink } from '../../utils/files'
 import Uploader from './Uploader'
 
+import { useAppContext } from '../../context'
+
+import { putFolder, getFolder } from '../../api/files'
+import { getSharingLink } from '../../utils/files'
 
 const FilesPage = () => {
-  const params = useParams()
-  const { folderId } = params
+  const { folderId } = useParams()
   const history = useHistory()
+  const { performWithAuthSig } = useAppContext()
+
   const [parentFolders, setParentFolders] = useState([])
   const [rows, setRows] = useState([])
   const [fileDropperModalOpen, setFileDropperModalOpen] = useState(false);
@@ -95,15 +94,17 @@ const FilesPage = () => {
   }
 
   const createNewFolder = async () => {
-    const chain = 'ethereum'
-    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
-    setNewFolderModalOpen(false)
-    console.log('creating folder with name ', newFolderName)
-    await putFolder({
-      name: newFolderName,
-      folderId: folderId ? folderId : null,
-      authSig
+    await performWithAuthSig(async (authSig) => {
+      setNewFolderModalOpen(false)
+
+      console.log('creating folder with name ', newFolderName)
+      await putFolder({
+        name: newFolderName,
+        folderId: folderId ? folderId : null,
+        authSig
+      })
     })
+    
     loadFiles()
     setNewFolderName('')
   }

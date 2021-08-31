@@ -1,29 +1,26 @@
-import React, { useCallback, useEffect, useState } from 'react'
-
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
-import LitJsSdk from 'lit-js-sdk'
-
-import uint8arrayFromString from 'uint8arrays/from-string'
 import uint8arrayToString from 'uint8arrays/to-string'
+import { ShareModal } from 'lit-access-control-conditions-modal'
 
 import { Button } from "@consta/uikit/Button";
 import { Table } from '@consta/uikit/Table';
-import { IconDownload } from "@consta/uikit/IconDownload";
+import { IconDownload } from "@consta/uikit/IconDownload"
 import { IconDocFilled } from '@consta/uikit/IconDocFilled'
 import { IconConnection } from '@consta/uikit/IconConnection'
 import { IconFolders } from '@consta/uikit/IconFolders'
-import { Modal } from '@consta/uikit/Modal';
-import { ProgressSpin } from '@consta/uikit/ProgressSpin';
+import { ProgressSpin } from '@consta/uikit/ProgressSpin'
+
+import { useAppContext } from '../../context'
 
 import { humanFileSize, decryptAndDownload, getSharingLink } from '../../utils/files'
 import { patchFile } from '../../api/files'
 
-import { ShareModal } from 'lit-access-control-conditions-modal'
-
-
 const FilesList = (props) => {
-  const { rows, chain } = props
+  const { rows } = props
+
+  const { performWithAuthSig } = useAppContext()
+
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
   const [showShareModal, setShowShareModal] = useState(false)
@@ -31,31 +28,34 @@ const FilesList = (props) => {
   const onAccessControlConditionsSelected = async (accessControlConditions) => {
     console.log('in FilesList and onAccessControlConditionsSelected callback called with conditions', accessControlConditions)
     console.log('selectedItem is ', selectedItem)
-    const chain = accessControlConditions[0].chain
-    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
     const toDecrypt = selectedItem.encryptedSymmetricKey
+    const chain = accessControlConditions[0].chain
 
-    const symmetricKey = await window.litNodeClient.getEncryptionKey({
-      accessControlConditions: selectedItem.accessControlConditions,
-      toDecrypt,
-      chain: selectedItem.accessControlConditions[0].chain,
-      authSig
+    await performWithAuthSig(async (authSig) => {
+      const symmetricKey = await window.litNodeClient.getEncryptionKey({
+        accessControlConditions: selectedItem.accessControlConditions,
+        toDecrypt,
+        chain: selectedItem.accessControlConditions[0].chain,
+        authSig
+      })
+
+      // re-encrypt symmetric key
+      const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({ accessControlConditions, chain, authSig, symmetricKey })
+    
+      // store re-encrypted key
+      let additionalAccessControlConditions = selectedItem.additionalAccessControlConditions
+      if (!additionalAccessControlConditions) {
+        additionalAccessControlConditions = []
+      }
+      additionalAccessControlConditions.push({
+        accessControlConditions,
+        encryptedSymmetricKey: uint8arrayToString(encryptedSymmetricKey, 'base16')
+      })
+
+      await patchFile(selectedItem.id, { additionalAccessControlConditions, authSig })
+    }, {
+      chain
     })
-
-    // re-encrypt symmetric key
-    const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({ accessControlConditions, chain, authSig, symmetricKey })
-
-    // store re-encrypted key
-    let additionalAccessControlConditions = selectedItem.additionalAccessControlConditions
-    if (!additionalAccessControlConditions) {
-      additionalAccessControlConditions = []
-    }
-    additionalAccessControlConditions.push({
-      accessControlConditions,
-      encryptedSymmetricKey: uint8arrayToString(encryptedSymmetricKey, 'base16')
-    })
-
-    await patchFile(selectedItem.id, { additionalAccessControlConditions, authSig })
   }
 
   const showFileLink = (file) => {

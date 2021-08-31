@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
 import LitJsSdk from 'lit-js-sdk'
 import { v4 as uuidv4 } from 'uuid';
 import uint8arrayToString from 'uint8arrays/to-string'
 
+import styles from './files-page.module.scss'
+
 import { Table } from '@consta/uikit/Table';
 import { ProgressSpin } from '@consta/uikit/ProgressSpin';
 
-import styles from './files-page.module.scss'
+import { useAppContext } from '../../context'
 
 import { putFile } from '../../api/files'
 import { getSharingLink } from '../../utils/files'
@@ -18,19 +19,21 @@ const PINATA_API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXR
 
 
 const Uploader = ({ uploadItems, accessControlConditions, onUploaded, folderId }) => {
+  const { performWithAuthSig } = useAppContext()
+
   const [uploading, setUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState({})
   const [uploadComplete, setUploadComplete] = useState(false)
 
   useEffect(() => {
-    const go = async () => {
+    (async function (){
       const chain = accessControlConditions[0].chain
+      
       // get the auth sig first, because if the user denies this, we have nothing to do
-      const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+      performWithAuthSig(async (authSig) => {
+        setUploading(true)
 
-      setUploading(true)
-
-      const fileUploadPromises = []
+        const fileUploadPromises = []
       const fileMetadatas = []
       for (let i = 0; i < uploadItems.length; i++) {
         console.log(`processing ${i + 1} of ${uploadItems.length}`)
@@ -101,9 +104,8 @@ const Uploader = ({ uploadItems, accessControlConditions, onUploaded, folderId }
       setUploadComplete(true)
       onUploaded(fileMetadatas)
 
-    }
-
-    go()
+      }, { chain })
+    })()
   }, [uploadItems, accessControlConditions])
 
   const columns = [
