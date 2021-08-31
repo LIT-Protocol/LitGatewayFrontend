@@ -1,6 +1,6 @@
 .search {
   margin: 80px 20px 0;
-  .inputSearch{
+  .inputSearch {
     width: 100%;
   }
 }
@@ -30,8 +30,6 @@
     stroke: var(--color-typo-secondary);
   }
 }
-
-
 
 .sideBar {
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
@@ -73,7 +71,6 @@
 .activeSideBar {
   left: 0 !important;
 }
-
 
 .activeLink {
   color: var(--color-bg-link);

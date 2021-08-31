@@ -1,17 +1,16 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import styles from './app.module.scss'
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
-import {Theme, presetGpnDefault} from '@consta/uikit/Theme';
+import Routes from './routing/routes'
 
-import Routes from "./routing/routes";
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme'
 
-import {AppContextProvider, useAppContext} from './context/app'
+import { AppContextProvider } from './context/app'
 
 function App() {
-
   return (
     <BrowserRouter>
       <AppContextProvider>
@@ -22,7 +21,7 @@ function App() {
         </Theme>
       </AppContextProvider>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

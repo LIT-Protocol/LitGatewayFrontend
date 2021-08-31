@@ -22,9 +22,8 @@ const InputWrapper = ({
   leftSide,
   clearable = false,
   onClear = () => false,
-  rows
+  rows,
 }) => {
-
   const getState = () => {
     if (error) {
       return 'alert'

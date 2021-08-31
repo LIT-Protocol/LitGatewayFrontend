@@ -1,26 +1,86 @@
-import React, { useCallback, useEffect, useState } from 'react'
-
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import uint8arrayToString from 'uint8arrays/to-string'
+import { ShareModal } from 'lit-access-control-conditions-modal'
 
-import { Button } from "@consta/uikit/Button";
-import { Table } from '@consta/uikit/Table';
-import { IconDownload } from "@consta/uikit/IconDownload";
+import { Button } from '@consta/uikit/Button'
+import { Table } from '@consta/uikit/Table'
+import { IconDownload } from '@consta/uikit/IconDownload'
 import { IconDocFilled } from '@consta/uikit/IconDocFilled'
 import { IconConnection } from '@consta/uikit/IconConnection'
 import { IconFolders } from '@consta/uikit/IconFolders'
-import { Modal } from '@consta/uikit/Modal';
-import { ProgressSpin } from '@consta/uikit/ProgressSpin';
+import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 
-import { humanFileSize, decryptAndDownload } from '../../utils/files'
+import { useAppContext } from '../../context'
 
-import ShareModal from './ShareModal'
-
+import {
+  humanFileSize,
+  decryptAndDownload,
+  getSharingLink,
+} from '../../utils/files'
+import { patchFile } from '../../api/files'
 
 const FilesList = (props) => {
-  const { rows, chain } = props
+  const { rows } = props
+
+  const { performWithAuthSig } = useAppContext()
+
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
   const [showShareModal, setShowShareModal] = useState(false)
+
+  const onAccessControlConditionsSelected = async (accessControlConditions) => {
+    console.log(
+      'in FilesList and onAccessControlConditionsSelected callback called with conditions',
+      accessControlConditions,
+    )
+
+    console.log('selectedItem is ', selectedItem)
+    const toDecrypt = selectedItem.encryptedSymmetricKey
+    const chain = accessControlConditions[0].chain
+
+    await performWithAuthSig(
+      async (authSig) => {
+        const symmetricKey = await window.litNodeClient.getEncryptionKey({
+          accessControlConditions: selectedItem.accessControlConditions,
+          toDecrypt,
+          chain: selectedItem.accessControlConditions[0].chain,
+          authSig,
+        })
+
+        // re-encrypt symmetric key
+        const encryptedSymmetricKey =
+          await window.litNodeClient.saveEncryptionKey({
+            accessControlConditions,
+            chain,
+            authSig,
+            symmetricKey,
+          })
+
+        // store re-encrypted key
+        let additionalAccessControlConditions =
+          selectedItem.additionalAccessControlConditions
+        if (!additionalAccessControlConditions) {
+          additionalAccessControlConditions = []
+        }
+        additionalAccessControlConditions.push({
+          accessControlConditions,
+          encryptedSymmetricKey: uint8arrayToString(
+            encryptedSymmetricKey,
+            'base16',
+          ),
+        })
+
+        await patchFile(selectedItem.id, {
+          additionalAccessControlConditions,
+          authSig,
+        })
+      },
+      {
+        chain,
+      },
+    )
+  }
 
   const showFileLink = (file) => {
     setSelectedItem(file)
@@ -28,9 +88,9 @@ const FilesList = (props) => {
   }
 
   const downloadFile = async (file) => {
-    setDownloadingIds(prev => [...prev, file.id])
-    await decryptAndDownload({ file, chain })
-    setDownloadingIds(prev => prev.filter(f => f !== file.id))
+    setDownloadingIds((prev) => [...prev, file.id])
+    await decryptAndDownload({ file })
+    setDownloadingIds((prev) => prev.filter((f) => f !== file.id))
   }
 
   const closeShareModal = () => {
@@ -45,20 +105,24 @@ const FilesList = (props) => {
       align: 'left',
       sortable: true,
       renderCell: (row) => {
-        return (<>
-          {row.ipfsHash // folders don't have an ipfs hash
-            ? <IconDocFilled />
-            : <IconFolders />
-          }
+        return (
+          <>
+            {row.ipfsHash ? ( // folders don't have an ipfs hash
+              <IconDocFilled />
+            ) : (
+              <IconFolders />
+            )}
 
-          <span style={{ width: 8, display: 'inline-block' }} />
+            <span style={{ width: 8, display: 'inline-block' }} />
 
-          {row.ipfsHash // folders don't have an ipfs hash
-            ? row.name //<Link to={`/files/view/${row.id}`}>{row.name}</Link>
-            : <Link to={`/files/folders/${row.id}`}>{row.name}</Link>
-          }
-        </>)
-      }
+            {row.ipfsHash ? ( // folders don't have an ipfs hash
+              row.name //<Link to={`/files/view/${row.id}`}>{row.name}</Link>
+            ) : (
+              <Link to={`/files/folders/${row.id}`}>{row.name}</Link>
+            )}
+          </>
+        )
+      },
     },
     {
       title: 'Size',
@@ -66,60 +130,70 @@ const FilesList = (props) => {
       sortable: true,
       renderCell: (row) => {
         return row.ipfsHash ? humanFileSize(row.size) : ''
-      }
+      },
     },
     {
       title: 'Uploaded',
       accessor: 'uploadedAt',
       sortable: true,
       renderCell: (row) => {
-        return row.ipfsHash ? new Date(parseInt(row.uploadedAt) * 1000).toLocaleString() : ''
-      }
+        return row.ipfsHash
+          ? new Date(parseInt(row.uploadedAt) * 1000).toLocaleString()
+          : ''
+      },
     },
     {
       title: 'Actions',
       renderCell: (row) => {
-        return (<>
-          {downloadingIds.includes(row.id)
-            ?
-            <ProgressSpin />
-            : <Button
-              label='Download'
-              onClick={() => downloadFile(row)}
-              iconLeft={IconDownload}
-              onlyIcon
-              size='s'
-              view='clear'
-            />
-          }
+        return (
+          <>
+            {downloadingIds.includes(row.id) ? (
+              <ProgressSpin />
+            ) : (
+              <Button
+                label="Download"
+                onClick={() => downloadFile(row)}
+                iconLeft={IconDownload}
+                onlyIcon
+                size="s"
+                view="clear"
+              />
+            )}
 
-          <Button
-            label='Share'
-            onClick={() => showFileLink(row)}
-            iconLeft={IconConnection}
-            onlyIcon
-            size='s'
-            view='clear'
-          />
-        </>
+            <Button
+              label="Share"
+              onClick={() => showFileLink(row)}
+              iconLeft={IconConnection}
+              onlyIcon
+              size="s"
+              view="clear"
+            />
+          </>
         )
-      }
-    }
-  ];
+      },
+    },
+  ]
 
   return (
     <>
       <Table
         columns={fileTableColumns}
         rows={rows}
-        emptyRowsPlaceholder='No files yet.  Upload some and they will show up here.'
+        emptyRowsPlaceholder="No files yet.  Upload some and they will show up here."
       />
 
       {showShareModal ? (
         <ShareModal
           onClose={() => closeShareModal()}
           sharingItems={[selectedItem]}
-          awaitingUpload={false}
+          onAccessControlConditionsSelected={onAccessControlConditionsSelected}
+          getSharingLink={getSharingLink}
+          onlyAllowCopySharingLink={!selectedItem.ipfsHash} // true if folder
+          copyLinkText={
+            !selectedItem.ipfsHash
+              ? 'Anyone with the link can see the files, but only authorized wallets can open them'
+              : null
+          }
         />
       ) : null}
     </>
@@ -127,4 +201,3 @@ const FilesList = (props) => {
 }
 
 export default FilesList
-

@@ -12,7 +12,7 @@ const UserWithDropdown = ({
   items,
   username,
   avatar,
-  className
+  className,
 }) => {
   return (
     <Dropdown items={items}>

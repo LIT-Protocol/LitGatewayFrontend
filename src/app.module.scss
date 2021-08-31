@@ -27,7 +27,10 @@ body {
   .Modal {
     padding: 10px;
   }
-  input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none;}
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
   h2 {
     font-size: 2em;
     color: var(--color-typo-primary);
@@ -48,4 +51,3 @@ body {
     color: var(--color-typo-primary);
   }
 }
-

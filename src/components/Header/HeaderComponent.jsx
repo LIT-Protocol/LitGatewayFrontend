@@ -2,21 +2,17 @@ import React from 'react'
 
 import styles from './header-component.module.scss'
 
-import {Header, HeaderModule, HeaderButton} from '@consta/uikit/Header'
-import {IconAlignJustify} from '@consta/uikit/IconAlignJustify'
-import {IconClose} from '@consta/uikit/IconClose'
-import {IconArrowDown} from "@consta/uikit/IconArrowDown";
+import { Header, HeaderModule, HeaderButton } from '@consta/uikit/Header'
+import { IconAlignJustify } from '@consta/uikit/IconAlignJustify'
+import { IconClose } from '@consta/uikit/IconClose'
+import { IconArrowDown } from '@consta/uikit/IconArrowDown'
 
-import UserBlock from "../UserBlock";
+import UserBlock from '../UserBlock'
 
 import { useAppContext } from '../../context/app'
 
 const HeaderComponent = () => {
-
-  const {
-    setSideBar,
-    sideBar
-  } = useAppContext()
+  const { setSideBar, sideBar, authSig } = useAppContext()
 
   const userItems = [
     {
@@ -25,25 +21,35 @@ const HeaderComponent = () => {
     },
   ]
 
-    return (
-      <Header
-        className={styles.header}
-        leftSide={
-          <>
-            <HeaderModule>
-              <HeaderModule indent="s">
-                {!sideBar? (
-                  <HeaderButton iconLeft={IconAlignJustify} onClick={() => setSideBar(true)} />
-                ):(
-                  <HeaderButton iconLeft={IconClose} onClick={() => setSideBar(false)} />
-                )}
-              </HeaderModule>
+  console.log('authSig')
+  console.log(authSig)
+
+  return (
+    <Header
+      className={styles.header}
+      leftSide={
+        <>
+          <HeaderModule>
+            <HeaderModule indent="s">
+              {!sideBar ? (
+                <HeaderButton
+                  iconLeft={IconAlignJustify}
+                  onClick={() => setSideBar(true)}
+                />
+              ) : (
+                <HeaderButton
+                  iconLeft={IconClose}
+                  onClick={() => setSideBar(false)}
+                />
+              )}
             </HeaderModule>
-          </>
-        }
-        rightSide={
-          <>
-            <HeaderModule>
+          </HeaderModule>
+        </>
+      }
+      rightSide={
+        <>
+          <HeaderModule>
+            {authSig?.address ? (
               <UserBlock
                 withMenu
                 iconRight={IconArrowDown}
@@ -51,14 +57,15 @@ const HeaderComponent = () => {
                 view="clear"
                 items={userItems}
                 className={styles.user}
-                username="Sneider.ETH"
+                username={authSig.address}
                 avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
               />
-            </HeaderModule>
-          </>
-        }
-      />
-    )
+            ) : null}
+          </HeaderModule>
+        </>
+      }
+    />
+  )
 }
 
 export default HeaderComponent
