@@ -37,25 +37,25 @@ const FilesPage = () => {
   const [shareModalStep, setShareModalStep] = useState(null)
 
   const loadFiles = async () => {
-    const chain = 'ethereum'
-    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
-    const { files, folders, parentFolders } = await getFolder(folderId || '', { authSig })
-    // console.log('got files', files)
-    // add key
-    setRows([
-      ...folders.map(f => ({ ...f, key: f.id })),
-      ...files.map(f => ({ ...f, key: f.id }))
-    ])
-    setParentFolders([
-      {
-        label: 'Home',
-        link: '/files'
-      },
-      ...parentFolders.map(f => ({
-        label: f.name,
-        link: `/files/folders/${f.id}`
-      }))
-    ])
+    performWithAuthSig(async (authSig) => {
+      const { files, folders, parentFolders } = await getFolder(folderId || '', { authSig })
+      // console.log('got files', files)
+      // add key
+      setRows([
+        ...folders.map(f => ({ ...f, key: f.id })),
+        ...files.map(f => ({ ...f, key: f.id }))
+      ])
+      setParentFolders([
+        {
+          label: 'Home',
+          link: '/files'
+        },
+        ...parentFolders.map(f => ({
+          label: f.name,
+          link: `/files/folders/${f.id}`
+        }))
+      ])
+    })
   }
 
   useEffect(() => {
