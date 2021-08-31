@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import styles from './view-file-page.module.scss'
 import { getFile } from '../../api/files'
-import { Button } from "@consta/uikit/Button";
-import { IconDownload } from "@consta/uikit/IconDownload";
+import { Button } from '@consta/uikit/Button'
+import { IconDownload } from '@consta/uikit/IconDownload'
 import { humanFileSize, decryptAndDownload } from '../../utils/files'
-import { ProgressSpin } from '@consta/uikit/ProgressSpin';
-
+import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 
 const ViewFilePage = () => {
-  let { fileId } = useParams();
+  let { fileId } = useParams()
   const [file, setFile] = useState({})
   const [loading, setLoading] = useState(true)
   useEffect(() => {
@@ -34,15 +33,18 @@ const ViewFilePage = () => {
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>View File</h1>
-      <h3 className={styles.subtitle}>{file.name} - {humanFileSize(file.size)}</h3>
-      {loading
-        ? <ProgressSpin />
-        : <Button
+      <h3 className={styles.subtitle}>
+        {file.name} - {humanFileSize(file.size)}
+      </h3>
+      {loading ? (
+        <ProgressSpin />
+      ) : (
+        <Button
           label="Download"
           iconLeft={IconDownload}
           onClick={downloadFile}
-        />}
-
+        />
+      )}
     </div>
   )
 }

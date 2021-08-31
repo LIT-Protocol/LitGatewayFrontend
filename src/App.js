@@ -2,25 +2,24 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import styles from './app.module.scss'
 
-import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
+import { Theme, presetGpnDefault } from '@consta/uikit/Theme'
 
-import DiscoverPage from "./pages/DiscoverPage";
-import GuidePage from "./pages/GuidePage";
-import SingleAppPage from "./pages/SingleAppPage";
-import SingleGuidePage from "./pages/GuidePage/SingleGuidePage";
+import DiscoverPage from './pages/DiscoverPage'
+import GuidePage from './pages/GuidePage'
+import SingleAppPage from './pages/SingleAppPage'
+import SingleGuidePage from './pages/GuidePage/SingleGuidePage'
 import FilesPage from './pages/FilesPage'
 import ViewFilePage from './pages/ViewFilePage'
 
 import SideBar from './components/SideBar'
-import Header from "./components/Header";
+import Header from './components/Header'
 
 import useWindowDimensions from './hooks/useWindowDimensions'
 
 import { AppContextProvider } from './context/app'
 
 function App() {
-
-  const { width } = useWindowDimensions();
+  const { width } = useWindowDimensions()
 
   return (
     <BrowserRouter>
@@ -31,7 +30,11 @@ function App() {
             <SideBar />
             <div className={styles.wrap}>
               <Switch>
-                <Route path={['/', "/discover"]} exact component={DiscoverPage} />
+                <Route
+                  path={['/', '/discover']}
+                  exact
+                  component={DiscoverPage}
+                />
                 <Route path="/app" component={SingleAppPage} />
                 <Route path="/guide" component={GuidePage} />
                 <Route path="/requirement" component={SingleGuidePage} />
@@ -44,7 +47,7 @@ function App() {
         </Theme>
       </AppContextProvider>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -23,7 +23,6 @@ const InputWrapper = ({
   clearable = false,
   onClear = () => false,
 }) => {
-
   const getState = () => {
     if (error) {
       return 'alert'

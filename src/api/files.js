@@ -5,10 +5,10 @@ export const patchFile = (fileId, body) => {
     method: 'PATCH',
     mode: 'cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body)
-  }).then(response => response.json())
+    body: JSON.stringify(body),
+  }).then((response) => response.json())
 }
 
 export const putFile = (body) => {
@@ -16,10 +16,10 @@ export const putFile = (body) => {
     method: 'PUT',
     mode: 'cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body)
-  }).then(response => response.json())
+    body: JSON.stringify(body),
+  }).then((response) => response.json())
 }
 
 export const putFolder = (body) => {
@@ -27,10 +27,10 @@ export const putFolder = (body) => {
     method: 'PUT',
     mode: 'cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body)
-  }).then(response => response.json())
+    body: JSON.stringify(body),
+  }).then((response) => response.json())
 }
 
 export const getFolder = (folderId, body) => {
@@ -38,15 +38,15 @@ export const getFolder = (folderId, body) => {
     method: 'POST',
     mode: 'cors',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify(body)
-  }).then(response => response.json())
+    body: JSON.stringify(body),
+  }).then((response) => response.json())
 }
 
 export const getFile = (fileId) => {
   return fetch(apiUrl + '/files/' + fileId, {
     method: 'GET',
     mode: 'cors',
-  }).then(response => response.json())
+  }).then((response) => response.json())
 }

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory } from 'react-router-dom'
 import { ShareModal } from 'lit-access-control-conditions-modal'
 
 import styles from './files-page.module.scss'
 
-import { Button } from "@consta/uikit/Button"
-import { TextField } from '@consta/uikit/TextField';
-import { IconAdd } from "@consta/uikit/IconAdd";
-import { IconUpload } from "@consta/uikit/IconUpload";
-import { Modal } from '@consta/uikit/Modal';
-import { Breadcrumbs } from '@consta/uikit/Breadcrumbs';
+import { Button } from '@consta/uikit/Button'
+import { TextField } from '@consta/uikit/TextField'
+import { IconAdd } from '@consta/uikit/IconAdd'
+import { IconUpload } from '@consta/uikit/IconUpload'
+import { Modal } from '@consta/uikit/Modal'
+import { Breadcrumbs } from '@consta/uikit/Breadcrumbs'
 
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
@@ -27,8 +27,8 @@ const FilesPage = () => {
 
   const [parentFolders, setParentFolders] = useState([])
   const [rows, setRows] = useState([])
-  const [fileDropperModalOpen, setFileDropperModalOpen] = useState(false);
-  const [newFolderModalOpen, setNewFolderModalOpen] = useState(false);
+  const [fileDropperModalOpen, setFileDropperModalOpen] = useState(false)
+  const [newFolderModalOpen, setNewFolderModalOpen] = useState(false)
   const [newFolderName, setNewFolderName] = useState('')
   const [selectedFiles, setSelectedFiles] = useState(null)
   const [shareModalOpen, setShareModalOpen] = useState(false)
@@ -38,22 +38,25 @@ const FilesPage = () => {
 
   const loadFiles = async () => {
     performWithAuthSig(async (authSig) => {
-      const { files, folders, parentFolders } = await getFolder(folderId || '', { authSig })
+      const { files, folders, parentFolders } = await getFolder(
+        folderId || '',
+        { authSig },
+      )
       // console.log('got files', files)
       // add key
       setRows([
-        ...folders.map(f => ({ ...f, key: f.id })),
-        ...files.map(f => ({ ...f, key: f.id }))
+        ...folders.map((f) => ({ ...f, key: f.id })),
+        ...files.map((f) => ({ ...f, key: f.id })),
       ])
       setParentFolders([
         {
           label: 'Home',
-          link: '/files'
+          link: '/files',
         },
-        ...parentFolders.map(f => ({
+        ...parentFolders.map((f) => ({
           label: f.name,
-          link: `/files/folders/${f.id}`
-        }))
+          link: `/files/folders/${f.id}`,
+        })),
       ])
     })
   }
@@ -101,10 +104,10 @@ const FilesPage = () => {
       await putFolder({
         name: newFolderName,
         folderId: folderId ? folderId : null,
-        authSig
+        authSig,
       })
     })
-    
+
     loadFiles()
     setNewFolderName('')
   }
@@ -112,35 +115,36 @@ const FilesPage = () => {
   return (
     <div className={styles.main}>
       <h1 className={styles.title}>Files</h1>
-      <h3 className={styles.subtitle}>Collaborative Decentralized Encrypted File Storage</h3>
+      <h3 className={styles.subtitle}>
+        Collaborative Decentralized Encrypted File Storage
+      </h3>
       <div className={styles.path}>
-        {parentFolders.length > 0
-          ? <Breadcrumbs
+        {parentFolders.length > 0 ? (
+          <Breadcrumbs
             pages={parentFolders}
             getLabel={(page) => page.label}
             getLink={(page) => page.link}
             onClick={(page, e) => {
-              e.preventDefault();
+              e.preventDefault()
               history.push(page.link)
             }}
           />
-          : null
-        }
+        ) : null}
       </div>
       <div style={{ height: 16 }} />
       <Button
         label="Upload"
         iconLeft={IconUpload}
         onClick={() => setFileDropperModalOpen(true)}
-        size='m'
+        size="m"
       />
       <span style={{ width: 8, display: 'inline-block' }} />
       <Button
         label="New Folder"
         iconLeft={IconAdd}
-        view='secondary'
+        view="secondary"
         onClick={() => setNewFolderModalOpen(true)}
-        size='m'
+        size="m"
       />
 
       <Modal
@@ -150,11 +154,8 @@ const FilesPage = () => {
       >
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>Upload Files</h3>
-          <FileDropper
-            onFilesSelected={onFilesSelected}
-          />
+          <FileDropper onFilesSelected={onFilesSelected} />
         </div>
-
       </Modal>
 
       <Modal
@@ -165,17 +166,12 @@ const FilesPage = () => {
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>New Folder</h3>
           <TextField
-            placeholder='Folder name'
+            placeholder="Folder name"
             value={newFolderName}
             onChange={({ value }) => setNewFolderName(value)}
-          />
-          {' '}
-          <Button
-            label='Save'
-            onClick={createNewFolder}
-          />
+          />{' '}
+          <Button label="Save" onClick={createNewFolder} />
         </div>
-
       </Modal>
 
       {uploadingModalOpen ? (
@@ -192,7 +188,6 @@ const FilesPage = () => {
               onUploaded={onUploaded}
             />
           </div>
-
         </Modal>
       ) : null}
 
@@ -209,10 +204,8 @@ const FilesPage = () => {
       <div style={{ height: 32 }} />
 
       <FilesList rows={rows} />
-
     </div>
   )
 }
 
 export default FilesPage
-

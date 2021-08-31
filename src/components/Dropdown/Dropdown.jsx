@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import cx from 'classnames'
 
 import styles from './dropdown.module.scss'
 
 const Dropdown = (props) => {
-  const {className, items, children} = props
+  const { className, items, children } = props
 
   const [toggled, setToggled] = useState(false)
 
@@ -12,7 +12,7 @@ const Dropdown = (props) => {
     setToggled(!toggled)
   }
 
-  const handleItemClick = ( e,action ) => {
+  const handleItemClick = (e, action) => {
     e.stopPropagation()
     action(e)
   }

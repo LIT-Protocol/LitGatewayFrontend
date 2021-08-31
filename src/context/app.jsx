@@ -11,11 +11,14 @@ export const AppContextProvider = (props) => {
   const [sideBar, setSideBar] = useState(false)
   const [authSig, setAuthSig] = useState(null)
 
-  const performWithAuthSig = async (action, { chain } = { chain: 'ethereum'}) => {
+  const performWithAuthSig = async (
+    action,
+    { chain } = { chain: 'ethereum' },
+  ) => {
     //TODO add chain selection???
-    
+
     let currentAuthSig = authSig
-    if (!currentAuthSig){
+    if (!currentAuthSig) {
       currentAuthSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
       setAuthSig(currentAuthSig)
     }
@@ -32,7 +35,7 @@ export const AppContextProvider = (props) => {
       value={{
         sideBar,
         setSideBar,
-        performWithAuthSig
+        performWithAuthSig,
       }}
     >
       {children}
