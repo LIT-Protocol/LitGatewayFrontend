@@ -9,5 +9,5 @@ export const getExtension = (name) => {
   return arr[arr.length - 1]
 }
 
-export const shortenAddress = (address) =>
-  `${address.substring(0, 6)}...${address.substring(address.length - 4)}`
+export * from './files'
+export * from './blockchain'

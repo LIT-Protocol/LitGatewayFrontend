@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext, createContext } from 'react'
 import LitJsSdk from 'lit-js-sdk'
 
+import { getUsername } from '../utils'
+
 export const AppContext = createContext({
   sideBar: true,
   minterHeader: false,
@@ -11,6 +13,7 @@ export const AppContextProvider = (props) => {
 
   const [sideBar, setSideBar] = useState(false)
   const [authSig, setAuthSig] = useState(null)
+  const [username, setUsername] = useState(null)
 
   const performWithAuthSig = async (
     action,
@@ -22,6 +25,8 @@ export const AppContextProvider = (props) => {
     if (!currentAuthSig) {
       currentAuthSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
       setAuthSig(currentAuthSig)
+
+      setUsername(await getUsername())
     }
 
     return await action(currentAuthSig)
@@ -42,6 +47,7 @@ export const AppContextProvider = (props) => {
         setMinterHeader,
         authSig,
         performWithAuthSig,
+        username,
       }}
     >
       {children}

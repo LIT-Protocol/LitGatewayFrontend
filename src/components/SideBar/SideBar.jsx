@@ -11,8 +11,6 @@ import UserBlock from '../UserBlock'
 
 import { useAppContext } from '../../context/app'
 
-import { shortenAddress } from '../../utils'
-
 const menuItems = [
   {
     title: 'discover',
@@ -83,7 +81,7 @@ const IconComponent = (icon) => {
 const SideBar = () => {
   const [chain, setChain] = useState(null)
 
-  const { sideBar, authSig } = useAppContext()
+  const { sideBar, username } = useAppContext()
 
   const userItems = [
     {
@@ -94,7 +92,7 @@ const SideBar = () => {
 
   return (
     <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
-      {authSig?.address ? (
+      {username !== null ? (
         <UserBlock
           withMenu
           iconRight={IconArrowDown}
@@ -102,7 +100,7 @@ const SideBar = () => {
           view="clear"
           items={userItems}
           className={styles.user}
-          username={shortenAddress(authSig.address)}
+          username={username}
           avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
         />
       ) : null}
