@@ -81,7 +81,7 @@ const IconComponent = (icon) => {
 const SideBar = () => {
   const [chain, setChain] = useState(null)
 
-  const { sideBar, username } = useAppContext()
+  const { sideBar, username, setSideBar } = useAppContext()
 
   const userItems = [
     {
@@ -112,6 +112,7 @@ const SideBar = () => {
                 to={item.to}
                 className={styles.link}
                 activeClassName={styles.activeLink}
+                onClick={() => setSideBar(false)}
               >
                 {IconComponent(item.icon)}
                 <span>{item.title}</span>

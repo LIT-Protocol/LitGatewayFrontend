@@ -11,8 +11,6 @@ import FilesPage from '../pages/FilesPage'
 import GalleryPage from '../pages/GalleryPage'
 import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
-// import MyLitsPage from "../pages/MinterPage/MyLitsPage";
-// import LitPage from "../pages/MinterPage/LitPage";
 
 import Navigation from '../components/Navigation'
 
