@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import * as Icon from 'react-feather'
 import cx from 'classnames'
-import LitJsSdk from 'lit-js-sdk'
 
 import styles from './sidebar.module.scss'
 
@@ -11,6 +10,8 @@ import { IconArrowDown } from '@consta/uikit/IconArrowDown'
 import UserBlock from '../UserBlock'
 
 import { useAppContext } from '../../context/app'
+
+import { shortenAddress } from '../../utils'
 
 const menuItems = [
   {
@@ -101,7 +102,7 @@ const SideBar = () => {
           view="clear"
           items={userItems}
           className={styles.user}
-          username={authSig.address}
+          username={shortenAddress(authSig.address)}
           avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
         />
       ) : null}

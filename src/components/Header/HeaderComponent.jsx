@@ -11,6 +11,8 @@ import UserBlock from '../UserBlock'
 
 import { useAppContext } from '../../context/app'
 
+import { shortenAddress } from '../../utils'
+
 const HeaderComponent = () => {
   const { setSideBar, sideBar, authSig } = useAppContext()
 
@@ -54,7 +56,7 @@ const HeaderComponent = () => {
                 view="clear"
                 items={userItems}
                 className={styles.user}
-                username={authSig.address}
+                username={shortenAddress(authSig.address)}
                 avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
               />
             ) : null}
