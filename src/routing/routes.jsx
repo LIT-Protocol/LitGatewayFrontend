@@ -8,7 +8,8 @@ import GuidePage from '../pages/GuidePage'
 import SingleGuidePage from '../pages/GuidePage/SingleGuidePage'
 import ViewFilePage from '../pages/ViewFilePage'
 import FilesPage from '../pages/FilesPage'
-// import MainPage from "../pages/MinterPage/MainPage";
+import GalleryPage from '../pages/GalleryPage'
+import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
 // import MyLitsPage from "../pages/MinterPage/MyLitsPage";
 // import LitPage from "../pages/MinterPage/LitPage";
@@ -29,12 +30,9 @@ const Routes = () => {
             <Route path="/files/view/:fileId" component={ViewFilePage} />
             <Route path="/files/folders/:folderId" component={FilesPage} />
             <Route path="/files" component={FilesPage} />
+            <Route path="/gallery" exact component={GalleryPage} />
+            <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
-            {/* <Route path="/minter/main" component={MainPage}/> */}
-            {/* <Route path="/minter/my-lits" component={MyLitsPage}/> */}
-            {/* <Route path="/minter/create" component={CreateContentPage}/> */}
-            {/* <Route path="/minter" component={MinterPage}/>
-            <Route path="/minter/lit/:litId" component={LitPage}/> */}
           </div>
         </>
       </Switch>

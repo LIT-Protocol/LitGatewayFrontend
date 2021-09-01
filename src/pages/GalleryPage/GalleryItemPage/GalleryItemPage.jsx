@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import dayjs from 'dayjs'
 import { useParams } from 'react-router-dom'
 
-import styles from './lit-page.module.scss'
+import styles from './gallery-item-page.module.scss'
 
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Select } from '@consta/uikit/Select'
@@ -37,7 +37,7 @@ const sortSettings = [
   },
 ]
 
-const LitPage = () => {
+const GalleryItemPage = () => {
   let { litId } = useParams()
 
   const [sort, setSort] = useState(null)
@@ -146,4 +146,4 @@ const LitPage = () => {
   )
 }
 
-export default LitPage
+export default GalleryItemPage

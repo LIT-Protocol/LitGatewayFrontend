@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import dayjs from 'dayjs'
 
-import styles from './my-lits-page.module.scss'
+import styles from './gallery-page.module.scss'
 
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Select } from '@consta/uikit/Select'
 
-import { MiniCard } from '../../../components'
+import { MiniCard } from '../../components'
 
 const items = [
   {
@@ -93,7 +93,7 @@ const sortSettings = [
   },
 ]
 
-const MyLitsPage = () => {
+const GalleryPage = () => {
   const [sort, setSort] = useState(null)
 
   const compareItems = (a, b) => {
@@ -178,7 +178,7 @@ const MyLitsPage = () => {
                 {items.sort(compareItems).map((item) => (
                   <GridItem>
                     <MiniCard
-                      link={`/minter/lit/${item.id}`}
+                      link={`/gallery/${item.id}`}
                       title={item.title}
                       date={dayjs(item.date).format('MM/DD/YY')}
                       files={item.files}
@@ -195,4 +195,4 @@ const MyLitsPage = () => {
   )
 }
 
-export default MyLitsPage
+export default GalleryPage
