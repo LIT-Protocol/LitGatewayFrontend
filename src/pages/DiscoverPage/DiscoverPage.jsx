@@ -3,13 +3,23 @@ import { Link } from 'react-router-dom'
 
 import styles from './discover-page.module.scss'
 
-import Background from './assets/maksim-istomin-w6auPDgfDS0-unsplash.jpg'
-import Card1 from './assets/keming-tan-BouGISvED5w-unsplash.jpg'
-
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 
+import { useAppContext } from '../../context'
+
+import Background from './assets/maksim-istomin-w6auPDgfDS0-unsplash.jpg'
+import Card1 from './assets/keming-tan-BouGISvED5w-unsplash.jpg'
+
 const DiscoverPage = () => {
+  const { performWithAuthSig } = useAppContext()
+
+  const handleConnectWallet = () => {
+    performWithAuthSig((authSig) => {
+      console.log(`${authSig.address} connected`)
+    })
+  }
+
   return (
     <div className={styles.main}>
       <div
@@ -22,7 +32,7 @@ const DiscoverPage = () => {
             Find your tribe <br /> and playground
           </h1>
         </div>
-        <Button label="Connect wallet" size="l" />
+        <Button label="Connect wallet" size="l" onClick={handleConnectWallet} />
       </div>
       <Grid
         cols="1"

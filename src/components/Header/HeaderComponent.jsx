@@ -21,9 +21,6 @@ const HeaderComponent = () => {
     },
   ]
 
-  console.log('authSig')
-  console.log(authSig)
-
   return (
     <Header
       className={styles.header}
