@@ -49,9 +49,9 @@ const CreateStep = ({ setStep }) => {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.back} onClick={handleBack}>
+      {/* <div className={styles.back} onClick={handleBack}>
         <IconArrowLeft className={styles.backIcon} view="brand" /> Go back
-      </div>
+      </div> */}
       {createStep === 'create' ? (
         <CreateLayout
           title={title}

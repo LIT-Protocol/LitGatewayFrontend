@@ -16,7 +16,7 @@ const CreateStepComponent = ({ type, setStep }) => {
 }
 
 const MinterPage = () => {
-  const [step, setStep] = useState('selectToDo')
+  const [step, setStep] = useState('create')
 
   return (
     <div className={styles.main}>
