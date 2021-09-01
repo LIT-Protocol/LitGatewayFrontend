@@ -5,7 +5,6 @@ import { getUsername } from '../utils'
 
 export const AppContext = createContext({
   sideBar: true,
-  minterHeader: false,
 })
 
 export const AppContextProvider = (props) => {
@@ -36,15 +35,11 @@ export const AppContextProvider = (props) => {
     window.performWithAuthSig = performWithAuthSig
   }, [])
 
-  const [minterHeader, setMinterHeader] = useState(false)
-
   return (
     <AppContext.Provider
       value={{
         sideBar,
         setSideBar,
-        minterHeader,
-        setMinterHeader,
         authSig,
         performWithAuthSig,
         username,

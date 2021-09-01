@@ -1,7 +1,467 @@
+@import '../../vars.scss';
+
 .main {
   max-width: 1260px;
   padding: 0 15px;
   width: 100%;
-  margin: 20px auto 50px;
+  margin: 50px auto 150px;
   box-sizing: border-box;
+}
+
+.types {
+  margin-top: $space-m;
+  display: flex;
+  justify-content: center;
+  margin: $space-m -12px 50px;
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+.type {
+  flex: 0 1 300px;
+  margin: $space-s;
+  @media (max-width: 600px) {
+    flex: 0 1 200px;
+    margin: 10px;
+  }
+  h5 {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 20px;
+    color: $primary-text;
+    @media (max-width: 600px) {
+      font-size: 1em;
+    }
+  }
+  .btnBock {
+    border-radius: 4px;
+    border: 1px solid $brand;
+    padding: $space-xl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s;
+    @media (max-width: 600px) {
+      padding: 10px;
+      height: 270px;
+      svg {
+        height: 100px;
+      }
+      .lockIcon,
+      .linkIcon {
+        width: 30px;
+        height: 30px;
+        top: 48%;
+        left: 34%;
+      }
+    }
+    &:hover {
+      background: $brand;
+      svg {
+        path {
+          fill: white;
+        }
+      }
+      h5 {
+        color: white;
+      }
+      .link {
+        color: white;
+      }
+      .pencil {
+        background-image: url('./assets/pencil-2.svg');
+      }
+      .addIcon {
+        background-image: url('./assets/plus-blue.svg');
+      }
+      .daoIcon {
+        background-image: url('./assets/dao-hover.png');
+      }
+
+      .tokenIcon {
+        background-image: url('./assets/token-hover.png');
+      }
+
+      .walletIcon {
+        background-image: url('./assets/wallet-hover.png');
+      }
+    }
+    .img {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    svg {
+      path {
+        fill: $brand;
+      }
+    }
+  }
+}
+
+.pencil {
+  background-image: url('./assets/pencil-1.svg');
+}
+.addIcon {
+  background-image: url('./assets/plus.svg');
+}
+
+.pencil,
+.addIcon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+}
+
+.back {
+  color: $brand;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin-left: -10px;
+}
+
+.selectStep {
+  max-width: 800px;
+  margin: 0 auto;
+  .title {
+    margin-bottom: 60px;
+    margin-top: 100px;
+    text-align: center;
+    color: $brand;
+  }
+  .bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.reviewStep {
+  .title {
+    margin-bottom: 60px;
+    margin-top: 30px;
+    text-align: center;
+    color: $brand;
+  }
+}
+
+.createStep {
+  max-width: 800px;
+  margin: 50px auto 100px;
+  .files {
+    display: flex;
+    margin: 0 -8px;
+  }
+  .fileBlock {
+    flex: 1 0 47.5%;
+    margin: 0 8px;
+  }
+  .input,
+  .choice,
+  .quantity {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  .text {
+    margin-bottom: 40px;
+  }
+  .bottom {
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .label,
+  .fileBlock h4 {
+    color: $secondary-text;
+    font-size: 18px;
+    line-height: 150%;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: normal;
+  }
+  @media (max-width: 750px) {
+    .fileBlock {
+      flex: 1 0 100%;
+      margin-top: 20px;
+    }
+    .files {
+      flex-direction: column;
+    }
+  }
+}
+
+.reviewStep {
+  .btn {
+    width: 300px;
+  }
+  .bottom {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  .ImgPreview {
+    height: 200px;
+    object-fit: cover;
+    width: 300px;
+    border-radius: 4px;
+  }
+  .preview {
+    h5 {
+      text-align: center;
+      font-weight: normal;
+      color: $primary-text;
+      font-size: 16px;
+    }
+  }
+  .FilePreview {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  .content {
+    margin-top: 60px;
+  }
+  .smallCard {
+  }
+  .blockchain {
+    margin-bottom: 40px;
+    height: 50px;
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    min-width: 200px;
+  }
+  .card {
+    min-height: 600px;
+    height: auto;
+    border: 1px solid $border;
+    border-radius: 4px;
+    position: relative;
+    .badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .img {
+      height: 60%;
+      width: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .mainContent {
+      padding: $space-xl;
+      h4 {
+        color: $brand;
+        margin: 0 0 $space-m;
+      }
+    }
+    .count {
+      padding: $space-s $space-xl;
+      border-top: 1px solid $border;
+      display: flex;
+      justify-content: flex-end;
+      color: $brand;
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+    @media (max-width: 1056px) {
+      .code {
+        width: 300px !important;
+      }
+    }
+  }
+  @media (max-width: 1056px) {
+    .code {
+      max-width: 100%;
+      overflow-y: auto;
+    }
+  }
+  @media (max-width: 600px) {
+    .title {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    .bottom {
+      margin-top: 40px;
+    }
+    .card {
+      min-height: 300px;
+    }
+  }
+}
+
+.successStep {
+  max-width: 800px;
+  margin: 0 auto;
+  .title {
+    margin-bottom: 60px;
+    margin-top: 30px;
+    text-align: center;
+    color: $brand;
+  }
+  .btn {
+    width: 300px;
+  }
+  .bottom {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .btn {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+  .ImgPreview {
+    height: 200px;
+    object-fit: cover;
+    width: 300px;
+    border-radius: 4px;
+  }
+  .preview {
+    h5 {
+      text-align: center;
+      font-weight: normal;
+      color: $primary-text;
+      font-size: 16px;
+    }
+  }
+  .FilePreview {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+  }
+  .content {
+    margin-top: 40px;
+  }
+  .smallCard {
+  }
+  .blockchain {
+    margin-bottom: 40px;
+    height: 50px;
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    min-width: 200px;
+  }
+  .card {
+    height: 300px;
+    border: 1px solid $border;
+    border-radius: 4px;
+    position: relative;
+    display: flex;
+    .badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .img {
+      height: 100%;
+      width: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .mainContent {
+      width: 50%;
+      padding: $space-xl;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 $space-m;
+        h4 {
+          max-width: 70%;
+        }
+        > div {
+          display: flex;
+          align-items: center;
+          color: $brand;
+          .icon {
+            margin-right: 5px;
+          }
+        }
+      }
+      h4 {
+        color: $brand;
+        margin: 0;
+        font-size: 1.5em;
+      }
+      .text {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-top: 0;
+      }
+    }
+
+    .count {
+      color: $brand;
+      font-weight: 600;
+      font-size: 1.5em;
+    }
+    @media (max-width: 1056px) {
+      .code {
+        width: 300px !important;
+      }
+    }
+  }
+  @media (max-width: 1056px) {
+    .code {
+      max-width: 100%;
+      overflow-y: auto;
+    }
+  }
+  @media (max-width: 600px) {
+    .title {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    .bottom {
+      margin-top: 40px;
+    }
+    .card {
+      height: auto;
+      flex-direction: column;
+      .img {
+        width: 100%;
+      }
+      .main {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.wrap {
+  margin-bottom: 200px;
+}
+
+.bottomCard {
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid $border;
+  display: flex;
+  justify-content: space-between;
 }

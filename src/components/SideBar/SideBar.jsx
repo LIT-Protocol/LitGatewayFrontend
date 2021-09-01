@@ -45,7 +45,7 @@ const menuItems = [
   {
     title: 'minter',
     icon: 'briefcase',
-    to: '/minter/main',
+    to: '/minter',
   },
   // {
   //     title: 'publish',

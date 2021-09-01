@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 
-import styles from './create-content-page.module.scss'
+import styles from './minter-page.module.scss'
 
-import {SelectStep, CreateStep } from './steps'
+import { SelectStep, CreateStep } from './steps'
 
 const createSteps = {
   selectToDo: SelectStep,
-  create: CreateStep
+  create: CreateStep,
 }
 
 const CreateStepComponent = ({ type, setStep }) => {
@@ -15,18 +15,16 @@ const CreateStepComponent = ({ type, setStep }) => {
   return <Component setStep={setStep} />
 }
 
-
-const CreateContentPage = () => {
-
+const MinterPage = () => {
   const [step, setStep] = useState('selectToDo')
 
   return (
     <div className={styles.main}>
       <div className={styles.body}>
-        <CreateStepComponent type={step} setStep={setStep}/>
+        <CreateStepComponent type={step} setStep={setStep} />
       </div>
     </div>
   )
 }
 
-export default CreateContentPage
+export default MinterPage
