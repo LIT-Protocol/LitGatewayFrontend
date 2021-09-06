@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './../minter-page.module.scss'
+import styles from './select-step.module.scss'
 
 const SelectStep = ({ setStep }) => {
   return (

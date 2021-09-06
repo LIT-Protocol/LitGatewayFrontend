@@ -1,0 +1,137 @@
+@import '../../../../vars.scss';
+
+.main {
+  max-width: 1260px;
+  padding: 0 15px;
+  width: 100%;
+  margin: 50px auto 150px;
+  box-sizing: border-box;
+}
+
+.types {
+  margin-top: $space-m;
+  display: flex;
+  justify-content: center;
+  margin: $space-m -12px 50px;
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+.type {
+  flex: 0 1 300px;
+  margin: $space-s;
+  @media (max-width: 600px) {
+    flex: 0 1 200px;
+    margin: 10px;
+  }
+  h5 {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 20px;
+    color: $primary-text;
+    @media (max-width: 600px) {
+      font-size: 1em;
+    }
+  }
+  .btnBock {
+    border-radius: 4px;
+    border: 1px solid $brand;
+    padding: $space-xl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s;
+    @media (max-width: 600px) {
+      padding: 10px;
+      height: 270px;
+      svg {
+        height: 100px;
+      }
+      .lockIcon,
+      .linkIcon {
+        width: 30px;
+        height: 30px;
+        top: 48%;
+        left: 34%;
+      }
+    }
+    &:hover {
+      background: $brand;
+      svg {
+        path {
+          fill: white;
+        }
+      }
+      h5 {
+        color: white;
+      }
+      .link {
+        color: white;
+      }
+      .pencil {
+        background-image: url('./assets/pencil-2.svg');
+      }
+      .addIcon {
+        background-image: url('./assets/plus-blue.svg');
+      }
+    }
+    .img {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    svg {
+      path {
+        fill: $brand;
+      }
+    }
+  }
+}
+
+.pencil {
+  background-image: url('./assets/pencil-1.svg');
+}
+.addIcon {
+  background-image: url('./assets/plus.svg');
+}
+
+.pencil,
+.addIcon {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+}
+
+.back {
+  color: $brand;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin-left: -10px;
+}
+
+.selectStep {
+  max-width: 800px;
+  margin: 0 auto;
+  .title {
+    margin-bottom: 60px;
+    margin-top: 100px;
+    text-align: center;
+    color: $brand;
+  }
+  .bottom {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

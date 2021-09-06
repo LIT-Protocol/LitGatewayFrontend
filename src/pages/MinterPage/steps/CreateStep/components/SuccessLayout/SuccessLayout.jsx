@@ -2,7 +2,7 @@ import React from 'react'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-monokai'
 
-import styles from '../../../minter-page.module.scss'
+import styles from './success-layout.module.scss'
 
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Badge } from '@consta/uikit/Badge'
@@ -11,44 +11,20 @@ import { Button } from '@consta/uikit/Button'
 import { IconLock } from '@consta/uikit/IconLock'
 import { File } from '@consta/uikit/File'
 import { Table } from '@consta/uikit/Table'
+import { Attach } from '@consta/uikit/Attach'
 
-import { getExtension, getImg } from '../../../../../utils'
+import { getExtension, getImg } from '../../../../../../utils'
 
-const SuccessLayout = ({
-  publicCover,
-  title,
-  description,
-  content,
-  blockChain,
-  setStep,
-}) => {
-  const ImgPreview = ({ file }) => {
-    const imgFormat = ['jpg', 'jpeg', 'png']
-    const ext = getExtension(file.name)
-
-    if (imgFormat.includes(ext)) {
-      return (
-        <div className={styles.preview}>
-          <img className={styles.ImgPreview} src={URL.createObjectURL(file)} />
-          <h5>{file.name}</h5>
-        </div>
-      )
-    } else {
-      return (
-        <div className={styles.preview}>
-          <File className={styles.FilePreview} extension={ext} />
-          <h5>{file.name}</h5>
-        </div>
-      )
-    }
-  }
-
+const SuccessLayout = ({ setStep }) => {
   const tableColumns = [
     {
       title: 'Name',
       accessor: 'title',
       align: 'left',
       sortable: true,
+      renderCell: (row) => {
+        return <Attach fileName={row.title} fileExtension={row.ext} />
+      },
     },
     {
       title: 'Extension',
@@ -102,7 +78,7 @@ const SuccessLayout = ({
                   {item.files.length}
                 </div>
               </div>
-              {description ? (
+              {item.desc ? (
                 <Text
                   className={styles.text}
                   as="p"

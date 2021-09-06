@@ -4,16 +4,16 @@ import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-monokai'
 import Slider from 'react-slick'
 
-import styles from '../../../minter-page.module.scss'
+import styles from './review-layout.module.scss'
 
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Badge } from '@consta/uikit/Badge'
 import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
 
-import { sliderSettings } from '../../../../../config'
+import { sliderSettings } from '../../../../../../config'
 
-import { getExtension, getImg } from '../../../../../utils'
+import { getExtension, getImg } from '../../../../../../utils'
 import { File } from '@consta/uikit/File'
 
 const ReviewLayout = ({

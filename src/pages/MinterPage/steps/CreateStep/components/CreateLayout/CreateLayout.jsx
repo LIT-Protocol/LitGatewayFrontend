@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from '../../../minter-page.module.scss'
+import styles from './create-layout.module.scss'
 
 import { ChoiceGroup } from '@consta/uikit/ChoiceGroup'
 import { Text } from '@consta/uikit/Text'
@@ -11,9 +11,9 @@ import {
   FileDropper,
   InputWrapper,
   QuantityInputWrapper,
-} from '../../../../../components'
+} from '../../../../../../components'
 
-import { blockChainItems } from '../../../../../config'
+import { blockChainItems } from '../../../../../../config'
 
 const CreateLayout = ({
   title,
