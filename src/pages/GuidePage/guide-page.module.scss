@@ -22,6 +22,11 @@
   margin-bottom: var(--space-3xl);
 }
 
+.mainText {
+  font-size: 1.2em;
+  margin-bottom: var(--space-3xl);
+}
+
 .card {
   border-radius: 0.28571429rem;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
@@ -34,6 +39,7 @@
   text-decoration: none;
   h2 {
     text-align: center;
+    color: white;
   }
   @media (max-width: 700px) {
     height: 200px;

@@ -23,8 +23,8 @@ const Routes = () => {
           <div className={styles.wrap}>
             <Route path={['/', '/discover']} exact component={DiscoverPage} />
             <Route path="/app" component={SingleAppPage} />
-            <Route path="/guide" component={GuidePage} />
-            <Route path="/requirement" component={SingleGuidePage} />
+            <Route path="/guide/:title" exact component={SingleGuidePage} />
+            <Route path="/guide" exact component={GuidePage} />
             <Route path="/files/view/:fileId" component={ViewFilePage} />
             <Route path="/files/folders/:folderId" component={FilesPage} />
             <Route path="/files" component={FilesPage} />

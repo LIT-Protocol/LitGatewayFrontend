@@ -3,13 +3,19 @@ import React from 'react'
 import styles from './single-guide-page.module.scss'
 
 import { Badge } from '@consta/uikit/Badge'
+import { useParams } from 'react-router-dom'
+import { capitalizeFirstLetter } from '../../../utils/index'
+import { content } from '../content'
 
 const SingleGuidePage = () => {
+  const { title } = useParams()
+  const { body } = content[title]
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>Guide - What are "Requirements"</h1>
+      <h1 className={styles.title}>Guide - {capitalizeFirstLetter(title)}</h1>
       <div className={styles.body}>
-        <p>
+        {body}
+        {/* <p>
           Requirements are the conditions a blockchain address must meet in
           order to access content, experiences, or a service.
         </p>
@@ -67,7 +73,7 @@ const SingleGuidePage = () => {
           control based access control conditions, and you'll find thes in the
           “Requirment Details” section that you’ll see on the page when you see
           this requirement.
-        </p>
+        </p> */}
       </div>
     </div>
   )
