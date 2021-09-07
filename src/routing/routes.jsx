@@ -11,6 +11,7 @@ import FilesPage from '../pages/FilesPage'
 import GalleryPage from '../pages/GalleryPage'
 import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
+import BuildPage from '../pages/BuildPage'
 
 import Navigation from '../components/Navigation'
 
@@ -31,6 +32,7 @@ const Routes = () => {
             <Route path="/gallery" exact component={GalleryPage} />
             <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
+            <Route path="/build" component={BuildPage} />
           </div>
         </>
       </Switch>
