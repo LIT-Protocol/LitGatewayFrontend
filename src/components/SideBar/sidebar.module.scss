@@ -26,9 +26,11 @@
   font-size: 19px;
   text-decoration: none;
   color: var(--color-typo-secondary);
-  svg {
-    stroke: var(--color-typo-secondary);
-  }
+}
+
+.disabledLink {
+  color: lightgray;
+  cursor: default;
 }
 
 .sideBar {
