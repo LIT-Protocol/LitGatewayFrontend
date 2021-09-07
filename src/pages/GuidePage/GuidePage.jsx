@@ -10,6 +10,14 @@ const GuidePage = () => {
     <div className={styles.main}>
       <h1 className={styles.title}>Guide - How to use Lit Gateway</h1>
       <h3 className={styles.subtitle}>The place for getting started</h3>
+      <p>
+        Welcome to the Lit Gateway! This is the place to browse, use, and create
+        token gated applications, offers, and experiences that have been created
+        with the Lit Protocol. Lit Gateway is a blockchain enabled application
+        and uses a blockchain wallet for login, opposed to an email and
+        password. If you don’t have a first blockchain wallet, download MetaMask
+        here.
+      </p>
       <Grid
         cols="1"
         gap="xl"
