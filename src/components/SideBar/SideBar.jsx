@@ -101,7 +101,7 @@ const SideBar = () => {
           items={userItems}
           className={styles.user}
           username={username}
-          avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
+          avatar="/blank-avatar.jpg"
         />
       ) : null}
       <div className={styles.menu}>
