@@ -46,18 +46,7 @@ const HeaderComponent = () => {
       rightSide={
         <>
           <HeaderModule>
-            {username !== null ? (
-              <UserBlock
-                withMenu
-                iconRight={IconArrowDown}
-                size="l"
-                view="clear"
-                items={userItems}
-                className={styles.user}
-                username={username}
-                avatar="https://i.ibb.co/K2R8Lqb/Rectangle-1496.png"
-              />
-            ) : null}
+            <div></div>
           </HeaderModule>
         </>
       }
