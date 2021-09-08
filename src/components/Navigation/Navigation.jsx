@@ -6,7 +6,7 @@ import SideBar from '../SideBar'
 const Navigation = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <SideBar />
     </>
   )
