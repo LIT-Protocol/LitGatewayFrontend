@@ -26,6 +26,7 @@ const menuItems = [
     title: 'gallery',
     icon: 'play',
     to: '/gallery',
+    disabled: true,
   },
   {
     title: 'apps',
