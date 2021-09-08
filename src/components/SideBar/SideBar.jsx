@@ -31,11 +31,13 @@ const menuItems = [
     title: 'apps',
     icon: 'box',
     to: '/apps',
+    disabled: true,
   },
   {
     title: 'earn',
     icon: 'chart',
     to: '/earn',
+    disabled: true,
   },
   {
     title: 'files',
@@ -73,9 +75,9 @@ const componentsIcons = {
   book: Icon.BookOpen,
 }
 
-const IconComponent = (icon) => {
+const IconComponent = (icon, disabled) => {
   const Component = componentsIcons[icon]
-  return <Component />
+  return <Component view={disabled ? 'ghost' : 'secondary'} />
 }
 
 const SideBar = () => {
@@ -110,11 +112,20 @@ const SideBar = () => {
             <li className="size_m">
               <NavLink
                 to={item.to}
-                className={styles.link}
+                className={cx(
+                  styles.link,
+                  item.disabled ? styles.disabledLink : null,
+                )}
                 activeClassName={styles.activeLink}
-                onClick={() => setSideBar(false)}
+                onClick={(e) => {
+                  if (item.disabled) {
+                    e.preventDefault()
+                    return
+                  }
+                  setSideBar(false)
+                }}
               >
-                {IconComponent(item.icon)}
+                {IconComponent(item.icon, item.disabled)}
                 <span>{item.title}</span>
               </NavLink>
             </li>

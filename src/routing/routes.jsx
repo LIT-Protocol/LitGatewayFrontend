@@ -11,6 +11,7 @@ import FilesPage from '../pages/FilesPage'
 import GalleryPage from '../pages/GalleryPage'
 import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
+import BuildPage from '../pages/BuildPage'
 
 import Navigation from '../components/Navigation'
 
@@ -23,14 +24,15 @@ const Routes = () => {
           <div className={styles.wrap}>
             <Route path={['/', '/discover']} exact component={DiscoverPage} />
             <Route path="/app" component={SingleAppPage} />
-            <Route path="/guide" component={GuidePage} />
-            <Route path="/requirement" component={SingleGuidePage} />
+            <Route path="/guide/:title" exact component={SingleGuidePage} />
+            <Route path="/guide" exact component={GuidePage} />
             <Route path="/files/view/:fileId" component={ViewFilePage} />
             <Route path="/files/folders/:folderId" component={FilesPage} />
             <Route path="/files" component={FilesPage} />
             <Route path="/gallery" exact component={GalleryPage} />
             <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
+            <Route path="/build" component={BuildPage} />
           </div>
         </>
       </Switch>

@@ -9,5 +9,9 @@ export const getExtension = (name) => {
   return arr[arr.length - 1]
 }
 
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 export * from './files'
 export * from './blockchain'
