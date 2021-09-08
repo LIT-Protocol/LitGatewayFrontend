@@ -17,8 +17,7 @@ const SingleAppPage = () => {
       <h1 className={styles.title}>Build</h1>
       <h3 className={styles.subtitle}>On the Lit Protocol</h3>
       <div className={styles.body}>
-        The easiest way to start building with the Lit Protocol is to use our JS
-        SDK located{' '}
+        Start building with the Lit Protocol via our JS SDK located{' '}
         <a href="https://github.com/LIT-Protocol/lit-js-sdk">here</a>
       </div>
 
@@ -30,11 +29,16 @@ const SingleAppPage = () => {
       </div>
 
       <div className={styles.body}>
-        If you're looking to use Lit to verify access to some dynamic content
-        located on a server, a minimal example is located{' '}
+        Looking to use Lit to verify access to some dynamic content located on a
+        server? A minimal example is located{' '}
         <a href="https://github.com/LIT-Protocol/lit-minimal-jwt-example">
           here
         </a>
+      </div>
+
+      <div className={styles.body}>
+        Questions or want to get in touch? Contact us{' '}
+        <a href="https://airtable.com/shr2NWJbH1Y6Y3kOU">here</a>
       </div>
     </div>
   )
