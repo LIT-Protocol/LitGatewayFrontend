@@ -50,7 +50,7 @@ const MinterFileDropper = (props) => {
     withFileTable = false,
     text = "Drag 'n' drop some files here, or click to select files",
     allowedTypes = '*',
-    maxFiles = 0,
+    multiple = true,
   } = props
 
   const onDrop = useCallback((files) => {
@@ -105,7 +105,7 @@ const MinterFileDropper = (props) => {
     isDragActive,
     isDragAccept,
     isDragReject,
-  } = useDropzone({ onDrop, accept: allowedTypes, maxFiles })
+  } = useDropzone({ onDrop, accept: allowedTypes, multiple })
 
   const style = useMemo(
     () => ({

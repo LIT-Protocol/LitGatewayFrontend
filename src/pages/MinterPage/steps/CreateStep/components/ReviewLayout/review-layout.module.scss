@@ -18,6 +18,10 @@
 }
 
 .reviewStep {
+  .badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .btn {
     width: 300px;
   }
@@ -68,11 +72,6 @@
     border: 1px solid $border;
     border-radius: 4px;
     position: relative;
-    .badge {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
     .img {
       height: 60%;
       width: 100%;

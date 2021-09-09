@@ -27,27 +27,6 @@ const HtmlNft = ({
   previewMode,
   quantity,
 }) => {
-  const ImgPreview = ({ file }) => {
-    const imgFormat = ['jpg', 'jpeg', 'png']
-    const ext = getExtension(file.name)
-
-    if (imgFormat.includes(ext)) {
-      return (
-        <div className={styles.preview}>
-          <img className={styles.ImgPreview} src={URL.createObjectURL(file)} />
-          <h5>{file.name}</h5>
-        </div>
-      )
-    } else {
-      return (
-        <div className={styles.preview}>
-          <File className={styles.FilePreview} extension={ext} />
-          <h5>{file.name}</h5>
-        </div>
-      )
-    }
-  }
-
   const [locked, setLocked] = useState(true)
 
   return (
@@ -55,17 +34,9 @@ const HtmlNft = ({
       <div className={styles.card}>
         {locked ? (
           <>
-            {previewMode ? (
-              <Badge
-                className={styles.badge}
-                size="l"
-                status="normal"
-                label="Public preview"
-              />
-            ) : null}
             <div className={styles.img}>
               <img
-                className={styles.ImgPreview}
+                className={styles.imgPreview}
                 src={publicCover?.length ? publicCover[0].dataUrl : getImg()}
               />
             </div>
@@ -86,14 +57,6 @@ const HtmlNft = ({
           </>
         ) : (
           <>
-            {previewMode ? (
-              <Badge
-                className={styles.badge}
-                size="l"
-                status="success"
-                label="Private preview"
-              />
-            ) : null}
             <div className={styles.lockedContentView}>
               <MediaGrid files={content} />
             </div>

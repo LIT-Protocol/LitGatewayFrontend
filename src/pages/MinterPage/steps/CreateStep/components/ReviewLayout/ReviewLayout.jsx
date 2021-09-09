@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AceEditor from 'react-ace'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-monokai'
@@ -55,6 +55,12 @@ const ReviewLayout = ({
     <div className={styles.reviewStep}>
       <Button label="Back" view="ghost" onClick={handleBack} />
       <h2 className={styles.title}>Review your NFT</h2>
+      {/* <Badge
+        className={styles.badge}
+        size="l"
+        status="normal"
+        label="Public preview"
+      /> */}
       <HtmlNft
         publicCover={publicCover}
         title={title}

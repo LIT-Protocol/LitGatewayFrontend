@@ -9,7 +9,7 @@
 }
 
 .lockedContentView {
-  min-height: 600px;
+  min-height: 550px;
 }
 
 .htmlNft {
@@ -30,12 +30,7 @@
     display: flex;
     justify-content: center;
   }
-  .ImgPreview {
-    height: 200px;
-    object-fit: cover;
-    width: 300px;
-    border-radius: 4px;
-  }
+
   .preview {
     h5 {
       text-align: center;
@@ -78,14 +73,16 @@
       left: 20px;
     }
     .img {
-      height: 60%;
-      width: 100%;
-      img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+      display: flex;
+      justify-content: center;
+      .imgPreview {
+        max-height: 400px;
+        object-fit: contain;
+        width: 300px;
+        border-radius: 4px;
       }
     }
+
     .mainContent {
       padding: $space-xl;
       h4 {

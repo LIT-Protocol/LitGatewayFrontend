@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import LitJsSdk from 'lit-js-sdk'
 
 import styles from '../../minter-page.module.scss'
@@ -23,6 +23,12 @@ const CreateStep = ({ setStep }) => {
     id: 'ethereum',
     value: 'ethereum',
   })
+
+  const windowRef = useRef(null)
+
+  useEffect(() => {
+    document.getElementById('appWrap').scrollTop = 0
+  }, [createStep])
 
   const chainOptions = useMemo(
     () =>

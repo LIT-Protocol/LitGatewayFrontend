@@ -47,7 +47,7 @@ const SuccessLayout = ({
     minted: quantity,
     blockChain,
     files: content.map((c) => ({ name: c.name, ext: getExtension(c.name) })),
-    img: publicCover?.length ? URL.createObjectURL(publicCover[0]) : getImg(),
+    img: publicCover?.length ? publicCover[0].dataUrl : getImg(),
   }
 
   return (

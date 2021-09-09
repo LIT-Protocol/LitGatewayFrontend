@@ -21,7 +21,7 @@ const Routes = () => {
       <Navigation />
       <Switch>
         <>
-          <div className={styles.wrap}>
+          <div id="appWrap" className={styles.wrap}>
             <Route path={['/', '/discover']} exact component={DiscoverPage} />
             <Route path="/app" component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
