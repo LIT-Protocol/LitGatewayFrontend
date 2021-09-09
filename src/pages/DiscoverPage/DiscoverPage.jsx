@@ -50,24 +50,24 @@ const DiscoverPage = () => {
         }}
       >
         <GridItem>
-          <div className={styles.smallCard}>
+          <Link to="/minter" className={styles.smallCard}>
             <div>
               <h4>FEATURED</h4>
               <h2 className={styles.title}>Minter</h2>
               <h5>Put locked content behind NFTs</h5>
             </div>
             <img className={styles.image} src={Card1} alt={Card1} />
-          </div>
+          </Link>
         </GridItem>
         <GridItem>
-          <div className={styles.smallCard}>
+          <Link to="/files" className={styles.smallCard}>
             <div>
               <h4>FEATURED</h4>
               <h2 className={styles.title}>Files</h2>
               <h5>Collaborative Decentralized Encrypted File Storage</h5>
             </div>
             <img className={styles.image} src={Card2} alt={Card2} />
-          </div>
+          </Link>
         </GridItem>
       </Grid>
       <div className={styles.block}>
