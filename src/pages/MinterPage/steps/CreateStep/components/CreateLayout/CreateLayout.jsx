@@ -9,7 +9,7 @@ import { Button } from '@consta/uikit/Button'
 import { IconForward } from '@consta/uikit/IconForward'
 
 import {
-  FileDropper,
+  MinterFileDropper,
   InputWrapper,
   QuantityInputWrapper,
 } from '../../../../../../components'
@@ -36,6 +36,7 @@ const CreateLayout = ({
 }) => {
   return (
     <div className={styles.createStep}>
+      <h1>Mint an NFT with locked content</h1>
       <div className={styles.form}>
         <InputWrapper
           value={title}
@@ -71,7 +72,7 @@ const CreateLayout = ({
         <div className={styles.files}>
           <div className={styles.fileBlock}>
             <h4>Public Cover (Optional)</h4>
-            <FileDropper
+            <MinterFileDropper
               selectedFiles={publicCover}
               setSelectedFiles={setPublicCover}
               allowedTypes="video/*,image/*"
@@ -81,7 +82,7 @@ const CreateLayout = ({
           </div>
           <div className={styles.fileBlock}>
             <h4>Locked Content (Optional)</h4>
-            <FileDropper
+            <MinterFileDropper
               selectedFiles={content}
               setSelectedFiles={setContent}
               allowedTypes="video/*,image/*"
@@ -108,14 +109,14 @@ const CreateLayout = ({
           rows="4"
           type="textarea"
         />
-        <InputWrapper
+        {/* <InputWrapper
           value={url}
           className={styles.input}
           label="Social Media URL (Optional)"
           id="url"
           size="l"
           handleChange={(value) => setUrl(value)}
-        />
+        /> */}
       </div>
       <div className={styles.bottom}>
         <Button

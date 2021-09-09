@@ -42,7 +42,7 @@ const rejectStyle = {
   borderColor: '#ff1744',
 }
 
-const FileDropper = (props) => {
+const MinterFileDropper = (props) => {
   const {
     selectedFiles,
     setSelectedFiles,
@@ -164,4 +164,4 @@ const FileDropper = (props) => {
   )
 }
 
-export default FileDropper
+export default MinterFileDropper

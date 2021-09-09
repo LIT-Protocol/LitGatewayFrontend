@@ -107,7 +107,8 @@ const CreateStep = ({ setStep }) => {
           description={description}
           content={content}
           blockChain={blockChain}
-          setStep={setStep}
+          setCreateStep={setCreateStep}
+          quantity={quantity}
         />
       ) : null}
     </div>

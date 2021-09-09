@@ -15,15 +15,23 @@ import { Attach } from '@consta/uikit/Attach'
 
 import { getExtension, getImg } from '../../../../../../utils'
 
-const SuccessLayout = ({ setStep }) => {
+const SuccessLayout = ({
+  setCreateStep,
+  title,
+  description,
+  publicCover,
+  content,
+  blockChain,
+  quantity,
+}) => {
   const tableColumns = [
     {
       title: 'Name',
-      accessor: 'title',
+      accessor: 'name',
       align: 'left',
       sortable: true,
       renderCell: (row) => {
-        return <Attach fileName={row.title} fileExtension={row.ext} />
+        return <Attach fileName={row.name} fileExtension={row.ext} />
       },
     },
     {
@@ -34,22 +42,12 @@ const SuccessLayout = ({ setStep }) => {
 
   const item = {
     id: 1,
-    title: 'Crypto Dog',
-    desc: 'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before. ',
-    date: '2020-07-14T14:23:11',
-    minted: 10,
-    blockChain: 'Etherium',
-    files: [
-      {
-        title: 'WhateverItsCAlled',
-        ext: 'png',
-      },
-      {
-        title: 'Nextfile',
-        ext: 'jpeg',
-      },
-    ],
-    img: 'https://images.unsplash.com/photo-1583512603784-a8e3ea8355b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1049&q=80',
+    title,
+    desc: description,
+    minted: quantity,
+    blockChain,
+    files: content.map((c) => ({ name: c.name, ext: getExtension(c.name) })),
+    img: publicCover?.length ? URL.createObjectURL(publicCover[0]) : getImg(),
   }
 
   return (
@@ -90,7 +88,11 @@ const SuccessLayout = ({ setStep }) => {
                 </Text>
               ) : null}
               <div className={styles.bottomCard}>
-                <Badge size="l" status="success" label={item.blockChain} />
+                <Badge
+                  size="l"
+                  status="success"
+                  label={item.blockChain.value}
+                />
                 <div className={styles.count}>10/10</div>
               </div>
             </div>
@@ -110,17 +112,17 @@ const SuccessLayout = ({ setStep }) => {
         </div>
       ) : null}
       <div className={styles.bottom}>
-        <Button
+        {/* <Button
           className={styles.btn}
           view="secondary"
           label="View Lit Gallery!"
           size="l"
-        />
+        /> */}
         <Button
           className={styles.btn}
-          label="Mint Another Lit!"
+          label="Mint another"
           size="l"
-          onClick={() => setStep('selectToDo')}
+          onClick={() => setCreateStep('create')}
         />
       </div>
     </div>

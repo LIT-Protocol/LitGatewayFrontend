@@ -48,12 +48,10 @@ const ReviewLayout = ({
     }
   }
 
-  console.log('title', title)
-
   return (
     <div className={styles.reviewStep}>
       <Button label="Back" view="ghost" onClick={handleBack} />
-      <h2 className={styles.title}>Review Your Lit</h2>
+      <h2 className={styles.title}>Review your NFT</h2>
       {/* <Grid
         cols="1"
         gap="xl"
@@ -131,7 +129,7 @@ const ReviewLayout = ({
       <div className={styles.bottom}>
         <Button
           className={styles.btn}
-          label="Mint It!"
+          label="Mint it"
           size="l"
           onClick={() => setCreateStep('success')}
         />
