@@ -91,7 +91,7 @@ const SuccessLayout = ({
           </a>{' '}
         </div>
       </div>
-      {item.files.length ? (
+      {/* {item.files.length ? (
         <div className={styles.content}>
           <h4>Locked content</h4>
           <Table
@@ -102,7 +102,7 @@ const SuccessLayout = ({
             zebraStriped="odd"
           />
         </div>
-      ) : null}
+      ) : null} */}
       <div className={styles.bottom}>
         {/* <Button
           className={styles.btn}
