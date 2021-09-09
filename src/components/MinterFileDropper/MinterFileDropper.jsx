@@ -52,8 +52,27 @@ const MinterFileDropper = (props) => {
     allowedTypes = '*',
   } = props
 
-  const onDrop = useCallback((acceptedFiles) => {
-    setSelectedFiles((prevFiles) => [...prevFiles, ...acceptedFiles])
+  const onDrop = useCallback((files) => {
+    console.log('onDrop')
+
+    if (!files) {
+      console.log('no media chosen')
+      return
+    }
+    const convertedFiles = []
+    for (let i = 0; i < files.length; i++) {
+      const dataUrl = URL.createObjectURL(files[i])
+      convertedFiles.push({
+        type: files[i].type,
+        name: files[i].name,
+        encrypted: true,
+        backgroundImage: false,
+        dataUrl,
+        originalFile: files[i],
+      })
+    }
+
+    setSelectedFiles((prevFiles) => [...prevFiles, ...convertedFiles])
   }, [])
 
   const removeFile = (file) => {

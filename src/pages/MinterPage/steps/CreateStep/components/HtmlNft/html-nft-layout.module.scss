@@ -8,7 +8,11 @@
   box-sizing: border-box;
 }
 
-.reviewStep {
+.lockedContentView {
+  min-height: 600px;
+}
+
+.htmlNft {
   .title {
     margin-bottom: 60px;
     margin-top: 30px;
@@ -17,7 +21,7 @@
   }
 }
 
-.reviewStep {
+.htmlNft {
   .btn {
     width: 300px;
   }

@@ -10,16 +10,19 @@ import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Badge } from '@consta/uikit/Badge'
 import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
+import { IconLock } from '@consta/uikit/IconLock'
 
 import { sliderSettings } from '../../../../../../config'
 
 import { getExtension, getImg } from '../../../../../../utils'
 import { File } from '@consta/uikit/File'
+import HtmlNft from '../HtmlNft'
 
 const ReviewLayout = ({
   publicCover,
   title,
   description,
+  quantity,
   blockChain,
   code,
   setCode,
@@ -52,68 +55,14 @@ const ReviewLayout = ({
     <div className={styles.reviewStep}>
       <Button label="Back" view="ghost" onClick={handleBack} />
       <h2 className={styles.title}>Review your NFT</h2>
-      {/* <Grid
-        cols="1"
-        gap="xl"
-        breakpoints={{
-          s: {
-            cols: 2,
-          },
-        }}
-      >
-        <GridItem> */}
-      <div className={styles.card}>
-        <Badge
-          className={styles.badge}
-          size="l"
-          status="normal"
-          label="Public preview"
-        />
-        <div className={styles.img}>
-          <img
-            className={styles.ImgPreview}
-            src={
-              publicCover?.length
-                ? URL.createObjectURL(publicCover[0])
-                : getImg()
-            }
-          />
-        </div>
-        <div className={styles.mainContent}>
-          <h4>{title}</h4>
-          {description ? (
-            <Text
-              className={styles.text}
-              as="p"
-              size="m"
-              lineHeight="m"
-              view="primary"
-            >
-              {description}
-            </Text>
-          ) : null}
-        </div>
-        <div className={styles.count}>10/10</div>
-      </div>
-      {/* </GridItem>
-        <GridItem>
-          <Badge
-            className={styles.blockchain}
-            size="l"
-            status="success"
-            label={blockChain.label}
-          />
-          <div className={styles.code}>
-            <AceEditor
-              mode="javascript"
-              theme="monokai"
-              onChange={(code) => setCode({ code })}
-              name="UNIQUE_ID_OF_DIV"
-              value={code}
-            />
-          </div>
-        </GridItem>
-      </Grid> */}
+      <HtmlNft
+        publicCover={publicCover}
+        title={title}
+        description={description}
+        content={content}
+        quantity={quantity}
+        previewMode={true}
+      />
       {content.length ? (
         <div className={styles.content}>
           <h4>Locked Content Preview</h4>

@@ -98,6 +98,7 @@ const CreateStep = ({ setStep }) => {
           content={content}
           setCreateStep={setCreateStep}
           handleBack={handleBack}
+          quantity={quantity}
         />
       ) : null}
       {createStep === 'success' ? (
