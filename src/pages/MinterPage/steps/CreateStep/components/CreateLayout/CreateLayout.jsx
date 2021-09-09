@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './create-layout.module.scss'
 
 import { ChoiceGroup } from '@consta/uikit/ChoiceGroup'
+import Select from 'react-select'
 import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
 import { IconForward } from '@consta/uikit/IconForward'
@@ -31,6 +32,7 @@ const CreateLayout = ({
   url,
   setUrl,
   setCreateStep,
+  chainOptions,
 }) => {
   return (
     <div className={styles.createStep}>
@@ -45,19 +47,26 @@ const CreateLayout = ({
           handleChange={(value) => setTitle(value)}
         />
         <h5 className={styles.label}>Blockchain</h5>
-        <ChoiceGroup
+        {/* <ChoiceGroup
           value={blockChain}
           onChange={({ value }) => setBlockChain(value)}
           items={blockChainItems}
           getLabel={(item) => item.label}
           className={styles.choice}
+        /> */}
+        <Select
+          isClearable
+          options={chainOptions}
+          value={blockChain}
+          onChange={(value) => setBlockChain(value)}
         />
+        <div style={{ height: 32 }} />
         <QuantityInputWrapper
           className={styles.quantity}
           value={quantity}
           handleChange={(value) => setQuantity(value)}
           size="l"
-          label="Quantity"
+          label="Quantity to mint"
         />
         <div className={styles.files}>
           <div className={styles.fileBlock}>
@@ -65,6 +74,8 @@ const CreateLayout = ({
             <FileDropper
               selectedFiles={publicCover}
               setSelectedFiles={setPublicCover}
+              allowedTypes="video/*,image/*"
+              text="Drag 'n' drop a file here, or click to select a file"
               withPreviews
             />
           </div>
@@ -73,6 +84,7 @@ const CreateLayout = ({
             <FileDropper
               selectedFiles={content}
               setSelectedFiles={setContent}
+              allowedTypes="video/*,image/*"
               withFileTable
             />
           </div>
@@ -84,7 +96,7 @@ const CreateLayout = ({
           lineHeight="m"
           view="brand"
         >
-          Upload images, videos or audio files (25mb max total)
+          Upload images, videos or gif files (25mb max total)
         </Text>
         <InputWrapper
           value={description}

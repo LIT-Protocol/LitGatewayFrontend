@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
+import LitJsSdk from 'lit-js-sdk'
+
 import styles from '../../minter-page.module.scss'
 
 import { IconArrowLeft } from '@consta/uikit/IconArrowLeft'
@@ -8,7 +10,7 @@ import { ReviewLayout, CreateLayout, SuccessLayout } from './components'
 const CreateStep = ({ setStep }) => {
   const [createStep, setCreateStep] = useState('create')
 
-  const [title, setTitle] = useState('Title ')
+  const [title, setTitle] = useState('Title')
   const [url, setUrl] = useState('')
   const [publicCover, setPublicCover] = useState([])
   const [content, setContent] = useState([])
@@ -17,9 +19,22 @@ const CreateStep = ({ setStep }) => {
   )
   const [quantity, setQuantity] = useState(1)
   const [blockChain, setBlockChain] = useState({
-    label: 'Polygon',
-    value: 'Polygon',
+    label: 'Ethereum',
+    id: 'ethereum',
+    value: 'ethereum',
   })
+
+  const chainOptions = useMemo(
+    () =>
+      Object.keys(LitJsSdk.LIT_CHAINS).map((item) => {
+        return {
+          label: LitJsSdk.LIT_CHAINS[item].name,
+          id: item,
+          value: item,
+        }
+      }),
+    [LitJsSdk.LIT_CHAINS],
+  )
   const [code, setCode] = useState(
     'import React from "react";\n' +
       'import ReactDOM from "react-dom";\n' +
@@ -39,7 +54,7 @@ const CreateStep = ({ setStep }) => {
     }
 
     if (createStep === 'success') {
-      setStep('selectToDo')
+      setStep('create')
     }
 
     if (createStep === 'review') {
@@ -69,6 +84,7 @@ const CreateStep = ({ setStep }) => {
           url={url}
           setUrl={setUrl}
           setCreateStep={setCreateStep}
+          chainOptions={chainOptions}
         />
       ) : null}
       {createStep === 'review' ? (
@@ -81,6 +97,7 @@ const CreateStep = ({ setStep }) => {
           setCode={setCode}
           content={content}
           setCreateStep={setCreateStep}
+          handleBack={handleBack}
         />
       ) : null}
       {createStep === 'success' ? (

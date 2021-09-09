@@ -25,6 +25,7 @@ const ReviewLayout = ({
   setCode,
   content,
   setCreateStep,
+  handleBack,
 }) => {
   const ImgPreview = ({ file }) => {
     const imgFormat = ['jpg', 'jpeg', 'png']
@@ -47,10 +48,13 @@ const ReviewLayout = ({
     }
   }
 
+  console.log('title', title)
+
   return (
     <div className={styles.reviewStep}>
+      <Button label="Back" view="ghost" onClick={handleBack} />
       <h2 className={styles.title}>Review Your Lit</h2>
-      <Grid
+      {/* <Grid
         cols="1"
         gap="xl"
         breakpoints={{
@@ -59,41 +63,41 @@ const ReviewLayout = ({
           },
         }}
       >
-        <GridItem>
-          <div className={styles.card}>
-            <Badge
-              className={styles.badge}
-              size="l"
-              status="normal"
-              label="Public preview"
-            />
-            <div className={styles.img}>
-              <img
-                className={styles.ImgPreview}
-                src={
-                  publicCover?.length
-                    ? URL.createObjectURL(publicCover[0])
-                    : getImg()
-                }
-              />
-            </div>
-            <div className={styles.mainContent}>
-              <h4>{title}</h4>
-              {description ? (
-                <Text
-                  className={styles.text}
-                  as="p"
-                  size="m"
-                  lineHeight="m"
-                  view="primary"
-                >
-                  {description}
-                </Text>
-              ) : null}
-            </div>
-            <div className={styles.count}>10/10</div>
-          </div>
-        </GridItem>
+        <GridItem> */}
+      <div className={styles.card}>
+        <Badge
+          className={styles.badge}
+          size="l"
+          status="normal"
+          label="Public preview"
+        />
+        <div className={styles.img}>
+          <img
+            className={styles.ImgPreview}
+            src={
+              publicCover?.length
+                ? URL.createObjectURL(publicCover[0])
+                : getImg()
+            }
+          />
+        </div>
+        <div className={styles.mainContent}>
+          <h4>{title}</h4>
+          {description ? (
+            <Text
+              className={styles.text}
+              as="p"
+              size="m"
+              lineHeight="m"
+              view="primary"
+            >
+              {description}
+            </Text>
+          ) : null}
+        </div>
+        <div className={styles.count}>10/10</div>
+      </div>
+      {/* </GridItem>
         <GridItem>
           <Badge
             className={styles.blockchain}
@@ -111,7 +115,7 @@ const ReviewLayout = ({
             />
           </div>
         </GridItem>
-      </Grid>
+      </Grid> */}
       {content.length ? (
         <div className={styles.content}>
           <h4>Locked Content Preview</h4>

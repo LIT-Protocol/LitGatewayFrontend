@@ -8913,10 +8913,10 @@ lit-js-sdk@^1.1.50:
     uint8arrays "^2.1.5"
     web3modal "^1.9.4"
 
-lit-js-sdk@^1.1.51:
-  version "1.1.53"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.53.tgz#b13c47c91c7d867ec92049307f99660066bbecde"
-  integrity sha512-wql8bDXT84WkK6x361BcGyHmMUcRD6fvsxzE5AvaBYibDRwkTsKAGo+cERQtj0fniq+MqPNOkL3TRxCWt2wqXw==
+lit-js-sdk@^1.1.55:
+  version "1.1.55"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.55.tgz#c577e68d69ae07c948e8394fec6bb4a3b994aa51"
+  integrity sha512-KLQK2isadhEOKQHnEWR6zF8HFufMo1mJFFI7Aq/b0NLJTnWPgQMA17ZvIGKIVaqoeQMRW+7pMKlPnmzvpHYQ6A==
   dependencies:
     "@ethersproject/contracts" "^5.2.0"
     "@ethersproject/hash" "^5.4.0"
