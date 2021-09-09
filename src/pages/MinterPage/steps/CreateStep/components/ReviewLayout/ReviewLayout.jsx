@@ -37,7 +37,7 @@ const ReviewLayout = ({
     if (imgFormat.includes(ext)) {
       return (
         <div className={styles.preview}>
-          <img className={styles.ImgPreview} src={URL.createObjectURL(file)} />
+          <img className={styles.ImgPreview} src={file.dataUrl} />
           <h5>{file.name}</h5>
         </div>
       )

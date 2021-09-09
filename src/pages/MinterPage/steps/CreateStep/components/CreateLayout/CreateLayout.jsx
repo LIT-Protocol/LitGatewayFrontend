@@ -78,6 +78,7 @@ const CreateLayout = ({
               allowedTypes="video/*,image/*"
               text="Drag 'n' drop a file here, or click to select a file"
               withPreviews
+              maxFiles={1}
             />
           </div>
           <div className={styles.fileBlock}>

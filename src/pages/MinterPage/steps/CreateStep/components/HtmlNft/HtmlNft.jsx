@@ -66,11 +66,7 @@ const HtmlNft = ({
             <div className={styles.img}>
               <img
                 className={styles.ImgPreview}
-                src={
-                  publicCover?.length
-                    ? URL.createObjectURL(publicCover[0])
-                    : getImg()
-                }
+                src={publicCover?.length ? publicCover[0].dataUrl : getImg()}
               />
             </div>
             <div className={styles.mainContent}>

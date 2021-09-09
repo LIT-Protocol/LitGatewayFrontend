@@ -50,6 +50,7 @@ const MinterFileDropper = (props) => {
     withFileTable = false,
     text = "Drag 'n' drop some files here, or click to select files",
     allowedTypes = '*',
+    maxFiles = 0,
   } = props
 
   const onDrop = useCallback((files) => {
@@ -69,6 +70,7 @@ const MinterFileDropper = (props) => {
         backgroundImage: false,
         dataUrl,
         originalFile: files[i],
+        size: files[i].size,
       })
     }
 
@@ -83,7 +85,7 @@ const MinterFileDropper = (props) => {
 
   const thumbs = selectedFiles?.map((file) => (
     <div className={styles.imgWrap} key={file.name}>
-      <img src={URL.createObjectURL(file)} />
+      <img src={file.dataUrl} />
       <IconTrash
         className={styles.icon}
         view="brand"
@@ -103,7 +105,7 @@ const MinterFileDropper = (props) => {
     isDragActive,
     isDragAccept,
     isDragReject,
-  } = useDropzone({ onDrop, accept: allowedTypes })
+  } = useDropzone({ onDrop, accept: allowedTypes, maxFiles })
 
   const style = useMemo(
     () => ({
