@@ -9,7 +9,7 @@
 }
 
 .lockedContentView {
-  min-height: 550px;
+  min-height: 566px;
 }
 
 .htmlNft {
@@ -59,7 +59,6 @@
     min-width: 200px;
   }
   .card {
-    min-height: 600px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -76,9 +75,9 @@
       display: flex;
       justify-content: center;
       .imgPreview {
-        max-height: 400px;
+        margin-top: 16px;
+        height: 400px;
         object-fit: contain;
-        width: 300px;
         border-radius: 4px;
       }
     }

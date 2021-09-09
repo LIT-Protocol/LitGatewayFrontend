@@ -8,6 +8,17 @@
   box-sizing: border-box;
 }
 
+.copyButton {
+  margin-left: 16px;
+}
+
+.shareUrls {
+  margin-top: 48px;
+  display: 'flex';
+  align-items: center;
+  text-align: left;
+}
+
 .successStep {
   max-width: 800px;
   margin: 0 auto;

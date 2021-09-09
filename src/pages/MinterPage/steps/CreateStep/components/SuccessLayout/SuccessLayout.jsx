@@ -14,6 +14,7 @@ import { Table } from '@consta/uikit/Table'
 import { Attach } from '@consta/uikit/Attach'
 
 import { getExtension, getImg } from '../../../../../../utils'
+import HtmlNft from '../HtmlNft'
 
 const SuccessLayout = ({
   setCreateStep,
@@ -53,52 +54,43 @@ const SuccessLayout = ({
   return (
     <div className={styles.successStep}>
       <h2 className={styles.title}>Success!</h2>
-      <Grid cols="1" gap="xl">
-        <GridItem>
-          <div className={styles.card}>
-            <Badge
-              className={styles.badge}
-              size="l"
-              status="normal"
-              label="Public preview"
-            />
-            <div
-              className={styles.img}
-              style={{
-                backgroundImage: `url(${getImg(item.img)})`,
-              }}
-            ></div>
-            <div className={styles.mainContent}>
-              <div className={styles.top}>
-                <h4>{item.title}</h4>
-                <div>
-                  <IconLock view="brand" className={styles.icon} />
-                  {item.files.length}
-                </div>
-              </div>
-              {item.desc ? (
-                <Text
-                  className={styles.text}
-                  as="p"
-                  size="m"
-                  lineHeight="m"
-                  view="primary"
-                >
-                  {item.desc}
-                </Text>
-              ) : null}
-              <div className={styles.bottomCard}>
-                <Badge
-                  size="l"
-                  status="success"
-                  label={item.blockChain.value}
-                />
-                <div className={styles.count}>10/10</div>
-              </div>
-            </div>
-          </div>
-        </GridItem>
-      </Grid>
+      <HtmlNft
+        publicCover={publicCover}
+        title={title}
+        description={description}
+        content={content}
+        quantity={quantity}
+        previewMode={true}
+      />
+      <div className={styles.shareUrls}>
+        <div>
+          HTML NFT URL
+          <Button className={styles.copyButton} view="secondary" label="Copy" />
+        </div>
+        <div style={{ height: 8 }} />
+        <div>
+          <a
+            target="_blank"
+            href="https://ipfs.litgateway.com/ipfs/QmW6uH8p17DcfvZroULkdEDAKThWzEDeNtwi9oezURDeXN"
+          >
+            https://ipfs.litgateway.com/ipfs/QmW6uH8p17DcfvZroULkdEDAKThWzEDeNtwi9oezURDeXN
+          </a>{' '}
+        </div>
+        <div style={{ height: 32 }} />
+        <div>
+          OpenSea URL{' '}
+          <Button className={styles.copyButton} view="secondary" label="Copy" />
+        </div>
+        <div style={{ height: 8 }} />
+        <div>
+          <a
+            target="_blank"
+            href="https://opensea.io/assets/0xe4cfae3aa41115cb94cff39bb5dbae8bd0ea9d41/403"
+          >
+            https://opensea.io/assets/0xe4cfae3aa41115cb94cff39bb5dbae8bd0ea9d41/403
+          </a>{' '}
+        </div>
+      </div>
       {item.files.length ? (
         <div className={styles.content}>
           <h4>Locked content</h4>
