@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-monokai'
 
@@ -8,7 +8,7 @@ import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Badge } from '@consta/uikit/Badge'
 import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
-import { IconLock } from '@consta/uikit/IconLock'
+import { SnackBar } from '@consta/uikit/SnackBar'
 import { File } from '@consta/uikit/File'
 import { Table } from '@consta/uikit/Table'
 import { Attach } from '@consta/uikit/Attach'
@@ -54,6 +54,20 @@ const SuccessLayout = ({
   //   img: publicCover?.length ? publicCover[0].dataUrl : getImg(),
   // }
 
+  const [showingSnackbar, setShowingSnackbar] = useState(false)
+
+  const copyToClipboard = async (toCopy) => {
+    await navigator.clipboard.writeText(toCopy)
+    setShowingSnackbar(true)
+    setTimeout(() => setShowingSnackbar(false), 5000)
+  }
+
+  const urlOnOpensea = openseaUrl({
+    chain: blockChain.value,
+    tokenAddress,
+    tokenId,
+  })
+
   return (
     <div className={styles.successStep}>
       <h2 className={styles.title}>Success!</h2>
@@ -68,7 +82,12 @@ const SuccessLayout = ({
       <div className={styles.shareUrls}>
         <div>
           HTML NFT URL
-          <Button className={styles.copyButton} view="secondary" label="Copy" />
+          <Button
+            onClick={() => copyToClipboard(fileUrl)}
+            className={styles.copyButton}
+            view="secondary"
+            label="Copy"
+          />
         </div>
         <div style={{ height: 8 }} />
         <div>
@@ -85,22 +104,22 @@ const SuccessLayout = ({
                 className={styles.copyButton}
                 view="secondary"
                 label="Copy"
+                onClick={() => copyToClipboard(urlOnOpensea)}
               />
             </div>
             <div style={{ height: 8 }} />
             <div>
-              <a
-                target="_blank"
-                href={openseaUrl({
-                  chain: blockChain.value,
-                  tokenAddress,
-                  tokenId,
-                })}
-              >
-                {openseaUrl({ chain: blockChain.value, tokenAddress, tokenId })}
+              <a target="_blank" href={urlOnOpensea}>
+                {urlOnOpensea}
               </a>{' '}
             </div>
           </>
+        ) : null}
+        {showingSnackbar ? (
+          <SnackBar
+            styles={styles.snackbar}
+            items={[{ key: 1, message: 'Copied!' }]}
+          />
         ) : null}
       </div>
       {/* {item.files.length ? (

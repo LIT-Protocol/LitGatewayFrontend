@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import styles from './discover-page.module.scss'
 
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
+import { Modal } from '@consta/uikit/Modal'
+import { IconClose } from '@consta/uikit/IconClose'
 
 import { useAppContext } from '../../context'
 
@@ -14,14 +16,33 @@ import Card2 from './assets/markus-winkler-cV9-hOgoaok-unsplash.jpg'
 import Card3 from './assets/kelly-sikkema-Kl1gC0ve620-unsplash.jpg'
 import Card4 from './assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
 
+import InputWrapper from '../../components/InputWrapper'
+
+import { putUser } from '../../api/users'
+
 const DiscoverPage = () => {
-  const { performWithAuthSig } = useAppContext()
+  const { performWithAuthSig, authSig } = useAppContext()
   const history = useHistory()
+
+  const [showingEmailCaptureModal, setShowingEmailCaptureModal] =
+    useState(false)
+  const [email, setEmail] = useState('')
 
   const handleConnectWallet = () => {
     performWithAuthSig((authSig) => {
       console.log(`${authSig.address} connected`)
+
+      setShowingEmailCaptureModal(true)
     })
+  }
+
+  const handleSubmitEmail = () => {
+    console.log('submitting email', email)
+    putUser({
+      authSig,
+      email,
+    })
+    setShowingEmailCaptureModal(false)
   }
 
   return (
@@ -137,6 +158,24 @@ const DiscoverPage = () => {
           </div>
         </GridItem> */}
       </Grid>
+      <Modal isOpen={showingEmailCaptureModal}>
+        <div className={styles.emailCaptureModal}>
+          <div className={styles.closeHolder}>
+            <IconClose
+              className={styles.close}
+              onClick={() => setShowingEmailCaptureModal(false)}
+            />
+          </div>
+          <h3>Receive updates about Lit Gateway and Protocol</h3>
+          <InputWrapper
+            label="Email"
+            value={email}
+            handleChange={(e) => setEmail(e)}
+          />
+          <div style={{ height: 24 }} />
+          <Button onClick={handleSubmitEmail} label="Submit" />
+        </div>
+      </Modal>
     </div>
   )
 }

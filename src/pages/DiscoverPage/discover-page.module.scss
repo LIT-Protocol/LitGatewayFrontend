@@ -6,6 +6,17 @@
   box-sizing: border-box;
 }
 
+.emailCaptureModal {
+  padding: 24px;
+}
+.closeHolder {
+  display: flex;
+  justify-content: flex-end;
+  .close {
+    cursor: pointer;
+  }
+}
+
 .content {
   color: white;
   h2 {

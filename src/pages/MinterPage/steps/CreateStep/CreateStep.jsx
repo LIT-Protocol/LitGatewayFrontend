@@ -13,13 +13,11 @@ const CreateStep = ({ setStep }) => {
   const [txHash, setTxHash] = useState('')
   const [fileUrl, setFileUrl] = useState('')
   const [tokenAddress, setTokenAddress] = useState('')
-  const [title, setTitle] = useState('Title')
+  const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
   const [publicCover, setPublicCover] = useState([])
   const [content, setContent] = useState([])
-  const [description, setDescription] = useState(
-    'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.',
-  )
+  const [description, setDescription] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [blockChain, setBlockChain] = useState({
     label: 'Ethereum',

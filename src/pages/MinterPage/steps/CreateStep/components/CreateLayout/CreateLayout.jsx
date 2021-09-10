@@ -41,7 +41,7 @@ const CreateLayout = ({
         <InputWrapper
           value={title}
           className={styles.input}
-          placeholder="Create a title for your LIT"
+          placeholder="Create a title for your NFT"
           label="Title"
           id="title"
           size="l"
@@ -105,6 +105,7 @@ const CreateLayout = ({
           value={description}
           className={styles.input}
           label="Description (Optional)"
+          placeholder="Create a description for your NFT"
           id="description"
           size="l"
           handleChange={(value) => setDescription(value)}
