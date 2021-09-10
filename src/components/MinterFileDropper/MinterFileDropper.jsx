@@ -9,7 +9,7 @@ import { Button } from '@consta/uikit/Button'
 import { Table } from '@consta/uikit/Table'
 import { Attach } from '@consta/uikit/Attach'
 
-import { humanFileSize } from '../../utils/files'
+import { humanFileSize, fileToDataUrl } from '../../utils/files'
 
 const baseStyle = {
   flex: 1,
@@ -53,7 +53,7 @@ const MinterFileDropper = (props) => {
     multiple = true,
   } = props
 
-  const onDrop = useCallback((files) => {
+  const onDrop = useCallback(async (files) => {
     console.log('onDrop')
 
     if (!files) {
@@ -62,7 +62,7 @@ const MinterFileDropper = (props) => {
     }
     const convertedFiles = []
     for (let i = 0; i < files.length; i++) {
-      const dataUrl = URL.createObjectURL(files[i])
+      const dataUrl = await fileToDataUrl(files[i])
       convertedFiles.push({
         type: files[i].type,
         name: files[i].name,

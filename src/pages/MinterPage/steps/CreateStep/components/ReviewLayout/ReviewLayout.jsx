@@ -23,6 +23,7 @@ import {
   getImg,
   createMediaGridHtmlString,
   createHtmlWrapper,
+  fileToDataUrl,
 } from '../../../../../../utils'
 import { File } from '@consta/uikit/File'
 import HtmlNft from '../HtmlNft'
@@ -146,7 +147,7 @@ const ReviewLayout = ({
       description,
       quantity,
       publicCover,
-      lockedFiles: URL.createObjectURL(encryptedZip),
+      lockedFiles: await fileToDataUrl(encryptedZip),
       accessControlConditions,
       encryptedSymmetricKey,
       chain,

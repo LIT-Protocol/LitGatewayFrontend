@@ -1,5 +1,15 @@
 import LitJsSdk from 'lit-js-sdk'
 
+export function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      resolve(reader.result)
+    }
+    reader.readAsDataURL(file)
+  })
+}
+
 /**
  * Format bytes as human-readable text.
  *

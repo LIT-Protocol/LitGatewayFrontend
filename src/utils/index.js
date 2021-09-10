@@ -6,6 +6,8 @@ import mockImg from '../assets/imgs/no-image.png'
 import MediaGrid from '../pages/MinterPage/steps/CreateStep/components/HtmlNft/MediaGrid/MediaGrid'
 import HtmlNft from '../pages/MinterPage/steps/CreateStep/components/HtmlNft/HtmlNft'
 
+import styles from '../pages/MinterPage/steps/CreateStep/components/HtmlNft/html-nft-layout.module.scss'
+
 export const getImg = (val) => {
   return val || mockImg
 }
@@ -20,7 +22,7 @@ export const capitalizeFirstLetter = (string) => {
 }
 
 export function createMediaGridHtmlString({ files }) {
-  const html = ReactDOMServer.renderToString(<MediaGrid files={files} />)
+  const html = ReactDOMServer.renderToStaticMarkup(<MediaGrid files={files} />)
   return html
 }
 
@@ -38,7 +40,9 @@ export function createHtmlWrapper({
   // const HTMLHeadBefore = document.head.innerHTML
   // const sheets = new ServerStyleSheets()
 
-  const htmlBody = ReactDOMServer.renderToString(
+  console.log('html wrapper styles', styles)
+
+  const htmlBody = ReactDOMServer.renderToStaticMarkup(
     <HtmlNft
       title={title}
       description={description}

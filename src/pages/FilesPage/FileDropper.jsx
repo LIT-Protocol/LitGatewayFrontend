@@ -116,7 +116,11 @@ const FileDropper = ({ onFilesSelected }) => {
           <div style={{ height: 16 }} />
           <Table
             columns={fileTableColumns}
-            rows={selectedFiles.map((f) => ({ name: f.name, size: f.size }))}
+            rows={selectedFiles.map((f) => ({
+              name: f.name,
+              size: f.size,
+              id: f.name,
+            }))}
             emptyRowsPlaceholder="No files yet.  Pick some and they will show up here."
           />
           <div style={{ height: 16 }} />

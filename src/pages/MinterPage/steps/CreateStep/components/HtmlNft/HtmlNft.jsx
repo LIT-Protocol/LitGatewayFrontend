@@ -38,7 +38,7 @@ const HtmlNft = ({
   return (
     <div className={styles.htmlNft}>
       <div className={styles.card}>
-        {locked && previewMode ? (
+        {(locked && previewMode) || !previewMode ? (
           <>
             <div className={styles.img}>
               <img
@@ -74,6 +74,7 @@ const HtmlNft = ({
                 onClick={() => setLocked((prevState) => !prevState)}
                 iconLeft={IconLock}
                 label="Unlock"
+                id="unlockButton"
               />
             ) : (
               <Button
