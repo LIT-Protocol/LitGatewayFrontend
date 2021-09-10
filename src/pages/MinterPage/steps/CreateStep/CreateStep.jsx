@@ -9,7 +9,10 @@ import { ReviewLayout, CreateLayout, SuccessLayout } from './components'
 
 const CreateStep = ({ setStep }) => {
   const [createStep, setCreateStep] = useState('create')
-
+  const [tokenId, setTokenId] = useState('')
+  const [txHash, setTxHash] = useState('')
+  const [fileUrl, setFileUrl] = useState('')
+  const [tokenAddress, setTokenAddress] = useState('')
   const [title, setTitle] = useState('Title')
   const [url, setUrl] = useState('')
   const [publicCover, setPublicCover] = useState([])
@@ -105,6 +108,10 @@ const CreateStep = ({ setStep }) => {
           setCreateStep={setCreateStep}
           handleBack={handleBack}
           quantity={quantity}
+          setTokenId={setTokenId}
+          setTxHash={setTxHash}
+          setFileUrl={setFileUrl}
+          setTokenAddress={setTokenAddress}
         />
       ) : null}
       {createStep === 'success' ? (
@@ -116,6 +123,9 @@ const CreateStep = ({ setStep }) => {
           blockChain={blockChain}
           setCreateStep={setCreateStep}
           quantity={quantity}
+          fileUrl={fileUrl}
+          tokenId={tokenId}
+          tokenAddress={tokenAddress}
         />
       ) : null}
     </div>

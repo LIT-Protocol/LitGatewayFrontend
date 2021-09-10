@@ -8,6 +8,20 @@
   box-sizing: border-box;
 }
 
+.error {
+  color: red;
+  flex-basis: 100%;
+  height: 40px;
+  text-align: center;
+}
+
+.loadingBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+}
+
 .reviewStep {
   .title {
     margin-bottom: 60px;
@@ -29,6 +43,7 @@
     margin-top: 100px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
   .ImgPreview {
     height: 200px;

@@ -13,7 +13,7 @@ import { File } from '@consta/uikit/File'
 import { Table } from '@consta/uikit/Table'
 import { Attach } from '@consta/uikit/Attach'
 
-import { getExtension, getImg } from '../../../../../../utils'
+import { getExtension, getImg, openseaUrl } from '../../../../../../utils'
 import HtmlNft from '../HtmlNft'
 
 const SuccessLayout = ({
@@ -24,32 +24,35 @@ const SuccessLayout = ({
   content,
   blockChain,
   quantity,
+  fileUrl,
+  tokenId,
+  tokenAddress,
 }) => {
-  const tableColumns = [
-    {
-      title: 'Name',
-      accessor: 'name',
-      align: 'left',
-      sortable: true,
-      renderCell: (row) => {
-        return <Attach fileName={row.name} fileExtension={row.ext} />
-      },
-    },
-    {
-      title: 'Extension',
-      accessor: 'ext',
-    },
-  ]
+  // const tableColumns = [
+  //   {
+  //     title: 'Name',
+  //     accessor: 'name',
+  //     align: 'left',
+  //     sortable: true,
+  //     renderCell: (row) => {
+  //       return <Attach fileName={row.name} fileExtension={row.ext} />
+  //     },
+  //   },
+  //   {
+  //     title: 'Extension',
+  //     accessor: 'ext',
+  //   },
+  // ]
 
-  const item = {
-    id: 1,
-    title,
-    desc: description,
-    minted: quantity,
-    blockChain,
-    files: content.map((c) => ({ name: c.name, ext: getExtension(c.name) })),
-    img: publicCover?.length ? publicCover[0].dataUrl : getImg(),
-  }
+  // const item = {
+  //   id: 1,
+  //   title,
+  //   desc: description,
+  //   minted: quantity,
+  //   blockChain,
+  //   files: content.map((c) => ({ name: c.name, ext: getExtension(c.name) })),
+  //   img: publicCover?.length ? publicCover[0].dataUrl : getImg(),
+  // }
 
   return (
     <div className={styles.successStep}>
@@ -69,27 +72,36 @@ const SuccessLayout = ({
         </div>
         <div style={{ height: 8 }} />
         <div>
-          <a
-            target="_blank"
-            href="https://ipfs.litgateway.com/ipfs/QmW6uH8p17DcfvZroULkdEDAKThWzEDeNtwi9oezURDeXN"
-          >
-            https://ipfs.litgateway.com/ipfs/QmW6uH8p17DcfvZroULkdEDAKThWzEDeNtwi9oezURDeXN
+          <a target="_blank" href={fileUrl}>
+            {fileUrl}
           </a>{' '}
         </div>
-        <div style={{ height: 32 }} />
-        <div>
-          OpenSea URL{' '}
-          <Button className={styles.copyButton} view="secondary" label="Copy" />
-        </div>
-        <div style={{ height: 8 }} />
-        <div>
-          <a
-            target="_blank"
-            href="https://opensea.io/assets/0xe4cfae3aa41115cb94cff39bb5dbae8bd0ea9d41/403"
-          >
-            https://opensea.io/assets/0xe4cfae3aa41115cb94cff39bb5dbae8bd0ea9d41/403
-          </a>{' '}
-        </div>
+        {blockChain.value === 'ethereum' || blockChain.value === 'polygon' ? (
+          <>
+            <div style={{ height: 32 }} />
+            <div>
+              OpenSea URL{' '}
+              <Button
+                className={styles.copyButton}
+                view="secondary"
+                label="Copy"
+              />
+            </div>
+            <div style={{ height: 8 }} />
+            <div>
+              <a
+                target="_blank"
+                href={openseaUrl({
+                  chain: blockChain.value,
+                  tokenAddress,
+                  tokenId,
+                })}
+              >
+                {openseaUrl({ chain: blockChain.value, tokenAddress, tokenId })}
+              </a>{' '}
+            </div>
+          </>
+        ) : null}
       </div>
       {/* {item.files.length ? (
         <div className={styles.content}>

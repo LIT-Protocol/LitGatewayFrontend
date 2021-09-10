@@ -29,10 +29,16 @@ const HtmlNft = ({
 }) => {
   const [locked, setLocked] = useState(true)
 
+  let showingFiles = []
+
+  if (!locked && previewMode) {
+    showingFiles = content
+  }
+
   return (
     <div className={styles.htmlNft}>
       <div className={styles.card}>
-        {locked ? (
+        {locked && previewMode ? (
           <>
             <div className={styles.img}>
               <img
@@ -55,13 +61,11 @@ const HtmlNft = ({
               ) : null}
             </div>
           </>
-        ) : (
-          <>
-            <div className={styles.lockedContentView}>
-              <MediaGrid files={content} />
-            </div>
-          </>
-        )}
+        ) : null}
+
+        <div id="mediaGridHolder" className={styles.lockedContentView}>
+          <MediaGrid files={showingFiles} />
+        </div>
 
         <div className={styles.bottomBar}>
           <div>
