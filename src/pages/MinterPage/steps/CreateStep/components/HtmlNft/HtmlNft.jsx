@@ -36,55 +36,62 @@ const HtmlNft = ({
   }
 
   return (
-    <div className={styles.htmlNft}>
-      <div className={styles.card}>
-        {(locked && previewMode) || !previewMode ? (
-          <>
-            <div className={styles.img}>
-              <img
-                className={styles.imgPreview}
-                src={publicCover?.length ? publicCover[0].dataUrl : getImg()}
-              />
-            </div>
-            <div className={styles.mainContent}>
-              <h4>{title}</h4>
-              {description ? (
-                <Text
-                  className={styles.text}
-                  as="p"
-                  size="m"
-                  lineHeight="m"
-                  view="primary"
-                >
-                  {description}
-                </Text>
-              ) : null}
-            </div>
-          </>
-        ) : null}
-
-        <div id="mediaGridHolder" className={styles.lockedContentView}>
-          <MediaGrid files={showingFiles} />
-        </div>
-
-        <div className={styles.bottomBar}>
-          <div>
-            {locked ? (
-              <Button
-                onClick={() => setLocked((prevState) => !prevState)}
-                iconLeft={IconLock}
-                label="Unlock"
-                id="unlockButton"
-              />
-            ) : (
-              <Button
-                onClick={() => setLocked((prevState) => !prevState)}
-                iconLeft={IconUnlock}
-                label="Lock"
-              />
-            )}
+    <div className="Theme Theme_color_gpnDefault Theme_control_gpnDefault Theme_font_gpnDefault Theme_size_gpnDefault Theme_space_gpnDefault Theme_shadow_gpnDefault">
+      <div className={styles.htmlNft}>
+        <div className={styles.card}>
+          <div id="lockedHeader" className={styles.lockedHeader}>
+            {(locked && previewMode) || !previewMode ? 'LOCKED' : 'UNLOCKED'}
           </div>
-          <div className={styles.count}>1 of {quantity}</div>
+          <div id="mediaGridHolder" className={styles.lockedContentView}>
+            {(locked && previewMode) || !previewMode ? (
+              <>
+                <div className={styles.img}>
+                  <img
+                    className={styles.imgPreview}
+                    src={
+                      publicCover?.length ? publicCover[0].dataUrl : getImg()
+                    }
+                  />
+                </div>
+                <div className={styles.mainContent}>
+                  <h4>{title}</h4>
+                  {description ? (
+                    <Text
+                      className={styles.text}
+                      as="p"
+                      size="m"
+                      lineHeight="m"
+                      view="primary"
+                    >
+                      {description}
+                    </Text>
+                  ) : null}
+                </div>
+              </>
+            ) : null}
+
+            <MediaGrid files={showingFiles} />
+          </div>
+
+          <div className={styles.bottomBar}>
+            <div>
+              {locked ? (
+                <Button
+                  onClick={() => setLocked((prevState) => !prevState)}
+                  iconLeft={IconLock}
+                  label="Unlock"
+                  id="unlockButton"
+                />
+              ) : (
+                <Button
+                  onClick={() => setLocked((prevState) => !prevState)}
+                  iconLeft={IconUnlock}
+                  label="Lock"
+                />
+              )}
+            </div>
+            <div className={styles.count}>1 of {quantity}</div>
+          </div>
         </div>
       </div>
     </div>
