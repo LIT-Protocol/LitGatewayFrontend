@@ -28,7 +28,7 @@ const Routes = () => {
             <Route path="/guide" exact component={GuidePage} />
             <Route path="/files/view/:fileId" component={ViewFilePage} />
             <Route path="/files/folders/:folderId" component={FilesPage} />
-            <Route path="/files" component={FilesPage} />
+            <Route path="/files" exact component={FilesPage} />
             <Route path="/gallery" exact component={GalleryPage} />
             <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
