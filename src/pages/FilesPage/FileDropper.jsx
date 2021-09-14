@@ -35,11 +35,10 @@ const rejectStyle = {
 }
 
 const FileDropper = ({ onFilesSelected }) => {
-  const [uploading, setUploading] = useState(false)
   const [selectedFiles, setSelectedFiles] = useState([])
 
   const onDrop = useCallback((acceptedFiles) => {
-    // console.log('dropped', acceptedFiles)
+    console.log('dropped', acceptedFiles)
     setSelectedFiles((prevFiles) => [...prevFiles, ...acceptedFiles])
   }, [])
   // console.log(selectedFiles)
@@ -75,7 +74,7 @@ const FileDropper = ({ onFilesSelected }) => {
       align: 'left',
       sortable: true,
       renderCell: (row) => {
-        console.log('rendering', row)
+        // console.log('rendering', row)
         return row.name
       },
     },

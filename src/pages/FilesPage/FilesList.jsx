@@ -22,7 +22,7 @@ import {
 import { patchFile } from '../../api/files'
 
 const FilesList = (props) => {
-  const { rows } = props
+  const { rows, loadFiles } = props
 
   const { performWithAuthSig, tokenList } = useAppContext()
 
@@ -31,9 +31,11 @@ const FilesList = (props) => {
   const [showShareModal, setShowShareModal] = useState(false)
   const [error, setError] = useState(false)
 
+  // called when an additional access control requirement is added to an existing
+  // file
   const onAccessControlConditionsSelected = async (accessControlConditions) => {
     console.log(
-      'in FilesList and onAccessControlConditionsSelected callback called with conditions',
+      'in FilesList and onAccessControlConditionsSelected callback called to add an additional condition with conditions',
       accessControlConditions,
     )
 
@@ -77,6 +79,12 @@ const FilesList = (props) => {
           additionalAccessControlConditions,
           authSig,
         })
+        console.log('file patched, reloading')
+        const files = await loadFiles()
+        // set selectedItem to newly loaded item
+        const newFile = files.find((r) => r.id === selectedItem.id)
+        console.log('new file is', newFile)
+        setSelectedItem(newFile)
       },
       {
         chain,

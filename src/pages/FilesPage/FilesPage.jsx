@@ -37,7 +37,7 @@ const FilesPage = () => {
   const [shareModalStep, setShareModalStep] = useState(null)
 
   const loadFiles = async () => {
-    performWithAuthSig(async (authSig) => {
+    return performWithAuthSig(async (authSig) => {
       const { files, folders, parentFolders } = await getFolder(
         folderId || '',
         { authSig },
@@ -58,6 +58,7 @@ const FilesPage = () => {
           link: `/files/folders/${f.id}`,
         })),
       ])
+      return files
     })
   }
 
@@ -92,6 +93,8 @@ const FilesPage = () => {
       setSelectedFiles(fileMetadatas)
       setShareModalStep('accessCreated')
       setShareModalOpen(true)
+    } else {
+      setUploadingModalOpen(false)
     }
     loadFiles()
   }
@@ -203,7 +206,7 @@ const FilesPage = () => {
 
       <div style={{ height: 32 }} />
 
-      <FilesList rows={rows} />
+      <FilesList rows={rows} loadFiles={loadFiles} />
     </div>
   )
 }
