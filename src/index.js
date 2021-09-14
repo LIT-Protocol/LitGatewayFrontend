@@ -9,6 +9,7 @@ window.litNodeClient = new LitJsSdk.LitNodeClient({
   alertWhenUnauthorized: false,
 })
 window.litNodeClient.connect()
+window.LitJsSdk = LitJsSdk
 
 ReactDOM.render(
   <React.StrictMode>

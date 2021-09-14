@@ -8913,6 +8913,28 @@ lit-js-sdk@^1.1.60:
     uint8arrays "^2.1.5"
     web3modal "^1.9.4"
 
+lit-js-sdk@^1.1.64:
+  version "1.1.64"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.64.tgz#9646b2b8d12dac86764e3f367e49245702fcbbaf"
+  integrity sha512-ZRWJPqpH2d6j36NV8DQMKHZZUOAJ27Kg2TQ0YIRWuChDN7LQxIzaailJKQkOugFu2BAt0+3g5bWKRbH75ImwEQ==
+  dependencies:
+    "@ethersproject/contracts" "^5.2.0"
+    "@ethersproject/hash" "^5.4.0"
+    "@ethersproject/providers" "^5.2.0"
+    "@ethersproject/units" "^5.4.0"
+    "@ethersproject/wallet" "^5.2.0"
+    "@metamask/detect-provider" "^1.2.0"
+    "@unstoppabledomains/resolution" "^5.0.1"
+    "@walletconnect/web3-provider" "^1.6.3"
+    buffer "^6.0.3"
+    jszip "^3.6.0"
+    node-fetch-polyfill "^2.0.6"
+    pako "^2.0.4"
+    tweetnacl "^1.0.3"
+    tweetnacl-util "^0.15.1"
+    uint8arrays "^2.1.5"
+    web3modal "^1.9.4"
+
 load-json-file@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"

@@ -14,6 +14,7 @@ export const AppContextProvider = (props) => {
   const [authSig, setAuthSig] = useState(null)
   const [username, setUsername] = useState(null)
   const [tokenList, setTokenList] = useState(null)
+  const [globalError, setGlobalError] = useState(null)
 
   const performWithAuthSig = async (
     action,
@@ -23,10 +24,29 @@ export const AppContextProvider = (props) => {
 
     let currentAuthSig = authSig
     if (!currentAuthSig) {
-      currentAuthSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
-      setAuthSig(currentAuthSig)
+      try {
+        currentAuthSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+        setAuthSig(currentAuthSig)
 
-      setUsername(await getUsername())
+        setUsername(await getUsername())
+      } catch (e) {
+        console.log(JSON.stringify(e))
+        if (e.errorCode === 'no_wallet') {
+          setGlobalError({
+            title: 'You need a wallet to use Lit Gateway',
+            details: (
+              <>
+                Get one at{' '}
+                <a href="https://metamask.io" target="_blank">
+                  metamask.io
+                </a>
+              </>
+            ),
+          })
+        } else {
+          throw e
+        }
+      }
     }
 
     return await action(currentAuthSig)
@@ -50,6 +70,7 @@ export const AppContextProvider = (props) => {
         performWithAuthSig,
         username,
         tokenList,
+        globalError,
       }}
     >
       {children}

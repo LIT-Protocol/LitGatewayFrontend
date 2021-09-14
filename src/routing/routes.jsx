@@ -2,6 +2,8 @@ import { Route, Switch } from 'react-router-dom'
 
 import styles from '../app.module.scss'
 
+import { Informer } from '@consta/uikit/Informer'
+
 import DiscoverPage from '../pages/DiscoverPage'
 import SingleAppPage from '../pages/SingleAppPage'
 import GuidePage from '../pages/GuidePage'
@@ -15,13 +17,28 @@ import BuildPage from '../pages/BuildPage'
 
 import Navigation from '../components/Navigation'
 
+import { useAppContext } from '../context/app'
+
 const Routes = () => {
+  const { globalError } = useAppContext()
+
   return (
     <>
       <Navigation />
       <Switch>
         <>
           <div id="appWrap" className={styles.wrap}>
+            {globalError ? (
+              <div className={styles.globalError}>
+                <div style={{ height: 24 }} />
+                <Informer
+                  status="alert"
+                  view="filled"
+                  title={globalError.title}
+                  label={globalError.details}
+                />
+              </div>
+            ) : null}
             <Route path={['/', '/discover']} exact component={DiscoverPage} />
             <Route path="/app" component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
