@@ -10,6 +10,7 @@ import { IconDocFilled } from '@consta/uikit/IconDocFilled'
 import { IconConnection } from '@consta/uikit/IconConnection'
 import { IconFolders } from '@consta/uikit/IconFolders'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
+import { Informer } from '@consta/uikit/Informer'
 
 import { useAppContext } from '../../context'
 
@@ -23,11 +24,12 @@ import { patchFile } from '../../api/files'
 const FilesList = (props) => {
   const { rows } = props
 
-  const { performWithAuthSig } = useAppContext()
+  const { performWithAuthSig, tokenList } = useAppContext()
 
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
   const [showShareModal, setShowShareModal] = useState(false)
+  const [error, setError] = useState(false)
 
   const onAccessControlConditionsSelected = async (accessControlConditions) => {
     console.log(
@@ -88,9 +90,13 @@ const FilesList = (props) => {
   }
 
   const downloadFile = async (file) => {
+    setError(false)
     setDownloadingIds((prev) => [...prev, file.id])
-    await decryptAndDownload({ file })
+    const { error } = await decryptAndDownload({ file, tokenList })
     setDownloadingIds((prev) => prev.filter((f) => f !== file.id))
+    if (error) {
+      setError(error)
+    }
   }
 
   const closeShareModal = () => {
@@ -176,6 +182,17 @@ const FilesList = (props) => {
 
   return (
     <>
+      {error ? (
+        <>
+          <Informer
+            status="alert"
+            view="filled"
+            title={error.title}
+            label={error.details}
+          />
+          <div style={{ height: 24 }} />
+        </>
+      ) : null}
       <Table
         columns={fileTableColumns}
         rows={rows}

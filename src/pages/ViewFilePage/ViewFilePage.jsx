@@ -7,11 +7,16 @@ import { Button } from '@consta/uikit/Button'
 import { IconDownload } from '@consta/uikit/IconDownload'
 import { humanFileSize, decryptAndDownload } from '../../utils/files'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
+import { Informer } from '@consta/uikit/Informer'
+import LitJsSdk from 'lit-js-sdk'
+import { useAppContext } from '../../context/app'
 
 const ViewFilePage = () => {
   let { fileId } = useParams()
+  const { tokenList } = useAppContext()
   const [file, setFile] = useState({})
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   useEffect(() => {
     const getTheFile = async () => {
       console.log('getting file ', fileId)
@@ -26,8 +31,12 @@ const ViewFilePage = () => {
 
   const downloadFile = async () => {
     setLoading(true)
-    await decryptAndDownload({ file, chain: file.chain })
+    setError(false)
+    const { error } = await decryptAndDownload({ file, tokenList })
     setLoading(false)
+    if (error) {
+      setError(error)
+    }
   }
 
   return (
@@ -45,6 +54,17 @@ const ViewFilePage = () => {
           onClick={downloadFile}
         />
       )}
+      {error ? (
+        <>
+          <div style={{ height: 24 }} />
+          <Informer
+            status="alert"
+            view="filled"
+            title={error.title}
+            label={error.details}
+          />
+        </>
+      ) : null}
     </div>
   )
 }

@@ -13,6 +13,7 @@ export const AppContextProvider = (props) => {
   const [sideBar, setSideBar] = useState(false)
   const [authSig, setAuthSig] = useState(null)
   const [username, setUsername] = useState(null)
+  const [tokenList, setTokenList] = useState(null)
 
   const performWithAuthSig = async (
     action,
@@ -33,6 +34,11 @@ export const AppContextProvider = (props) => {
 
   useEffect(() => {
     window.performWithAuthSig = performWithAuthSig
+    const go = async () => {
+      const tokens = await LitJsSdk.getTokenList()
+      setTokenList(tokens)
+    }
+    go()
   }, [])
 
   return (
@@ -43,6 +49,7 @@ export const AppContextProvider = (props) => {
         authSig,
         performWithAuthSig,
         username,
+        tokenList,
       }}
     >
       {children}

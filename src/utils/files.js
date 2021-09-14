@@ -44,7 +44,7 @@ export function humanFileSize(bytes, si = true, dp = 0) {
   return bytes.toFixed(dp) + ' ' + units[u]
 }
 
-export const decryptAndDownload = async ({ file }) => {
+export const decryptAndDownload = async ({ file, tokenList }) => {
   console.log('decryptAndDownload ', file)
   const chain = file.accessControlConditions[0].chain
 
@@ -73,7 +73,17 @@ export const decryptAndDownload = async ({ file }) => {
         console.log(e)
         if (e.code === 'not_authorized') {
           console.log('not authorized')
-          return false
+          const humanized = await LitJsSdk.humanizeAccessControlConditions({
+            accessControlConditions: file.accessControlConditions,
+            tokenList,
+          })
+          return {
+            error: {
+              title:
+                "Unable to download file.  You probably don't meet the access control conditions below",
+              details: humanized.map((f, i) => <div key={i}>{f}</div>),
+            },
+          }
         }
       }
 
@@ -82,7 +92,7 @@ export const decryptAndDownload = async ({ file }) => {
         mimetype: metadata.type,
         data: new Uint8Array(decryptedFile),
       })
-      return true
+      return { success: true }
     },
     { chain },
   )
