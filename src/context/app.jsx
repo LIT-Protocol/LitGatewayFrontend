@@ -43,6 +43,7 @@ export const AppContextProvider = (props) => {
               </>
             ),
           })
+          return false
         } else {
           throw e
         }
