@@ -8879,44 +8879,22 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lit-access-control-conditions-modal@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/lit-access-control-conditions-modal/-/lit-access-control-conditions-modal-1.1.5.tgz#e59dde62ae77b82d63525d1b130d380e9ac4c878"
-  integrity sha512-JGEWZa9EudcDQAcS3aSnfOWD8yG5Fs4ZuT4LVzlFYvmfwUGMkdgIVBaBgUZMY+EcUx6uSDLD5S33CS7nt8PCLw==
+lit-access-control-conditions-modal@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/lit-access-control-conditions-modal/-/lit-access-control-conditions-modal-1.1.6.tgz#900735c259fe85fdc7c43b959f8a94c41f8b23cd"
+  integrity sha512-E/b0ZCnydS62vFdpljFGzpk3gPXIzLw/axJT3OSIQoilFmVmToaG4zmjAi1jhqD3wkdWvMLf3nqwG7R8TL0ksw==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@consta/uikit" "^3.0.0"
     classnames "^2.3.1"
-    lit-js-sdk "^1.1.60"
+    lit-js-sdk "^1.1.65"
     react-select-virtualized "^3.5.0"
     react-virtualized "^9.22.3"
 
-lit-js-sdk@^1.1.60:
-  version "1.1.60"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.60.tgz#335f79dc4564932d01b61836e9bdd005f1c42b1d"
-  integrity sha512-HsV8r0U64IhUhAL26r9vUK2Ysdamgw9jon+eNuRDztKIAS+uNsJfmB+YQXYJlaZi37/dLRvr5+RLJqWsyYKz4g==
-  dependencies:
-    "@ethersproject/contracts" "^5.2.0"
-    "@ethersproject/hash" "^5.4.0"
-    "@ethersproject/providers" "^5.2.0"
-    "@ethersproject/units" "^5.4.0"
-    "@ethersproject/wallet" "^5.2.0"
-    "@metamask/detect-provider" "^1.2.0"
-    "@unstoppabledomains/resolution" "^5.0.1"
-    "@walletconnect/web3-provider" "^1.6.3"
-    buffer "^6.0.3"
-    jszip "^3.6.0"
-    node-fetch-polyfill "^2.0.6"
-    pako "^2.0.4"
-    tweetnacl "^1.0.3"
-    tweetnacl-util "^0.15.1"
-    uint8arrays "^2.1.5"
-    web3modal "^1.9.4"
-
-lit-js-sdk@^1.1.64:
-  version "1.1.64"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.64.tgz#9646b2b8d12dac86764e3f367e49245702fcbbaf"
-  integrity sha512-ZRWJPqpH2d6j36NV8DQMKHZZUOAJ27Kg2TQ0YIRWuChDN7LQxIzaailJKQkOugFu2BAt0+3g5bWKRbH75ImwEQ==
+lit-js-sdk@^1.1.65:
+  version "1.1.65"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.65.tgz#f34bb28b7891a313bb19c59b1860e7dfa987969f"
+  integrity sha512-olmCPF6A41aUmbnAScd69VWaYRS81+v/vQlewiJ28ZPvgBX3JnB3lc6YNTtv1UJZ0taUC7nDFcZ/gWj3S6wJzg==
   dependencies:
     "@ethersproject/contracts" "^5.2.0"
     "@ethersproject/hash" "^5.4.0"
