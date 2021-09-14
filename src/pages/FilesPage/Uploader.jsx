@@ -37,6 +37,8 @@ const Uploader = ({
       performWithAuthSig(
         async (authSig) => {
           setUploading(true)
+          console.log('Uploading...')
+          console.log(`There are ${uploadItems.length} items to upload`)
 
           const fileUploadPromises = []
           const fileMetadatas = []

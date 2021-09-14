@@ -30,7 +30,7 @@ export const AppContextProvider = (props) => {
 
         setUsername(await getUsername())
       } catch (e) {
-        console.log(JSON.stringify(e))
+        console.log(e)
         if (e.errorCode === 'no_wallet') {
           setGlobalError({
             title: 'You need a wallet to use Lit Gateway',
