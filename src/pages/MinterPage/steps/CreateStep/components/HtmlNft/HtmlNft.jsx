@@ -90,12 +90,14 @@ const HtmlNft = ({
                 />
               )}
             </div>
-            {!previewMode ? (
-              <div id="loadingText">Connecting to Lit Network... </div>
-            ) : null}
             <div className={styles.count}>1 of {quantity}</div>
           </div>
         </div>
+        {!previewMode ? (
+          <div className={styles.loadingText} id="loadingText">
+            Connecting to Lit Network...
+          </div>
+        ) : null}
       </div>
     </div>
   )
