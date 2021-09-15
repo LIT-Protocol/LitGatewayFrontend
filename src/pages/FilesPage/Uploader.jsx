@@ -40,6 +40,29 @@ const Uploader = ({
           console.log('Uploading...')
           console.log(`There are ${uploadItems.length} items to upload`)
 
+          const creatorAccessControlCondition = [
+            {
+              contractAddress: '',
+              standardContractType: '',
+              chain,
+              method: '',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '=',
+                value: authSig.address,
+              },
+            },
+          ]
+
+          console.log(
+            'creatorAccessControlCondition',
+            creatorAccessControlCondition,
+          )
+          console.log(
+            'rest of accessControlConditions',
+            accessControlConditions,
+          )
+
           const fileUploadPromises = []
           const fileMetadatas = []
           for (let i = 0; i < uploadItems.length; i++) {
@@ -50,14 +73,30 @@ const Uploader = ({
             const fileId = uuidv4()
             const fileShareUrl = getSharingLink({ id: fileId, ipfsHash: true })
             const readme = `Well hello there!  If you're reading this, then you are looking at a zip file with assets encrypted via the Lit Protocol.  You won't be able to open these encrypted assets unless you meet the on-chain access control conditions and use the Lit JS SDK to decrypt them.  To decrypt this file, please visit this url in your browser: ${fileShareUrl}`
-            const { zipBlob, encryptedSymmetricKey } =
+
+            // so first, we encrypt the file itself with a random symmetric key
+            // using the creator's address as the access control condition.
+            // this ensures that the creator will always be able to access and
+            // reencrypt the file if needed
+            const { zipBlob, encryptedSymmetricKey, symmetricKey } =
               await LitJsSdk.encryptFileAndZipWithMetadata({
                 authSig,
-                accessControlConditions,
+                accessControlConditions: creatorAccessControlCondition,
                 chain,
                 file,
                 litNodeClient: window.litNodeClient,
                 readme,
+              })
+
+            // second, we encrypt the symmetric key generated above with a NEW random
+            // symmetric key under the access control conditions defined by the user in the modal
+            // this is added as an additionalAccessControlCondition on the file
+            const additionalAccessControlConditionEncryptedSymmetricKey =
+              await window.litNodeClient.saveEncryptionKey({
+                accessControlConditions,
+                chain,
+                authSig,
+                symmetricKey,
               })
 
             const formData = new FormData()
