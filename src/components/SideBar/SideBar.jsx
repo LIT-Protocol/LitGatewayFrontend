@@ -82,19 +82,12 @@ const IconComponent = (icon, disabled) => {
 }
 
 const SideBar = () => {
-  const [chain, setChain] = useState(null)
-
-  const { sideBar, username, setSideBar, setUsername, setAuthSig } =
-    useAppContext()
+  const { sideBar, username, setSideBar, handleLogout } = useAppContext()
 
   const userItems = [
     {
       name: 'Logout',
-      action: () => {
-        localStorage.removeItem('lit-auth-signature')
-        setUsername(null)
-        setAuthSig(null)
-      },
+      action: handleLogout,
     },
   ]
 

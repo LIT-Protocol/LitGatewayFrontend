@@ -64,10 +64,18 @@ const FilesPage = () => {
 
   useEffect(() => {
     loadFiles()
+
+    const accountsChanged = function (accounts) {
+      loadFiles()
+    }
     if (window.ethereum) {
-      window.ethereum.on('accountsChanged', function (accounts) {
-        loadFiles()
-      })
+      window.ethereum.on('accountsChanged', accountsChanged)
+    }
+
+    return () => {
+      if (window.ethereum) {
+        window.ethereum.removeListener('accountsChanged', accountsChanged)
+      }
     }
   }, [folderId])
 
@@ -183,11 +191,7 @@ const FilesPage = () => {
       </Modal>
 
       {uploadingModalOpen ? (
-        <Modal
-          isOpen={uploadingModalOpen}
-          hasOverlay
-          onOverlayClick={() => setUploadingModalOpen(false)}
-        >
+        <Modal isOpen={uploadingModalOpen} hasOverlay>
           <div style={{ margin: 16 }}>
             <Uploader
               uploadItems={selectedFiles}

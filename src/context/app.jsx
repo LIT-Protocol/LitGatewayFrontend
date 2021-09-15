@@ -53,6 +53,12 @@ export const AppContextProvider = (props) => {
     return await action(currentAuthSig)
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('lit-auth-signature')
+    setUsername(null)
+    setAuthSig(null)
+  }
+
   useEffect(() => {
     window.performWithAuthSig = performWithAuthSig
     const go = async () => {
@@ -61,10 +67,18 @@ export const AppContextProvider = (props) => {
     }
     go()
 
+    const accountsChanged = async function (accounts) {
+      handleLogout()
+      setUsername(await getUsername())
+    }
     if (window.ethereum) {
-      window.ethereum.on('accountsChanged', async function (accounts) {
-        setUsername(await getUsername())
-      })
+      window.ethereum.on('accountsChanged', accountsChanged)
+    }
+
+    return () => {
+      if (window.ethereum) {
+        window.ethereum.removeListener('accountsChanged', accountsChanged)
+      }
     }
   }, [])
 
@@ -78,8 +92,7 @@ export const AppContextProvider = (props) => {
         username,
         tokenList,
         globalError,
-        setUsername,
-        setAuthSig,
+        handleLogout,
       }}
     >
       {children}
