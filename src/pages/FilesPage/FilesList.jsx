@@ -53,6 +53,8 @@ const FilesList = (props) => {
         })
 
         // re-encrypt symmetric key
+        // the BLS encryption is non-deterministic so this will "just work"
+        // even though we are storing the same symmetric key
         const encryptedSymmetricKey =
           await window.litNodeClient.saveEncryptionKey({
             accessControlConditions,

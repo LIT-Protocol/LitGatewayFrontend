@@ -88,9 +88,11 @@ const Uploader = ({
                 readme,
               })
 
-            // second, we encrypt the symmetric key generated above with a NEW random
-            // symmetric key under the access control conditions defined by the user in the modal
+            // second, we encrypt the symmetric key generated above under the
+            // access control conditions defined by the user in the modal
             // this is added as an additionalAccessControlCondition on the file
+            // the BLS encryption is non-deterministic so this will "just work"
+            // even though we are storing the same symmetric key
             const additionalAccessControlConditionEncryptedSymmetricKey =
               await window.litNodeClient.saveEncryptionKey({
                 accessControlConditions,
@@ -98,6 +100,16 @@ const Uploader = ({
                 authSig,
                 symmetricKey,
               })
+
+            const additionalAccessControlConditions = [
+              {
+                accessControlConditions,
+                encryptedSymmetricKey: uint8arrayToString(
+                  additionalAccessControlConditionEncryptedSymmetricKey,
+                  'base16',
+                ),
+              },
+            ]
 
             const formData = new FormData()
             formData.append('file', zipBlob)
@@ -127,7 +139,7 @@ const Uploader = ({
                   const { data } = response
                   console.log('file uploaded: ', data)
                   return LitJsSdk.hashAccessControlConditions(
-                    accessControlConditions,
+                    creatorAccessControlCondition,
                   ).then((accessControlConditionsHashAsArrayBuffer) => {
                     const accessControlConditionsHash = uint8arrayToString(
                       new Uint8Array(accessControlConditionsHashAsArrayBuffer),
@@ -145,8 +157,9 @@ const Uploader = ({
                       ipfsHash: data.IpfsHash,
                       extension,
                       uploadedAt: Math.floor(Date.now() / 1000),
-                      accessControlConditions,
+                      accessControlConditions: creatorAccessControlCondition,
                       accessControlConditionsHash,
+                      additionalAccessControlConditions,
                       fileId,
                       chain,
                       encryptedSymmetricKey: uint8arrayToString(
