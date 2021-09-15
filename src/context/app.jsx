@@ -60,6 +60,12 @@ export const AppContextProvider = (props) => {
       setTokenList(tokens)
     }
     go()
+
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', async function (accounts) {
+        setUsername(await getUsername())
+      })
+    }
   }, [])
 
   return (
@@ -72,6 +78,8 @@ export const AppContextProvider = (props) => {
         username,
         tokenList,
         globalError,
+        setUsername,
+        setAuthSig,
       }}
     >
       {children}

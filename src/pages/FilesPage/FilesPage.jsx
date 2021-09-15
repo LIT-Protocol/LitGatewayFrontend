@@ -64,6 +64,11 @@ const FilesPage = () => {
 
   useEffect(() => {
     loadFiles()
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', function (accounts) {
+        loadFiles()
+      })
+    }
   }, [folderId])
 
   const onFilesSelected = (selectedFiles) => {
