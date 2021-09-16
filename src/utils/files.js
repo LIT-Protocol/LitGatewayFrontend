@@ -73,10 +73,27 @@ export const decryptAndDownload = async ({ file, tokenList }) => {
         console.log(e)
         if (e.code === 'not_authorized') {
           console.log('not authorized')
-          const humanized = await LitJsSdk.humanizeAccessControlConditions({
-            accessControlConditions: file.accessControlConditions,
-            tokenList,
-          })
+          const humanized = []
+          humanized.push(
+            await LitJsSdk.humanizeAccessControlConditions({
+              accessControlConditions: file.accessControlConditions,
+              tokenList,
+            }),
+          )
+          for (
+            let i = 0;
+            i < file.additionalAccessControlConditions.length;
+            i++
+          ) {
+            humanized.push(
+              await LitJsSdk.humanizeAccessControlConditions({
+                accessControlConditions:
+                  file.additionalAccessControlConditions[i]
+                    .accessControlConditions,
+                tokenList,
+              }),
+            )
+          }
           return {
             error: {
               title:
