@@ -5,6 +5,16 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import LitJsSdk from 'lit-js-sdk'
 
+import Bugsnag from '@bugsnag/js'
+import BugsnagPluginReact from '@bugsnag/plugin-react'
+
+Bugsnag.start({
+  apiKey: '8825b63a842db5a4bd6413457c0f9e66',
+  plugins: [new BugsnagPluginReact()],
+})
+
+const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React)
+
 window.litNodeClient = new LitJsSdk.LitNodeClient({
   alertWhenUnauthorized: false,
 })
@@ -13,7 +23,9 @@ window.LitJsSdk = LitJsSdk
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root'),
 )
