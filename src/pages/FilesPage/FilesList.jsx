@@ -24,7 +24,7 @@ import { patchFile } from '../../api/files'
 const FilesList = (props) => {
   const { rows, loadFiles } = props
 
-  const { performWithAuthSig, tokenList } = useAppContext()
+  const { performWithAuthSig, tokenList, authSig } = useAppContext()
 
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
@@ -161,29 +161,38 @@ const FilesList = (props) => {
     {
       title: 'Actions',
       renderCell: (row) => {
+        console.log('row', row)
+
         return (
           <>
-            {downloadingIds.includes(row.id) ? (
-              <ProgressSpin />
-            ) : (
+            {/* only show download button if this is a file and not a folder */}
+            {row.ipfsHash ? (
+              downloadingIds.includes(row.id) ? (
+                <ProgressSpin />
+              ) : (
+                <Button
+                  label="Download"
+                  onClick={() => downloadFile(row)}
+                  iconLeft={IconDownload}
+                  onlyIcon
+                  size="s"
+                  view="clear"
+                />
+              )
+            ) : null}
+
+            {/* only show share button if user is the original creator */}
+            {/* or, show it if the thing is a folder */}
+            {(authSig && authSig.address === row.creatorId) || !row.ipfsHash ? (
               <Button
-                label="Download"
-                onClick={() => downloadFile(row)}
-                iconLeft={IconDownload}
+                label="Share"
+                onClick={() => showFileLink(row)}
+                iconLeft={IconConnection}
                 onlyIcon
                 size="s"
                 view="clear"
               />
-            )}
-
-            <Button
-              label="Share"
-              onClick={() => showFileLink(row)}
-              iconLeft={IconConnection}
-              onlyIcon
-              size="s"
-              view="clear"
-            />
+            ) : null}
           </>
         )
       },
