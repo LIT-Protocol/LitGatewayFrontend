@@ -11,6 +11,11 @@ import BugsnagPluginReact from '@bugsnag/plugin-react'
 Bugsnag.start({
   apiKey: '8825b63a842db5a4bd6413457c0f9e66',
   plugins: [new BugsnagPluginReact()],
+  onError: function (event) {
+    if (window.ethAddress) {
+      event.setUser(window.ethAddress)
+    }
+  },
 })
 
 const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React)

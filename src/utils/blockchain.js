@@ -6,6 +6,9 @@ export const shortenAddress = (address) =>
 export const getUsername = async (address) => {
   const { web3, account } = await LitJsSdk.connectWeb3()
 
+  window.ethAddress = account
+  window.FS.identify(account)
+
   let name
   try {
     name = await web3.lookupAddress(address || account)
