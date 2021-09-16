@@ -64,19 +64,6 @@ const FilesPage = () => {
 
   useEffect(() => {
     loadFiles()
-
-    const accountsChanged = function (accounts) {
-      loadFiles()
-    }
-    if (window.ethereum) {
-      window.ethereum.on('accountsChanged', accountsChanged)
-    }
-
-    return () => {
-      if (window.ethereum) {
-        window.ethereum.removeListener('accountsChanged', accountsChanged)
-      }
-    }
   }, [folderId])
 
   const onFilesSelected = (selectedFiles) => {
