@@ -5,7 +5,14 @@ export const shortenAddress = (address) =>
 
 export const getUsername = async (address) => {
   const { web3, account } = await LitJsSdk.connectWeb3()
-  const name = await web3.lookupAddress(address || account)
+
+  let name
+  try {
+    name = await web3.lookupAddress(address || account)
+  } catch (e) {
+    console.log(e)
+    console.log('error getting username.  user is probably not on ETH network.')
+  }
 
   return name || shortenAddress(address || account)
 }

@@ -27,7 +27,6 @@ export const AppContextProvider = (props) => {
       try {
         currentAuthSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
         setAuthSig(currentAuthSig)
-
         setUsername(await getUsername())
       } catch (e) {
         console.log(e)
