@@ -31,7 +31,7 @@ export const AppContextProvider = (props) => {
         setUsername(await getUsername())
       } catch (e) {
         console.log(e)
-        if (e.errorCode === 'no_wallet') {
+        if (e?.errorCode === 'no_wallet') {
           setGlobalError({
             title: 'You need a wallet to use Lit Gateway',
             details: (
@@ -42,6 +42,12 @@ export const AppContextProvider = (props) => {
                 </a>
               </>
             ),
+          })
+          return false
+        } else if (e?.errorCode === 'wrong_network') {
+          setGlobalError({
+            title: e.message,
+            details: '',
           })
           return false
         } else {

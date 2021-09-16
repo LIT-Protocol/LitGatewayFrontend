@@ -8832,10 +8832,10 @@ lit-access-control-conditions-modal@^1.1.8:
     react-select-virtualized "^3.5.0"
     react-virtualized "^9.22.3"
 
-lit-js-sdk@^1.1.68:
-  version "1.1.68"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.68.tgz#c72851a8c2769c83c773aa22a2a2a57c0bd78b5d"
-  integrity sha512-NNWq56aol8A5ta95Qhq0w6gsyg0C1axG/1hWzDySCU5fFGCBmwjjtcLsr4sEMxRiL8J575Ek+vODXQgjFtUxeg==
+lit-js-sdk@^1.1.70:
+  version "1.1.70"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.70.tgz#634d51c120492d7945c8b56694ccc7ee26a639ed"
+  integrity sha512-TF2PBX6BvkBk6jhBWIQJ+5gNsN11i/4kyNJpt9l+VuMRR/CoA+iJOX1a7ML22KYQZtG+5yCy9VbATzDMwWrbAA==
   dependencies:
     "@ethersproject/contracts" "^5.2.0"
     "@ethersproject/hash" "^5.4.0"

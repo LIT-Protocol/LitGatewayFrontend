@@ -71,7 +71,7 @@ export const decryptAndDownload = async ({ file, tokenList }) => {
         metadata = resp.metadata
       } catch (e) {
         console.log(e)
-        if (e.code === 'not_authorized') {
+        if (e.errorCode === 'not_authorized') {
           console.log('not authorized')
           const humanized = []
           humanized.push(
