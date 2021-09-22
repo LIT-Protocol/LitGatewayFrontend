@@ -49,7 +49,7 @@ const SideBar = () => {
 
   const menuItems = [
     {
-      title: 'discover',
+      title: 'Discover',
       icon: (
         <svg
           width="37"

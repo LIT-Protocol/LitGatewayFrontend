@@ -77,14 +77,14 @@ const HeaderComponent = () => {
                 ac
                 to={'/about'}
               >
-                about
+                About
               </NavLink>
               <NavLink
                 activeClassName={styles.activeLink}
                 className={styles.link}
                 to={'/connect'}
               >
-                connect wallet
+                Connect Wallet
               </NavLink>
             </div>
           </HeaderModule>
