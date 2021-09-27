@@ -78,6 +78,7 @@ export const decryptAndDownload = async ({ file, tokenList }) => {
             await LitJsSdk.humanizeAccessControlConditions({
               accessControlConditions: file.accessControlConditions,
               tokenList,
+              myWalletAddress: authSig.address,
             }),
           )
           for (
@@ -91,6 +92,7 @@ export const decryptAndDownload = async ({ file, tokenList }) => {
                   file.additionalAccessControlConditions[i]
                     .accessControlConditions,
                 tokenList,
+                myWalletAddress: authSig.address,
               }),
             )
           }

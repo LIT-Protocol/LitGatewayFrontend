@@ -230,6 +230,7 @@ const FilesList = (props) => {
               ? 'Anyone with the link can see the files, but only authorized wallets can open them'
               : null
           }
+          myWalletAddress={authSig && authSig.address}
         />
       ) : null}
     </>
