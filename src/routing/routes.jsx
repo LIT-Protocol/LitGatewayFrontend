@@ -14,6 +14,7 @@ import GalleryPage from '../pages/GalleryPage'
 import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
 import BuildPage from '../pages/BuildPage'
+import TwitterClaimNftPage from '../pages/TwitterClaimNftPage/TwitterClaimNftPage'
 
 import Navigation from '../components/Navigation'
 
@@ -50,6 +51,7 @@ const Routes = () => {
             <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
             <Route path="/build" component={BuildPage} />
+            <Route path="/twitterClaimNft" component={TwitterClaimNftPage} />
           </div>
         </>
       </Switch>

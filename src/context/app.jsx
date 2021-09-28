@@ -97,6 +97,7 @@ export const AppContextProvider = (props) => {
         username,
         tokenList,
         globalError,
+        setGlobalError,
         handleLogout,
       }}
     >
