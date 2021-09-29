@@ -158,6 +158,9 @@
   }
   @media (max-width: 500px) {
     width: 100vw;
+    max-height: calc(100vh - 100px);
+    position: fixed;
+    overflow-y: auto;
   }
 
   @media (max-width: 450px) {
