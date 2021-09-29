@@ -25,7 +25,9 @@ const Card = ({ img, titleIcon, title, desc, btns, tags }) => {
         <div className={styles.desc}>{desc}</div>
         <div className={styles.tags}>
           {tags?.length &&
-            tags.map((tag) => <Tag className={styles.tag} label={tag} />)}
+            tags.map((tag) => (
+              <Tag size="l" className={styles.tag} label={tag} />
+            ))}
         </div>
       </div>
       <div className={styles.btns}>{btns}</div>
