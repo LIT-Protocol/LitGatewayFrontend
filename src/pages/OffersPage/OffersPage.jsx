@@ -38,9 +38,10 @@ const OffersPage = () => {
                   <Button
                     className={styles.secondaryBtn}
                     view="secondary"
+                    size="l"
                     label="Details"
                   />
-                  <Button label="Launch" />
+                  <Button label="Launch" size="l" />
                 </>
               }
               desc={
@@ -56,7 +57,7 @@ const OffersPage = () => {
               title="Zoom"
               titleIcon={zoomLogo}
               tags={['Productivity']}
-              btns={<Button label="Details" />}
+              btns={<Button size="l" label="Details" />}
               desc={
                 <div className={styles.desc}>
                   Grant access to Google Docs with blockchain requirements
@@ -70,7 +71,7 @@ const OffersPage = () => {
               title="Google Docs"
               titleIcon={titleIcon}
               tags={['Axie Infinity', 'Gaming']}
-              btns={<Button label="Details" />}
+              btns={<Button size="l" label="Details" />}
               desc={
                 <div className={styles.desc}>
                   Grant access to Google Docs with blockchain requirements
@@ -85,7 +86,7 @@ const OffersPage = () => {
 Axie Infinity Players"
               titleIcon={appLogo}
               tags={['Axie Infinity', 'Gaming']}
-              btns={<Button label="Details" />}
+              btns={<Button size="l" label="Details" />}
               desc={
                 <div className={styles.descList}>
                   <ul>
@@ -107,7 +108,7 @@ Axie Infinity Players"
 Axie Infinity Players"
               titleIcon={appLogo}
               tags={['Axie Infinity', 'Gaming']}
-              btns={<Button label="Details" />}
+              btns={<Button size="l" label="Details" />}
               desc={
                 <div className={styles.descList}>
                   <ul>
@@ -129,7 +130,7 @@ Axie Infinity Players"
 Axie Infinity Players"
               titleIcon={appLogo}
               tags={['Axie Infinity', 'Gaming']}
-              btns={<Button label="Details" />}
+              btns={<Button size="l" label="Details" />}
               desc={
                 <div className={styles.descList}>
                   <ul>
