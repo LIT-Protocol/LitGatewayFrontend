@@ -12,27 +12,6 @@ import UserBlock from '../UserBlock'
 
 import { useAppContext } from '../../context/app'
 
-import iconCreate from './assets/IconTest.svg'
-
-const componentsIcons = {
-  star: Icon.Star,
-  play: Icon.Play,
-  video: Icon.Video,
-  message: Icon.MessageSquare,
-  chart: Icon.BarChart,
-  briefcase: Icon.Briefcase,
-  file: Icon.File,
-  login: Icon.LogIn,
-  code: Icon.Code,
-  box: Icon.Box,
-  book: Icon.BookOpen,
-}
-
-const IconComponent = (icon, disabled) => {
-  const Component = componentsIcons[icon]
-  return <Component view={disabled ? 'ghost' : 'secondary'} />
-}
-
 const SideBar = () => {
   const { sideBar, username, setSideBar, handleLogout } = useAppContext()
 

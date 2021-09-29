@@ -3,6 +3,15 @@ import { Link, useHistory } from 'react-router-dom'
 
 import styles from './discover-page.module.scss'
 
+import Background from './assets/paul-gilmore-8kDOOrs608I-unsplash.jpg'
+import Card1 from './assets/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg'
+import Card2 from './assets/markus-winkler-cV9-hOgoaok-unsplash.jpg'
+import Card3 from './assets/kelly-sikkema-Kl1gC0ve620-unsplash.jpg'
+import Card4 from './assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
+import titleIcon from './assets/Docs-icon.svg'
+import zoomLogo from './assets/zoom.png'
+import appLogo from './assets/appLogo.png'
+
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Modal } from '@consta/uikit/Modal'
@@ -10,13 +19,7 @@ import { IconClose } from '@consta/uikit/IconClose'
 
 import { useAppContext } from '../../context'
 
-import Background from './assets/paul-gilmore-8kDOOrs608I-unsplash.jpg'
-import Card1 from './assets/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg'
-import Card2 from './assets/markus-winkler-cV9-hOgoaok-unsplash.jpg'
-import Card3 from './assets/kelly-sikkema-Kl1gC0ve620-unsplash.jpg'
-import Card4 from './assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
-
-import InputWrapper from '../../components/InputWrapper'
+import { InputWrapper, Card } from '../../components'
 
 import { putUser } from '../../api/users'
 

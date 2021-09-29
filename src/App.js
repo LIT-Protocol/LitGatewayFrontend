@@ -6,7 +6,9 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import Routes from './routing/routes'
 
-import { Theme, presetGpnDefault } from '@consta/uikit/Theme'
+import { Theme } from '@consta/uikit/Theme'
+
+import { presetGpnDefault } from '../src/newPreset/presets/presetGpnDefault'
 
 import { AppContextProvider } from './context/app'
 
