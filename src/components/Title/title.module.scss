@@ -1,0 +1,23 @@
+@import '../../vars.scss';
+
+.title {
+  margin-top: 90px;
+  margin-bottom: 100px;
+  h2 {
+    font-family: Space Grotesk;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 150%;
+    position: relative;
+    margin: 0;
+    &:before {
+      position: absolute;
+      top: -23px;
+      background-color: #bfa1ff;
+      height: 5px;
+      width: 68px;
+      content: '';
+    }
+  }
+}

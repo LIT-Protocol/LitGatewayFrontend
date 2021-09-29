@@ -1,5 +1,5 @@
 .main {
-  max-width: 1260px;
+  max-width: 1320px;
   padding: 0 15px;
   width: 100%;
   margin: 50px auto;
@@ -26,6 +26,40 @@
 
 .smallCards {
   margin-top: 24px;
+}
+
+.secondaryBtn {
+  background-color: white !important;
+  &:hover {
+    background-color: white !important;
+  }
+}
+
+.desc {
+  font-size: 16px;
+  line-height: 150%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 32px;
+}
+
+.descList {
+  margin-bottom: 14px;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      span {
+        font-weight: normal;
+      }
+    }
+  }
 }
 
 .card {
