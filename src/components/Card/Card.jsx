@@ -6,14 +6,14 @@ import { Tag } from '@consta/uikit/Tag'
 
 import { getImg } from '../../utils'
 
-const Card = ({ img, titleIcon, title, desc, btns, tags }) => {
+const Card = ({ bgImg, titleIcon, title, desc, btns, tags }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imgWrap}>
         <div
           className={styles.img}
           style={{
-            backgroundImage: `url(${getImg(img)})`,
+            backgroundImage: `url(${getImg(bgImg)})`,
           }}
         />
       </div>
