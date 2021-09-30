@@ -15,21 +15,22 @@ import { REACT_APP_LIT_GATEWAY_LIT_OG_NFT_TOKEN_ADDRESS } from '../../config'
 const TwitterClaimNftPage = () => {
   const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
   const [successMessage, setSuccessMessage] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
-  const handleConnectTwitter = async () => {
-    performWithAuthSig(async (authSig) => {
-      setGlobalError(null)
-      const resp = await twitterOauthUrl({ authSig })
-      if (resp && resp.error) {
-        setGlobalError({ title: resp.error })
-        return
-      }
-
-      console.log(resp)
-      window.location = resp.url
-    })
-  }
+  useEffect(() => {
+    if (window.litNodeClient.ready) {
+      handleClaimNft()
+    } else {
+      // wait for network to connect
+      document.addEventListener(
+        'lit-ready',
+        function (e) {
+          handleClaimNft()
+        },
+        false,
+      )
+    }
+  }, [])
 
   const handleClaimNft = () => {
     setGlobalError(null)
@@ -124,19 +125,7 @@ const TwitterClaimNftPage = () => {
 
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>Claim your Lit OG NFT</h1>
-      <h3 className={styles.subtitle}>
-        Connect your wallet and follow us on Twitter to receive a free NFT.
-      </h3>
-      <h4>
-        Note: You must have at least 0.05 ETH in your wallet to be eligible. You
-        will not have to pay any gas fees.
-      </h4>
-      <Follow username="litprotocol" options={{ size: 'large' }} />
-      <p>
-        Once you're following @litprotocol, connect your wallet and Twitter
-        account below to claim your NFT
-      </p>
+      <h1 className={styles.title}>Minting NFT</h1>
 
       <div style={{ height: 24 }} />
 
@@ -145,10 +134,7 @@ const TwitterClaimNftPage = () => {
           Minting NFT, please wait for it to be mined... <ProgressSpin />
         </>
       ) : (
-        <Button
-          label="Connect Twitter and Claim NFT"
-          onClick={handleConnectTwitter}
-        />
+        <Button label="Claim NFT" onClick={handleClaimNft} />
       )}
 
       {successMessage ? (
