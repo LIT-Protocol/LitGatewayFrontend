@@ -16,14 +16,14 @@ export default function MediaGrid({ files }) {
         <img
           className={styles.imageAndVideo}
           src={fileUrl}
-          style={{ maxHeight: maxHeight || '100%' }}
+          style={{ maxHeight: maxHeight || '100%', maxWidth: '100%' }}
         />
       )
     } else if (file.type.includes('audio')) {
       return (
         <div
           className={styles.audioHolder}
-          style={{ maxHeight: maxHeight || '100%' }}
+          style={{ maxHeight: maxHeight || '100%', maxWidth: '100%' }}
         >
           <audio className={styles.audio} controls>
             <source src={fileUrl} type={file.type} />
@@ -35,7 +35,7 @@ export default function MediaGrid({ files }) {
       return (
         <video
           className={styles.imageAndVideo}
-          style={{ maxHeight: maxHeight || '100%' }}
+          style={{ maxHeight: maxHeight || '100%', maxWidth: '100%' }}
           autoPlay
           muted
           loop

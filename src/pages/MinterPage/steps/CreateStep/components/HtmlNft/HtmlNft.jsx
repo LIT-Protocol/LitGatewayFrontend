@@ -39,9 +39,33 @@ const HtmlNft = ({
     <div className="Theme Theme_color_gpnDefault Theme_control_gpnDefault Theme_font_gpnDefault Theme_size_gpnDefault Theme_space_gpnDefault Theme_shadow_gpnDefault">
       <div className={styles.htmlNft}>
         <div className={styles.card}>
-          <div id="lockedHeader" className={styles.lockedHeader}>
-            {(locked && previewMode) || !previewMode ? 'LOCKED' : 'UNLOCKED'}
+          <div className={styles.topBar}>
+            <div>
+              {locked ? (
+                <Button
+                  onClick={() => setLocked((prevState) => !prevState)}
+                  iconLeft={IconLock}
+                  label="Unlock"
+                  id="unlockButton"
+                />
+              ) : (
+                <Button
+                  onClick={() => setLocked((prevState) => !prevState)}
+                  iconLeft={IconUnlock}
+                  label="Lock"
+                />
+              )}
+            </div>
+            <div id="lockedHeader" className={styles.lockedText}>
+              {(locked && previewMode) || !previewMode ? 'LOCKED' : 'UNLOCKED'}
+            </div>
+            <div className={styles.count}>1 of {quantity}</div>
           </div>
+          {!previewMode ? (
+            <div className={styles.loadingText} id="loadingText">
+              Connecting to Lit Network...
+            </div>
+          ) : null}
           <div id="mediaGridHolder" className={styles.lockedContentView}>
             {(locked && previewMode) || !previewMode ? (
               <>
@@ -66,36 +90,11 @@ const HtmlNft = ({
                       {description}
                     </Text>
                   ) : null}
-                  {!previewMode ? (
-                    <div className={styles.loadingText} id="loadingText">
-                      Connecting to Lit Network...
-                    </div>
-                  ) : null}
                 </div>
               </>
             ) : null}
 
             <MediaGrid files={showingFiles} />
-          </div>
-
-          <div className={styles.bottomBar}>
-            <div>
-              {locked ? (
-                <Button
-                  onClick={() => setLocked((prevState) => !prevState)}
-                  iconLeft={IconLock}
-                  label="Unlock"
-                  id="unlockButton"
-                />
-              ) : (
-                <Button
-                  onClick={() => setLocked((prevState) => !prevState)}
-                  iconLeft={IconUnlock}
-                  label="Lock"
-                />
-              )}
-            </div>
-            <div className={styles.count}>1 of {quantity}</div>
           </div>
         </div>
       </div>
