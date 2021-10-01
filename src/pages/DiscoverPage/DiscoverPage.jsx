@@ -93,6 +93,16 @@ const DiscoverPage = () => {
             <img className={styles.image} src={Card2} alt={Card2} />
           </Link>
         </GridItem>
+        <GridItem>
+          <Link to="/twitterClaimNft" className={styles.smallCard}>
+            <div>
+              <h4>FEATURED</h4>
+              <h2 className={styles.title}>Free NFT</h2>
+              <h5>Follow us on Twitter for a free "Lit OG" NFT</h5>
+            </div>
+            <img className={styles.image} src={Card2} alt={Card2} />
+          </Link>
+        </GridItem>
       </Grid>
       <div className={styles.block}>
         <h2 className={styles.title}>Learn more about the Lit Gateway</h2>

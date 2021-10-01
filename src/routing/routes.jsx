@@ -15,6 +15,8 @@ import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
 import BuildPage from '../pages/BuildPage'
 import OffersPage from '../pages/OffersPage'
+import TwitterClaimNftPage from '../pages/TwitterClaimNftPage/TwitterClaimNftPage'
+import TwitterClaimNftStep2Page from '../pages/TwitterClaimNftStep2Page'
 
 import Navigation from '../components/Navigation'
 
@@ -52,6 +54,11 @@ const Routes = () => {
             <Route path="/minter" component={MinterPage} />
             <Route path="/build" component={BuildPage} />
             <Route path="/offers" component={OffersPage} />
+            <Route path="/twitterClaimNft" component={TwitterClaimNftPage} />
+            <Route
+              path="/twitterClaimNftStep2"
+              component={TwitterClaimNftStep2Page}
+            />
           </div>
         </>
       </Switch>
