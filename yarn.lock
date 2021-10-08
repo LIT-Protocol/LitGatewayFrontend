@@ -1384,24 +1384,25 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@consta/uikit@^2.2.0":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-2.2.1.tgz#aa3a037b478d2a53d50bf6d874badad9bda23611"
-  integrity sha512-38SQzzfONQuj1UZI4HKko8yhuyb0HhYVoCCq8FehnxjQ3vzbsgXrC/AyBQ89SnS+kB2WqFluM0UIdGsPUS0MOA==
+"@consta/uikit@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-3.0.0.tgz#6eb9a18b79b537f3594f8163f8a9220ab25ffef1"
+  integrity sha512-BTQL8Dh/7NLbkFywfSf4VzIEulJ1BIph0bQKY72MNuLN/IX9H+jcFP1xdDzifYvCubHqJwaQVpt7gYNzxo94Qg==
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"
     compute-scroll-into-view "^1.0.14"
     date-fns "^2.17.0"
+    focus-trap-react "8.7.0"
     react-dropzone "11.3.4"
     react-textarea-autosize "^7.1.2"
     react-transition-group "^4.4.1"
     tslib "^2.1.0"
 
-"@consta/uikit@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-3.0.0.tgz#6eb9a18b79b537f3594f8163f8a9220ab25ffef1"
-  integrity sha512-BTQL8Dh/7NLbkFywfSf4VzIEulJ1BIph0bQKY72MNuLN/IX9H+jcFP1xdDzifYvCubHqJwaQVpt7gYNzxo94Qg==
+"@consta/uikit@^3.4.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-3.6.0.tgz#497f04879c577621703cfcfe6ead31a0663bb9c2"
+  integrity sha512-2o2apMzwUY1xMS3hqDK5HbMfhNTC+PVUtAGbXC+QLMGTJXWsh1zlN5FnPLPYAK1eTibYghqxHcsDNd+P7bIXIQ==
   dependencies:
     "@bem-react/classname" "^1.5.8"
     "@bem-react/classnames" "^1.3.9"

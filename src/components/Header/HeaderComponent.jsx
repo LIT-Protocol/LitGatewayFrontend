@@ -50,11 +50,13 @@ const HeaderComponent = () => {
             )}
           </HeaderModule>
           <HeaderModule indent="s">
-            {width > 1024 ? (
-              <img src={litLogo} alt="" />
-            ) : (
-              <img src={litMiniLogo} alt="" />
-            )}
+            <NavLink to="/">
+              {width > 1024 ? (
+                <img src={litLogo} alt="" />
+              ) : (
+                <img src={litMiniLogo} alt="" />
+              )}
+            </NavLink>
           </HeaderModule>
           <HeaderModule indent="l">
             <span className={styles.light}>Powered by the Lit Protocol</span>
