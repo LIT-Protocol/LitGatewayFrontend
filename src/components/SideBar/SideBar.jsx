@@ -56,7 +56,8 @@ const SideBar = () => {
       ],
     },
     {
-      title: 'Create',
+      title: 'Minter',
+      to: '/minter',
       icon: (
         <svg
           width="28"
@@ -75,21 +76,29 @@ const SideBar = () => {
           />
         </svg>
       ),
-      to: '/create',
-      subItems: [
-        {
-          title: 'Minter',
-          to: '/minter',
-        },
-        {
-          title: 'Develop',
-          to: '/build',
-          disabled: true,
-        },
-      ],
     },
     {
-      title: 'My Assets',
+      title: 'Gallery',
+      to: '/gallery',
+      disabled: true,
+      icon: (
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0H13.3333V13.3333H0V0Z" fill="#DFDFDF" />
+          <path d="M0 16.6667H13.3333V30H0V16.6667Z" fill="#DFDFDF" />
+          <path d="M16.6667 0H30V13.3333H16.6667V0Z" fill="#DFDFDF" />
+          <path d="M16.6667 16.6667H30V30H16.6667V16.6667Z" fill="#DFDFDF" />
+        </svg>
+      ),
+    },
+    {
+      title: 'Files',
+      to: '/files',
       icon: (
         <svg
           width="25"
@@ -106,17 +115,6 @@ const SideBar = () => {
           />
         </svg>
       ),
-      to: '/assets',
-      subItems: [
-        {
-          title: 'Gallery',
-          to: '/gallery',
-        },
-        {
-          title: 'Files',
-          to: '/files',
-        },
-      ],
     },
   ]
 
@@ -124,7 +122,7 @@ const SideBar = () => {
     setActiveMainItem(null)
     if (location.pathname) {
       const findMainItem = menuItems.find((item) => {
-        const subItem = item?.subItems.find(
+        const subItem = item?.subItems?.find(
           (sItem) => sItem.to === location.pathname,
         )
         if (subItem && subItem.to !== item.to) {
@@ -154,18 +152,37 @@ const SideBar = () => {
       <div className={styles.menu} onClick={() => setSideBar(false)}>
         {menuItems.map((item) => (
           <>
-            <NavLink exact activeClassName={styles.activeMainItem} to={item.to}>
-              <div
-                className={cx(
-                  styles.mainItem,
-                  activeMainItem === item.to ? styles.highlight : null,
-                )}
+            {!item.disabled ? (
+              <NavLink
+                exact
+                activeClassName={styles.activeMainItem}
+                to={item.to}
               >
+                <div
+                  className={cx(
+                    styles.mainItem,
+                    activeMainItem === item.to ? styles.highlight : null,
+                  )}
+                >
+                  <div className={styles.icon}>{item.icon}</div>
+                  <span>{item.title}</span>
+                </div>
+              </NavLink>
+            ) : (
+              <div className={cx(styles.mainItem, styles.disabled)}>
                 <div className={styles.icon}>{item.icon}</div>
                 <span>{item.title}</span>
+                <Badge
+                  className={cx(styles.badge)}
+                  style={{ marginTop: '3px' }}
+                  size="s"
+                  status="system"
+                  label="Coming soon"
+                  form="round"
+                />
               </div>
-            </NavLink>
-            {item?.subItems.map((subItem) => (
+            )}
+            {item?.subItems?.map((subItem) => (
               <>
                 {!subItem.disabled ? (
                   <NavLink
