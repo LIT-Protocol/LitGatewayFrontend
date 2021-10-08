@@ -180,7 +180,7 @@ const SingleOfferPage = () => {
             <div className={styles.left}>
               <img src={offer.logo} alt="" />
               <div className={styles.titles}>
-                <h1 className={styles.title}>Lit Protocol NFT Drop 01</h1>
+                <h1 className={styles.title}>{offer.title}</h1>
                 <div className={styles.tags}>
                   {offer.tags.map((tag) => (
                     <Badge status="system" label={tag} size="l" />
