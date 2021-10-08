@@ -97,7 +97,7 @@ const CreateLayout = ({
           as="p"
           size="m"
           lineHeight="m"
-          view="brand"
+          view="secondary"
         >
           Upload images, videos or gif files (25mb max total)
         </Text>
