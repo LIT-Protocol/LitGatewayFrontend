@@ -1,4 +1,5 @@
 import React from 'react'
+import cx from 'classnames'
 
 import styles from './card.module.scss'
 
@@ -6,9 +7,9 @@ import { Tag } from '@consta/uikit/Tag'
 
 import { getImg } from '../../utils'
 
-const Card = ({ img, titleIcon, title, desc, btns, tags }) => {
+const Card = ({ img, titleIcon, title, desc, btns, tags, className }) => {
   return (
-    <div className={styles.card}>
+    <div className={cx(styles.card, className)}>
       <div className={styles.imgWrap}>
         <div
           className={styles.img}
