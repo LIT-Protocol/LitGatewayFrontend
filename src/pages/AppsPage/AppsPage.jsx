@@ -56,7 +56,17 @@ const AppsPage = () => {
               title="Zoom"
               titleIcon={zoomLogo}
               tags={['Productivity']}
-              btns={<Button size="l" label="Details" />}
+              btns={
+                <>
+                  <Button
+                    className={styles.secondaryBtn}
+                    view="secondary"
+                    size="l"
+                    label="Details"
+                  />
+                  <Button label="Launch" size="l" />
+                </>
+              }
               desc={
                 <div className={styles.desc}>
                   Grant access to Google Docs with blockchain requirements
