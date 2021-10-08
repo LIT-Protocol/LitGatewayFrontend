@@ -124,7 +124,7 @@ const CreateLayout = ({
       <div className={styles.bottom}>
         <Button
           className={styles.btn}
-          label="next"
+          label="Next"
           size="l"
           iconRight={IconForward}
           onClick={() => setCreateStep('review')}
