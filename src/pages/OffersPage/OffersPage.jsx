@@ -5,6 +5,8 @@ import styles from './offers-page.module.scss'
 
 import discountLogo from './assets/discount-offer-icon.png'
 import litLogo from '../SingleOfferPage/assets/lit-offer-icon.png'
+import discountBack from './assets/discountBack.png'
+import litBack from './assets/litBack.png'
 
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
@@ -59,7 +61,7 @@ const OffersPage = () => {
                   </ul>
                 </div>
               }
-              img="https://images.unsplash.com/photo-1632830025073-3da7ac07402b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+              img={discountBack}
             />
           </GridItem>
           <GridItem>
@@ -97,7 +99,7 @@ const OffersPage = () => {
                   </ul>
                 </div>
               }
-              img="https://images.unsplash.com/photo-1632830025073-3da7ac07402b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+              img={litBack}
             />
           </GridItem>
         </Grid>

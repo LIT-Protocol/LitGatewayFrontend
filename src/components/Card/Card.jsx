@@ -14,7 +14,7 @@ const Card = ({ img, titleIcon, title, desc, btns, tags, className }) => {
         <div
           className={styles.img}
           style={{
-            backgroundImage: `url(${getImg(img)})`,
+            backgroundImage: `url(${img})`,
           }}
         />
       </div>
