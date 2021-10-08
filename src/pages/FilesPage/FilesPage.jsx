@@ -15,6 +15,8 @@ import FilesList from './FilesList'
 import FileDropper from './FileDropper'
 import Uploader from './Uploader'
 
+import { UploadButton } from '../../components'
+
 import { useAppContext } from '../../context'
 
 import { putFolder, getFolder } from '../../api/files'
@@ -135,12 +137,7 @@ const FilesPage = () => {
         ) : null}
       </div>
       <div style={{ height: 16 }} />
-      <Button
-        label="Upload"
-        iconLeft={IconUpload}
-        onClick={() => setFileDropperModalOpen(true)}
-        size="m"
-      />
+      <UploadButton onFilesSelected={onFilesSelected} />
       <span style={{ width: 8, display: 'inline-block' }} />
       <Button
         label="New Folder"
