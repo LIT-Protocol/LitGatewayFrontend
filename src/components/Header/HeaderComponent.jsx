@@ -42,7 +42,7 @@ const HeaderComponent = () => {
             )}
           </HeaderModule>
           <HeaderModule indent="s">
-            <NavLink to="/">
+            <NavLink to="/discover">
               {width > 1024 ? (
                 <img src={litLogo} alt="" style={{ height: 54 }} />
               ) : (

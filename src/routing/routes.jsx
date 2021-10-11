@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import styles from '../app.module.scss'
 
@@ -44,7 +44,8 @@ const Routes = () => {
                 />
               </div>
             ) : null}
-            <Route path={['/', '/discover']} exact component={DiscoverPage} />
+            <Redirect from="/" to="/discover" />
+            <Route path="/discover" exact component={DiscoverPage} />
             <Route path="/app" component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
             <Route path="/guide" exact component={GuidePage} />
