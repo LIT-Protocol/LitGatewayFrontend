@@ -1,4 +1,36 @@
+@import './vars';
+
 .app {
+  position: relative;
+  min-height: 100vh;
+
+  .backgroundLogo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    width: 122px;
+    height: 156px;
+    background-image: url('./assets/imgs/background-logo.svg');
+    background-repeat: no-repeat;
+  }
+
+  .connected {
+    position: absolute;
+    bottom: 16.5px;
+    left: 26px;
+    display: flex;
+    align-items: center;
+    color: $secondary-text;
+
+    span {
+      width: 15px;
+      height: 15px;
+      background-color: #28cb4c;
+      border-radius: 100%;
+      margin-right: 9px;
+    }
+  }
 }
 
 .wrap {

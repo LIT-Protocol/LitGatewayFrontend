@@ -1,12 +1,11 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import styles from './app.module.scss'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import Routes from './routing/routes'
-
 import { Theme } from '@consta/uikit/Theme'
+
+import Main from './Main'
 
 import { presetGpnDefault } from '../src/newPreset/presets/presetGpnDefault'
 
@@ -17,9 +16,7 @@ function App() {
     <BrowserRouter>
       <AppContextProvider>
         <Theme preset={presetGpnDefault}>
-          <div className={styles.app}>
-            <Routes />
-          </div>
+          <Main />
         </Theme>
       </AppContextProvider>
     </BrowserRouter>
