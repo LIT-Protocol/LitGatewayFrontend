@@ -1,7 +1,7 @@
 @import '../../vars.scss';
 
 .main {
-  max-width: 1150px;
+  max-width: 1120px;
   padding: 0 15px;
   width: 100%;
   margin: 70px auto 100px;
@@ -68,6 +68,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    button {
+      min-width: 160px;
+    }
     .customBtn {
       margin-bottom: 12px;
       color: $brand;
@@ -95,8 +98,8 @@
     margin-bottom: 16px;
   }
   img {
-    height: 170px;
-    width: 170px;
+    height: 140px;
+    width: 140px;
     border-radius: 0.28571429rem;
     object-fit: cover;
     margin-right: 30px;
@@ -128,8 +131,9 @@
 }
 
 .tags {
+  margin: 0 -5px;
   div {
-    margin-right: 10px;
+    margin: 5px;
   }
 }
 
@@ -344,13 +348,19 @@
   }
   .textBlock {
     font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   .top {
     .left {
       flex-direction: column;
       text-align: center;
+      width: 100%;
       img {
         margin-right: 0;
+        height: 100px;
+        width: 100px;
+        margin-bottom: 10px;
       }
     }
     .right {
@@ -359,6 +369,7 @@
       width: 100%;
       button {
         margin-bottom: 15px !important;
+        margin-left: 20px;
       }
     }
   }
