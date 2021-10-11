@@ -41,7 +41,7 @@ const SearchInput = ({
           value={value}
           onChange={({ value }) => handleChange(value)}
           autoFocus={autoFocus}
-          placeholder="Seacrh..."
+          placeholder="Search..."
           leftSide={IconSearch}
           size={size}
           rows={rows}

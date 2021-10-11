@@ -26,6 +26,11 @@ code {
     monospace;
 }
 
+.TextField-InputContainer {
+  //TODO remove
+  border: none !important;
+}
+
 @media (max-width: 1400px) {
   body .Modal {
     padding: 20px;

@@ -1406,7 +1406,7 @@
     react-transition-group "^4.4.1"
     tslib "^2.1.0"
 
-"@consta/uikit@^3.4.0":
+"@consta/uikit@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@consta/uikit/-/uikit-3.6.0.tgz#497f04879c577621703cfcfe6ead31a0663bb9c2"
   integrity sha512-2o2apMzwUY1xMS3hqDK5HbMfhNTC+PVUtAGbXC+QLMGTJXWsh1zlN5FnPLPYAK1eTibYghqxHcsDNd+P7bIXIQ==
