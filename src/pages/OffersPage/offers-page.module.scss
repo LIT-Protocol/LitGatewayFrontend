@@ -17,6 +17,21 @@
   }
 }
 
+.link {
+  color: var(--color-typo-link);
+  text-decoration: none;
+  transition: all 0.3s;
+  &:hover {
+    color: var(--color-typo-link-hover);
+  }
+}
+
+.offer {
+  h3 {
+    min-height: 55px;
+  }
+}
+
 .desc {
   font-size: 16px;
   line-height: 150%;
