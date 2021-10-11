@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import cx from 'classnames'
 
-import styles from './seacrh-input.module.scss'
+import styles from './search-input.module.scss'
 
 import { TextField } from '@consta/uikit/TextField'
 import { IconClose } from '@consta/uikit/IconClose'
 import { IconSearch } from '@consta/uikit/IconSearch'
 
-const SeacrchInput = ({
+const SearchInput = ({
   type = 'text',
   className,
   id,
@@ -58,4 +58,4 @@ const SeacrchInput = ({
   )
 }
 
-export default SeacrchInput
+export default SearchInput

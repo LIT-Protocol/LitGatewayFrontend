@@ -10,8 +10,7 @@ import { Header, HeaderModule, HeaderButton } from '@consta/uikit/Header'
 import { IconAlignJustify } from '@consta/uikit/IconAlignJustify'
 import { IconClose } from '@consta/uikit/IconClose'
 
-import SeacrchInput from '../SeacrhInput'
-import UserBlock from '../UserBlock'
+import { SearchInput, UserBlock, Icons } from '../'
 
 import { useAppContext } from '../../context/app'
 
@@ -52,27 +51,34 @@ const HeaderComponent = () => {
           <HeaderModule indent="s">
             <NavLink to="/">
               {width > 1024 ? (
-                <img src={litLogo} alt="" />
+                <img src={litLogo} alt="" style={{ height: 54 }} />
               ) : (
                 <img src={litMiniLogo} alt="" />
               )}
             </NavLink>
           </HeaderModule>
-          <HeaderModule indent="l">
+          {/* <HeaderModule indent="l">
             <span className={styles.light}>Powered by the Lit Protocol</span>
-          </HeaderModule>
+          </HeaderModule> */}
         </>
       }
       rightSide={
         <>
           <HeaderModule>
             <div className={styles.rightSide}>
-              <SeacrchInput
+              <SearchInput
                 className={styles.search}
                 value={search}
                 handleChange={(val) => setSeacrh(val)}
                 onClear={() => setSeacrh('')}
               />
+              <a
+                className={styles.twitter}
+                href="https://twitter.com/litprotocol"
+                target="_blank"
+              >
+                <Icons.Twitter />
+              </a>
               <NavLink
                 activeClassName={styles.activeLink}
                 className={styles.link}
