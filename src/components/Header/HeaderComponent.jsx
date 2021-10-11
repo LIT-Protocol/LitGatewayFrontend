@@ -17,14 +17,7 @@ import { useAppContext } from '../../context/app'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 const HeaderComponent = () => {
-  const { setSideBar, sideBar } = useAppContext()
-
-  const userItems = [
-    {
-      name: 'Logout',
-      action: () => false,
-    },
-  ]
+  const { setSideBar, sideBar, username } = useAppContext()
 
   const [search, setSeacrh] = useState('')
 
@@ -87,13 +80,18 @@ const HeaderComponent = () => {
               >
                 About
               </NavLink>
-              <NavLink
-                activeClassName={styles.activeLink}
-                className={styles.link}
-                to={'/connect'}
-              >
-                Connect Wallet
-              </NavLink>
+
+              {!username ? (
+                <NavLink
+                  activeClassName={styles.activeLink}
+                  className={styles.link}
+                  to={'/connect'}
+                >
+                  Connect Wallet
+                </NavLink>
+              ) : null}
+
+              <UserBlock />
             </div>
           </HeaderModule>
         </>

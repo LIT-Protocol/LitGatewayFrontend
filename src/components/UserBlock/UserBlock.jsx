@@ -1,48 +1,39 @@
-import React, { useEffect, useState } from 'react'
-
-import { User } from '@consta/uikit/User'
+import React, { useEffect, useRef } from 'react'
+import Jazzicon from '@metamask/jazzicon'
 
 import Dropdown from '../Dropdown'
 
-const UserWithDropdown = ({
-  view = 'ghost',
-  info,
-  size,
-  iconRight,
-  items,
-  username,
-  avatar,
-  className,
-}) => {
-  return (
-    <Dropdown items={items}>
-      <User
-        view={view}
-        iconRight={iconRight}
-        info={info}
-        size={size}
-        name={username || ''}
-        avatarUrl={avatar}
-        className={className}
-      />
-    </Dropdown>
-  )
-}
+import { useAppContext } from '../../context'
 
 const UserBlock = (props) => {
-  const { withMenu, username, avatar, className } = props
-  const passedProps = { ...props }
-  delete passedProps.withMenu
+  const { avatar } = props
 
-  const Component = !withMenu ? User : UserWithDropdown
+  const { username, handleLogout } = useAppContext()
+
+  const avatarRef = useRef(null)
+
+  useEffect(() => {
+    if (!avatar && username && avatarRef.current) {
+      avatarRef.current.innerHTML = ''
+      avatarRef.current.appendChild(
+        Jazzicon(42, parseInt(username.slice(2, 10), 16)),
+      )
+    }
+  }, [username])
+
+  const menu = [
+    {
+      name: 'Logout',
+      action: handleLogout,
+    },
+  ]
+
+  if (!username) return null
 
   return (
-    <Component
-      {...passedProps}
-      name={username || ''}
-      avatarUrl={avatar}
-      className={className}
-    />
+    <Dropdown items={menu}>
+      <div ref={avatarRef} />
+    </Dropdown>
   )
 }
 

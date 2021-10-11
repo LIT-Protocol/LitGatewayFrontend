@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import * as Icon from 'react-feather'
 import cx from 'classnames'
 
 import styles from './sidebar.module.scss'
 
-import { IconArrowDown } from '@consta/uikit/IconArrowDown'
 import { Badge } from '@consta/uikit/Badge'
-
-import UserBlock from '../UserBlock'
 
 import { useAppContext } from '../../context/app'
 
 const SideBar = () => {
-  const { sideBar, username, setSideBar, handleLogout } = useAppContext()
+  const { sideBar, setSideBar } = useAppContext()
 
   const [activeMainItem, setActiveMainItem] = useState(null)
 
   const location = useLocation()
-
-  const userItems = [
-    {
-      name: 'Logout',
-      action: handleLogout,
-    },
-  ]
 
   const menuItems = [
     {
@@ -137,18 +126,6 @@ const SideBar = () => {
 
   return (
     <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
-      {username !== null ? (
-        <UserBlock
-          withMenu
-          iconRight={IconArrowDown}
-          size="l"
-          view="clear"
-          items={userItems}
-          className={styles.user}
-          username={username}
-          avatar="/blank-avatar.jpg"
-        />
-      ) : null}
       <div className={styles.menu} onClick={() => setSideBar(false)}>
         {menuItems.map((item) => (
           <>
