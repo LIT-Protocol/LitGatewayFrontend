@@ -25,6 +25,13 @@
   }
 }
 
+.art {
+  position: fixed;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+}
+
 .link {
   color: var(--color-typo-link);
   text-decoration: none;
@@ -64,5 +71,11 @@
         font-weight: normal;
       }
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .art {
+    display: none;
   }
 }

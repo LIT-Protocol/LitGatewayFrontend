@@ -12,6 +12,7 @@ import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 
 import { Card, Title } from '../../components'
+import blockArt from './assets/block-art.png'
 
 const AppsPage = () => {
   const history = useHistory()
@@ -28,6 +29,7 @@ const AppsPage = () => {
         title="Lit Apps"
         subtitle="The power of blockchain-defined access combined with your current tool suite"
       />
+      <img className={styles.art} src={blockArt} alt="" />
       <div className={styles.content}>
         <Grid
           cols="1"
