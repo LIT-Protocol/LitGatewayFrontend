@@ -68,6 +68,11 @@ const FilesPage = () => {
     loadFiles()
   }, [folderId])
 
+  const onFirstFilesSelected = (selectedFiles) => {
+    setSelectedFiles(selectedFiles)
+    setFileDropperModalOpen(true)
+  }
+
   const onFilesSelected = (selectedFiles) => {
     setSelectedFiles(selectedFiles)
     setFileDropperModalOpen(false)
@@ -137,7 +142,7 @@ const FilesPage = () => {
         ) : null}
       </div>
       <div style={{ height: 16 }} />
-      <UploadButton onFilesSelected={onFilesSelected} />
+      <UploadButton onFilesSelected={onFirstFilesSelected} />
       <span style={{ width: 8, display: 'inline-block' }} />
       <Button
         label="New Folder"
@@ -154,7 +159,10 @@ const FilesPage = () => {
       >
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>Upload Files</h3>
-          <FileDropper onFilesSelected={onFilesSelected} />
+          <FileDropper
+            defaultFiles={selectedFiles}
+            onFilesSelected={onFilesSelected}
+          />
         </div>
       </Modal>
 

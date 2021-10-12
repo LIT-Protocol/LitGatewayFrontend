@@ -19,6 +19,7 @@ import OffersPage from '../pages/OffersPage'
 import TwitterClaimNftPage from '../pages/TwitterClaimNftPage/TwitterClaimNftPage'
 import TwitterClaimNftStep2Page from '../pages/TwitterClaimNftStep2Page'
 import SingleOfferPage from '../pages/SingleOfferPage'
+import AppsPage from '../pages/AppsPage'
 
 import Navigation from '../components/Navigation'
 
@@ -46,7 +47,7 @@ const Routes = () => {
             ) : null}
             <Redirect from="/" to="/discover" />
             <Route path="/discover" exact component={DiscoverPage} />
-            <Route path="/app" component={SingleAppPage} />
+            <Route path="/apps/:id" exact component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
             <Route path="/guide" exact component={GuidePage} />
             <Route path="/files/view/:fileId" component={ViewFilePage} />
