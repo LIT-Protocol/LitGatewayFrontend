@@ -9,5 +9,6 @@ export { default as Title } from './Title'
 export { default as Card } from './Card'
 export { default as UploadButton } from './UploadButton'
 export { default as SearchInput } from './SearchInput'
+export { default as Modal } from './Modal'
 
 export * as Icons from './Icons'

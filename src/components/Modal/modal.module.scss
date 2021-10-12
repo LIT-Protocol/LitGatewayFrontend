@@ -1,0 +1,14 @@
+.modal {
+  position: relative;
+
+  .closeButton {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-right: 10px;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
