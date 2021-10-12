@@ -19,7 +19,6 @@ import OffersPage from '../pages/OffersPage'
 import TwitterClaimNftPage from '../pages/TwitterClaimNftPage/TwitterClaimNftPage'
 import TwitterClaimNftStep2Page from '../pages/TwitterClaimNftStep2Page'
 import SingleOfferPage from '../pages/SingleOfferPage'
-import AppsPage from '../pages/AppsPage'
 
 import Navigation from '../components/Navigation'
 
