@@ -44,12 +44,11 @@ const Routes = () => {
                 />
               </div>
             ) : null}
-            <Redirect from="/" to="/discover" />
-            <Route path="/discover" exact component={DiscoverPage} />
+            <Route path={['/', '/discover']} exact component={DiscoverPage} />
             <Route path="/apps/:id" exact component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
             <Route path="/guide" exact component={GuidePage} />
-            <Route path="/files/view/:fileId" component={ViewFilePage} />
+            <Route path="/files/view/:fileId" exact component={ViewFilePage} />
             <Route path="/files/folders/:folderId" component={FilesPage} />
             <Route path="/files" exact component={FilesPage} />
             <Route path="/gallery" exact component={GalleryPage} />
