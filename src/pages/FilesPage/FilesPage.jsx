@@ -7,15 +7,13 @@ import styles from './files-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { TextField } from '@consta/uikit/TextField'
 import { IconAdd } from '@consta/uikit/IconAdd'
-import { IconUpload } from '@consta/uikit/IconUpload'
-import { Modal } from '@consta/uikit/Modal'
 import { Breadcrumbs } from '@consta/uikit/Breadcrumbs'
 
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
 import Uploader from './Uploader'
 
-import { UploadButton } from '../../components'
+import { UploadButton, Modal } from '../../components'
 
 import { useAppContext } from '../../context'
 
@@ -67,6 +65,11 @@ const FilesPage = () => {
   useEffect(() => {
     loadFiles()
   }, [folderId])
+
+  const onFirstFilesSelected = (selectedFiles) => {
+    setSelectedFiles(selectedFiles)
+    setFileDropperModalOpen(true)
+  }
 
   const onFilesSelected = (selectedFiles) => {
     setSelectedFiles(selectedFiles)
@@ -137,7 +140,7 @@ const FilesPage = () => {
         ) : null}
       </div>
       <div style={{ height: 16 }} />
-      <UploadButton onFilesSelected={onFilesSelected} />
+      <UploadButton onFilesSelected={onFirstFilesSelected} />
       <span style={{ width: 8, display: 'inline-block' }} />
       <Button
         label="New Folder"
@@ -150,11 +153,15 @@ const FilesPage = () => {
       <Modal
         isOpen={fileDropperModalOpen}
         hasOverlay
-        onOverlayClick={() => setFileDropperModalOpen(false)}
+        unsavedPopup
+        onClose={() => setFileDropperModalOpen(false)}
       >
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>Upload Files</h3>
-          <FileDropper onFilesSelected={onFilesSelected} />
+          <FileDropper
+            defaultFiles={selectedFiles}
+            onFilesSelected={onFilesSelected}
+          />
         </div>
       </Modal>
 

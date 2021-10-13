@@ -1,19 +1,35 @@
 import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 import styles from './apps-page.module.scss'
 
-import titleIcon from './assets/Docs-icon.svg'
-import zoomLogo from './assets/zoom.png'
+import driveBack from './assets/driveBack.png'
+import googleDrive from './assets/googleDrive.png'
+import zoomIcon from './assets/zoom.png'
+import titleIcon from './assets/apps-icon.png'
 
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 
 import { Card, Title } from '../../components'
+import blockArt from './assets/block-art.png'
 
 const AppsPage = () => {
+  const history = useHistory()
+
+  const handleOpenApp = (id) => {
+    history.push(`/apps/${id}`)
+  }
+
   return (
     <div className={styles.main}>
-      <Title title="Current Apps" />
+      <Title
+        className={styles.title}
+        icon={titleIcon}
+        title="Lit Apps"
+        subtitle="The power of blockchain-defined access combined with your current tool suite"
+      />
+      <img className={styles.art} src={blockArt} alt="" />
       <div className={styles.content}>
         <Grid
           cols="1"
@@ -29,32 +45,8 @@ const AppsPage = () => {
         >
           <GridItem>
             <Card
-              title="Google Docs"
-              titleIcon={titleIcon}
-              tags={['Axie Infinity', 'Gaming']}
-              btns={
-                <>
-                  <Button
-                    className={styles.secondaryBtn}
-                    view="secondary"
-                    size="l"
-                    label="Details"
-                  />
-                  <Button label="Launch" size="l" />
-                </>
-              }
-              desc={
-                <div className={styles.desc}>
-                  Grant access to Google Docs with blockchain requirements
-                </div>
-              }
-              img="https://images.unsplash.com/photo-1632830025073-3da7ac07402b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
-            />
-          </GridItem>
-          <GridItem>
-            <Card
-              title="Zoom"
-              titleIcon={zoomLogo}
+              title="Google Drive"
+              titleIcon={googleDrive}
               tags={['Productivity']}
               btns={
                 <>
@@ -63,16 +55,43 @@ const AppsPage = () => {
                     view="secondary"
                     size="l"
                     label="Details"
+                    onClick={() => handleOpenApp('google-drive')}
                   />
                   <Button label="Launch" size="l" />
                 </>
               }
               desc={
                 <div className={styles.desc}>
-                  Grant access to Google Docs with blockchain requirements
+                  Grant access to Google Drive files with blockchain
+                  requirements
                 </div>
               }
-              img="https://images.unsplash.com/photo-1632830025073-3da7ac07402b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80"
+              img={driveBack}
+            />
+          </GridItem>
+          <GridItem>
+            <Card
+              title="Zoom"
+              titleIcon={zoomIcon}
+              tags={['Productivity']}
+              btns={
+                <>
+                  <Button
+                    className={styles.secondaryBtn}
+                    view="secondary"
+                    size="l"
+                    label="Details"
+                    onClick={() => handleOpenApp('zoom')}
+                  />
+                  <Button label="Launch" size="l" />
+                </>
+              }
+              desc={
+                <div className={styles.desc}>
+                  Grant access to Zoom with blockchain requirements
+                </div>
+              }
+              img={driveBack}
             />
           </GridItem>
         </Grid>

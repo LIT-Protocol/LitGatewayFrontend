@@ -10,10 +10,40 @@
   margin-bottom: 100px;
 }
 
+.title {
+  h2 {
+    &:before {
+      content: none;
+    }
+  }
+}
+
 .secondaryBtn {
   background-color: white !important;
   &:hover {
     background-color: white !important;
+  }
+}
+
+.art {
+  position: fixed;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+}
+
+.link {
+  color: var(--color-typo-link);
+  text-decoration: none;
+  transition: all 0.3s;
+  &:hover {
+    color: var(--color-typo-link-hover);
+  }
+}
+
+.offer {
+  h3 {
+    min-height: 55px;
   }
 }
 
@@ -41,5 +71,11 @@
         font-weight: normal;
       }
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .art {
+    display: none;
   }
 }
