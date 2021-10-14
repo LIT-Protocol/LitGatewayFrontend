@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from 'react'
 import LitJsSdk from 'lit-js-sdk'
 
 import { getUsername } from '../utils'
+import { getUserHoldings, putUser } from '../api/users'
 
 export const AppContext = createContext({
   sideBar: true,
@@ -15,6 +16,7 @@ export const AppContextProvider = (props) => {
   const [username, setUsername] = useState(null)
   const [tokenList, setTokenList] = useState(null)
   const [globalError, setGlobalError] = useState(null)
+  const [userHoldings, setUserHoldings] = useState(null)
 
   const performWithAuthSig = async (
     action,
@@ -28,6 +30,7 @@ export const AppContextProvider = (props) => {
         currentAuthSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
         setAuthSig(currentAuthSig)
         setUsername(await getUsername())
+        await putUser({ authSig: currentAuthSig })
       } catch (e) {
         console.log(e)
         if (e?.errorCode === 'no_wallet') {
@@ -53,6 +56,13 @@ export const AppContextProvider = (props) => {
           throw e
         }
       }
+    }
+
+    if (!userHoldings) {
+      // don't wait for this, run in the background
+      getUserHoldings({ authSig: currentAuthSig }).then((resp) => {
+        setUserHoldings(resp.holdings)
+      })
     }
 
     return await action(currentAuthSig)
