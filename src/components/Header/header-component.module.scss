@@ -29,6 +29,7 @@
   }
   .activeLink {
     color: $brand;
+    border-bottom: 1px solid $purple;
   }
   .rightSide {
     display: flex;
