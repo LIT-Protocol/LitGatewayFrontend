@@ -50,6 +50,13 @@ const Routes = () => {
             <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
             <Route path="/build" component={BuildPage} />
+            <Route
+              path="/discord"
+              component={() => {
+                window.location.href = 'https://discord.gg/nm9aBG8z9w'
+                return null
+              }}
+            />
           </div>
         </>
       </Switch>
