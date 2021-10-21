@@ -116,18 +116,19 @@ const SingleOfferPage = () => {
       logo: discountLogo,
       mainBtnLabel: 'Get Discount',
       twitterBtn: false,
-      requirement: 'Have yield farmed on x chains or held tokens',
-      segmentCenterTitle: 'DISCOUNTS CLAIMED',
-      segmentCenterValue: '0/500',
+      requirement: 'Yield farming any supported tokens',
       timeRemaining: '10 days, 2 hours',
-      imgText: 'Maintain peace-of-mind while you earn from staking',
+      imgText: 'Maintain peace-of-mind while you live your decentralized life.',
       mainImg: discountMainImg,
       textBlock: (
         <>
           <p>
-            Keep your own currency safe while you stake your tokens. InsureAce
-            takes the risk away from staking by providing ______________
-            coverage{' '}
+            InsurAce is the leading decentralized insurance protocol, providing
+            reliable, robust and secure DeFi insurance services to the DeFi
+            users. InsurAce not only guarantees unbeatable portfolio premiums
+            but also offers sustainable investment returns. When you sign up via
+            this offer, you’ll get a 30% automatic rebate paid in $INSUR tokens
+            for your first month and 10% thereafter.
           </p>
         </>
       ),
@@ -214,10 +215,6 @@ const SingleOfferPage = () => {
               <div className={styles.segment}>
                 <h3>REQUIREMENT</h3>
                 {offer.requirement}
-              </div>
-              <div className={styles.segment}>
-                <h3>{offer.segmentCenterTitle}</h3>
-                <div className={styles.text}>{offer.segmentCenterValue}</div>
               </div>
               <div className={styles.segment}>
                 <h3>TIME REMAINING</h3>
