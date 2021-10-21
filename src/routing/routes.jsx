@@ -65,6 +65,13 @@ const Routes = () => {
               component={TwitterClaimNftStep2Page}
             />
             <Route path="/about" exact component={AboutPage} />
+            <Route
+              path="/discord"
+              component={() => {
+                window.location.href = 'https://discord.gg/nm9aBG8z9w'
+                return null
+              }}
+            />
           </div>
         </>
       </Switch>
