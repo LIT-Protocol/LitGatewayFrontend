@@ -117,7 +117,7 @@ const DiscoverPage = () => {
                 <div className={styles.descList}>
                   <ul>
                     <li>
-                      REQUIREMENT: <span>Referral purchase</span>
+                      REQUIREMENT: <span>Yield farmer</span>
                     </li>
                     <li>
                       REWARD: <span>30% off for 1 month</span>
