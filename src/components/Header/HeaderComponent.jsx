@@ -10,7 +10,7 @@ import { Header, HeaderModule, HeaderButton } from '@consta/uikit/Header'
 import { IconAlignJustify } from '@consta/uikit/IconAlignJustify'
 import { IconClose } from '@consta/uikit/IconClose'
 
-import { SearchInput, UserBlock, Icons } from '../'
+import { UserBlock, AuthDependent } from '../'
 
 import { useAppContext } from '../../context/app'
 
@@ -59,19 +59,23 @@ const HeaderComponent = () => {
         <>
           <HeaderModule>
             <div className={styles.rightSide}>
-              <SearchInput
+              {/* <SearchInput
                 className={styles.search}
                 value={search}
                 handleChange={(val) => setSeacrh(val)}
                 onClear={() => setSeacrh('')}
-              />
-              <a
+              /> */}
+              {/* <a
                 className={styles.twitter}
                 href="https://twitter.com/litprotocol"
                 target="_blank"
               >
                 <Icons.Twitter />
-              </a>
+              </a> */}
+              <AuthDependent>
+                <div className={styles.connected} />
+              </AuthDependent>
+
               <NavLink
                 activeClassName={styles.activeLink}
                 className={styles.link}

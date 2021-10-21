@@ -10,5 +10,6 @@ export { default as Card } from './Card'
 export { default as UploadButton } from './UploadButton'
 export { default as SearchInput } from './SearchInput'
 export { default as Modal } from './Modal'
+export { default as AuthDependent } from './AuthDependent'
 
 export * as Icons from './Icons'

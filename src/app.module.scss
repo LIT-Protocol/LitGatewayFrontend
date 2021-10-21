@@ -15,20 +15,28 @@
     background-repeat: no-repeat;
   }
 
-  .connected {
+  .linksWrapper {
     position: absolute;
-    bottom: 16.5px;
-    left: 26px;
-    display: flex;
-    align-items: center;
-    color: $secondary-text;
+    bottom: 38.18px;
+    left: 22px;
 
-    span {
-      width: 15px;
-      height: 15px;
-      background-color: #28cb4c;
-      border-radius: 100%;
-      margin-right: 9px;
+    color: $purple;
+
+    > a {
+      color: $purple;
+      display: block;
+    }
+
+    .developerDocs {
+      text-decoration: none;
+    }
+
+    > * {
+      margin-bottom: 38px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
