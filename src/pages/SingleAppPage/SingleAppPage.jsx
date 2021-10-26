@@ -76,6 +76,14 @@ const SingleAppPage = () => {
             Wallets that meet the conditions will enter their email address for
             access.
           </p>
+          <p>
+            Lit Protocol's use and transfer to any other app of information
+            received from Google APIs will adhere to{' '}
+            <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">
+              Google API Services User Data Policy
+            </a>
+            , including the Limited Use requirements.
+          </p>
         </>
       ),
       more: [
