@@ -4,8 +4,15 @@ import { Link, useHistory } from 'react-router-dom'
 import styles from './apps-page.module.scss'
 
 import driveBack from './assets/driveBack.png'
-import googleDrive from './assets/googleDrive.png'
+import zoomBack from './assets/zoomBack.png'
+import IPFSBack from './assets/IPFSBack.png'
+import minterBack from './assets/minterBack.png'
+
+import driveIcon from './assets/googleDrive.png'
 import zoomIcon from './assets/zoom.png'
+import ipfsIcon from './assets/IPFS.png'
+import minterIcon from './assets/minter.png'
+
 import titleIcon from './assets/apps-icon.png'
 
 import { Button } from '@consta/uikit/Button'
@@ -46,7 +53,7 @@ const AppsPage = () => {
           <GridItem>
             <Card
               title="Google Drive"
-              titleIcon={googleDrive}
+              titleIcon={driveIcon}
               tags={['Productivity']}
               btns={
                 <>
@@ -69,6 +76,7 @@ const AppsPage = () => {
               img={driveBack}
             />
           </GridItem>
+
           <GridItem>
             <Card
               title="Zoom"
@@ -91,7 +99,56 @@ const AppsPage = () => {
                   Grant access to Zoom with blockchain requirements
                 </div>
               }
-              img={driveBack}
+              img={zoomBack}
+            />
+          </GridItem>
+
+          <GridItem>
+            <Card
+              title="IPFS Encrypted Files"
+              titleIcon={ipfsIcon}
+              tags={['Productivity']}
+              btns={
+                <>
+                  <Button
+                    label="Launch"
+                    size="l"
+                    onClick={() => history.push('/files')}
+                  />
+                </>
+              }
+              desc={
+                <div className={styles.desc}>
+                  Upload files to decentralized encrypted storage that can only
+                  be decrypted and downloaded by members of your crypto
+                  community.
+                </div>
+              }
+              img={IPFSBack}
+            />
+          </GridItem>
+
+          <GridItem>
+            <Card
+              title="Unlockable NFT Minter"
+              titleIcon={minterIcon}
+              tags={['Create']}
+              btns={
+                <>
+                  <Button
+                    label="Launch"
+                    size="l"
+                    onClick={() => history.push('/minter')}
+                  />
+                </>
+              }
+              desc={
+                <div className={styles.desc}>
+                  Create an NFT that contains locked content that only the owner
+                  of the NFT can access
+                </div>
+              }
+              img={minterBack}
             />
           </GridItem>
         </Grid>
