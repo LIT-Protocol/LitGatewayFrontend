@@ -92,12 +92,7 @@ const SingleAppPage = () => {
                             onClick={() => handleOpenApp(item.id)}
                           />
                         }
-                        desc={
-                          <div className={styles.desc}>
-                            Grant access to Google Drive files with blockchain
-                            requirements
-                          </div>
-                        }
+                        desc={<div className={styles.desc}>{item.desc}</div>}
                         img={item.img}
                       />
                     </GridItem>

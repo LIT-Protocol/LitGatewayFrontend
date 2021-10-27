@@ -56,7 +56,7 @@ const AppsPage = () => {
             <GridItem key={app.id}>
               <Card
                 title={app.title}
-                titleIcon={app.titleIcon}
+                titleIcon={app.logo}
                 tags={app.tags}
                 btns={
                   <>
@@ -97,7 +97,7 @@ const AppsPage = () => {
               desc={
                 <div className={styles.desc}>
                   Upload files to decentralized encrypted storage that can only
-                  be decrypted and downloaded by members of your crypto
+                  be decrypted and downloaded by members of your c rypto
                   community.
                 </div>
               }
