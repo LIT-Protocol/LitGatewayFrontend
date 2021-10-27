@@ -3,7 +3,7 @@
 .wrap {
   display: flex;
   align-items: center;
-  margin-top: 90px;
+  margin-top: 74px;
   margin-bottom: 80px;
   img {
     margin-right: 20px;
@@ -19,15 +19,8 @@
     line-height: 150%;
     position: relative;
     margin: 0;
-    &:before {
-      position: absolute;
-      top: -23px;
-      background-color: #bfa1ff;
-      height: 5px;
-      width: 68px;
-      content: '';
-    }
   }
+
   h5 {
     font-weight: normal;
     font-size: 18px;

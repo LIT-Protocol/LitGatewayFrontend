@@ -22,7 +22,11 @@ const OffersPage = () => {
 
   return (
     <div className={styles.main}>
-      <Title title="Current Offers" />
+      <Title
+        title="Current Offers"
+        subtitle="Find airdrops, quests, and discounts based on your wallet’s holdings and history."
+      />
+
       <div className={styles.content}>
         <Grid
           cols="1"
