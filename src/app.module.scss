@@ -5,7 +5,7 @@
   min-height: 100vh;
 
   .backgroundLogo {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     z-index: -2;
@@ -16,7 +16,7 @@
   }
 
   .linksWrapper {
-    position: absolute;
+    position: fixed;
     bottom: 38.18px;
     left: 22px;
 
