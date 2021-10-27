@@ -21,6 +21,8 @@ import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Card, Title } from '../../components'
 import blockArt from './assets/block-art.png'
 
+import { apps } from '../../data/apps'
+
 const AppsPage = () => {
   const history = useHistory()
 
@@ -50,58 +52,33 @@ const AppsPage = () => {
             },
           }}
         >
-          <GridItem>
-            <Card
-              title="Google Drive"
-              titleIcon={driveIcon}
-              tags={['Productivity']}
-              btns={
-                <>
-                  <Button
-                    className={styles.secondaryBtn}
-                    view="secondary"
-                    size="l"
-                    label="Details"
-                    onClick={() => handleOpenApp('google-drive')}
-                  />
-                  <Button label="Launch" size="l" />
-                </>
-              }
-              desc={
-                <div className={styles.desc}>
-                  Grant access to Google Drive files with blockchain
-                  requirements
-                </div>
-              }
-              img={driveBack}
-            />
-          </GridItem>
-
-          <GridItem>
-            <Card
-              title="Zoom"
-              titleIcon={zoomIcon}
-              tags={['Productivity']}
-              btns={
-                <>
-                  <Button
-                    className={styles.secondaryBtn}
-                    view="secondary"
-                    size="l"
-                    label="Details"
-                    onClick={() => handleOpenApp('zoom')}
-                  />
-                  <Button label="Launch" size="l" />
-                </>
-              }
-              desc={
-                <div className={styles.desc}>
-                  Grant access to Zoom with blockchain requirements
-                </div>
-              }
-              img={zoomBack}
-            />
-          </GridItem>
+          {apps.map((app) => (
+            <GridItem key={app.id}>
+              <Card
+                title={app.title}
+                titleIcon={app.titleIcon}
+                tags={app.tags}
+                btns={
+                  <>
+                    <Button
+                      className={styles.secondaryBtn}
+                      view="secondary"
+                      size="l"
+                      label="Details"
+                      onClick={() => handleOpenApp(app.id)}
+                    />
+                    <Button
+                      label="Launch"
+                      size="l"
+                      onClick={() => (window.location = app.url)}
+                    />
+                  </>
+                }
+                desc={<div className={styles.desc}>{app.shortDesc}</div>}
+                img={app.backgroundImg}
+              />
+            </GridItem>
+          ))}
 
           <GridItem>
             <Card
