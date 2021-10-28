@@ -58,7 +58,6 @@ const Routes = () => {
             <Route path="/build" component={BuildPage} />
             <Route path="/apps" exact component={AppsPage} />
             <Route path="/offers" exact component={OffersPage} />
-            <Route path="/twitterClaimNft" component={TwitterClaimNftPage} />
             <Route path="/offers/:title" exact component={SingleOfferPage} />
             <Route
               path="/twitterClaimNftStep2"

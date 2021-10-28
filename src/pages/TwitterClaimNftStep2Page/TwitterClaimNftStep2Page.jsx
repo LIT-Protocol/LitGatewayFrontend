@@ -50,14 +50,14 @@ const TwitterClaimNftPage = () => {
           parameters: [':userAddress', 'latest'],
           returnValueTest: {
             comparator: '>=',
-            value: '50000000000000000',
+            value: '5000000000000000',
           },
         },
       ]
 
       const resourceId = {
         baseUrl: 'litgateway.com',
-        path: '/twitterClaimNft',
+        path: '/offers/lit-protocol-nft',
         orgId: '',
         role: '',
         extraData: '',

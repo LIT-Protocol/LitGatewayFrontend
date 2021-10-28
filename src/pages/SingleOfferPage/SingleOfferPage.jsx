@@ -9,6 +9,10 @@ import { IconBackward } from '@consta/uikit/IconBackward'
 import { Badge } from '@consta/uikit/Badge'
 import { Card } from '../../components'
 
+import { Follow } from 'react-twitter-widgets'
+import { useAppContext } from '../../context'
+import { twitterOauthUrl } from '../../api/claimNft'
+
 import litLogo from './assets/lit-logo.png'
 import ethIcon from './assets/eth.png'
 import litMainImg from './assets/lit-offer-main-img.png'
@@ -21,7 +25,22 @@ import litBack from '../OffersPage//assets/litBack.png'
 
 const SingleOfferPage = () => {
   const { title } = useParams()
+  const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
   const history = useHistory()
+
+  const handleConnectTwitter = async () => {
+    performWithAuthSig(async (authSig) => {
+      setGlobalError(null)
+      const resp = await twitterOauthUrl({ authSig })
+      if (resp && resp.error) {
+        setGlobalError({ title: resp.error })
+        return
+      }
+
+      console.log(resp)
+      window.location = resp.url
+    })
+  }
 
   const offers = [
     {
@@ -29,8 +48,9 @@ const SingleOfferPage = () => {
       title: 'Lit Protocol NFT Drop 01',
       logo: litLogo,
       tags: ['Lit Protocol'],
-      mainBtnLabel: 'Claim NFT',
+      mainBtnLabel: 'Connect Twitter and Claim NFT',
       twitterBtn: true,
+      handleMainButtonClick: handleConnectTwitter,
       requirement: (
         <div>
           <svg
@@ -191,23 +211,34 @@ const SingleOfferPage = () => {
             </div>
             <div className={styles.right}>
               {offer.twitterBtn ? (
-                <button className={styles.customBtn}>
-                  <svg
-                    width="24"
-                    height="20"
-                    viewBox="0 0 24 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M21.3363 5.07056C21.3502 5.28306 21.3502 5.49635 21.3502 5.71119C21.3502 12.2628 16.445 19.8174 7.47521 19.8174V19.8127C4.82464 19.8174 2.23063 19.0456 0 17.5909C0.385072 17.6378 0.772469 17.662 1.16064 17.6628C3.35641 17.6643 5.48941 16.9151 7.2172 15.5362C5.13068 15.4956 3.30062 14.1128 2.66142 12.0932C3.39205 12.237 4.14592 12.2073 4.8626 12.0081C2.58781 11.5401 0.950671 9.50885 0.950671 7.14869C0.950671 7.12681 0.950671 7.1065 0.950671 7.08541C1.62862 7.46978 2.38791 7.68306 3.16426 7.7065C1.02118 6.25025 0.361054 3.3526 1.65496 1.08697C4.1312 4.18385 7.78357 6.06666 11.7056 6.26588C11.3128 4.54478 11.8489 2.7401 13.1165 1.52916C15.0806 -0.347404 18.1697 -0.251311 20.016 1.74478C21.1077 1.52603 22.1552 1.11822 23.1129 0.540877C22.7487 1.68853 21.9871 2.66353 20.969 3.28228C21.936 3.16744 22.8796 2.90338 23.7699 2.5026C23.1152 3.50025 22.29 4.36822 21.3363 5.07056Z"
-                      fill="#1D9BF0"
-                    />
-                  </svg>
-                  Follow @LITProtocol
-                </button>
-              ) : null}
-              <Button label={offer.mainBtnLabel} size="l" />
+                <>
+                  <Follow
+                    username="litprotocol"
+                    options={{ size: 'large', showCount: false }}
+                  />
+                  <div style={{ height: 16 }} />
+                </>
+              ) : // <button className={styles.customBtn}>
+              //   <svg
+              //     width="24"
+              //     height="20"
+              //     viewBox="0 0 24 20"
+              //     fill="none"
+              //     xmlns="http://www.w3.org/2000/svg"
+              //   >
+              //     <path
+              //       d="M21.3363 5.07056C21.3502 5.28306 21.3502 5.49635 21.3502 5.71119C21.3502 12.2628 16.445 19.8174 7.47521 19.8174V19.8127C4.82464 19.8174 2.23063 19.0456 0 17.5909C0.385072 17.6378 0.772469 17.662 1.16064 17.6628C3.35641 17.6643 5.48941 16.9151 7.2172 15.5362C5.13068 15.4956 3.30062 14.1128 2.66142 12.0932C3.39205 12.237 4.14592 12.2073 4.8626 12.0081C2.58781 11.5401 0.950671 9.50885 0.950671 7.14869C0.950671 7.12681 0.950671 7.1065 0.950671 7.08541C1.62862 7.46978 2.38791 7.68306 3.16426 7.7065C1.02118 6.25025 0.361054 3.3526 1.65496 1.08697C4.1312 4.18385 7.78357 6.06666 11.7056 6.26588C11.3128 4.54478 11.8489 2.7401 13.1165 1.52916C15.0806 -0.347404 18.1697 -0.251311 20.016 1.74478C21.1077 1.52603 22.1552 1.11822 23.1129 0.540877C22.7487 1.68853 21.9871 2.66353 20.969 3.28228C21.936 3.16744 22.8796 2.90338 23.7699 2.5026C23.1152 3.50025 22.29 4.36822 21.3363 5.07056Z"
+              //       fill="#1D9BF0"
+              //     />
+              //   </svg>
+              //   Follow @LITProtocol
+              // </button>
+              null}
+              <Button
+                label={offer.mainBtnLabel}
+                size="l"
+                onClick={offer.handleMainButtonClick}
+              />
             </div>
           </div>
           <div className={styles.content}>
