@@ -13,7 +13,7 @@ const Main = () => {
       <div className={styles.backgroundLogo} />
 
       <div className={styles.linksWrapper}>
-        <a href="#">
+        <a href="https://litgateway.com/discord" target="_blank">
           <Icons.Discord />
         </a>
 
