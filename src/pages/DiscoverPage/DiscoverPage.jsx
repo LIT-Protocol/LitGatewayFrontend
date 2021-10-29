@@ -7,6 +7,8 @@ import discountLogo from './assets/discount-offer-icon.png'
 import discountBack from './assets/discountBack.png'
 import litLogo from './assets/lit-offer-icon.png'
 import litBack from './assets/litBack.png'
+import gDriveLogo from './assets/googleDrive.png'
+import driveBack from './assets/driveBack.png'
 
 import { Button } from '@consta/uikit/Button'
 import { Modal } from '@consta/uikit/Modal'
@@ -46,6 +48,10 @@ const DiscoverPage = () => {
   }
 
   const handleSubmit = () => {}
+
+  const handleOpenApp = (id) => {
+    history.push(`/apps/${id}`)
+  }
 
   const handleOpenOffer = (title) => {
     history.push(`/offers/${title}`)
@@ -147,6 +153,28 @@ const DiscoverPage = () => {
             </div>
           }
           img={litBack}
+        />
+
+        <Card
+          className={styles.offer}
+          title="Google Drive"
+          titleIcon={gDriveLogo}
+          tags={['Productivity']}
+          btns={
+            <>
+              <Button
+                size="l"
+                label="Details"
+                onClick={() => handleOpenApp('google-drive')}
+              />
+            </>
+          }
+          desc={
+            <div className={styles.desc}>
+              Grant access to Google Drive files with blockchain requirements
+            </div>
+          }
+          img={driveBack}
         />
       </div>
 
