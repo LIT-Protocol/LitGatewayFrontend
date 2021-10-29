@@ -13,7 +13,7 @@ import FilesList from './FilesList'
 import FileDropper from './FileDropper'
 import Uploader from './Uploader'
 
-import { UploadButton, Modal } from '../../components'
+import { UploadButton, Modal, Title } from '../../components'
 
 import { useAppContext } from '../../context'
 
@@ -122,10 +122,17 @@ const FilesPage = () => {
 
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>Files</h1>
+      {/* <h1 className={styles.title}>Files</h1>
       <h3 className={styles.subtitle}>
         Collaborative Decentralized Encrypted File Storage
-      </h3>
+      </h3> */}
+
+      <Title
+        className={styles.title}
+        title="IPFS Encrypted Files"
+        subtitle="Upload files to decentralized encrypted storage that can only be decrypted and downloaded by members of your crypto community."
+      />
+
       <div className={styles.path}>
         {parentFolders.length > 0 ? (
           <Breadcrumbs
