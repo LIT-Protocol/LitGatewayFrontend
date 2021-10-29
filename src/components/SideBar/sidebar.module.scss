@@ -44,6 +44,17 @@
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
     }
+
+    &:hover {
+      background: $purple;
+      color: white;
+      &::before {
+        background: #5e36b7;
+      }
+      path {
+        fill: white;
+      }
+    }
   }
 
   a:last-of-type .subItem {
@@ -98,27 +109,43 @@
   }
 }
 
-.mainItem {
-  background: #ffffff;
-  border-radius: 8px 0px 0px 8px;
-  padding: 20px 10px 14px 20px;
-  font-size: 20px;
-  line-height: 30px;
-  color: black;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  margin-bottom: 2px;
-  transition: all 0.2s;
-  &:first-child {
-    border-top-left-radius: 0;
-  }
-  span {
+.navMainItem {
+  .mainItem {
+    background: #ffffff;
+    border-radius: 8px 0px 0px 8px;
+    padding: 20px 10px 14px 20px;
+    font-size: 20px;
+    line-height: 30px;
+    color: black;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    margin-bottom: 2px;
+    transition: all 0.2s;
+    &:first-child {
+      border-top-left-radius: 0;
+    }
+    span {
+      text-decoration: none;
+    }
+    img {
+      margin-right: 19px;
+    }
   }
-  img {
-    margin-right: 19px;
+
+  &:hover {
+    .mainItem {
+      background: $purple;
+      color: white;
+
+      span {
+        color: white;
+      }
+    }
+    path {
+      fill: white;
+    }
   }
 }
 

@@ -133,6 +133,7 @@ const SideBar = () => {
               <NavLink
                 exact
                 activeClassName={styles.activeMainItem}
+                className={styles.navMainItem}
                 to={item.to}
               >
                 <div
