@@ -45,7 +45,8 @@ const Routes = () => {
                 />
               </div>
             ) : null}
-            <Route path={['/', '/discover']} exact component={DiscoverPage} />
+            <Route exact path="/" render={() => <Redirect to="/discover" />} />
+            <Route path="/discover" exact component={DiscoverPage} />
             <Route path="/apps/:id" exact component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
             <Route path="/guide" exact component={GuidePage} />
