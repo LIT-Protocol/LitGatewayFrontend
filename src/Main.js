@@ -7,8 +7,6 @@ import { Button } from '@consta/uikit/Button'
 import { Icons } from './components'
 
 const Main = () => {
-  const handleSubmitFeedback = () => {}
-
   return (
     <div className={styles.app}>
       <Routes />
@@ -27,12 +25,9 @@ const Main = () => {
           Developer Docs <Icons.Outside />
         </a>
 
-        <Button
-          size="s"
-          view="secondary"
-          label="Submit Feedback"
-          onClick={handleSubmitFeedback}
-        />
+        <a href="https://airtable.com/shrghp9jsN4KtEHKK" target="_blank">
+          <Button size="s" view="secondary" label="Submit Feedback" />
+        </a>
       </div>
     </div>
   )
