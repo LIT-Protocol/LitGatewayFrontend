@@ -43,11 +43,12 @@ const HeaderComponent = () => {
           </HeaderModule>
           <HeaderModule indent="s">
             <NavLink to="/discover">
-              {width > 1024 ? (
-                <img src={litLogo} alt="" style={{ height: 44.36 }} />
-              ) : (
-                <img src={litMiniLogo} alt="" />
-              )}
+              <img
+                className={width <= 1024 && styles.mobileLogo}
+                src={litLogo}
+                alt="Lit Gateway Logo"
+                style={{ height: 44.36 }}
+              />
             </NavLink>
           </HeaderModule>
           {/* <HeaderModule indent="l">
