@@ -16,16 +16,25 @@ const TwitterClaimNftPage = () => {
   const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
 
   const handleConnectWallet = async () => {
-    // saved in localStorage
-    const sig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'ethereum' })
+    // saved in localStorage so no need to store locally
+    performWithAuthSig(() => {})
   }
 
   const handleConnectGather = () => {
-    const redirectUrl = process.env.REACT_APP_LIT_GATHER_FRONTEND_HOST + '?'
-    console.log('redirectUrl', redirectUrl)
-    window.location = `https://staging.gather.town/getPublicId?redirectTo=${encodeURIComponent(
-      redirectUrl,
-    )}`
+    performWithAuthSig((authSig) => {
+      const q = {
+        authSig: JSON.stringify(authSig),
+      }
+      const redirectUrl =
+        process.env.REACT_APP_LIT_GATEWAY_FRONTEND_API_URL +
+        '/oauth/gather/callback?' +
+        new URLSearchParams(q).toString() +
+        '&'
+      // console.log('redirectUrl', redirectUrl)
+      window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
+        redirectUrl,
+      )}`
+    })
   }
 
   return (

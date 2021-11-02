@@ -8,7 +8,7 @@ export const apps = [
     title: 'Zoom',
     logo: zoomLogo,
     tags: ['Productivity'],
-    url: 'https://oauth-app.litgateway.com/zoom',
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/zoom',
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     shortDesc:
@@ -46,7 +46,7 @@ export const apps = [
     id: 'google-drive',
     title: 'Google Drive',
     logo: gDriveLogo,
-    url: 'https://oauth-app.litgateway.com/google',
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/google',
     tags: ['Productivity'],
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
