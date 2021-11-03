@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import cx from 'classnames'
 
 import styles from './app.module.scss'
 
@@ -22,7 +23,7 @@ const Main = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className={styles.app}>
+      <div className={cx(styles.app, sideBar && styles.withOpenSidebar)}>
         <Routes />
 
         {width > 1024 || sideBar ? (

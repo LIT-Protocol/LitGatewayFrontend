@@ -4,6 +4,11 @@
   position: relative;
   min-height: 100vh;
 
+  &.withOpenSidebar {
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
   .backgroundLogo {
     position: fixed;
     bottom: 0;
@@ -48,6 +53,7 @@
   top: 0;
   left: 0;
   background-color: white;
+  z-index: 5;
 }
 
 .wrap {
