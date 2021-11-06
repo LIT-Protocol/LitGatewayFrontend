@@ -7,13 +7,13 @@ import styles from './files-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { TextField } from '@consta/uikit/TextField'
 import { IconAdd } from '@consta/uikit/IconAdd'
-import { IconUpload } from '@consta/uikit/IconUpload'
-import { Modal } from '@consta/uikit/Modal'
 import { Breadcrumbs } from '@consta/uikit/Breadcrumbs'
 
 import FilesList from './FilesList'
 import FileDropper from './FileDropper'
 import Uploader from './Uploader'
+
+import { UploadButton, Modal, Title } from '../../components'
 
 import { useAppContext } from '../../context'
 
@@ -66,6 +66,11 @@ const FilesPage = () => {
     loadFiles()
   }, [folderId])
 
+  const onFirstFilesSelected = (selectedFiles) => {
+    setSelectedFiles(selectedFiles)
+    setFileDropperModalOpen(true)
+  }
+
   const onFilesSelected = (selectedFiles) => {
     setSelectedFiles(selectedFiles)
     setFileDropperModalOpen(false)
@@ -117,10 +122,17 @@ const FilesPage = () => {
 
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>Files</h1>
+      {/* <h1 className={styles.title}>Files</h1>
       <h3 className={styles.subtitle}>
         Collaborative Decentralized Encrypted File Storage
-      </h3>
+      </h3> */}
+
+      <Title
+        className={styles.title}
+        title="IPFS Encrypted Files"
+        subtitle="Upload files to decentralized encrypted storage that can only be decrypted and downloaded by members of your crypto community."
+      />
+
       <div className={styles.path}>
         {parentFolders.length > 0 ? (
           <Breadcrumbs
@@ -135,12 +147,7 @@ const FilesPage = () => {
         ) : null}
       </div>
       <div style={{ height: 16 }} />
-      <Button
-        label="Upload"
-        iconLeft={IconUpload}
-        onClick={() => setFileDropperModalOpen(true)}
-        size="m"
-      />
+      <UploadButton onFilesSelected={onFirstFilesSelected} />
       <span style={{ width: 8, display: 'inline-block' }} />
       <Button
         label="New Folder"
@@ -153,11 +160,15 @@ const FilesPage = () => {
       <Modal
         isOpen={fileDropperModalOpen}
         hasOverlay
-        onOverlayClick={() => setFileDropperModalOpen(false)}
+        unsavedPopup
+        onClose={() => setFileDropperModalOpen(false)}
       >
         <div style={{ margin: 16 }}>
           <h3 className={styles.subtitle}>Upload Files</h3>
-          <FileDropper onFilesSelected={onFilesSelected} />
+          <FileDropper
+            defaultFiles={selectedFiles}
+            onFilesSelected={onFilesSelected}
+          />
         </div>
       </Modal>
 

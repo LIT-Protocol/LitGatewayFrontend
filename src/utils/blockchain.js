@@ -17,5 +17,6 @@ export const getUsername = async (address) => {
     console.log('error getting username.  user is probably not on ETH network.')
   }
 
-  return name || shortenAddress(address || account)
+  //return name || shortenAddress(address || account)
+  return name || address || account
 }

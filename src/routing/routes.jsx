@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import styles from '../app.module.scss'
 
@@ -14,6 +14,12 @@ import GalleryPage from '../pages/GalleryPage'
 import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
 import BuildPage from '../pages/BuildPage'
+import OffersPage from '../pages/OffersPage'
+import ConnectGatherPage from '../pages/ConnectGatherPage'
+import TwitterClaimNftStep2Page from '../pages/TwitterClaimNftStep2Page'
+import SingleOfferPage from '../pages/SingleOfferPage'
+import AppsPage from '../pages/AppsPage'
+import AboutPage from '../pages/AboutPage'
 
 import Navigation from '../components/Navigation'
 
@@ -39,17 +45,27 @@ const Routes = () => {
                 />
               </div>
             ) : null}
-            <Route path={['/', '/discover']} exact component={DiscoverPage} />
-            <Route path="/app" component={SingleAppPage} />
+            <Route exact path="/" render={() => <Redirect to="/discover" />} />
+            <Route path="/discover" exact component={DiscoverPage} />
+            <Route path="/apps/:id" exact component={SingleAppPage} />
             <Route path="/guide/:title" exact component={SingleGuidePage} />
             <Route path="/guide" exact component={GuidePage} />
-            <Route path="/files/view/:fileId" component={ViewFilePage} />
+            <Route path="/files/view/:fileId" exact component={ViewFilePage} />
             <Route path="/files/folders/:folderId" component={FilesPage} />
             <Route path="/files" exact component={FilesPage} />
             <Route path="/gallery" exact component={GalleryPage} />
             <Route path="/gallery/:litId" exact component={GalleryItemPage} />
             <Route path="/minter" component={MinterPage} />
             <Route path="/build" component={BuildPage} />
+            <Route path="/apps" exact component={AppsPage} />
+            <Route path="/offers" exact component={OffersPage} />
+            <Route path="/offers/:title" exact component={SingleOfferPage} />
+            <Route path="/connectGather" exact component={ConnectGatherPage} />
+            <Route
+              path="/twitterClaimNftStep2"
+              component={TwitterClaimNftStep2Page}
+            />
+            <Route path="/about" exact component={AboutPage} />
             <Route
               path="/discord"
               component={() => {

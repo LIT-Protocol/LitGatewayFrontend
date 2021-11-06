@@ -1,3 +1,5 @@
+@import '../../vars.scss';
+
 .search {
   margin: 80px 20px 0;
   .inputSearch {
@@ -16,6 +18,48 @@
       cursor: pointer;
     }
   }
+
+  .subItem {
+    margin-left: 36px;
+    background: #ffffff;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 20px 10px 14px 40px;
+    margin-bottom: 2px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+    position: relative;
+    transition: all 0.2s;
+
+    &::before {
+      transition: all 0.2s;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 14px;
+      background: #dadada;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    &:hover {
+      background: $purple;
+      color: white;
+      &::before {
+        background: #5e36b7;
+      }
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  a:last-of-type .subItem {
+    margin-bottom: 0;
+  }
 }
 
 .link {
@@ -33,31 +77,109 @@
   cursor: default;
 }
 
+.icon {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  path {
+    fill: #dadada;
+    transition: all 0.2s;
+  }
+}
+
+.highlight {
+  span {
+    color: $purple;
+  }
+  path {
+    fill: $purple;
+  }
+}
+
+.activeSubItem {
+  .subItem {
+    background: $purple;
+    color: white;
+    &::before {
+      background: #5e36b7;
+    }
+    path {
+      fill: white;
+    }
+  }
+}
+
+.navMainItem {
+  .mainItem {
+    background: #ffffff;
+    border-radius: 8px 0px 0px 8px;
+    padding: 20px 10px 14px 20px;
+    font-size: 20px;
+    line-height: 30px;
+    color: black;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 2px;
+    transition: all 0.2s;
+    &:first-child {
+      border-top-left-radius: 0;
+    }
+    span {
+      text-decoration: none;
+    }
+    img {
+      margin-right: 19px;
+    }
+  }
+
+  &:hover {
+    .mainItem {
+      background: $purple;
+      color: white;
+
+      span {
+        color: white;
+      }
+    }
+    path {
+      fill: white;
+    }
+  }
+}
+
+.activeMainItem {
+  .mainItem {
+    background: $purple;
+    color: white;
+  }
+  path {
+    fill: white;
+  }
+}
+
+.disabled {
+  color: rgba(0, 32, 51, 0.25);
+}
+
+.badge {
+  margin-left: 15px;
+  margin-top: -10px;
+}
+
 .sideBar {
-  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-  .input {
-    width: 100%;
-    margin-bottom: var(--space-2xl);
-  }
-  .user {
-    margin-bottom: 40px;
-    width: 100%;
-  }
-  .select {
-    margin-bottom: 30px;
-  }
-  box-sizing: border-box;
-  width: 350px;
-  background: var(--color-bg-secondary);
-  height: 100vh;
+  margin-top: 80px;
   position: fixed;
-  left: 0;
-  top: 0;
-  overflow-y: auto;
-  padding: var(--space-4xl) var(--space-2xl);
+  background: #ececec;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 8px 0px;
+  width: 260px;
+  a {
+    text-decoration: none;
+  }
   @media (max-width: 1024px) {
-    position: absolute;
-    top: 60px;
+    top: 0px;
     left: -100%;
     transition: all 0.7s;
     z-index: 1000;
@@ -66,8 +188,16 @@
       display: none;
     }
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     width: 100vw;
+    max-height: calc(100vh - 100px);
+    position: fixed;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 450px) {
+    top: 20px;
+    max-height: calc(100vh - 120px);
   }
 }
 .activeSideBar {

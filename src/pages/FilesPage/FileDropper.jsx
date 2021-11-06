@@ -34,8 +34,8 @@ const rejectStyle = {
   borderColor: '#ff1744',
 }
 
-const FileDropper = ({ onFilesSelected }) => {
-  const [selectedFiles, setSelectedFiles] = useState([])
+const FileDropper = ({ defaultFiles, onFilesSelected }) => {
+  const [selectedFiles, setSelectedFiles] = useState([...defaultFiles])
 
   const onDrop = useCallback((acceptedFiles) => {
     console.log('dropped', acceptedFiles)

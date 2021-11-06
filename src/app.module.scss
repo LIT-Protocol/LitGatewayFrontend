@@ -1,11 +1,70 @@
+@import './vars';
+
 .app {
+  position: relative;
+  min-height: 100vh;
+
+  &.withOpenSidebar {
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  .backgroundLogo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -2;
+    width: 122px;
+    height: 156px;
+    background-image: url('./assets/imgs/background-logo.svg');
+    background-repeat: no-repeat;
+  }
+
+  .linksWrapper {
+    position: fixed;
+    bottom: 38.18px;
+    left: 22px;
+
+    color: $purple;
+
+    > a {
+      color: $purple;
+      display: block;
+    }
+
+    .developerDocs {
+      text-decoration: none;
+    }
+
+    .privacyPolicy {
+      font-size: 10px;
+    }
+
+    > * {
+      margin-bottom: 38px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.mobileFooter {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 5;
 }
 
 .wrap {
-  height: 100vh;
+  padding-top: 100px;
   overflow-y: auto;
-  width: calc(100% - 350px);
-  margin-left: 350px;
+  width: calc(100% - 280px);
+  margin-left: 280px;
   @media (max-width: 1024px) {
     width: 100%;
     margin-left: 0;

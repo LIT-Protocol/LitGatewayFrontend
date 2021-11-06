@@ -103,6 +103,8 @@ export const decryptAndDownload = async ({ file, tokenList }) => {
               details: humanized.map((f, i) => <div key={i}>{f}</div>),
             },
           }
+        } else {
+          throw e
         }
       }
 

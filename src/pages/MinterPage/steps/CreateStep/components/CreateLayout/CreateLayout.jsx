@@ -2,7 +2,6 @@ import React from 'react'
 
 import styles from './create-layout.module.scss'
 
-import { ChoiceGroup } from '@consta/uikit/ChoiceGroup'
 import Select from 'react-select'
 import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
@@ -12,9 +11,8 @@ import {
   MinterFileDropper,
   InputWrapper,
   QuantityInputWrapper,
+  Title,
 } from '../../../../../../components'
-
-import { blockChainItems } from '../../../../../../config'
 
 const CreateLayout = ({
   title,
@@ -36,7 +34,11 @@ const CreateLayout = ({
 }) => {
   return (
     <div className={styles.createStep}>
-      <h1>Mint an NFT with locked content</h1>
+      <Title
+        className={styles.title}
+        title="Unlockable NFT Minter"
+        subtitle="Create an NFT that contains locked content that only the owner of the NFT can access."
+      />
       <div className={styles.form}>
         <InputWrapper
           value={title}
@@ -97,7 +99,7 @@ const CreateLayout = ({
           as="p"
           size="m"
           lineHeight="m"
-          view="brand"
+          view="secondary"
         >
           Upload images, videos or gif files (25mb max total)
         </Text>
@@ -124,7 +126,7 @@ const CreateLayout = ({
       <div className={styles.bottom}>
         <Button
           className={styles.btn}
-          label="next"
+          label="Next"
           size="l"
           iconRight={IconForward}
           onClick={() => setCreateStep('review')}

@@ -1,26 +1,32 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import styles from './discover-page.module.scss'
 
+import discountLogo from './assets/discount-offer-icon.png'
+import discountBack from './assets/discountBack.png'
+import litLogo from './assets/lit-offer-icon.png'
+import litBack from './assets/litBack.png'
+import gDriveLogo from './assets/googleDrive.png'
+import driveBack from './assets/driveBack.png'
+import IPFSBack from './assets/IPFSBack.png'
+import minterBack from './assets/minterBack.png'
+import ipfsIcon from './assets/IPFS.png'
+import minterIcon from './assets/minter.png'
+
 import { Button } from '@consta/uikit/Button'
-import { Grid, GridItem } from '@consta/uikit/Grid'
 import { Modal } from '@consta/uikit/Modal'
 import { IconClose } from '@consta/uikit/IconClose'
 
 import { useAppContext } from '../../context'
 
-import Background from './assets/paul-gilmore-8kDOOrs608I-unsplash.jpg'
-import Card1 from './assets/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg'
-import Card2 from './assets/markus-winkler-cV9-hOgoaok-unsplash.jpg'
-import Card3 from './assets/kelly-sikkema-Kl1gC0ve620-unsplash.jpg'
-import Card4 from './assets/james-harrison-vpOeXr5wmR4-unsplash.jpg'
-
-import InputWrapper from '../../components/InputWrapper'
+import { InputWrapper, Card } from '../../components'
 
 import { putUser } from '../../api/users'
 
 const DiscoverPage = () => {
+  const [emailVal, setEmailVal] = useState('')
+
   const { performWithAuthSig, authSig } = useAppContext()
   const history = useHistory()
 
@@ -45,119 +51,183 @@ const DiscoverPage = () => {
     setShowingEmailCaptureModal(false)
   }
 
+  const handleSubmit = () => {}
+
+  const handleOpenApp = (id) => {
+    history.push(`/apps/${id}`)
+  }
+
+  const handleOpenOffer = (title) => {
+    history.push(`/offers/${title}`)
+  }
+
   return (
     <div className={styles.main}>
-      <div
-        className={styles.card}
-        style={{ backgroundImage: `url(${Background})` }}
-      >
-        <div className={styles.content}>
+      <div className={styles.top}>
+        <div className={styles.title}>
+          <h3>Discover</h3>
           <h2>Lit Gateway</h2>
-          <h1 className={styles.title} as="h1" inverted>
-            Token gated experiences
-          </h1>
-          <h4 className={styles.subtitle}>Powered by the 🔥 Lit Protocol</h4>
         </div>
-        <Button label="Connect wallet" size="l" onClick={handleConnectWallet} />
+        <p className={styles.subtitle}>
+          Connecting blockchain to the rest of the internet.
+        </p>
+        <p className={styles.text}>
+          Find apps for creating token and DAO gated meetings, documents, NFTs,
+          and more. Claim offers and airdrops based on your wallet holdings and
+          history. Sign up below to get notified about offers based on the
+          wallet you connect.
+        </p>
+        <div className={styles.form}>
+          <InputWrapper
+            value={emailVal}
+            className={styles.input}
+            placeholder="Email address"
+            id="email"
+            size="l"
+            handleChange={(value) => setEmailVal(value)}
+          />
+          <Button
+            className={styles.btn}
+            label="Get Updates"
+            size="l"
+            onClick={handleSubmit}
+          />
+        </div>
       </div>
-      <Grid
-        cols="1"
-        gap="xl"
-        className={styles.smallCards}
-        breakpoints={{
-          s: {
-            cols: 2,
-          },
-        }}
-      >
-        <GridItem>
-          <Link to="/minter" className={styles.smallCard}>
-            <div>
-              <h4>FEATURED</h4>
-              <h2 className={styles.title}>Minter</h2>
-              <h5>Put locked content behind NFTs</h5>
+      <div className={styles.content}>
+        {/* <Card
+          title="InsureAce Discount"
+          titleIcon={discountLogo}
+          tags={['Staking', 'Finance']}
+          className={styles.offer}
+          btns={
+            <Button
+              size="l"
+              label="Details"
+              onClick={() => handleOpenOffer('insureace-discount')}
+            />
+          }
+          desc={
+            <div className={styles.descList}>
+              <ul>
+                <li>
+                  REQUIREMENT: <span>Yield farmer</span>
+                </li>
+                <li>
+                  REWARD: <span>30% off for 1 month</span>
+                </li>
+              </ul>
             </div>
-            <img className={styles.image} src={Card1} alt={Card1} />
-          </Link>
-        </GridItem>
-        <GridItem>
-          <Link to="/files" className={styles.smallCard}>
-            <div>
-              <h4>FEATURED</h4>
-              <h2 className={styles.title}>Files</h2>
-              <h5>Collaborative Decentralized Encrypted File Storage</h5>
+          }
+          img={discountBack}
+        /> */}
+
+        {/* <Card
+          title="Lit Protocol NFT Drop 01"
+          titleIcon={litLogo}
+          tags={['Lit Protocol']}
+          className={styles.offer}
+          btns={
+            <Button
+              size="l"
+              label="Details"
+              onClick={() => handleOpenOffer('lit-protocol-nft')}
+            />
+          }
+          desc={
+            <div className={styles.descList}>
+              <ul>
+                <li>
+                  REQUIREMENT:{' '}
+                  <span>
+                    Follow{' '}
+                    <a
+                      className={styles.link}
+                      href="https://twitter.com/litprotocol"
+                      target="_blank"
+                    >
+                      @LitProtocol on Twitter
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  REWARD: <span>NFT</span>
+                </li>
+              </ul>
             </div>
-            <img className={styles.image} src={Card2} alt={Card2} />
-          </Link>
-        </GridItem>
-      </Grid>
-      <div className={styles.block}>
-        <h2 className={styles.title}>Learn more about the Lit Gateway</h2>
-        {/* <Link to="/">See all</Link> */}
+          }
+          img={litBack}
+        /> */}
+
+        <Card
+          title="Unlockable NFT Minter"
+          titleIcon={minterIcon}
+          tags={['Create']}
+          className={styles.offer}
+          btns={
+            <>
+              <Button
+                label="Launch"
+                size="l"
+                onClick={() => history.push('/minter')}
+              />
+            </>
+          }
+          desc={
+            <div className={styles.desc}>
+              Create an NFT that contains locked content that only the owner of
+              the NFT can access
+            </div>
+          }
+          img={minterBack}
+        />
+
+        <Card
+          title="IPFS Encrypted Files"
+          titleIcon={ipfsIcon}
+          tags={['Productivity']}
+          className={styles.offer}
+          btns={
+            <>
+              <Button
+                label="Launch"
+                size="l"
+                onClick={() => history.push('/files')}
+              />
+            </>
+          }
+          desc={
+            <div className={styles.desc}>
+              Upload files to decentralized encrypted storage that can only be
+              decrypted and downloaded by members of your c rypto community.
+            </div>
+          }
+          img={IPFSBack}
+        />
+
+        <Card
+          className={styles.offer}
+          title="Google Drive"
+          titleIcon={gDriveLogo}
+          tags={['Productivity']}
+          btns={
+            <>
+              <Button
+                size="l"
+                label="Details"
+                onClick={() => handleOpenApp('google-drive')}
+              />
+            </>
+          }
+          desc={
+            <div className={styles.desc}>
+              Grant access to Google Drive files with blockchain requirements
+            </div>
+          }
+          img={driveBack}
+        />
       </div>
-      <Grid
-        cols="1"
-        gap="xl"
-        className={styles.smallCards}
-        breakpoints={{
-          s: {
-            cols: 2,
-          },
-        }}
-      >
-        <GridItem>
-          <div className={styles.miniCard}>
-            <div>
-              <img src={Card3} alt="" />
-              <Link to="/guide">
-                <h2 className={styles.title}>Guide</h2>
-              </Link>
-            </div>
-            <Button
-              label="View"
-              size="s"
-              onClick={() => history.push('/guide')}
-            />
-          </div>
-        </GridItem>
-        <GridItem>
-          <div className={styles.miniCard}>
-            <div>
-              <img src={Card4} alt="" />
-              <Link to="/build">
-                <h2 className={styles.title}>Build</h2>
-              </Link>
-            </div>
-            <Button
-              label="View"
-              size="s"
-              onClick={() => history.push('/build')}
-            />
-          </div>
-        </GridItem>
-        {/* <GridItem>
-          <div className={styles.miniCard}>
-            <div>
-              <img src={Card1} alt="" />
-              <Link to="/app">
-                <h2 className={styles.title}>Yield Farming Chat</h2>
-              </Link>
-            </div>
-            <Button label="Get" size="s" />
-          </div>
-        </GridItem>
-        <GridItem>
-          <div className={styles.miniCard}>
-            <div>
-              <img src={Card1} alt="" />
-              <Link to="/app">
-                <h2 className={styles.title}>Yield Farming Chat</h2>
-              </Link>
-            </div>
-            <Button label="Get" size="s" />
-          </div>
-        </GridItem> */}
-      </Grid>
+
       <Modal isOpen={showingEmailCaptureModal}>
         <div className={styles.emailCaptureModal}>
           <div className={styles.closeHolder}>
