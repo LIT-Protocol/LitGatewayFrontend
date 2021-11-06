@@ -28,6 +28,7 @@ const OffersPage = () => {
       />
 
       <div className={styles.content}>
+        <h3>Offers coming soon!</h3>
         <Grid
           cols="1"
           gap="xl"
@@ -40,7 +41,7 @@ const OffersPage = () => {
             },
           }}
         >
-          <GridItem>
+          {/* <GridItem>
             <Card
               title="InsureAce Discount"
               titleIcon={discountLogo}
@@ -67,8 +68,8 @@ const OffersPage = () => {
               }
               img={discountBack}
             />
-          </GridItem>
-          <GridItem>
+          </GridItem> */}
+          {/* <GridItem>
             <Card
               title="Lit Protocol NFT Drop 01"
               titleIcon={litLogo}
@@ -105,7 +106,7 @@ const OffersPage = () => {
               }
               img={litBack}
             />
-          </GridItem>
+          </GridItem> */}
         </Grid>
       </div>
     </div>
