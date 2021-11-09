@@ -39,15 +39,15 @@ const TwitterClaimNftPage = () => {
 
   return (
     <div className={styles.main}>
-      <h1 className={styles.title}>Private Gather.town rooms</h1>
+      <h1 className={styles.title}>Token Gated Gather.Town</h1>
 
       <div style={{ height: 24 }} />
-
+      <h3>Step 1: </h3>
       <Button label="Connect Wallet" onClick={handleConnectWallet} />
 
       <div style={{ height: 24 }} />
-
-      <Button label="Connect Gather" onClick={handleConnectGather} />
+      <h3>Step 2:</h3>
+      <Button label="Connect and join Gather" onClick={handleConnectGather} />
     </div>
   )
 }

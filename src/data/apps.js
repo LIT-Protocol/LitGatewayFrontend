@@ -2,6 +2,9 @@ import zoomLogo from '../pages/SingleAppPage/assets/zoom.png'
 import gDriveLogo from '../pages/SingleAppPage/assets/googleDrive.png'
 import driveBack from '../pages/SingleAppPage/assets/driveBack.png'
 
+import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
+import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
+
 export const apps = [
   // {
   //   id: 'zoom',
@@ -76,6 +79,47 @@ export const apps = [
             Google API Services User Data Policy
           </a>
           , including the Limited Use requirements.
+        </p>
+      </>
+    ),
+    more: [
+      // {
+      //   title: 'Zoom',
+      //   titleIcon: zoomLogo,
+      //   id: 'zoom',
+      //   desc: 'Grant access to Zoom with blockchain requirements',
+      //   img: driveBack,
+      // },
+    ],
+  },
+  {
+    id: 'gather-town',
+    title: 'Token Gated Gather.Town',
+    logo: gatherLogo,
+    url: '/connectGather',
+    tags: ['Social'],
+    mainBtnLabel: 'Launch',
+    backgroundImg: gatherBack,
+    shortDesc:
+      'Gather makes spending time with your communities just as easy as real life',
+    textBlock: (
+      <>
+        <p>
+          Gather makes spending time with your communities just as easy as real
+          life. With this app, you can spend time with your crypto communities!
+        </p>
+        <p>
+          Once you login, you’ll notice that there is a private VIP lounge for
+          members of the following NFT communities:
+        </p>
+        <p>
+          Lit Genesis Gate Axie Cryptopunks Bored Ape Yacht Club Zed Run
+          LOSTPOETS VeeFriends CyberKongz Loot Meebits Metakey
+        </p>
+        <p>
+          If you’d like to create a customized Gather space for your crypto
+          community, please get in touch{' '}
+          <a href="https://airtable.com/shrghp9jsN4KtEHKK">here</a>.
         </p>
       </>
     ),
