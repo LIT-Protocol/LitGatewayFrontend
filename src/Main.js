@@ -46,6 +46,13 @@ const Main = () => {
               <a href="https://airtable.com/shrghp9jsN4KtEHKK" target="_blank">
                 <Button size="s" view="secondary" label="Submit Feedback" />
               </a>
+
+              <a
+                className={styles.privacyPolicy}
+                href="https://litgateway.com/LitPrivacyPolicy.html"
+              >
+                Privacy Policy
+              </a>
             </div>
           </div>
         ) : null}

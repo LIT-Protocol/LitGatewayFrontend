@@ -70,7 +70,7 @@ const AppsPage = () => {
                     <Button
                       label="Launch"
                       size="l"
-                      onClick={() => (window.location = app.url)}
+                      onClick={() => history.push(app.url)}
                     />
                   </>
                 }

@@ -9,6 +9,10 @@ import litLogo from './assets/lit-offer-icon.png'
 import litBack from './assets/litBack.png'
 import gDriveLogo from './assets/googleDrive.png'
 import driveBack from './assets/driveBack.png'
+import IPFSBack from './assets/IPFSBack.png'
+import minterBack from './assets/minterBack.png'
+import ipfsIcon from './assets/IPFS.png'
+import minterIcon from './assets/minter.png'
 
 import { Button } from '@consta/uikit/Button'
 import { Modal } from '@consta/uikit/Modal'
@@ -91,7 +95,7 @@ const DiscoverPage = () => {
         </div>
       </div>
       <div className={styles.content}>
-        <Card
+        {/* <Card
           title="InsureAce Discount"
           titleIcon={discountLogo}
           tags={['Staking', 'Finance']}
@@ -116,9 +120,9 @@ const DiscoverPage = () => {
             </div>
           }
           img={discountBack}
-        />
+        /> */}
 
-        <Card
+        {/* <Card
           title="Lit Protocol NFT Drop 01"
           titleIcon={litLogo}
           tags={['Lit Protocol']}
@@ -153,6 +157,52 @@ const DiscoverPage = () => {
             </div>
           }
           img={litBack}
+        /> */}
+
+        <Card
+          title="Unlockable NFT Minter"
+          titleIcon={minterIcon}
+          tags={['Create']}
+          className={styles.offer}
+          btns={
+            <>
+              <Button
+                label="Launch"
+                size="l"
+                onClick={() => history.push('/minter')}
+              />
+            </>
+          }
+          desc={
+            <div className={styles.desc}>
+              Create an NFT that contains locked content that only the owner of
+              the NFT can access
+            </div>
+          }
+          img={minterBack}
+        />
+
+        <Card
+          title="IPFS Encrypted Files"
+          titleIcon={ipfsIcon}
+          tags={['Productivity']}
+          className={styles.offer}
+          btns={
+            <>
+              <Button
+                label="Launch"
+                size="l"
+                onClick={() => history.push('/files')}
+              />
+            </>
+          }
+          desc={
+            <div className={styles.desc}>
+              Upload files to decentralized encrypted storage that can only be
+              decrypted and downloaded by members of your c rypto community.
+            </div>
+          }
+          img={IPFSBack}
         />
 
         <Card

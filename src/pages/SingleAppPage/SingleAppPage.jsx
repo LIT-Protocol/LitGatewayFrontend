@@ -52,7 +52,7 @@ const SingleAppPage = () => {
                 size="l"
                 onClick={() => {
                   if (app.url) {
-                    window.location = app.url
+                    history.push(app.url)
                   }
                 }}
               />
@@ -62,21 +62,21 @@ const SingleAppPage = () => {
             <div className={styles.textBlock}>{app.textBlock}</div>
           </div>
         </div>
-        <div className={styles.more}>
-          <div className={styles.content}>
-            <h2>Similar Apps</h2>
-            <div className={styles.moreList}>
-              <Grid
-                cols="1"
-                gap="xl"
-                breakpoints={{
-                  s: {
-                    cols: 2,
-                  },
-                }}
-              >
-                {app?.more.length &&
-                  app.more.map((item) => (
+        {app?.more.length > 0 ? (
+          <div className={styles.more}>
+            <div className={styles.content}>
+              <h2>Similar Apps</h2>
+              <div className={styles.moreList}>
+                <Grid
+                  cols="1"
+                  gap="xl"
+                  breakpoints={{
+                    s: {
+                      cols: 2,
+                    },
+                  }}
+                >
+                  {app.more.map((item) => (
                     <GridItem>
                       <Card
                         title={item.title}
@@ -97,10 +97,11 @@ const SingleAppPage = () => {
                       />
                     </GridItem>
                   ))}
-              </Grid>
+                </Grid>
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </>
   )
