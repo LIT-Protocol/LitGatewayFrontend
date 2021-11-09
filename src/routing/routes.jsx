@@ -20,6 +20,7 @@ import TwitterClaimNftStep2Page from '../pages/TwitterClaimNftStep2Page'
 import SingleOfferPage from '../pages/SingleOfferPage'
 import AppsPage from '../pages/AppsPage'
 import AboutPage from '../pages/AboutPage'
+import FramePage from '../pages/FramePage'
 
 import Navigation from '../components/Navigation'
 
@@ -61,6 +62,7 @@ const Routes = () => {
             <Route path="/offers" exact component={OffersPage} />
             <Route path="/offers/:title" exact component={SingleOfferPage} />
             <Route path="/connectGather" exact component={ConnectGatherPage} />
+            <Route path="/frame/:frameType" exact component={FramePage} />
             <Route
               path="/twitterClaimNftStep2"
               component={TwitterClaimNftStep2Page}

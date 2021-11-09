@@ -52,7 +52,7 @@ const SingleAppPage = () => {
                 size="l"
                 onClick={() => {
                   if (app.url) {
-                    window.location = app.url
+                    history.push(app.url)
                   }
                 }}
               />

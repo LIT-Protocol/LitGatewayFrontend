@@ -46,7 +46,7 @@ export const apps = [
     id: 'google-drive',
     title: 'Google Drive',
     logo: gDriveLogo,
-    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST,
+    url: '/frame/google',
     tags: ['Productivity'],
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
