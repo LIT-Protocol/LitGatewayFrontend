@@ -113,8 +113,19 @@ export const apps = [
           members of the following NFT communities:
         </p>
         <p>
-          Lit Genesis Gate Axie Cryptopunks Bored Ape Yacht Club Zed Run
-          LOSTPOETS VeeFriends CyberKongz Loot Meebits Metakey
+          <ul>
+            <li>Lit Genesis Gate</li>
+            <li>Axie</li>
+            <li>Cryptopunks</li>
+            <li>Bored Ape Yacht Club</li>
+            <li>Zed Run</li>
+            <li>LOSTPOETS</li>
+            <li>VeeFriends</li>
+            <li>CyberKongz</li>
+            <li>Loot</li>
+            <li>Meebits</li>
+            <li>Metakey</li>
+          </ul>
         </p>
         <p>
           If you’d like to create a customized Gather space for your crypto
