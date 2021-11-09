@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import styles from './discover-page.module.scss'
 
-import discountLogo from './assets/discount-offer-icon.png'
-import discountBack from './assets/discountBack.png'
-import litLogo from './assets/lit-offer-icon.png'
-import litBack from './assets/litBack.png'
 import gDriveLogo from './assets/googleDrive.png'
 import driveBack from './assets/driveBack.png'
 import IPFSBack from './assets/IPFSBack.png'
@@ -20,18 +16,17 @@ import { IconClose } from '@consta/uikit/IconClose'
 
 import { useAppContext } from '../../context'
 
-import { InputWrapper, Card } from '../../components'
+import { InputWrapper, Card, GetUpdates } from '../../components'
 
 import { putUser } from '../../api/users'
 
 const DiscoverPage = () => {
-  const [emailVal, setEmailVal] = useState('')
-
   const { performWithAuthSig, authSig } = useAppContext()
   const history = useHistory()
 
   const [showingEmailCaptureModal, setShowingEmailCaptureModal] =
     useState(false)
+
   const [email, setEmail] = useState('')
 
   const handleConnectWallet = () => {
@@ -50,8 +45,6 @@ const DiscoverPage = () => {
     })
     setShowingEmailCaptureModal(false)
   }
-
-  const handleSubmit = () => {}
 
   const handleOpenApp = (id) => {
     history.push(`/apps/${id}`)
@@ -77,22 +70,7 @@ const DiscoverPage = () => {
           history. Sign up below to get notified about offers based on the
           wallet you connect.
         </p>
-        <div className={styles.form}>
-          <InputWrapper
-            value={emailVal}
-            className={styles.input}
-            placeholder="Email address"
-            id="email"
-            size="l"
-            handleChange={(value) => setEmailVal(value)}
-          />
-          <Button
-            className={styles.btn}
-            label="Get Updates"
-            size="l"
-            onClick={handleSubmit}
-          />
-        </div>
+        <GetUpdates className={styles.form} />
       </div>
       <div className={styles.content}>
         {/* <Card

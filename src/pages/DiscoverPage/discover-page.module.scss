@@ -41,12 +41,6 @@
   width: 100%;
   display: flex;
   margin: 0 auto 32px;
-  .btn {
-    margin-left: 14px;
-  }
-  .input {
-    flex: 1 1 auto;
-  }
 }
 
 .title {
@@ -184,13 +178,6 @@
   }
   .form {
     flex-direction: column;
-    .btn {
-      margin-top: 10px;
-      margin-left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
   }
   .title {
     h3 {

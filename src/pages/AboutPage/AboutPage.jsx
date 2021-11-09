@@ -1,20 +1,10 @@
-import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Button } from '@consta/uikit/Button'
+
+import { GetUpdates } from '../../components'
 
 import styles from './about-page.module.scss'
 
-import { Button } from '@consta/uikit/Button'
-import { Grid, GridItem } from '@consta/uikit/Grid'
-import { Modal } from '@consta/uikit/Modal'
-import { IconClose } from '@consta/uikit/IconClose'
-
-import { useAppContext } from '../../context'
-
-import { InputWrapper } from '../../components'
-
 const AboutPage = () => {
-  const [email, setEmail] = useState('')
-
   const handleSubmit = () => {}
 
   return (
@@ -52,22 +42,9 @@ const AboutPage = () => {
           Don’t forget to drop your email address in so we can notify you when
           new offers that apply to you become available!
         </p>
-        <div className={styles.form}>
-          <InputWrapper
-            value={email}
-            className={styles.input}
-            placeholder="Email address"
-            id="email"
-            size="l"
-            handleChange={(value) => setEmail(value)}
-          />
-          <Button
-            className={styles.btn}
-            label="Get Updates"
-            size="l"
-            onClick={handleSubmit}
-          />
-        </div>
+
+        <GetUpdates className={styles.form} />
+
         <p className={styles.secondaryText}>
           If you’d like to create an offer for your project, please get in
           touch!
