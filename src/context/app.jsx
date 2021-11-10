@@ -21,7 +21,7 @@ export const AppContextProvider = (props) => {
 
   const performWithAuthSig = async (
     action,
-    { chain } = { chain: 'ethereum' },
+    { chain, getHoldings } = { chain: 'ethereum', getHoldings: true },
   ) => {
     //TODO add chain selection???
 
@@ -59,7 +59,7 @@ export const AppContextProvider = (props) => {
       }
     }
 
-    if (!userHoldings) {
+    if (!userHoldings && getHoldings) {
       // don't wait for this, run in the background
       getUserHoldings({ authSig: currentAuthSig }).then((resp) => {
         setUserHoldings(resp.holdings)

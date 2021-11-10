@@ -55,23 +55,28 @@ const SingleOfferPage = () => {
   const handleCheckInsuraceEligibility = async () => {
     setGlobalError(null)
     setLoading(true)
-    await performWithAuthSig(async (authSig) => {
-      const { offerEligibilities } = await getUserHoldings({ authSig })
-      console.log(offerEligibilities)
+    await performWithAuthSig(
+      async (authSig) => {
+        const { offerEligibilities } = await getUserHoldings({ authSig })
+        console.log(offerEligibilities)
 
-      const eligible = offerEligibilities.find(
-        (o) => o.campaign === 'insurace_0001',
-      )
+        const eligible = offerEligibilities.find(
+          (o) => o.campaign === 'insurace_0001',
+        )
 
-      if (eligible) {
-        // send them to insurace
-        window.location =
-          'https://app.insurace.io/Insurance/BuyCovers?referrer=142427135090057495346349881552413912237505016455'
-      } else {
-        setLoading(false)
-        setGlobalError({ title: 'Sorry, you are not eligible for this offer.' })
-      }
-    })
+        if (eligible) {
+          // send them to insurace
+          window.location =
+            'https://app.insurace.io/Insurance/BuyCovers?referrer=142427135090057495346349881552413912237505016455'
+        } else {
+          setLoading(false)
+          setGlobalError({
+            title: 'Sorry, you are not eligible for this offer.',
+          })
+        }
+      },
+      { chain: 'ethereum', getHoldings: false },
+    )
   }
 
   const offers = [
