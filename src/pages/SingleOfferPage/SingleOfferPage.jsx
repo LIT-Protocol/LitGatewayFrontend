@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 
 import styles from './single-offer-page.module.scss'
@@ -7,11 +7,13 @@ import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
 import { Badge } from '@consta/uikit/Badge'
+import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 import { Card } from '../../components'
 
 import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
 import { twitterOauthUrl } from '../../api/claimNft'
+import { getUserHoldings } from '../../api/users'
 
 import litLogo from './assets/lit-logo.png'
 import ethIcon from './assets/eth.png'
@@ -27,6 +29,14 @@ const SingleOfferPage = () => {
   const { title } = useParams()
   const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
   const history = useHistory()
+  const [loading, setLoading] = useState(false)
+
+  // clear global error when the user navigates away
+  useEffect(() => {
+    return () => {
+      setGlobalError(null)
+    }
+  }, [])
 
   const handleConnectTwitter = async () => {
     performWithAuthSig(async (authSig) => {
@@ -39,6 +49,28 @@ const SingleOfferPage = () => {
 
       console.log(resp)
       window.location = resp.url
+    })
+  }
+
+  const handleCheckInsuraceEligibility = async () => {
+    setGlobalError(null)
+    setLoading(true)
+    await performWithAuthSig(async (authSig) => {
+      const { offerEligibilities } = await getUserHoldings({ authSig })
+      console.log(offerEligibilities)
+
+      const eligible = offerEligibilities.find(
+        (o) => o.campaign === 'insurace_0001',
+      )
+
+      if (eligible) {
+        // send them to insurace
+        window.location =
+          'https://app.insurace.io/Insurance/BuyCovers?referrer=142427135090057495346349881552413912237505016455'
+      } else {
+        setLoading(false)
+        setGlobalError({ title: 'Sorry, you are not eligible for this offer.' })
+      }
     })
   }
 
@@ -140,6 +172,7 @@ const SingleOfferPage = () => {
       timeRemaining: '10 days, 2 hours',
       imgText: 'Maintain peace-of-mind while you live your decentralized life.',
       mainImg: discountMainImg,
+      handleMainButtonClick: handleCheckInsuraceEligibility,
       textBlock: (
         <>
           <p>
@@ -234,11 +267,15 @@ const SingleOfferPage = () => {
               //   Follow @LITProtocol
               // </button>
               null}
-              <Button
-                label={offer.mainBtnLabel}
-                size="l"
-                onClick={offer.handleMainButtonClick}
-              />
+              {loading ? (
+                <ProgressSpin />
+              ) : (
+                <Button
+                  label={offer.mainBtnLabel}
+                  size="l"
+                  onClick={offer.handleMainButtonClick}
+                />
+              )}
             </div>
           </div>
           <div className={styles.content}>

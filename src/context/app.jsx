@@ -17,6 +17,7 @@ export const AppContextProvider = (props) => {
   const [tokenList, setTokenList] = useState(null)
   const [globalError, setGlobalError] = useState(null)
   const [userHoldings, setUserHoldings] = useState(null)
+  const [eligibleOffes, setEligibleOffers] = useState(null)
 
   const performWithAuthSig = async (
     action,
@@ -62,6 +63,7 @@ export const AppContextProvider = (props) => {
       // don't wait for this, run in the background
       getUserHoldings({ authSig: currentAuthSig }).then((resp) => {
         setUserHoldings(resp.holdings)
+        setEligibleOffers(resp.offerEligibilities)
       })
     }
 
