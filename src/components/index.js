@@ -11,5 +11,6 @@ export { default as UploadButton } from './UploadButton'
 export { default as SearchInput } from './SearchInput'
 export { default as Modal } from './Modal'
 export { default as AuthDependent } from './AuthDependent'
+export { default as GetUpdates } from './GetUpdates'
 
 export * as Icons from './Icons'
