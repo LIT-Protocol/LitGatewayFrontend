@@ -80,6 +80,8 @@ export const apps = [
           </a>
           , including the Limited Use requirements.
         </p>
+
+        <p>Google Chrome is the recommended browser for using this app.</p>
       </>
     ),
     more: [
