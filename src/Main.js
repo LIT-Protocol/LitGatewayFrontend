@@ -39,7 +39,10 @@ const Main = () => {
                 <Icons.Twitter />
               </a>
 
-              <a href="#" className={styles.developerDocs}>
+              <a
+                href="https://developer.litprotocol.com/docs/intro"
+                className={styles.developerDocs}
+              >
                 Developer Docs <Icons.Outside />
               </a>
 
