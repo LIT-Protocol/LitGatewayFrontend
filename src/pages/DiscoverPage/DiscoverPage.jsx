@@ -9,6 +9,10 @@ import IPFSBack from './assets/IPFSBack.png'
 import minterBack from './assets/minterBack.png'
 import ipfsIcon from './assets/IPFS.png'
 import minterIcon from './assets/minter.png'
+import litLogo from './assets/lit-offer-icon.png'
+import litBack from './assets/litBack.png'
+import discountLogo from './assets/discount-offer-icon.png'
+import discountBack from './assets/discountBack.png'
 
 import { Button } from '@consta/uikit/Button'
 import { Modal } from '@consta/uikit/Modal'
@@ -73,7 +77,7 @@ const DiscoverPage = () => {
         <GetUpdates className={styles.form} />
       </div>
       <div className={styles.content}>
-        {/* <Card
+        <Card
           title="InsureAce Discount"
           titleIcon={discountLogo}
           tags={['Staking', 'Finance']}
@@ -98,9 +102,9 @@ const DiscoverPage = () => {
             </div>
           }
           img={discountBack}
-        /> */}
+        />
 
-        {/* <Card
+        <Card
           title="Lit Protocol NFT Drop 01"
           titleIcon={litLogo}
           tags={['Lit Protocol']}
@@ -135,9 +139,9 @@ const DiscoverPage = () => {
             </div>
           }
           img={litBack}
-        /> */}
+        />
 
-        <Card
+        {/* <Card
           title="Unlockable NFT Minter"
           titleIcon={minterIcon}
           tags={['Create']}
@@ -181,7 +185,7 @@ const DiscoverPage = () => {
             </div>
           }
           img={IPFSBack}
-        />
+        /> */}
 
         <Card
           className={styles.offer}
