@@ -9,10 +9,12 @@ import { IconBackward } from '@consta/uikit/IconBackward'
 import { Badge } from '@consta/uikit/Badge'
 import { Card } from '../../components'
 import { apps } from '../../data/apps'
+import { useAppContext } from '../../context'
 
 const SingleAppPage = () => {
   const { id } = useParams()
   const history = useHistory()
+  const { performWithAuthSig } = useAppContext()
 
   const app = apps.find((app) => app.id === id)
 
@@ -53,6 +55,8 @@ const SingleAppPage = () => {
                 onClick={() => {
                   if (app.url) {
                     history.push(app.url)
+                  } else {
+                    app.launchClickedHandler({ performWithAuthSig })
                   }
                 }}
               />

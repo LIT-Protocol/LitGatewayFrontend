@@ -42,7 +42,7 @@ const OffersPage = () => {
         >
           <GridItem>
             <Card
-              title="InsureAce Discount"
+              title="InsurAce Discount"
               titleIcon={discountLogo}
               tags={['Staking', 'Finance']}
               className={styles.offer}
@@ -50,7 +50,7 @@ const OffersPage = () => {
                 <Button
                   size="l"
                   label="Details"
-                  onClick={() => handleOpenOffer('insureace-discount')}
+                  onClick={() => handleOpenOffer('insurace-discount')}
                 />
               }
               desc={
@@ -68,7 +68,7 @@ const OffersPage = () => {
               img={discountBack}
             />
           </GridItem>
-          {/* <GridItem>
+          <GridItem>
             <Card
               title="Lit Protocol NFT Drop 01"
               titleIcon={litLogo}
@@ -105,7 +105,7 @@ const OffersPage = () => {
               }
               img={litBack}
             />
-          </GridItem> */}
+          </GridItem>
         </Grid>
       </div>
     </div>

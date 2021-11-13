@@ -22,9 +22,11 @@ import { Card, Title } from '../../components'
 import blockArt from './assets/block-art.png'
 
 import { apps } from '../../data/apps'
+import { useAppContext } from '../../context'
 
 const AppsPage = () => {
   const history = useHistory()
+  const { performWithAuthSig } = useAppContext()
 
   const handleOpenApp = (id) => {
     history.push(`/apps/${id}`)
@@ -70,7 +72,13 @@ const AppsPage = () => {
                     <Button
                       label="Launch"
                       size="l"
-                      onClick={() => history.push(app.url)}
+                      onClick={() => {
+                        if (app.url) {
+                          history.push(app.url)
+                        } else {
+                          app.launchClickedHandler({ performWithAuthSig })
+                        }
+                      }}
                     />
                   </>
                 }

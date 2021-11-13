@@ -2,7 +2,7 @@
 
 ## Predefined access control conditions
 
-User holds more than 0.05 ETH
+### sUser holds more than 0.05 ETH
 
 ```
 const chain = 'ethereum'

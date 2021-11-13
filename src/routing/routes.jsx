@@ -15,7 +15,6 @@ import GalleryItemPage from '../pages/GalleryPage/GalleryItemPage'
 import MinterPage from '../pages/MinterPage'
 import BuildPage from '../pages/BuildPage'
 import OffersPage from '../pages/OffersPage'
-import ConnectGatherPage from '../pages/ConnectGatherPage'
 import TwitterClaimNftStep2Page from '../pages/TwitterClaimNftStep2Page'
 import SingleOfferPage from '../pages/SingleOfferPage'
 import AppsPage from '../pages/AppsPage'
@@ -61,7 +60,6 @@ const Routes = () => {
             <Route path="/apps" exact component={AppsPage} />
             <Route path="/offers" exact component={OffersPage} />
             <Route path="/offers/:title" exact component={SingleOfferPage} />
-            <Route path="/connectGather" exact component={ConnectGatherPage} />
             <Route path="/frame/:frameType" exact component={FramePage} />
             <Route
               path="/twitterClaimNftStep2"
