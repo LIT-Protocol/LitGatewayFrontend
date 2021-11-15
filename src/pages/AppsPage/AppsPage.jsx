@@ -69,22 +69,47 @@ const AppsPage = () => {
                       label="Details"
                       onClick={() => handleOpenApp(app.id)}
                     />
-                    <Button
-                      label="Launch"
-                      size="l"
-                      onClick={() => {
-                        if (app.url) {
-                          if (app.url.startsWith('http')) {
-                            // open in new page
-                            window.location = app.url
+                    {app.mainBtnImage ? (
+                      <img
+                        src={app.mainBtnImage}
+                        style={{
+                          height: 48,
+                          cursor: 'pointer',
+                          position: 'relative',
+                          top: 17,
+                          left: 8,
+                        }}
+                        onClick={() => {
+                          if (app.url) {
+                            if (app.url.startsWith('http')) {
+                              // open in new page
+                              window.location = app.url
+                            } else {
+                              history.push(app.url)
+                            }
                           } else {
-                            history.push(app.url)
+                            app.launchClickedHandler({ performWithAuthSig })
                           }
-                        } else {
-                          app.launchClickedHandler({ performWithAuthSig })
-                        }
-                      }}
-                    />
+                        }}
+                      />
+                    ) : (
+                      <Button
+                        label="Launch"
+                        size="l"
+                        onClick={() => {
+                          if (app.url) {
+                            if (app.url.startsWith('http')) {
+                              // open in new page
+                              window.location = app.url
+                            } else {
+                              history.push(app.url)
+                            }
+                          } else {
+                            app.launchClickedHandler({ performWithAuthSig })
+                          }
+                        }}
+                      />
+                    )}
                   </>
                 }
                 desc={<div className={styles.desc}>{app.shortDesc}</div>}

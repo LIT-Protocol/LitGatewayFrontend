@@ -38,7 +38,7 @@ const SingleAppPage = () => {
         <div className={styles.body}>
           <div className={styles.top}>
             <div className={styles.left}>
-              <img src={app.logo} alt="" />
+              <img className={styles.logo} src={app.logo} alt="" />
               <div className={styles.titles}>
                 <h1 className={styles.title}>{app.title}</h1>
                 <div className={styles.tags}>
@@ -49,22 +49,41 @@ const SingleAppPage = () => {
               </div>
             </div>
             <div className={styles.right}>
-              <Button
-                label={app.mainBtnLabel}
-                size="l"
-                onClick={() => {
-                  if (app.url) {
-                    if (app.url.startsWith('http')) {
-                      // open in new page
-                      window.location = app.url
+              {app.mainBtnImage ? (
+                <img
+                  src={app.mainBtnImage}
+                  style={{ height: 48, cursor: 'pointer' }}
+                  onClick={() => {
+                    if (app.url) {
+                      if (app.url.startsWith('http')) {
+                        // open in new page
+                        window.location = app.url
+                      } else {
+                        history.push(app.url)
+                      }
                     } else {
-                      history.push(app.url)
+                      app.launchClickedHandler({ performWithAuthSig })
                     }
-                  } else {
-                    app.launchClickedHandler({ performWithAuthSig })
-                  }
-                }}
-              />
+                  }}
+                />
+              ) : (
+                <Button
+                  label={app.mainBtnLabel}
+                  size="l"
+                  onClick={() => {
+                    if (app.url) {
+                      if (app.url.startsWith('http')) {
+                        // open in new page
+                        window.location = app.url
+                      } else {
+                        history.push(app.url)
+                      }
+                    } else {
+                      app.launchClickedHandler({ performWithAuthSig })
+                    }
+                  }}
+                />
+              )}
             </div>
           </div>
           <div className={styles.content}>

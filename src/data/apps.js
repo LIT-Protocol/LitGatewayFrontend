@@ -1,6 +1,7 @@
 import zoomLogo from '../pages/SingleAppPage/assets/zoom.png'
 import gDriveLogo from '../pages/SingleAppPage/assets/googleDrive.png'
 import driveBack from '../pages/SingleAppPage/assets/driveBack.png'
+import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
 
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
@@ -53,6 +54,7 @@ export const apps = [
     tags: ['Productivity'],
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
+    mainBtnImage: signInWithGoogle,
     shortDesc:
       'Grant access to Google Drive files with blockchain requirements',
     textBlock: (
