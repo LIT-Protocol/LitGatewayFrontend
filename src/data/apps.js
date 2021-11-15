@@ -12,7 +12,7 @@ export const apps = [
     title: 'Zoom',
     logo: zoomLogo,
     tags: ['Productivity'],
-    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/google',
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/zoom',
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     shortDesc:
