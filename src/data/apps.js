@@ -149,7 +149,7 @@ export const apps = [
         <p>
           If you’d like to create a customized Gather space for your crypto
           community, please get in touch{' '}
-          <a href="https://airtable.com/shrghp9jsN4KtEHKK">here</a>.
+          <a href="https://airtable.com/shrF5AFku12YbLP0n">here</a>.
         </p>
       </>
     ),
