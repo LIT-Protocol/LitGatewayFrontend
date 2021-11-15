@@ -11,7 +11,7 @@ export const apps = [
     title: 'Zoom',
     logo: zoomLogo,
     tags: ['Productivity'],
-    url: '/frame/zoom',
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/google',
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     shortDesc:
@@ -49,7 +49,7 @@ export const apps = [
     id: 'google-drive',
     title: 'Google Drive',
     logo: gDriveLogo,
-    url: '/frame/google',
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/google',
     tags: ['Productivity'],
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
