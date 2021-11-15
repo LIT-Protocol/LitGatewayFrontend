@@ -74,7 +74,12 @@ const AppsPage = () => {
                       size="l"
                       onClick={() => {
                         if (app.url) {
-                          history.push(app.url)
+                          if (app.url.startsWith('http')) {
+                            // open in new page
+                            window.location = app.url
+                          } else {
+                            history.push(app.url)
+                          }
                         } else {
                           app.launchClickedHandler({ performWithAuthSig })
                         }
