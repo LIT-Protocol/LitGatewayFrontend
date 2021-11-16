@@ -71,14 +71,8 @@ const AppsPage = () => {
                     />
                     {app.mainBtnImage ? (
                       <img
+                        className={styles.imageBtn}
                         src={app.mainBtnImage}
-                        style={{
-                          height: 48,
-                          cursor: 'pointer',
-                          position: 'relative',
-                          top: 17,
-                          left: 8,
-                        }}
                         onClick={() => {
                           if (app.url) {
                             if (app.url.startsWith('http')) {
@@ -112,6 +106,7 @@ const AppsPage = () => {
                     )}
                   </>
                 }
+                btnsWithoutMargin={app.btnsWithoutMargin}
                 desc={<div className={styles.desc}>{app.shortDesc}</div>}
                 img={app.backgroundImg}
               />

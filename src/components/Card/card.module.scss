@@ -28,9 +28,12 @@
     }
   }
   .btns {
+    display: flex;
+    align-items: center;
     position: absolute;
     bottom: -20px;
     right: 36px;
+
     button {
       margin-left: 16px;
     }
@@ -102,6 +105,10 @@
     }
     .desc {
       margin-bottom: 16px;
+    }
+
+    .btnsWithoutMargin {
+      right: 15px;
     }
   }
 }
