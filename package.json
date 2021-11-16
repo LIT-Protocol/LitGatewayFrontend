@@ -17,7 +17,7 @@
     "dayjs": "^1.10.6",
     "ethers": "^5.4.5",
     "feather-icons": "^4.28.0",
-    "lit-access-control-conditions-modal": "^1.1.12",
+    "lit-access-control-conditions-modal": "^1.1.13",
     "lit-js-sdk": "^1.1.80",
     "node-sass": "^6.0.1",
     "prismjs": "^1.24.1",
