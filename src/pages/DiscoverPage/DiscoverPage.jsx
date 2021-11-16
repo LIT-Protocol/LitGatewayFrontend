@@ -86,7 +86,7 @@ const DiscoverPage = () => {
             <Button
               size="l"
               label="Details"
-              onClick={() => handleOpenOffer('insureace-discount')}
+              onClick={() => handleOpenOffer('insurace-discount')}
             />
           }
           desc={

@@ -5,7 +5,9 @@ import { GetUpdates } from '../../components'
 import styles from './about-page.module.scss'
 
 const AboutPage = () => {
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    window.open('https://airtable.com/shr2NWJbH1Y6Y3kOU', '_blank').focus()
+  }
 
   return (
     <div className={styles.main}>
