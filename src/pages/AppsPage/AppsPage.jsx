@@ -135,7 +135,7 @@ const AppsPage = () => {
               desc={
                 <div className={styles.desc}>
                   Upload files to decentralized encrypted storage that can only
-                  be decrypted and downloaded by members of your c rypto
+                  be decrypted and downloaded by members of your crypto
                   community.
                 </div>
               }

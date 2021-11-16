@@ -16,7 +16,7 @@ export const apps = [
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     shortDesc:
-      'Grant access to Google Drive files with blockchain requirements',
+      'Grant access to Zoom meetings and webinars with blockchain requirements',
     textBlock: (
       <>
         <p>
