@@ -94,7 +94,7 @@ const FileDropper = (props) => {
               size: humanFileSize(f.size),
               id: f.name,
             }))}
-            onRemove={() => false}
+            onRemove={removeFile}
           />
         </>
       ) : null}

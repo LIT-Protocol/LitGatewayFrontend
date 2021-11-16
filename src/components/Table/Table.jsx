@@ -24,7 +24,7 @@ const Row = (props) => {
 
       {onRemove ? (
         <td className={styles.removeCell}>
-          <Icons.Trash onClick={onRemove} />
+          <Icons.Trash onClick={() => onRemove(row)} />
         </td>
       ) : null}
     </tr>
