@@ -187,23 +187,23 @@ const SingleOfferPage = () => {
       ),
       more: [
         {
-          title: 'Lit Protocol NFT Drop 01',
+          title: 'Lit Genesis Gate NFT',
           titleIcon: litMiniLogo,
           tags: ['Lit Protocol'],
           id: 'lit-protocol-nft',
           requirement: (
             <span>
-              Follow{' '}
+              Own ETH & follow{' '}
               <a
                 className={styles.link}
                 href="https://twitter.com/litprotocol"
                 target="_blank"
               >
-                @LitProtocol on Twitter
+                @LitProtocol
               </a>
             </span>
           ),
-          reward: 'NFT',
+          reward: 'Genesis NFT',
           img: litBack,
         },
       ],
