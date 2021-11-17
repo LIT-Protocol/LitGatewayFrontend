@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 
 import styles from './single-offer-page.module.scss'
@@ -82,7 +82,7 @@ const SingleOfferPage = () => {
   const offers = [
     {
       id: 'lit-protocol-nft',
-      title: 'Lit Protocol NFT Drop 01',
+      title: 'Lit Genesis Gate NFT',
       logo: litLogo,
       tags: ['Lit Protocol'],
       mainBtnLabel: 'Connect Twitter and Claim NFT',
@@ -120,55 +120,50 @@ const SingleOfferPage = () => {
       ),
       segmentCenterValue: '0/10,000',
       timeRemaining: '10 days, 2 hours',
-      imgText: 'The first truly unlockable NFT.  Join the LIT Community!',
+      imgText: "Join the Lit community and let's make an NFT together!",
       segmentCenterTitle: 'NFTS CLAIMED',
       mainImg: litMainImg,
       textBlock: (
         <>
           <p>
-            Come claim your Lit Launch NFT! The first 10,000 people who own more
-            than 0.005 ETH and follow @LitProtocol on Twitter will receive a Lit
-            Launch NFT.
+            The Lit Genesis Gate NFT is available to the first 9,500 people who
+            claim it! In order to claim, you must have more than 0.005 ETH in
+            your wallets and follow @LitProtocol on twitter.
           </p>
           <p>
-            There are two things you should know about these NFTs. First, they
-            are unlockable! Second, they are generative, so if you’re lucky,
-            you’ll get a really rare one!
+            Once you own the NFT, give it a click and be transported through the
+            gate to arrive at a page where you can join a private Discord server
+            room and add to the collaborative pixel art project.
           </p>
+          <p>(image of blank canvas)</p>
           <p>
-            On unlock-ability, once you own the NFT, you’ll be able to unlock it
-            and contribute to a collaborative art project with other NFT owners.
-            The unlockable content will be updated over time as we release more
-            features. Furthermore, owners of the Lit Launch NFT will be able to
-            get early access to upcoming Lit Gateway and Lit Protocol features.
+            After 30 days, we’ll turn the resulting canvas, we’ll create two
+            NFTs. One will be given to someone in the community and the other
+            will be fractionalized and distributed to the artists.
           </p>
-          <p>
-            In terms of visual rarity, these NFTs have the following attributes:
-          </p>
-          <br />
-          <p>(List of attributes and rarity)</p>
-          <br />
+          <p>More community projects ahead too!</p>
           <p>
             To get started, click “Claim” to verify that you own at least a bit
-            of ETH and connect your twitter account to claim the NFT.
+            of ETH and connect your twitter account to claim the NFT. We’ll
+            cover the transaction fee :)
           </p>
         </>
       ),
       more: [
         {
-          title: 'InsureAce Discount',
+          title: 'Insurace 30% Rebate',
           titleIcon: discountMiniLogo,
           tags: ['Staking', 'Finance'],
           id: 'insurace-discount',
           requirement: 'Referral purchase',
-          reward: '30% off for 1 month',
+          reward: '$INSUR',
           img: discountBack,
         },
       ],
     },
     {
       id: 'insurace-discount',
-      title: 'InsurAce Discount',
+      title: 'Insurace 30% Rebate',
       tags: ['Staking', 'Finance'],
       logo: discountLogo,
       mainBtnLabel: 'Get Discount',
@@ -192,23 +187,23 @@ const SingleOfferPage = () => {
       ),
       more: [
         {
-          title: 'Lit Protocol NFT Drop 01',
+          title: 'Lit Genesis Gate NFT',
           titleIcon: litMiniLogo,
           tags: ['Lit Protocol'],
           id: 'lit-protocol-nft',
           requirement: (
             <span>
-              Follow{' '}
+              Own ETH & follow{' '}
               <a
                 className={styles.link}
                 href="https://twitter.com/litprotocol"
                 target="_blank"
               >
-                @LitProtocol on Twitter
+                @LitProtocol
               </a>
             </span>
           ),
-          reward: 'NFT',
+          reward: 'Genesis NFT',
           img: litBack,
         },
       ],

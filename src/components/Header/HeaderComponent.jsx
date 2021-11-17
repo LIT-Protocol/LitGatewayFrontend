@@ -4,24 +4,27 @@ import { NavLink } from 'react-router-dom'
 import styles from './header-component.module.scss'
 
 import litLogo from '../../assets/imgs/lit-logo.svg'
-import litMiniLogo from '../../assets/imgs/lit-mini-logo.svg'
 
-import { Header, HeaderModule, HeaderButton } from '@consta/uikit/Header'
+import { Header, HeaderButton, HeaderModule } from '@consta/uikit/Header'
 import { IconAlignJustify } from '@consta/uikit/IconAlignJustify'
 import { IconClose } from '@consta/uikit/IconClose'
 
-import { UserBlock, AuthDependent } from '../'
+import { AuthDependent, UserBlock } from '../'
 
 import { useAppContext } from '../../context/app'
 
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 const HeaderComponent = () => {
-  const { setSideBar, sideBar, username } = useAppContext()
+  const { setSideBar, sideBar, username, performWithAuthSig } = useAppContext()
 
   const [search, setSeacrh] = useState('')
 
   const { width } = useWindowDimensions()
+
+  const connectToWallet = () => {
+    performWithAuthSig()
+  }
 
   return (
     <Header
@@ -87,13 +90,12 @@ const HeaderComponent = () => {
               </NavLink>
 
               {!username ? (
-                <NavLink
-                  activeClassName={styles.activeLink}
-                  className={styles.link}
-                  to={'/connect'}
+                <span
+                  className={styles.connectButton}
+                  onClick={() => connectToWallet()}
                 >
                   Connect Wallet
-                </NavLink>
+                </span>
               ) : null}
 
               <UserBlock />

@@ -16,23 +16,17 @@ export const apps = [
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     shortDesc:
-      'Grant access to Google Drive files with blockchain requirements',
+      'Grant access to Zoom meetings and webinars with blockchain requirements',
     textBlock: (
       <>
         <p>
-          Create permissions based on wallet contents for your already-existing
-          Google Drive files. Our flexible permissions builders allows you to
-          allow access based on token or NFT ownership as well as other wallet
-          attributes, like membership in a DAO.
+          Create permissions based Zoom meetings and webinars based on ownership
+          of crypto assets and blockchain identity.
         </p>
         <p>
-          Once files are permissioned on the Lit Google Docs App, you can edit
-          wallet parameters, view/edit access, and delete it from the app which
-          removes that access.
-        </p>
-        <p>
-          Wallets that meet the conditions will enter their email address for
-          access.
+          Connect your account and use the Lit Protocol permissions builder to
+          allow access to Zoom meetings based on token or NFT ownership as well
+          as other wallet attributes, like membership in a DAO.
         </p>
       </>
     ),
@@ -60,23 +54,18 @@ export const apps = [
     textBlock: (
       <>
         <p>
-          Create permissions based on wallet contents for your already-existing
-          Google Drive files. Our flexible permissions builders allows you to
-          allow access based on token or NFT ownership as well as other wallet
-          attributes, like membership in a DAO.
+          Added token and blockchain identity access control to your Google
+          Drive files.
         </p>
         <p>
-          Once files are permissioned on the Lit Google Docs App, you can edit
-          wallet parameters, view/edit access, and delete it from the app which
-          removes that access.
+          Connect your Google account and use the Lit Protocol permissions
+          builder to allow read, write, or edit access to your Google Drive
+          folders, files, sheets, and more.
         </p>
         <p>
-          Wallets that meet the conditions will enter their email address for
-          access.
-        </p>
-        <p>
-          Lit Protocol's use and transfer to any other app of information
-          received from Google APIs will adhere to{' '}
+          This app requirements minimal permissions. Lit Protocol's use and
+          transfer to any other app of information received from Google APIs
+          will adhere to{' '}
           <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">
             Google API Services User Data Policy
           </a>
@@ -99,7 +88,7 @@ export const apps = [
   },
   {
     id: 'gather-town',
-    title: 'Gather.Town for NFT Communities',
+    title: ' Gather.Town - NFT Demo',
     logo: gatherLogo,
     url: null,
     launchClickedHandler: ({ performWithAuthSig }) => {
@@ -121,16 +110,19 @@ export const apps = [
     tags: ['Social'],
     mainBtnLabel: 'Launch',
     backgroundImg: gatherBack,
-    shortDesc: 'NFT Gating inside of a virtual world in Gather.Town',
+    shortDesc: 'Try token gated Gather and sign up to create your own',
     textBlock: (
       <>
         <p>
           Gather makes spending time with your communities just as easy as real
-          life. With this app, you can spend time with your crypto communities!
+          life. With this app, you can demo the Gather x Lit Protocol
+          experience. If you’d like to create a customized Gather space for your
+          crypto community, please get in touch{' '}
+          <a href="https://airtable.com/shrF5AFku12YbLP0n">here</a>.
         </p>
         <p>
-          Once you login, you’ll notice that there is a private VIP lounge for
-          members of the following NFT communities:
+          In this Gather space, you must own one or more of the following NFT to
+          enter the private lounge:
         </p>
         <p>
           <ul>
