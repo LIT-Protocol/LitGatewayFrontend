@@ -26,7 +26,6 @@ const Main = () => {
 
   useEffect(() => {
     const height = window.innerHeight
-    console.log(window.innerHeight)
     if (height < 640) {
       setSideTopMeasure({ top: '320px' })
     } else {

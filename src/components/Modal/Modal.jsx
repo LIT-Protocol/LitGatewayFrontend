@@ -13,6 +13,7 @@ const ModalComponent = (props) => {
   const {
     isOpen,
     children,
+    title,
     withCloseButton = true,
     unsavedPopup = false,
     onClose = () => false,
@@ -23,6 +24,7 @@ const ModalComponent = (props) => {
   delete passedProps.withCloseButton
   delete passedProps.onClose
   delete passedProps.unsavedPopup
+  delete passedProps.title
 
   const [showUnsavedPopup, setShowUnsavedPopup] = useState(false)
 
@@ -56,8 +58,10 @@ const ModalComponent = (props) => {
           <Icons.Close onClick={handleClose} />
         </div>
       ) : null}
-
-      {children}
+      <div>
+        {title ? <div className={styles.title}>{title}</div> : null}
+        {children}
+      </div>
     </Modal>
   )
 }
