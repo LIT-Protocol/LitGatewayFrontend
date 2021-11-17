@@ -84,6 +84,7 @@ export const apps = [
         img: driveBack,
       },
     ],
+    btnsWithoutMargin: true,
   },
   {
     id: 'gather-town',

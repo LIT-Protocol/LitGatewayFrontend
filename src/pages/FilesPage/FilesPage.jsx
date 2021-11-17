@@ -9,8 +9,8 @@ import { TextField } from '@consta/uikit/TextField'
 import { IconAdd } from '@consta/uikit/IconAdd'
 import { Breadcrumbs } from '@consta/uikit/Breadcrumbs'
 
+import UploadFilesModal from './UploadFilesModal'
 import FilesList from './FilesList'
-import FileDropper from './FileDropper'
 import Uploader from './Uploader'
 
 import { UploadButton, Modal, Title } from '../../components'
@@ -157,20 +157,13 @@ const FilesPage = () => {
         size="m"
       />
 
-      <Modal
-        isOpen={fileDropperModalOpen}
-        hasOverlay
-        unsavedPopup
-        onClose={() => setFileDropperModalOpen(false)}
-      >
-        <div style={{ margin: 16 }}>
-          <h3 className={styles.subtitle}>Upload Files</h3>
-          <FileDropper
-            defaultFiles={selectedFiles}
-            onFilesSelected={onFilesSelected}
-          />
-        </div>
-      </Modal>
+      {fileDropperModalOpen ? (
+        <UploadFilesModal
+          selectedFiles={selectedFiles}
+          onFilesSelected={onFilesSelected}
+          onClose={() => setFileDropperModalOpen(false)}
+        />
+      ) : null}
 
       <Modal
         isOpen={newFolderModalOpen}
