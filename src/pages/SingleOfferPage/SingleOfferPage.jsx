@@ -22,8 +22,9 @@ import discountMainImg from './assets/discount-main-img.jpg'
 import discountLogo from './assets/discount-logo.png'
 import discountMiniLogo from '../OffersPage/assets/discount-offer-icon.png'
 import litMiniLogo from '../OffersPage/assets/lit-offer-icon.png'
-import discountBack from '../OffersPage//assets/discountBack.png'
-import litBack from '../OffersPage//assets/litBack.png'
+import discountBack from '../OffersPage/assets/discountBack.png'
+import litBack from '../OffersPage/assets/litBack.png'
+import blankCanvas from '../OffersPage/assets/blank-canvas.png'
 
 const SingleOfferPage = () => {
   const { title } = useParams()
@@ -135,7 +136,9 @@ const SingleOfferPage = () => {
             gate to arrive at a page where you can join a private Discord server
             room and add to the collaborative pixel art project.
           </p>
-          <p>(image of blank canvas)</p>
+          <br />
+          <img src={blankCanvas} className={styles.blankCanvas} />
+          <br />
           <p>
             After 30 days, we’ll turn the resulting canvas, we’ll create two
             NFTs. One will be given to someone in the community and the other
