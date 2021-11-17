@@ -1,4 +1,3 @@
-import React from 'react'
 import cx from 'classnames'
 
 import styles from './card.module.scss'
@@ -7,7 +6,16 @@ import { Tag } from '@consta/uikit/Tag'
 
 import { getImg } from '../../utils'
 
-const Card = ({ img, titleIcon, title, desc, btns, tags, className }) => {
+const Card = ({
+  img,
+  titleIcon,
+  title,
+  desc,
+  btns,
+  btnsWithoutMargin,
+  tags,
+  className,
+}) => {
   return (
     <div className={cx(styles.card, className)}>
       <div className={styles.imgWrap}>
@@ -31,7 +39,14 @@ const Card = ({ img, titleIcon, title, desc, btns, tags, className }) => {
             ))}
         </div>
       </div>
-      <div className={styles.btns}>{btns}</div>
+      <div
+        className={cx(
+          styles.btns,
+          btnsWithoutMargin && styles.btnsWithoutMargin,
+        )}
+      >
+        {btns}
+      </div>
     </div>
   )
 }

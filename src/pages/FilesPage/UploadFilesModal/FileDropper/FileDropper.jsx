@@ -1,25 +1,27 @@
-import React, { useMemo, useCallback, useState } from 'react'
+import { useMemo, useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import LitJsSdk from 'lit-js-sdk'
-import { getSharingLink, humanFileSize } from '../../utils/files'
-import { IconTrash } from '@consta/uikit/IconTrash'
-import { Button } from '@consta/uikit/Button'
-import { Table } from '@consta/uikit/Table'
+import { humanFileSize } from 'utils/files'
+
+import { Table } from 'components'
+
+import styles from './file-dropper.module.scss'
 
 const baseStyle = {
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: '20px',
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: '#eeeeee',
-  borderStyle: 'dashed',
+  padding: '0 36px',
+  border: '1px dashed rgba(0, 5, 51, 0.6)',
+  borderRadius: '3px',
   backgroundColor: '#fafafa',
   color: 'rgb(119 119 119)',
   outline: 'none',
   transition: 'border .24s ease-in-out',
+  maxWidth: '304px',
+  margin: '0 auto',
+  boxSizing: 'border-box',
+  cursor: 'pointer',
 }
 
 const activeStyle = {
@@ -34,7 +36,9 @@ const rejectStyle = {
   borderColor: '#ff1744',
 }
 
-const FileDropper = ({ defaultFiles, onFilesSelected }) => {
+const FileDropper = (props) => {
+  const { defaultFiles = [], onFilesSelected } = props
+
   const [selectedFiles, setSelectedFiles] = useState([...defaultFiles])
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -70,62 +74,35 @@ const FileDropper = ({ defaultFiles, onFilesSelected }) => {
   const fileTableColumns = [
     {
       title: 'Name',
-      accessor: 'name',
-      align: 'left',
-      sortable: true,
-      renderCell: (row) => {
-        // console.log('rendering', row)
-        return row.name
-      },
+      name: 'name',
     },
     {
       title: 'Size',
-      accessor: 'size',
-      sortable: true,
-      renderCell: (row) => {
-        return humanFileSize(row.size)
-      },
-    },
-    {
-      title: 'Actions',
-      renderCell: (row) => {
-        return (
-          <>
-            <Button
-              onClick={() => removeFile(row)}
-              iconLeft={IconTrash}
-              onlyIcon
-              size="s"
-              view="clear"
-            />
-          </>
-        )
-      },
+      name: 'size',
     },
   ]
 
   return (
     <div>
-      <div {...getRootProps({ style })}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </div>
       {selectedFiles.length > 0 ? (
         <>
-          <div style={{ height: 16 }} />
           <Table
+            className={styles.tableWrapper}
             columns={fileTableColumns}
             rows={selectedFiles.map((f) => ({
               name: f.name,
-              size: f.size,
+              size: humanFileSize(f.size),
               id: f.name,
             }))}
-            emptyRowsPlaceholder="No files yet.  Pick some and they will show up here."
+            onRemove={removeFile}
           />
-          <div style={{ height: 16 }} />
-          <Button label="Next" onClick={() => onFilesSelected(selectedFiles)} />
         </>
       ) : null}
+
+      <div {...getRootProps({ style })}>
+        <input {...getInputProps()} />
+        <p>+ Add additional files</p>
+      </div>
     </div>
   )
 }
