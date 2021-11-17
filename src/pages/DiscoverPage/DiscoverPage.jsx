@@ -5,10 +5,6 @@ import styles from './discover-page.module.scss'
 
 import gDriveLogo from './assets/googleDrive.png'
 import driveBack from './assets/driveBack.png'
-import IPFSBack from './assets/IPFSBack.png'
-import minterBack from './assets/minterBack.png'
-import ipfsIcon from './assets/IPFS.png'
-import minterIcon from './assets/minter.png'
 import litLogo from './assets/lit-offer-icon.png'
 import litBack from './assets/litBack.png'
 import discountLogo from './assets/discount-offer-icon.png'
@@ -20,7 +16,7 @@ import { IconClose } from '@consta/uikit/IconClose'
 
 import { useAppContext } from '../../context'
 
-import { InputWrapper, Card, GetUpdates } from '../../components'
+import { Card, GetUpdates, InputWrapper } from '../../components'
 
 import { putUser } from '../../api/users'
 
@@ -78,7 +74,7 @@ const DiscoverPage = () => {
       </div>
       <div className={styles.content}>
         <Card
-          title="InsureAce Discount"
+          title="Insurace 30% Rebate"
           titleIcon={discountLogo}
           tags={['Staking', 'Finance']}
           className={styles.offer}
@@ -96,7 +92,7 @@ const DiscoverPage = () => {
                   REQUIREMENT: <span>Yield farmer</span>
                 </li>
                 <li>
-                  REWARD: <span>30% off for 1 month</span>
+                  REWARD: <span>$INSUR</span>
                 </li>
               </ul>
             </div>
@@ -105,7 +101,7 @@ const DiscoverPage = () => {
         />
 
         <Card
-          title="Lit Protocol NFT Drop 01"
+          title="Lit Genesis Gate NFT"
           titleIcon={litLogo}
           tags={['Lit Protocol']}
           className={styles.offer}
@@ -122,18 +118,18 @@ const DiscoverPage = () => {
                 <li>
                   REQUIREMENT:{' '}
                   <span>
-                    Follow{' '}
+                    Own ETH & follow{' '}
                     <a
                       className={styles.link}
                       href="https://twitter.com/litprotocol"
                       target="_blank"
                     >
-                      @LitProtocol on Twitter
+                      @LitProtocol
                     </a>
                   </span>
                 </li>
                 <li>
-                  REWARD: <span>NFT</span>
+                  REWARD: <span>Genesis NFT</span>
                 </li>
               </ul>
             </div>

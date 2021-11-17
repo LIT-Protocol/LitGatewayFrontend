@@ -151,19 +151,19 @@ const SingleOfferPage = () => {
       ),
       more: [
         {
-          title: 'InsureAce Discount',
+          title: 'Insurace 30% Rebate',
           titleIcon: discountMiniLogo,
           tags: ['Staking', 'Finance'],
           id: 'insurace-discount',
           requirement: 'Referral purchase',
-          reward: '30% off for 1 month',
+          reward: '$INSUR',
           img: discountBack,
         },
       ],
     },
     {
       id: 'insurace-discount',
-      title: 'InsurAce Discount',
+      title: 'Insurace 30% Rebate',
       tags: ['Staking', 'Finance'],
       logo: discountLogo,
       mainBtnLabel: 'Get Discount',
