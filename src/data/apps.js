@@ -116,9 +116,7 @@ export const apps = [
         <p>
           Gather makes spending time with your communities just as easy as real
           life. With this app, you can demo the Gather x Lit Protocol
-          experience. If you’d like to create a customized Gather space for your
-          crypto community, please get in touch{' '}
-          <a href="https://airtable.com/shrF5AFku12YbLP0n">here</a>.
+          experience.
         </p>
         <p>
           In this Gather space, you must own one or more of the following NFT to
