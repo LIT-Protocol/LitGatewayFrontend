@@ -21,9 +21,7 @@
   }
 
   .linksWrapper {
-    z-index: -1;
     position: fixed;
-    bottom: 38.18px;
     left: 22px;
 
     color: $purple;
@@ -71,6 +69,7 @@
     margin-left: 0;
   }
 }
+
 .minter {
   height: auto;
 }
@@ -95,10 +94,12 @@ body {
   .Modal {
     padding: 10px;
   }
+
   input[type='number']::-webkit-outer-spin-button,
   input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
+
   h2 {
     font-size: 2em;
     color: var(--color-typo-primary);
@@ -114,6 +115,7 @@ body {
     font-size: 1.5em;
     color: var(--color-typo-primary);
   }
+
   h4 {
     font-size: 1.2em;
     color: var(--color-typo-primary);

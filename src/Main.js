@@ -14,11 +14,24 @@ import { Icons } from './components'
 import { useAppContext } from './context/app'
 
 import useWindowDimensions from './hooks/useWindowDimensions'
+import { useEffect, useState } from 'react'
 
 const Main = () => {
   const { sideBar } = useAppContext()
 
   const { width } = useWindowDimensions()
+  const [sideTopMeasure, setSideTopMeasure] = useState({
+    top: 'calc(100vh - 300px)',
+  })
+
+  useEffect(() => {
+    const height = window.innerHeight
+    if (height < 640) {
+      setSideTopMeasure({ top: '320px' })
+    } else {
+      setSideTopMeasure({ top: 'calc(100vh - 300px)' })
+    }
+  }, [window.innerHeight])
 
   return (
     <BrowserRouter>
@@ -30,7 +43,7 @@ const Main = () => {
           <div className={width <= 1024 && sideBar && styles.mobileFooter}>
             <div className={styles.backgroundLogo} />
 
-            <div className={styles.linksWrapper}>
+            <div style={sideTopMeasure} className={styles.linksWrapper}>
               <a href="https://litgateway.com/discord" target="_blank">
                 <Icons.Discord />
               </a>
