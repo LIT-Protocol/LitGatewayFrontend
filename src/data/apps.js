@@ -28,6 +28,27 @@ export const apps = [
           allow access to Zoom meetings based on token or NFT ownership as well
           as other wallet attributes, like membership in a DAO.
         </p>
+        <h4>Documentation</h4>
+        <p>
+          <u>Installation</u>: To install this, click the Launch button above
+          and connect your Zoom account.
+        </p>
+        <p>
+          <u>Usage</u>: To share meetings and webinars with other users based on
+          ownership of crypto assets and blockchain identity, you must grant our
+          Zoom app the following Zoom oAuth scopes: user:read, meeting:write,
+          and webinar:write. We use these scopes to grant users access to your
+          meetings and webinars if they meet the requirements you defined when
+          you shared a meeting or webinar. These will be automatically granted
+          when you connect your Zoom account by clicking the Launch button
+          above.
+        </p>
+        <p>
+          <u>Uninstallation</u>: To uninstall this, log in to your Zoom account
+          and and navigate to the Zoom App Marketplace. Click Manage {'>'}{' '}
+          Installed Apps or search for the Lit Protocol app. Click the Lit
+          Protocol app. Click "Uninstall".
+        </p>
       </>
     ),
     more: [
@@ -310,9 +331,7 @@ export const apps = [
         <p>
           Gather makes spending time with your communities just as easy as real
           life. With this app, you can demo the Gather x Lit Protocol
-          experience. If you’d like to create a customized Gather space for your
-          crypto community, please get in touch{' '}
-          <a href="https://airtable.com/shrF5AFku12YbLP0n">here</a>.
+          experience.
         </p>
         <p>
           In this Gather space, you must own one or more of the following NFT to

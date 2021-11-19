@@ -127,7 +127,7 @@ const SideBar = () => {
   return (
     <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
       <div className={styles.menu} onClick={() => setSideBar(false)}>
-        {menuItems.map((item) => (
+        {menuItems.map((item, i) => (
           <>
             {!item.disabled ? (
               <NavLink

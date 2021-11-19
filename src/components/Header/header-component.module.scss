@@ -67,6 +67,25 @@
   .search {
     display: none !important;
   }
+
+  .connectButton {
+    margin-right: 0 !important;
+  }
+
+  .mobileWarningModal {
+    z-index: 10;
+    width: 90%;
+    height: auto;
+
+    .warningModalContent {
+      padding: 1.4rem;
+
+      .warningModalActions {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
 }
 
 @media (max-width: 450px) {
