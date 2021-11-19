@@ -28,6 +28,28 @@ export const apps = [
           allow access to Zoom meetings based on token or NFT ownership as well
           as other wallet attributes, like membership in a DAO.
         </p>
+        <hr />
+        <h4>Documentation</h4>
+        <p>
+          Installation: To install this, click the Launch button above and
+          connect your Zoom account.
+        </p>
+        <p>
+          Usage: To share meetings and webinars with other users based on
+          ownership of crypto assets and blockchain identity, you must grant our
+          Zoom app the following Zoom oAuth scopes: user:read, meeting:write,
+          and webinar:write. We use these scopes to grant users access to your
+          meetings and webinars if they meet the requirements you defined when
+          you shared a meeting or webinar. These will be automatically granted
+          when you connect your Zoom account by clicking the Launch button
+          above.
+        </p>
+        <p>
+          Uninstallation: To uninstall this, log in to your Zoom account and and
+          navigate to the Zoom App Marketplace. Click Manage {'>'} Installed
+          Apps or search for the Lit Protocol app. Click the Lit Protocol app.
+          Click "Uninstall".
+        </p>
       </>
     ),
     more: [
