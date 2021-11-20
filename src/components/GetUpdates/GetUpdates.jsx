@@ -13,7 +13,6 @@ const GetUpdates = (props) => {
       <MailchimpSubscribe
         url={addUrl}
         render={({ subscribe, status, message }) => {
-          console.log('message', message)
           return (
             <CustomForm
               className={className}

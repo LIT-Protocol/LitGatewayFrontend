@@ -1,6 +1,17 @@
 @import '../../vars';
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .error {
+  animation-name: fadein;
+  animation-duration: 0.25s;
   color: $alert-text;
   font-size: 14px;
   line-height: 100%;
@@ -10,6 +21,8 @@
 }
 
 .success {
+  animation-name: fadein;
+  animation-duration: 0.25s;
   color: #127252;
   font-size: 14px;
   line-height: 100%;
