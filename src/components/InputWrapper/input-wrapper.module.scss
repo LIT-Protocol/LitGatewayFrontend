@@ -5,6 +5,15 @@
   font-size: 14px;
   line-height: 100%;
   padding-left: 10px;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.success {
+  color: #127252;
+  font-size: 14px;
+  line-height: 100%;
+  padding-left: 10px;
   margin-top: 4px;
 }
 
@@ -20,9 +29,12 @@
 .input {
   display: flex;
   flex-direction: column;
+  height: 70px;
+
   > div {
     width: 100%;
     position: relative;
+
     > div {
       width: 100%;
     }
@@ -51,5 +63,13 @@
       font-size: 14px;
       line-height: 150%;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .error,
+  .success {
+    margin-left: 0;
+    text-align: center;
   }
 }
