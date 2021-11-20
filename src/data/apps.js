@@ -6,6 +6,8 @@ import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 
+import { storeHoldingsFromLit } from '../api/users'
+
 export const apps = [
   {
     id: 'zoom',
@@ -27,6 +29,27 @@ export const apps = [
           Connect your account and use the Lit Protocol permissions builder to
           allow access to Zoom meetings based on token or NFT ownership as well
           as other wallet attributes, like membership in a DAO.
+        </p>
+        <h4>Documentation</h4>
+        <p>
+          <u>Installation</u>: To install this, click the Launch button above
+          and connect your Zoom account.
+        </p>
+        <p>
+          <u>Usage</u>: To share meetings and webinars with other users based on
+          ownership of crypto assets and blockchain identity, you must grant our
+          Zoom app the following Zoom oAuth scopes: user:read, meeting:write,
+          and webinar:write. We use these scopes to grant users access to your
+          meetings and webinars if they meet the requirements you defined when
+          you shared a meeting or webinar. These will be automatically granted
+          when you connect your Zoom account by clicking the Launch button
+          above.
+        </p>
+        <p>
+          <u>Uninstallation</u>: To uninstall this, log in to your Zoom account
+          and and navigate to the Zoom App Marketplace. Click Manage {'>'}{' '}
+          Installed Apps or search for the Lit Protocol app. Click the Lit
+          Protocol app. Click "Uninstall".
         </p>
       </>
     ),
@@ -92,7 +115,208 @@ export const apps = [
     logo: gatherLogo,
     url: null,
     launchClickedHandler: ({ performWithAuthSig }) => {
-      performWithAuthSig((authSig) => {
+      return performWithAuthSig(async (authSig) => {
+        // check if they are eligible
+        const accessControlConditionTemplate = [
+          {
+            contractAddress: '',
+            standardContractType: 'ERC721',
+            chain: 'ethereum',
+            method: 'balanceOf',
+            parameters: [':userAddress'],
+            returnValueTest: {
+              comparator: '>',
+              value: '0',
+            },
+          },
+        ]
+
+        const resourceIds = [
+          {
+            addr: '0xf5b0a3efb8e8e4c201e2a935f110eaaf3ffecb8d',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xf5b0a3efb8e8e4c201e2a935f110eaaf3ffecb8d"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0xb7f7f6c52f2e2fdb1963eab30438024864c313f6',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xb7f7f6c52f2e2fdb1963eab30438024864c313f6"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0xff488fd296c38a24cccc60b43dd7254810dab64e',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xff488fd296c38a24cccc60b43dd7254810dab64e"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0x4b3406a41399c7FD2BA65cbC93697Ad9E7eA61e5',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0x4b3406a41399c7FD2BA65cbC93697Ad9E7eA61e5"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xa3aee8bce55beea1951ef834b99f3ac60d1abeeb"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0x57a204aa1042f6e66dd7730813f4024114d74f37',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0x57a204aa1042f6e66dd7730813f4024114d74f37"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0x7EA3Cca10668B8346aeC0bf1844A49e995527c8B',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0x7EA3Cca10668B8346aeC0bf1844A49e995527c8B"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7"}',
+            },
+            chain: 'ethereum',
+          },
+          {
+            addr: '0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7"}',
+            },
+            chain: 'ethereum',
+          },
+          // {
+          //   addr: '0x10daa9f4c0f985430fde4959adb2c791ef2ccf83',
+          //   resourceId: {
+          //     baseUrl: 'gather.town',
+          //     path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+          //     orgId: '',
+          //     role: '',
+          //     extraData:
+          //       '{"chain":"ethereum","contractAddress":"0x10daa9f4c0f985430fde4959adb2c791ef2ccf83"}',
+          //   },
+          //   chain: 'ethereum',
+          // },
+          {
+            addr: '0xA3D109E28589D2AbC15991B57Ce5ca461Ad8e026',
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"polygon","contractAddress":"0xA3D109E28589D2AbC15991B57Ce5ca461Ad8e026"}',
+            },
+            chain: 'polygon',
+          },
+        ]
+        const jwts = await Promise.all(
+          resourceIds.map(async (rid) => {
+            const accessControlConditions = [...accessControlConditionTemplate]
+            accessControlConditions[0].contractAddress = rid.addr
+            const resourceId = rid.resourceId
+            const chain = rid.chain
+            accessControlConditions[0].chain = chain
+            try {
+              const jwt = await window.litNodeClient.getSignedToken({
+                accessControlConditions,
+                chain,
+                authSig,
+                resourceId,
+              })
+              return { rid, jwt }
+            } catch (e) {
+              return { rid, error: e }
+            }
+          }),
+        )
+        console.log('jwts: ', jwts)
+        const validJwts = jwts.filter((j) => j.jwt)
+        console.log('validJwts: ', validJwts)
+        await storeHoldingsFromLit({
+          authSig,
+          resources: validJwts,
+        })
+        console.log('holdings stored!  now redirecting to gather.')
         const q = {
           authSig: JSON.stringify(authSig),
         }
@@ -101,7 +325,7 @@ export const apps = [
           '/oauth/gather/callback?' +
           new URLSearchParams(q).toString() +
           '&'
-        // console.log('redirectUrl', redirectUrl)
+        console.log('redirectUrl', redirectUrl)
         window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
           redirectUrl,
         )}`

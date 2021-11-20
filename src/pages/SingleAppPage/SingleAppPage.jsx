@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 
 import styles from './single-app-page.module.scss'
@@ -6,6 +6,7 @@ import styles from './single-app-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
+import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 import { Badge } from '@consta/uikit/Badge'
 import { Card } from '../../components'
 import { apps } from '../../data/apps'
@@ -16,6 +17,8 @@ const SingleAppPage = () => {
   const history = useHistory()
   const { performWithAuthSig } = useAppContext()
 
+  const [launchButtonLoading, setLaunchButtonLoading] = useState(false)
+
   const app = apps.find((app) => app.id === id)
 
   if (!app) {
@@ -25,6 +28,21 @@ const SingleAppPage = () => {
 
   const handleOpenApp = (id) => {
     history.push(`/apps/${id}`)
+  }
+
+  const handleLaunchButtonClick = async (app) => {
+    if (app.url) {
+      if (app.url.startsWith('http')) {
+        // open in new page
+        window.location = app.url
+      } else {
+        history.push(app.url)
+      }
+    } else {
+      setLaunchButtonLoading(true)
+      await app.launchClickedHandler({ performWithAuthSig })
+      setLaunchButtonLoading(false)
+    }
   }
 
   return (
@@ -49,39 +67,19 @@ const SingleAppPage = () => {
               </div>
             </div>
             <div className={styles.right}>
-              {app.mainBtnImage ? (
+              {launchButtonLoading ? (
+                <ProgressSpin />
+              ) : app.mainBtnImage ? (
                 <img
                   src={app.mainBtnImage}
                   style={{ height: 48, cursor: 'pointer' }}
-                  onClick={() => {
-                    if (app.url) {
-                      if (app.url.startsWith('http')) {
-                        // open in new page
-                        window.location = app.url
-                      } else {
-                        history.push(app.url)
-                      }
-                    } else {
-                      app.launchClickedHandler({ performWithAuthSig })
-                    }
-                  }}
+                  onClick={() => handleLaunchButtonClick(app)}
                 />
               ) : (
                 <Button
                   label={app.mainBtnLabel}
                   size="l"
-                  onClick={() => {
-                    if (app.url) {
-                      if (app.url.startsWith('http')) {
-                        // open in new page
-                        window.location = app.url
-                      } else {
-                        history.push(app.url)
-                      }
-                    } else {
-                      app.launchClickedHandler({ performWithAuthSig })
-                    }
-                  }}
+                  onClick={() => handleLaunchButtonClick(app)}
                 />
               )}
             </div>

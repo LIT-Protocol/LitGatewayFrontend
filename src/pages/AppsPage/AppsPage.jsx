@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import styles from './apps-page.module.scss'
@@ -17,6 +17,7 @@ import titleIcon from './assets/apps-icon.png'
 
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
+import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 
 import { Card, Title } from '../../components'
 import blockArt from './assets/block-art.png'
@@ -27,9 +28,25 @@ import { useAppContext } from '../../context'
 const AppsPage = () => {
   const history = useHistory()
   const { performWithAuthSig } = useAppContext()
+  const [launchButtonLoading, setLaunchButtonLoading] = useState(false)
 
   const handleOpenApp = (id) => {
     history.push(`/apps/${id}`)
+  }
+
+  const handleLaunchButtonClick = async (app) => {
+    if (app.url) {
+      if (app.url.startsWith('http')) {
+        // open in new page
+        window.location = app.url
+      } else {
+        history.push(app.url)
+      }
+    } else {
+      setLaunchButtonLoading(app.id)
+      await app.launchClickedHandler({ performWithAuthSig })
+      setLaunchButtonLoading(false)
+    }
   }
 
   return (
@@ -69,7 +86,9 @@ const AppsPage = () => {
                       label="Details"
                       onClick={() => handleOpenApp(app.id)}
                     />
-                    {app.mainBtnImage ? (
+                    {launchButtonLoading === app.id ? (
+                      <ProgressSpin />
+                    ) : app.mainBtnImage ? (
                       <img
                         className={styles.imageBtn}
                         src={app.mainBtnImage}
@@ -90,18 +109,7 @@ const AppsPage = () => {
                       <Button
                         label="Launch"
                         size="l"
-                        onClick={() => {
-                          if (app.url) {
-                            if (app.url.startsWith('http')) {
-                              // open in new page
-                              window.location = app.url
-                            } else {
-                              history.push(app.url)
-                            }
-                          } else {
-                            app.launchClickedHandler({ performWithAuthSig })
-                          }
-                        }}
+                        onClick={() => handleLaunchButtonClick(app)}
                       />
                     )}
                   </>
