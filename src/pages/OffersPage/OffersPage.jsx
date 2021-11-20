@@ -8,6 +8,9 @@ import litLogo from '../SingleOfferPage/assets/lit-offer-icon.png'
 import discountBack from './assets/discountBack.png'
 import litBack from './assets/litBack.png'
 
+import hodlgodBack from './assets/hodlgodBack.jpg'
+import hodlgodLogo from './assets/hodlgodLogo.png'
+
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 
@@ -66,6 +69,34 @@ const OffersPage = () => {
                 </div>
               }
               img={discountBack}
+            />
+          </GridItem>
+          <GridItem>
+            <Card
+              title="HodlGod - Play to Earn"
+              titleIcon={hodlgodLogo}
+              tags={['Gaming']}
+              className={styles.offer}
+              btns={
+                <Button
+                  size="l"
+                  label="Details"
+                  onClick={() => handleOpenOffer('hodlgod')}
+                />
+              }
+              desc={
+                <div className={styles.descList}>
+                  <ul>
+                    <li>
+                      REQUIREMENT: <span>Hold $SLP or $DEC</span>
+                    </li>
+                    <li>
+                      REWARD: <span>50,000 $VOID</span>
+                    </li>
+                  </ul>
+                </div>
+              }
+              img={hodlgodBack}
             />
           </GridItem>
           <GridItem>
