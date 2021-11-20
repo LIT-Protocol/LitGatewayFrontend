@@ -1,4 +1,5 @@
 import MailchimpSubscribe from './MailchimpSubscribe'
+import styles from './get-updates.module.scss'
 
 import CustomForm from './CustomForm'
 

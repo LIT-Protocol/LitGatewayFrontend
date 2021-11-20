@@ -43,6 +43,7 @@
   display: flex;
   flex-direction: column;
   height: 70px;
+  width: 400px;
 
   > div {
     width: 100%;
@@ -80,6 +81,10 @@
 }
 
 @media (max-width: 500px) {
+  .input {
+    width: calc(90vw);
+  }
+
   .error,
   .success {
     margin-left: 0;
