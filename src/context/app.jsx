@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import LitJsSdk from 'lit-js-sdk'
 
 import { getUsername } from '../utils'
@@ -76,6 +76,12 @@ export const AppContextProvider = (props) => {
     setAuthSig(null)
   }
 
+  const validateEmail = (email) => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return re.test(String(email).toLowerCase())
+  }
+
   useEffect(() => {
     window.performWithAuthSig = performWithAuthSig
     const go = async () => {
@@ -111,6 +117,7 @@ export const AppContextProvider = (props) => {
         globalError,
         setGlobalError,
         handleLogout,
+        validateEmail,
       }}
     >
       {children}

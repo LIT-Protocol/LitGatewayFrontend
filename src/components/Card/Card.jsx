@@ -4,8 +4,6 @@ import styles from './card.module.scss'
 
 import { Tag } from '@consta/uikit/Tag'
 
-import { getImg } from '../../utils'
-
 const Card = ({
   img,
   titleIcon,
@@ -34,8 +32,8 @@ const Card = ({
         <div className={styles.desc}>{desc}</div>
         <div className={styles.tags}>
           {tags?.length &&
-            tags.map((tag) => (
-              <Tag size="l" className={styles.tag} label={tag} />
+            tags.map((tag, i) => (
+              <Tag key={i} size="l" className={styles.tag} label={tag} />
             ))}
         </div>
       </div>

@@ -128,7 +128,7 @@ const SideBar = () => {
     <div className={cx(styles.sideBar, sideBar ? styles.activeSideBar : null)}>
       <div className={styles.menu} onClick={() => setSideBar(false)}>
         {menuItems.map((item, i) => (
-          <>
+          <span key={i}>
             {!item.disabled ? (
               <NavLink
                 exact
@@ -160,8 +160,8 @@ const SideBar = () => {
                 />
               </div>
             )}
-            {item?.subItems?.map((subItem) => (
-              <>
+            {item?.subItems?.map((subItem, i) => (
+              <span key={i}>
                 {!subItem.disabled ? (
                   <NavLink
                     activeClassName={styles.activeSubItem}
@@ -180,9 +180,9 @@ const SideBar = () => {
                     />
                   </div>
                 )}
-              </>
+              </span>
             ))}
-          </>
+          </span>
         ))}
       </div>
     </div>

@@ -37,9 +37,9 @@ const DiscoverPage = () => {
     })
   }
 
-  const handleSubmitEmail = () => {
+  const handleSubmitEmail = async () => {
     console.log('submitting email', email)
-    putUser({
+    await putUser({
       authSig,
       email,
     })
