@@ -6,6 +6,8 @@ import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 
+import { storeHoldingsFromLit } from '../api/users'
+
 export const apps = [
   {
     id: 'zoom',
@@ -113,7 +115,7 @@ export const apps = [
     logo: gatherLogo,
     url: null,
     launchClickedHandler: ({ performWithAuthSig }) => {
-      performWithAuthSig(async (authSig) => {
+      return performWithAuthSig(async (authSig) => {
         // check if they are eligible
         const accessControlConditionTemplate = [
           {
@@ -262,18 +264,18 @@ export const apps = [
             },
             chain: 'ethereum',
           },
-          {
-            addr: '0x10daa9f4c0f985430fde4959adb2c791ef2ccf83',
-            resourceId: {
-              baseUrl: 'gather.town',
-              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
-              orgId: '',
-              role: '',
-              extraData:
-                '{"chain":"ethereum","contractAddress":"0x10daa9f4c0f985430fde4959adb2c791ef2ccf83"}',
-            },
-            chain: 'ethereum',
-          },
+          // {
+          //   addr: '0x10daa9f4c0f985430fde4959adb2c791ef2ccf83',
+          //   resourceId: {
+          //     baseUrl: 'gather.town',
+          //     path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+          //     orgId: '',
+          //     role: '',
+          //     extraData:
+          //       '{"chain":"ethereum","contractAddress":"0x10daa9f4c0f985430fde4959adb2c791ef2ccf83"}',
+          //   },
+          //   chain: 'ethereum',
+          // },
           {
             addr: '0xA3D109E28589D2AbC15991B57Ce5ca461Ad8e026',
             resourceId: {
@@ -308,6 +310,13 @@ export const apps = [
           }),
         )
         console.log('jwts: ', jwts)
+        const validJwts = jwts.filter((j) => j.jwt)
+        console.log('validJwts: ', validJwts)
+        await storeHoldingsFromLit({
+          authSig,
+          resources: validJwts,
+        })
+        console.log('holdings stored!  now redirecting to gather.')
         const q = {
           authSig: JSON.stringify(authSig),
         }
@@ -317,9 +326,9 @@ export const apps = [
           new URLSearchParams(q).toString() +
           '&'
         console.log('redirectUrl', redirectUrl)
-        // window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
-        // redirectUrl,
-        // )}`
+        window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
+          redirectUrl,
+        )}`
       })
     },
     tags: ['Social'],
