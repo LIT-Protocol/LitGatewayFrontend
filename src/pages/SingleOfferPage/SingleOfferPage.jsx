@@ -6,9 +6,10 @@ import styles from './single-offer-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
+import { Modal } from '@consta/uikit/Modal'
 import { Badge } from '@consta/uikit/Badge'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
-import { Card } from '../../components'
+import { Card, InputWrapper } from '../../components'
 
 import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
@@ -33,6 +34,8 @@ const SingleOfferPage = () => {
   const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
   const history = useHistory()
   const [loading, setLoading] = useState(false)
+  const [waxAddress, setWaxAddress] = useState('')
+  const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
 
   // clear global error when the user navigates away
   useEffect(() => {
@@ -80,6 +83,22 @@ const SingleOfferPage = () => {
       },
       { chain: 'ethereum', getHoldings: false },
     )
+  }
+  const handleHodlgodClick = () => {
+    setShowingHodlgodModal(true)
+  }
+
+  const handleHodlgodWaxWalletEntered = async () => {
+    setLoading(true)
+    console.log('handleHodlgodWaxWalletEntered', waxAddress)
+    setShowingHodlgodModal(false)
+    // check if they hold SLP on ETH
+
+    // check if they hold DEC on ETH
+
+    // check if they hold DEC on BSC
+
+    // save their wax address to a claimed offers db table
   }
 
   const offers = [
@@ -224,7 +243,7 @@ const SingleOfferPage = () => {
       timeRemaining: '10 days, 2 hours',
       imgText: 'Find, Collect, and Combine the Immortal Shards',
       mainImg: hodlgodBack,
-      handleMainButtonClick: handleCheckInsuraceEligibility,
+      handleMainButtonClick: handleHodlgodClick,
       textBlock: (
         <>
           <p>
@@ -413,6 +432,31 @@ const SingleOfferPage = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={showingHodlgodModal}
+        hasOverlay
+        onClickOutside={() => setShowingHodlgodModal(false)}
+        onEsc={() => setShowingHodlgodModal(false)}
+      >
+        <div className={styles.hodlgodModal}>
+          <InputWrapper
+            id="waxAddress"
+            value={waxAddress}
+            handleChange={(e) => setWaxAddress(e)}
+            label="Enter your WAX Wallet Address"
+          />
+          <div style={{ height: 24 }} />
+          <div>
+            <Button
+              size="m"
+              view="primary"
+              label="Submit"
+              width="default"
+              onClick={handleHodlgodWaxWalletEntered}
+            />
+          </div>
+        </div>
+      </Modal>
     </>
   )
 }
