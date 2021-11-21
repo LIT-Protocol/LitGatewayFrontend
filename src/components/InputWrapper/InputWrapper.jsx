@@ -12,6 +12,7 @@ const InputWrapper = ({
   id,
   label,
   error,
+  status,
   value,
   handleChange = () => false,
   readOnly = false,
@@ -52,7 +53,7 @@ const InputWrapper = ({
           rows={rows}
         />
       </div>
-      {error && <span className={styles.error}>{error}</span>}
+      {error && <span className={styles[status]}>{error}</span>}
     </div>
   )
 }

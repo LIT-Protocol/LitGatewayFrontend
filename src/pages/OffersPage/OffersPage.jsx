@@ -42,7 +42,7 @@ const OffersPage = () => {
         >
           <GridItem>
             <Card
-              title="InsurAce Discount"
+              title="Insurace 30% Rebate"
               titleIcon={discountLogo}
               tags={['Staking', 'Finance']}
               className={styles.offer}
@@ -60,7 +60,7 @@ const OffersPage = () => {
                       REQUIREMENT: <span>Yield farmer</span>
                     </li>
                     <li>
-                      REWARD: <span>30% off for 1 month</span>
+                      REWARD: <span>$INSUR</span>
                     </li>
                   </ul>
                 </div>
@@ -70,7 +70,7 @@ const OffersPage = () => {
           </GridItem>
           <GridItem>
             <Card
-              title="Lit Protocol NFT Drop 01"
+              title="Lit Genesis Gate NFT"
               titleIcon={litLogo}
               tags={['Lit Protocol']}
               className={styles.offer}
@@ -87,18 +87,18 @@ const OffersPage = () => {
                     <li>
                       REQUIREMENT:{' '}
                       <span>
-                        Follow{' '}
+                        Own ETH & follow{' '}
                         <a
                           className={styles.link}
                           href="https://twitter.com/litprotocol"
                           target="_blank"
                         >
-                          @LitProtocol on Twitter
+                          @LitProtocol
                         </a>
                       </span>
                     </li>
                     <li>
-                      REWARD: <span>NFT</span>
+                      REWARD: <span>Genesis NFT</span>
                     </li>
                   </ul>
                 </div>

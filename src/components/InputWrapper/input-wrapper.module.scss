@@ -1,7 +1,29 @@
 @import '../../vars';
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .error {
+  animation-name: fadein;
+  animation-duration: 0.25s;
   color: $alert-text;
+  font-size: 14px;
+  line-height: 100%;
+  padding-left: 10px;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.success {
+  animation-name: fadein;
+  animation-duration: 0.25s;
+  color: #127252;
   font-size: 14px;
   line-height: 100%;
   padding-left: 10px;
@@ -20,9 +42,13 @@
 .input {
   display: flex;
   flex-direction: column;
+  height: 70px;
+  width: 400px;
+
   > div {
     width: 100%;
     position: relative;
+
     > div {
       width: 100%;
     }
@@ -51,5 +77,17 @@
       font-size: 14px;
       line-height: 150%;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .input {
+    width: calc(90vw);
+  }
+
+  .error,
+  .success {
+    margin-left: 0;
+    text-align: center;
   }
 }

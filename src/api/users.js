@@ -21,3 +21,14 @@ export const getUserHoldings = (body) => {
     body: JSON.stringify(body),
   }).then((response) => response.json())
 }
+
+export const storeHoldingsFromLit = (body) => {
+  return fetch(apiUrl + '/users/lit_holdings', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  }).then((response) => response.json())
+}

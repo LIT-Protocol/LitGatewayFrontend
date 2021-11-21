@@ -4,24 +4,39 @@ import { NavLink } from 'react-router-dom'
 import styles from './header-component.module.scss'
 
 import litLogo from '../../assets/imgs/lit-logo.svg'
-import litMiniLogo from '../../assets/imgs/lit-mini-logo.svg'
 
-import { Header, HeaderModule, HeaderButton } from '@consta/uikit/Header'
+import { Header, HeaderButton, HeaderModule } from '@consta/uikit/Header'
 import { IconAlignJustify } from '@consta/uikit/IconAlignJustify'
+import { Modal } from '@consta/uikit/Modal'
+import { Text } from '@consta/uikit/Text'
+import { Button } from '@consta/uikit/Button'
 import { IconClose } from '@consta/uikit/IconClose'
 
-import { UserBlock, AuthDependent } from '../'
+import { AuthDependent, UserBlock } from '../'
 
 import { useAppContext } from '../../context/app'
 
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 const HeaderComponent = () => {
-  const { setSideBar, sideBar, username } = useAppContext()
+  const { setSideBar, sideBar, username, performWithAuthSig } = useAppContext()
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const [search, setSeacrh] = useState('')
 
   const { width } = useWindowDimensions()
+
+  const checkScreenSize = () => {
+    if (window.innerWidth < 650) {
+      setIsModalOpen(true)
+    } else {
+      connectToWallet()
+    }
+  }
+
+  const connectToWallet = () => {
+    performWithAuthSig()
+  }
 
   return (
     <Header
@@ -87,17 +102,51 @@ const HeaderComponent = () => {
               </NavLink>
 
               {!username ? (
-                <NavLink
-                  activeClassName={styles.activeLink}
-                  className={styles.link}
-                  to={'/connect'}
+                <span
+                  className={styles.connectButton}
+                  onClick={() => checkScreenSize()}
                 >
                   Connect Wallet
-                </NavLink>
+                </span>
               ) : null}
 
               <UserBlock />
             </div>
+            <Modal
+              className={styles.mobileWarningModal}
+              isOpen={isModalOpen}
+              hasOverlay
+            >
+              <div className={styles.warningModalContent}>
+                <Text as="p" size="s" view="secondary">
+                  Warning regarding mobile compatability
+                </Text>
+                <Text as="p" size="m" view="primary">
+                  The Lit Gateway works best on the desktop version of Metamask,
+                  and unforeseen issues may arise through mobile. Would you like
+                  to proceed?
+                </Text>
+                <div className={styles.warningModalActions}>
+                  <Button
+                    size="m"
+                    view="primary"
+                    label="Go Ahead"
+                    width="default"
+                    onClick={() => {
+                      connectToWallet()
+                      setIsModalOpen(false)
+                    }}
+                  />
+                  <Button
+                    size="m"
+                    view="primary"
+                    label="Cancel"
+                    width="default"
+                    onClick={() => setIsModalOpen(false)}
+                  />
+                </div>
+              </div>
+            </Modal>
           </HeaderModule>
         </>
       }
