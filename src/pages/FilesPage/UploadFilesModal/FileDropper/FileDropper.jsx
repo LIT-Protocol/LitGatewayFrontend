@@ -39,6 +39,9 @@ const rejectStyle = {
 const FileDropper = (props) => {
   const { defaultFiles = [], onFilesSelected } = props
 
+  console.log('DEFAULT FILES')
+  console.log(defaultFiles)
+
   const [selectedFiles, setSelectedFiles] = useState([...defaultFiles])
 
   const onDrop = useCallback((acceptedFiles) => {
