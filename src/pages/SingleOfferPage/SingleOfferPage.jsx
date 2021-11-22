@@ -154,7 +154,7 @@ const SingleOfferPage = () => {
       ),
       more: [
         {
-          title: 'Insurace 30% Rebate',
+          title: 'InsurAce 30% Rebate',
           titleIcon: discountMiniLogo,
           tags: ['Staking', 'Finance'],
           id: 'insurace-discount',
@@ -166,7 +166,7 @@ const SingleOfferPage = () => {
     },
     {
       id: 'insurace-discount',
-      title: 'Insurace 30% Rebate',
+      title: 'InsurAce 30% Rebate',
       tags: ['Staking', 'Finance'],
       logo: discountLogo,
       mainBtnLabel: 'Get Discount',
