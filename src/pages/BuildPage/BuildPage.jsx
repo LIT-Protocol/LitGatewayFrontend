@@ -1,12 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import styles from './build-page.module.scss'
 
 import { Star, Monitor, HelpCircle } from 'react-feather'
-import { Button } from '@consta/uikit/Button'
-import { Grid, GridItem } from '@consta/uikit/Grid'
-import { Text } from '@consta/uikit/Text'
 import { withTooltip } from '@consta/uikit/withTooltip'
 
 const SingleAppPage = () => {

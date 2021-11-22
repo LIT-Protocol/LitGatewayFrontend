@@ -74,7 +74,7 @@ const DiscoverPage = () => {
       </div>
       <div className={styles.content}>
         <Card
-          title="Insurace 30% Rebate"
+          title="InsurAce 30% Rebate"
           titleIcon={discountLogo}
           tags={['Staking', 'Finance']}
           className={styles.offer}

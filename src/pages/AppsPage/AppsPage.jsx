@@ -1,15 +1,9 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import styles from './apps-page.module.scss'
-
-import driveBack from './assets/driveBack.png'
-import zoomBack from './assets/zoomBack.png'
 import IPFSBack from './assets/IPFSBack.png'
 import minterBack from './assets/minterBack.png'
-
-import driveIcon from './assets/googleDrive.png'
-import zoomIcon from './assets/zoom.png'
 import ipfsIcon from './assets/IPFS.png'
 import minterIcon from './assets/minter.png'
 
@@ -55,7 +49,7 @@ const AppsPage = () => {
         className={styles.title}
         icon={titleIcon}
         title="Lit Apps"
-        subtitle="The power of blockchain-defined access combined with your current tool suite"
+        subtitle="The power of blockchain-defined access combined with your current tool suite."
       />
       <img className={styles.art} src={blockArt} alt="" />
       <div className={styles.content}>

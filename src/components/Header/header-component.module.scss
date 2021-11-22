@@ -61,6 +61,30 @@
       color: #1d9bf0;
     }
   }
+
+  .connected {
+    position: relative;
+
+    .connectedTooltip {
+      z-index: 10;
+      position: absolute;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      top: 1rem;
+      color: #fff;
+      right: 0.5rem;
+      border-radius: 10px 0 10px 10px;
+      background-color: #5e36b7;
+      display: none;
+    }
+  }
+
+  .connected:hover {
+    .connectedTooltip {
+      display: inline;
+    }
+  }
 }
 
 @media (max-width: 640px) {

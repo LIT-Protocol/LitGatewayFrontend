@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import styles from './header-component.module.scss'
@@ -23,6 +23,8 @@ const HeaderComponent = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const [search, setSeacrh] = useState('')
+
+  const loginStatus = useRef(null)
 
   const { width } = useWindowDimensions()
 
@@ -89,7 +91,14 @@ const HeaderComponent = () => {
                 <Icons.Twitter />
               </a> */}
               <AuthDependent>
-                <div className={styles.connected} />
+                <div className={styles.connected}>
+                  <div className={styles.connectedTooltip}>
+                    Connected to the Lit Protocol
+                  </div>
+                </div>
+                {/*<Tooltip className={styles.connectedStatus} size="s" position={{x: 50, y: 50}}>*/}
+                {/*  Connected to the Lit Protocol*/}
+                {/*</Tooltip>*/}
               </AuthDependent>
 
               <NavLink
