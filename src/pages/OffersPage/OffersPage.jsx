@@ -11,7 +11,7 @@ import litBack from './assets/litBack.png'
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 
-import { Card, Title } from '../../components'
+import { Card, Title, Toast } from 'components'
 
 const OffersPage = () => {
   const history = useHistory()
@@ -22,10 +22,22 @@ const OffersPage = () => {
 
   return (
     <div className={styles.main}>
-      <Title
-        title="Current Offers"
-        subtitle="Find airdrops, quests, and discounts based on your wallet’s holdings and history."
-      />
+      <div className={styles.topBlock}>
+        <Title
+          title="Current Offers"
+          subtitle="Find airdrops, quests, and discounts based on your wallet’s holdings and history."
+        />
+
+        <Toast className={styles.toast}>
+          <div className={styles.toastTitle}>
+            Interested in creating an offer?
+          </div>
+          <div className={styles.toastContent}>
+            Contact us <a href="https://airtable.com/shrkWLKVOLeUqmn3z">here</a>
+            .
+          </div>
+        </Toast>
+      </div>
 
       <div className={styles.content}>
         <Grid
