@@ -61,6 +61,42 @@
       color: #1d9bf0;
     }
   }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .connected {
+    position: relative;
+
+    .connectedTooltip {
+      z-index: 10;
+      position: absolute;
+      text-align: center;
+      width: 11.5rem;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      top: 1rem;
+      color: #fff;
+      right: 0.5rem;
+      border-radius: 10px 0 10px 10px;
+      background-color: rgba(94, 54, 183, 0.7);
+      display: none;
+    }
+  }
+
+  .connected:hover {
+    .connectedTooltip {
+      animation-name: fadein;
+      animation-duration: 0.25s;
+      display: inline;
+    }
+  }
 }
 
 @media (max-width: 640px) {

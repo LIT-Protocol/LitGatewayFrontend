@@ -72,6 +72,8 @@ const FilesPage = () => {
   }
 
   const onFilesSelected = (selectedFiles) => {
+    console.log('SET SELECTED FILES')
+    console.log(selectedFiles)
     setSelectedFiles(selectedFiles)
     setFileDropperModalOpen(false)
     setShareModalStep('ableToAccess')
@@ -118,6 +120,12 @@ const FilesPage = () => {
 
     loadFiles()
     setNewFolderName('')
+  }
+
+  const handleBackFromShareModal = () => {
+    setShareModalOpen(false)
+    setShareModalStep(null)
+    setFileDropperModalOpen(true)
   }
 
   return (
@@ -197,6 +205,7 @@ const FilesPage = () => {
       {shareModalOpen ? (
         <ShareModal
           onClose={() => closeShareModal()}
+          onBack={handleBackFromShareModal}
           sharingItems={selectedFiles}
           onAccessControlConditionsSelected={onAccessControlConditionsSelected}
           getSharingLink={getSharingLink}

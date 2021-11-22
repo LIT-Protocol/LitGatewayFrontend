@@ -12,14 +12,16 @@
       cursor: unset;
     }
   }
+
   .input {
     flex: 1 1 auto;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .form {
     flex-direction: column;
+
     .btn {
       margin-top: 10px;
       margin-left: 0;

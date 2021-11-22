@@ -31,7 +31,7 @@ const Main = () => {
     } else {
       setSideTopMeasure({ top: 'calc(100vh - 300px)' })
     }
-  }, [window.innerHeight])
+  }, [])
 
   return (
     <BrowserRouter>
@@ -44,11 +44,19 @@ const Main = () => {
             <div className={styles.backgroundLogo} />
 
             <div style={sideTopMeasure} className={styles.linksWrapper}>
-              <a href="https://litgateway.com/discord" target="_blank">
+              <a
+                href="https://litgateway.com/discord"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Icons.Discord />
               </a>
 
-              <a href="https://twitter.com/litprotocol" target="_blank">
+              <a
+                href="https://twitter.com/litprotocol"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Icons.Twitter />
               </a>
 
@@ -59,7 +67,11 @@ const Main = () => {
                 Developer Docs <Icons.Outside />
               </a>
 
-              <a href="https://airtable.com/shrghp9jsN4KtEHKK" target="_blank">
+              <a
+                href="https://airtable.com/shrghp9jsN4KtEHKK"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Button size="s" view="secondary" label="Submit Feedback" />
               </a>
 

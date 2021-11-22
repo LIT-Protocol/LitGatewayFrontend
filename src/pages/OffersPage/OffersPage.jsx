@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import styles from './offers-page.module.scss'
 
@@ -42,7 +42,7 @@ const OffersPage = () => {
         >
           <GridItem>
             <Card
-              title="Insurace 30% Rebate"
+              title="InsurAce 30% Rebate"
               titleIcon={discountLogo}
               tags={['Staking', 'Finance']}
               className={styles.offer}
