@@ -14,5 +14,7 @@ export { default as AuthDependent } from './AuthDependent'
 export { default as GetUpdates } from './GetUpdates'
 export { default as Table } from './Table'
 export { default as Toast } from './Toast'
+export { default as ShareLinkModal } from './ShareLinkModal'
+export { default as LinkInput } from './LinkInput'
 
 export * as Icons from './Icons'
