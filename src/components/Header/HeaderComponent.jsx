@@ -37,7 +37,7 @@ const HeaderComponent = () => {
   }
 
   const connectToWallet = () => {
-    performWithAuthSig()
+    performWithAuthSig(() => {})
   }
 
   return (
