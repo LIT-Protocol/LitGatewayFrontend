@@ -5213,6 +5213,11 @@ core-js@^3.16.3:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.16.3.tgz#1f2d43c51a9ed014cc6c83440af14697ae4b75f2"
   integrity sha512-lM3GftxzHNtPNUJg0v4pC2RC6puwMd6VZA7vXUczi+SKmCWSf4JwO89VJGMqbzmB7jlK7B5hr3S64PqwFL49cA==
 
+core-js@^3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.1.tgz#f6f173cae23e73a7d88fa23b6e9da329276c6641"
+  integrity sha512-Tnc7E9iKd/b/ff7GFbhwPVzJzPztGrChB8X8GLqoYGdEOG8IpLnK1xPyo3ZoO3HsK6TodJS58VGPOxA+hLHQMg==
+
 core-js@^3.6.5:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.9.0.tgz#790b1bb11553a2272b36e2625c7179db345492f8"
@@ -9324,14 +9329,15 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lit-access-control-conditions-modal@^1.1.17:
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/lit-access-control-conditions-modal/-/lit-access-control-conditions-modal-1.1.17.tgz#56465eb966ada0ca54814cdbb050ec40fcd64697"
-  integrity sha512-iLsvVZBA9EtAU00QSyxjWrpKoxUTn46f4Ytd7LY0CMp8lSBPx31fu+HLtx64rKkRpTrcZvLicac7A2I7VESMvA==
+lit-access-control-conditions-modal@^1.1.19:
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/lit-access-control-conditions-modal/-/lit-access-control-conditions-modal-1.1.19.tgz#9f36e2fd7cc0bda5f8184e08cf6e45a51d71680a"
+  integrity sha512-7nwA5mW8qwSqkmbyCwTEIVFd4p/pG3qUFEk6+3w/P+8LTOvVchmhJKJHX4oQ5qRV7N52BnotqAMWKA6aPol0aw==
   dependencies:
     "@babel/polyfill" "^7.12.1"
     "@consta/uikit" "^3.0.0"
     classnames "^2.3.1"
+    core-js "^3.19.1"
     ethers "^5.4.7"
     node-sass "^6.0.1"
     react-select "^4.3.1"
