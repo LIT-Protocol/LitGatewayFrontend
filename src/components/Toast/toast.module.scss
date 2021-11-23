@@ -1,0 +1,19 @@
+@import '../../vars.scss';
+
+.toast {
+  display: flex;
+  width: 300px;
+  min-height: 87px;
+  background: $brand;
+  box-shadow: 0px 4px 4px rgba(0, 32, 51, 0.04),
+    0px 8px 24px rgba(0, 32, 51, 0.12);
+  border-radius: 8px;
+
+  .inner {
+    background-color: white;
+    margin-left: 8px;
+    padding: 12px 16px 12px 16px;
+    flex: 1;
+    border-radius: 0 7px 7px 0;
+  }
+}

@@ -13,7 +13,7 @@ import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 
-import { Card, Title } from '../../components'
+import { Card, Title, Toast } from 'components'
 import blockArt from './assets/block-art.png'
 
 import { apps } from '../../data/apps'
@@ -45,12 +45,24 @@ const AppsPage = () => {
 
   return (
     <div className={styles.main}>
-      <Title
-        className={styles.title}
-        icon={titleIcon}
-        title="Lit Apps"
-        subtitle="The power of blockchain-defined access combined with your current tool suite."
-      />
+      <div className={styles.topBlock}>
+        <Title
+          className={styles.title}
+          icon={titleIcon}
+          title="Lit Apps"
+          subtitle="The power of blockchain-defined access combined with your current tool suite."
+        />
+
+        <Toast className={styles.toast}>
+          <div className={styles.toastTitle}>
+            Interested in creating an offer?
+          </div>
+          <div className={styles.toastContent}>
+            Contact us <a href="https://airtable.com/shrltHvcGxKObzYxl">here</a>
+            .
+          </div>
+        </Toast>
+      </div>
       <img className={styles.art} src={blockArt} alt="" />
       <div className={styles.content}>
         <Grid

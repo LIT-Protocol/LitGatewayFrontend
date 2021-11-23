@@ -9,6 +9,8 @@ import styles from './files-page.module.scss'
 import { Table } from '@consta/uikit/Table'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 
+import { Modal } from 'components'
+
 import { useAppContext } from '../../context'
 
 import { putFile } from '../../api/files'
@@ -207,20 +209,21 @@ const Uploader = ({
   ]
 
   return (
-    <div>
-      <div className={styles.titles}>
-        <h3>
-          {uploadComplete ? 'Upload complete' : 'Uploading, please wait...'}
-        </h3>
+    <Modal
+      isOpen={true}
+      hasOverlay
+      title={uploadComplete ? 'Upload complete' : 'Uploading, please wait...'}
+    >
+      <div>
+        <Table
+          rows={uploadItems.map((s) => ({
+            file: s,
+            progress: uploadProgress[s.name],
+          }))}
+          columns={columns}
+        />
       </div>
-      <Table
-        rows={uploadItems.map((s) => ({
-          file: s,
-          progress: uploadProgress[s.name],
-        }))}
-        columns={columns}
-      />
-    </div>
+    </Modal>
   )
 }
 

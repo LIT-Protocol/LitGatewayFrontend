@@ -176,30 +176,24 @@ const FilesPage = () => {
       <Modal
         isOpen={newFolderModalOpen}
         hasOverlay
+        title="New Folder"
         onOverlayClick={() => setNewFolderModalOpen(false)}
       >
-        <div style={{ margin: 16 }}>
-          <h3 className={styles.subtitle}>New Folder</h3>
-          <TextField
-            placeholder="Folder name"
-            value={newFolderName}
-            onChange={({ value }) => setNewFolderName(value)}
-          />{' '}
-          <Button label="Save" onClick={createNewFolder} />
-        </div>
+        <TextField
+          placeholder="Folder name"
+          value={newFolderName}
+          onChange={({ value }) => setNewFolderName(value)}
+        />{' '}
+        <Button label="Save" onClick={createNewFolder} />
       </Modal>
 
       {uploadingModalOpen ? (
-        <Modal isOpen={uploadingModalOpen} hasOverlay>
-          <div style={{ margin: 16 }}>
-            <Uploader
-              uploadItems={selectedFiles}
-              accessControlConditions={accessControlConditions}
-              folderId={folderId}
-              onUploaded={onUploaded}
-            />
-          </div>
-        </Modal>
+        <Uploader
+          uploadItems={selectedFiles}
+          accessControlConditions={accessControlConditions}
+          folderId={folderId}
+          onUploaded={onUploaded}
+        />
       ) : null}
 
       {shareModalOpen ? (

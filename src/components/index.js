@@ -13,5 +13,6 @@ export { default as Modal } from './Modal'
 export { default as AuthDependent } from './AuthDependent'
 export { default as GetUpdates } from './GetUpdates'
 export { default as Table } from './Table'
+export { default as Toast } from './Toast'
 
 export * as Icons from './Icons'
