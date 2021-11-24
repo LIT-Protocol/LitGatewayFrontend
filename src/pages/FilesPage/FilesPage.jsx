@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { ShareModal } from 'lit-access-control-conditions-modal'
 
 import styles from './files-page.module.scss'
@@ -13,11 +13,11 @@ import UploadFilesModal from './UploadFilesModal'
 import FilesList from './FilesList'
 import Uploader from './Uploader'
 
-import { UploadButton, Modal, Title } from '../../components'
+import { Modal, Title, UploadButton } from '../../components'
 
 import { useAppContext } from '../../context'
 
-import { putFolder, getFolder } from '../../api/files'
+import { getFolder, putFolder } from '../../api/files'
 import { getSharingLink } from '../../utils/files'
 
 const FilesPage = () => {
@@ -78,6 +78,10 @@ const FilesPage = () => {
     setFileDropperModalOpen(false)
     setShareModalStep('ableToAccess')
     setShareModalOpen(true)
+  }
+
+  const updateFiles = (updatedFiles) => {
+    setSelectedFiles(updatedFiles)
   }
 
   const closeShareModal = () => {
@@ -167,6 +171,7 @@ const FilesPage = () => {
 
       {fileDropperModalOpen ? (
         <UploadFilesModal
+          updateFiles={updateFiles}
           selectedFiles={selectedFiles}
           onFilesSelected={onFilesSelected}
           onClose={() => setFileDropperModalOpen(false)}

@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { humanFileSize } from 'utils/files'
 
@@ -37,23 +37,23 @@ const rejectStyle = {
 }
 
 const FileDropper = (props) => {
-  const { defaultFiles = [], onFilesSelected } = props
-
-  console.log('DEFAULT FILES')
-  console.log(defaultFiles)
+  const { defaultFiles = [], onFilesSelected, updateFiles } = props
 
   const [selectedFiles, setSelectedFiles] = useState([...defaultFiles])
+
+  useEffect(() => {
+    updateFiles(selectedFiles)
+  }, [selectedFiles])
 
   const onDrop = useCallback((acceptedFiles) => {
     console.log('dropped', acceptedFiles)
     setSelectedFiles((prevFiles) => [...prevFiles, ...acceptedFiles])
   }, [])
-  // console.log(selectedFiles)
 
   const removeFile = (file) => {
-    setSelectedFiles((prevFiles) =>
-      prevFiles.filter((f) => f.name !== file.name),
-    )
+    const filteredFiles = selectedFiles.filter((f) => f.name !== file.name)
+    setSelectedFiles(filteredFiles)
+    updateFiles(filteredFiles)
   }
 
   const {
