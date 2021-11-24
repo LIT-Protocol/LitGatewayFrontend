@@ -264,18 +264,34 @@ export const apps = [
             },
             chain: 'ethereum',
           },
-          // {
-          //   addr: '0x10daa9f4c0f985430fde4959adb2c791ef2ccf83',
-          //   resourceId: {
-          //     baseUrl: 'gather.town',
-          //     path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
-          //     orgId: '',
-          //     role: '',
-          //     extraData:
-          //       '{"chain":"ethereum","contractAddress":"0x10daa9f4c0f985430fde4959adb2c791ef2ccf83"}',
-          //   },
-          //   chain: 'ethereum',
-          // },
+          {
+            addr: '0x10daa9f4c0f985430fde4959adb2c791ef2ccf83',
+            accessControlConditions: [
+              {
+                contractAddress: '0x10daa9f4c0f985430fde4959adb2c791ef2ccf83',
+                standardContractType: 'ERC1155',
+                chain: 'ethereum',
+                method: 'balanceOfBatch',
+                parameters: [
+                  ':userAddress,:userAddress,:userAddress,:userAddress',
+                  '1,2,10003,10004',
+                ],
+                returnValueTest: {
+                  comparator: '>',
+                  value: '0',
+                },
+              },
+            ],
+            resourceId: {
+              baseUrl: 'gather.town',
+              path: '/app/tXVe5OYt6nHS9Ey5/lit-protocol',
+              orgId: '',
+              role: '',
+              extraData:
+                '{"chain":"ethereum","contractAddress":"0x10daa9f4c0f985430fde4959adb2c791ef2ccf83","version":2}',
+            },
+            chain: 'ethereum',
+          },
           {
             addr: '0xA3D109E28589D2AbC15991B57Ce5ca461Ad8e026',
             resourceId: {
@@ -291,11 +307,18 @@ export const apps = [
         ]
         const jwts = await Promise.all(
           resourceIds.map(async (rid) => {
-            const accessControlConditions = [...accessControlConditionTemplate]
-            accessControlConditions[0].contractAddress = rid.addr
             const resourceId = rid.resourceId
             const chain = rid.chain
-            accessControlConditions[0].chain = chain
+
+            let accessControlConditions
+            if (rid.accessControlConditions) {
+              accessControlConditions = rid.accessControlConditions
+            } else {
+              accessControlConditions = [...accessControlConditionTemplate]
+              accessControlConditions[0].contractAddress = rid.addr
+              accessControlConditions[0].chain = chain
+            }
+
             try {
               const jwt = await window.litNodeClient.getSignedToken({
                 accessControlConditions,
