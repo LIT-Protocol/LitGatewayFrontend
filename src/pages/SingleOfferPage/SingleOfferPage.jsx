@@ -353,7 +353,7 @@ const SingleOfferPage = () => {
       logo: hodlgodLogo,
       mainBtnLabel: 'Play',
       twitterBtn: false,
-      requirement: '150 $SLP or $1000 DEC',
+      requirement: '150 $SLP or 1000 $DEC',
       timeRemaining: '10 days, 2 hours',
       imgText: 'Find, Collect, and Combine the Immortal Shards',
       mainImg: hodlgodBack,
