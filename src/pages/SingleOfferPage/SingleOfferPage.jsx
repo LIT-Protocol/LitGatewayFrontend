@@ -92,13 +92,113 @@ const SingleOfferPage = () => {
     setLoading(true)
     console.log('handleHodlgodWaxWalletEntered', waxAddress)
     setShowingHodlgodModal(false)
-    // check if they hold SLP on ETH
+    await performWithAuthSig(async (authSig) => {
+      const conditions = [
+        {
+          // check if they hold SLP on ETH
+          accessControlConditions: [
+            {
+              contractAddress: '0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25',
+              standardContractType: 'ERC721',
+              chain: 'ethereum',
+              method: 'balanceOf',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '>',
+                value: '150',
+              },
+            },
+          ],
+          resourceId: {
+            baseUrl: 'litgateway.com',
+            path: '/offers/hodlgod',
+            orgId: '',
+            role: '',
+            extraData: JSON.stringify({
+              chain: 'ethereum',
+              contractAddress: '0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25',
+            }),
+          },
+        },
+        {
+          // check if they hold DEC on ETH
+          accessControlConditions: [
+            {
+              contractAddress: '0x9393fdc77090f31c7db989390d43f454b1a6e7f3',
+              standardContractType: 'ERC721',
+              chain: 'ethereum',
+              method: 'balanceOf',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '>',
+                value: '1000',
+              },
+            },
+          ],
+          resourceId: {
+            baseUrl: 'litgateway.com',
+            path: '/offers/hodlgod',
+            orgId: '',
+            role: '',
+            extraData: JSON.stringify({
+              chain: 'ethereum',
+              contractAddress: '0x9393fdc77090f31c7db989390d43f454b1a6e7f3',
+            }),
+          },
+        },
+        {
+          // check if they hold DEC on BSC
+          accessControlConditions: [
+            {
+              contractAddress: '0xe9d7023f2132d55cbd4ee1f78273cb7a3e74f10a',
+              standardContractType: 'ERC721',
+              chain: 'bsc',
+              method: 'balanceOf',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '>',
+                value: '1000',
+              },
+            },
+          ],
+          resourceId: {
+            baseUrl: 'litgateway.com',
+            path: '/offers/hodlgod',
+            orgId: '',
+            role: '',
+            extraData: JSON.stringify({
+              chain: 'bsc',
+              contractAddress: '0xe9d7023f2132d55cbd4ee1f78273cb7a3e74f10a',
+            }),
+          },
+        },
+      ]
 
-    // check if they hold DEC on ETH
+      const jwts = await Promise.all(
+        conditions.map(async (rid) => {
+          const resourceId = rid.resourceId
+          const chain = rid.accessControlConditions[0].chain
+          const accessControlConditions = rid.accessControlConditions
 
-    // check if they hold DEC on BSC
+          try {
+            const jwt = await window.litNodeClient.getSignedToken({
+              accessControlConditions,
+              chain,
+              authSig,
+              resourceId,
+            })
+            return { rid, jwt }
+          } catch (e) {
+            return { rid, error: e }
+          }
+        }),
+      )
+      console.log('jwts: ', jwts)
+      const validJwts = jwts.filter((j) => j.jwt)
+      console.log('validJwts: ', validJwts)
 
-    // save their wax address to a claimed offers db table
+      // save their wax address to a claimed offers db table
+    })
   }
 
   const offers = [
