@@ -15,6 +15,7 @@ import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
 import { twitterOauthUrl } from '../../api/claimNft'
 import { getUserHoldings } from '../../api/users'
+import { claimHodlgodOffer } from '../../api/offers'
 
 import litLogo from './assets/lit-logo.png'
 import ethIcon from './assets/eth.png'
@@ -197,7 +198,20 @@ const SingleOfferPage = () => {
       const validJwts = jwts.filter((j) => j.jwt)
       console.log('validJwts: ', validJwts)
 
-      // save their wax address to a claimed offers db table
+      if (validJwts.length > 0) {
+        // save their wax address to a claimed offers db table
+        await claimHodlgodOffer({
+          resources: validJwts,
+          waxAddress,
+        })
+
+        window.location = 'https://hodlgod.com/'
+      } else {
+        setGlobalError({
+          title: 'Sorry, you are not eligible for this offer.',
+        })
+        setLoading(false)
+      }
     })
   }
 
