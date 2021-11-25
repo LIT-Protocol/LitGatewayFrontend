@@ -80,8 +80,43 @@
   }
 }
 
+.topBlock {
+  display: flex;
+  align-items: center;
+}
+
+.toast {
+  margin-left: auto;
+}
+
+.toastTitle {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.toastContent {
+  margin-top: 4px;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.toastContent a {
+  color: black !important;
+}
+
 @media (max-width: 500px) {
   .art {
     display: none;
+  }
+
+  .topBlock {
+    display: block;
+  }
+
+  .toast {
+    margin-left: 0;
+    margin-bottom: 40px;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { ShareModal } from 'lit-access-control-conditions-modal'
 
 import styles from './files-page.module.scss'
@@ -13,11 +13,11 @@ import UploadFilesModal from './UploadFilesModal'
 import FilesList from './FilesList'
 import Uploader from './Uploader'
 
-import { UploadButton, Modal, Title } from '../../components'
+import { Modal, Title, UploadButton } from '../../components'
 
 import { useAppContext } from '../../context'
 
-import { putFolder, getFolder } from '../../api/files'
+import { getFolder, putFolder } from '../../api/files'
 import { getSharingLink } from '../../utils/files'
 
 const FilesPage = () => {
@@ -78,6 +78,10 @@ const FilesPage = () => {
     setFileDropperModalOpen(false)
     setShareModalStep('ableToAccess')
     setShareModalOpen(true)
+  }
+
+  const updateFiles = (updatedFiles) => {
+    setSelectedFiles(updatedFiles)
   }
 
   const closeShareModal = () => {
@@ -167,6 +171,7 @@ const FilesPage = () => {
 
       {fileDropperModalOpen ? (
         <UploadFilesModal
+          updateFiles={updateFiles}
           selectedFiles={selectedFiles}
           onFilesSelected={onFilesSelected}
           onClose={() => setFileDropperModalOpen(false)}
@@ -176,30 +181,24 @@ const FilesPage = () => {
       <Modal
         isOpen={newFolderModalOpen}
         hasOverlay
+        title="New Folder"
         onOverlayClick={() => setNewFolderModalOpen(false)}
       >
-        <div style={{ margin: 16 }}>
-          <h3 className={styles.subtitle}>New Folder</h3>
-          <TextField
-            placeholder="Folder name"
-            value={newFolderName}
-            onChange={({ value }) => setNewFolderName(value)}
-          />{' '}
-          <Button label="Save" onClick={createNewFolder} />
-        </div>
+        <TextField
+          placeholder="Folder name"
+          value={newFolderName}
+          onChange={({ value }) => setNewFolderName(value)}
+        />{' '}
+        <Button label="Save" onClick={createNewFolder} />
       </Modal>
 
       {uploadingModalOpen ? (
-        <Modal isOpen={uploadingModalOpen} hasOverlay>
-          <div style={{ margin: 16 }}>
-            <Uploader
-              uploadItems={selectedFiles}
-              accessControlConditions={accessControlConditions}
-              folderId={folderId}
-              onUploaded={onUploaded}
-            />
-          </div>
-        </Modal>
+        <Uploader
+          uploadItems={selectedFiles}
+          accessControlConditions={accessControlConditions}
+          folderId={folderId}
+          onUploaded={onUploaded}
+        />
       ) : null}
 
       {shareModalOpen ? (

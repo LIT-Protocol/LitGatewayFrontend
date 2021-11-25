@@ -2,12 +2,12 @@ import { Button } from '@consta/uikit/Button'
 
 import FileDropper from './FileDropper'
 
-import { Modal, Icons } from 'components'
+import { Icons, Modal } from 'components'
 
 import styles from './upload-files-modal.module.scss'
 
 const UploadFilesModal = (props) => {
-  const { selectedFiles, onFilesSelected, onClose } = props
+  const { selectedFiles, updateFiles, onFilesSelected, onClose } = props
 
   return (
     <Modal
@@ -18,6 +18,7 @@ const UploadFilesModal = (props) => {
       onClose={onClose}
     >
       <FileDropper
+        updateFiles={updateFiles}
         defaultFiles={selectedFiles}
         onFilesSelected={onFilesSelected}
       />
@@ -26,6 +27,7 @@ const UploadFilesModal = (props) => {
         className={styles.nextButton}
         label="Next"
         size="l"
+        disabled={!selectedFiles.length}
         iconRight={() => <Icons.Arrow />}
         onClick={() => onFilesSelected(selectedFiles)}
       />
