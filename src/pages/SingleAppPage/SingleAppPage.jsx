@@ -8,10 +8,9 @@ import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 import { Badge } from '@consta/uikit/Badge'
-import { Card, ShareLinkModal } from '../../components'
+import { Card } from '../../components'
 import { apps } from '../../data/apps'
 import { useAppContext } from '../../context'
-import { IconOpenInNew } from '@consta/uikit/IconOpenInNew'
 
 const SingleAppPage = () => {
   const { id } = useParams()
@@ -49,28 +48,6 @@ const SingleAppPage = () => {
 
   return (
     <>
-      {showModal ? (
-        <>
-          <ShareLinkModal
-            subtitle="You unlockable NFT has been minted!"
-            link="https://www.litgateway.com/u/super_important_link"
-            otherBtns={
-              <Button
-                view="secondary"
-                size="l"
-                label="View ETH Scan"
-                iconRight={IconOpenInNew}
-              />
-            }
-            onClose={() => setShowModal(false)}
-          />
-          {/*<ShareLinkModal*/}
-          {/*  link="https://www.litgateway.com/u/super_important_link"*/}
-          {/*  subtitle="Your requirements have been successfully added to the Lit Protocol!"*/}
-          {/*  onClose={() => setShowModal(false)}*/}
-          {/*/>*/}
-        </>
-      ) : null}
       <div className={styles.back}>
         <Link to="/apps" className={styles.link}>
           <IconBackward className={styles.backIcon} /> Back to all Apps

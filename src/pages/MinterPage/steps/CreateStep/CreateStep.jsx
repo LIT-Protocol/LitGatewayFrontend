@@ -114,6 +114,7 @@ const CreateStep = ({ setStep }) => {
       ) : null}
       {createStep === 'success' ? (
         <SuccessLayout
+          isMinter
           publicCover={publicCover}
           title={title}
           description={description}
