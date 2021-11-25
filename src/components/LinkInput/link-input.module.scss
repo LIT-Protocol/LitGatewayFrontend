@@ -1,0 +1,47 @@
+@import '../../vars';
+
+.linkInput {
+  display: flex;
+  width: 100%;
+  .copyBtn {
+    height: 48px;
+    width: 83px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #5e36b7;
+    box-sizing: border-box;
+    border-radius: 99px 0px 0px 99px;
+    background: #bfa1ff;
+    img {
+      margin-right: -5px;
+    }
+  }
+  input {
+    height: 48px;
+    background: rgba(191, 161, 255, 0.1);
+    border: 2px solid #5e36b7;
+    border-left: none;
+    box-sizing: border-box;
+    border-radius: 0px 99px 99px 0px;
+    padding: 0 24px;
+    color: $brand-text;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 18px;
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .linkInput {
+    .copyBtn {
+      display: none;
+      height: 48px;
+    }
+    input {
+      border-radius: 99px;
+      border: 2px solid #5e36b7;
+    }
+  }
+}

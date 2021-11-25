@@ -1,0 +1,73 @@
+@import '../../vars.scss';
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  .link {
+    margin: 0 10px;
+    width: calc(100% - 20px);
+  }
+  .subtitle {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    margin-bottom: 36px;
+    color: $brand-text;
+    margin-top: 20px;
+    max-width: 330px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+  .checkIcon {
+    margin-bottom: 47px;
+  }
+  .btnLink {
+    width: 155px;
+  }
+  .btns {
+    margin-top: 36px;
+    button {
+      margin-right: 24px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .body {
+    padding: 30px 15px;
+    .link {
+      margin: 0;
+      width: 100%;
+      input {
+        font-size: 14px;
+        padding: 0 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .body {
+    .checkIcon {
+      margin-bottom: 30px;
+    }
+    .btns {
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      button {
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+    }
+  }
+}

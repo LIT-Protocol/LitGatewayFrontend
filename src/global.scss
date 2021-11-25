@@ -63,3 +63,7 @@ code {
     min-width: 100%;
   }
 }
+
+body .Modal {
+  z-index: 100;
+}
