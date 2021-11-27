@@ -19,7 +19,8 @@ import { useAppContext } from '../../context/app'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 const HeaderComponent = () => {
-  const { setSideBar, sideBar, username, performWithAuthSig } = useAppContext()
+  const { setSideBar, sideBar, username, performWithAuthSig, appIsLoaded } =
+    useAppContext()
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   const [search, setSeacrh] = useState('')
@@ -110,7 +111,7 @@ const HeaderComponent = () => {
                 About
               </NavLink>
 
-              {!username ? (
+              {appIsLoaded && !username ? (
                 <span
                   className={styles.connectButton}
                   onClick={() => checkScreenSize()}
