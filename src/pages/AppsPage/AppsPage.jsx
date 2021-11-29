@@ -55,7 +55,7 @@ const AppsPage = () => {
 
         <Toast className={styles.toast}>
           <div className={styles.toastTitle}>
-            Interested in creating an offer?
+            Interested in requesting an App?
           </div>
           <div className={styles.toastContent}>
             Contact us <a href="https://airtable.com/shrltHvcGxKObzYxl">here</a>
