@@ -33,6 +33,11 @@ code {
 //   border: none !important;
 // }
 
+body .Modal-Window {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (max-width: 1400px) {
   body .Modal {
     padding: 20px;
