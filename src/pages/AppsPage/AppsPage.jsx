@@ -55,10 +55,13 @@ const AppsPage = () => {
 
         <Toast className={styles.toast}>
           <div className={styles.toastTitle}>
-            Interested in requesting an App?
+            Interested in requesting an app?
           </div>
           <div className={styles.toastContent}>
-            Contact us <a href="https://airtable.com/shrltHvcGxKObzYxl">here</a>
+            Contact us{' '}
+            <a href="https://airtable.com/shrltHvcGxKObzYxl" target="_blank">
+              here
+            </a>
             .
           </div>
         </Toast>
