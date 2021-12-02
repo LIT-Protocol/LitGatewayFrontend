@@ -18,6 +18,7 @@ const SingleAppPage = () => {
   const { performWithAuthSig } = useAppContext()
 
   const [launchButtonLoading, setLaunchButtonLoading] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
   const app = apps.find((app) => app.id === id)
 

@@ -6,14 +6,16 @@ import styles from './single-offer-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
+import { Modal } from '@consta/uikit/Modal'
 import { Badge } from '@consta/uikit/Badge'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
-import { Card } from '../../components'
+import { Card, InputWrapper } from '../../components'
 
 import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
 import { twitterOauthUrl } from '../../api/claimNft'
 import { getUserHoldings } from '../../api/users'
+import { claimHodlgodOffer } from '../../api/offers'
 
 import litLogo from './assets/lit-logo.png'
 import ethIcon from './assets/eth.png'
@@ -24,6 +26,8 @@ import discountMiniLogo from '../OffersPage/assets/discount-offer-icon.png'
 import litMiniLogo from '../OffersPage/assets/lit-offer-icon.png'
 import discountBack from '../OffersPage/assets/discountBack.png'
 import litBack from '../OffersPage/assets/litBack.png'
+import hodlgodBack from '../OffersPage/assets/hodlgodBack.jpg'
+import hodlgodLogo from '../OffersPage/assets/hodlgodLogo.png'
 import blankCanvas from '../OffersPage/assets/blank-canvas.png'
 
 const SingleOfferPage = () => {
@@ -31,6 +35,8 @@ const SingleOfferPage = () => {
   const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
   const history = useHistory()
   const [loading, setLoading] = useState(false)
+  const [waxAddress, setWaxAddress] = useState('')
+  const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
 
   // clear global error when the user navigates away
   useEffect(() => {
@@ -78,6 +84,135 @@ const SingleOfferPage = () => {
       },
       { chain: 'ethereum', getHoldings: false },
     )
+  }
+  const handleHodlgodClick = () => {
+    setShowingHodlgodModal(true)
+  }
+
+  const handleHodlgodWaxWalletEntered = async () => {
+    setLoading(true)
+    console.log('handleHodlgodWaxWalletEntered', waxAddress)
+    setShowingHodlgodModal(false)
+    await performWithAuthSig(async (authSig) => {
+      const conditions = [
+        {
+          // check if they hold SLP on ETH
+          accessControlConditions: [
+            {
+              contractAddress: '0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25',
+              standardContractType: 'ERC721',
+              chain: 'ethereum',
+              method: 'balanceOf',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '>',
+                value: '150',
+              },
+            },
+          ],
+          resourceId: {
+            baseUrl: 'litgateway.com',
+            path: '/offers/hodlgod',
+            orgId: '',
+            role: '',
+            extraData: JSON.stringify({
+              chain: 'ethereum',
+              contractAddress: '0xcc8fa225d80b9c7d42f96e9570156c65d6caaa25',
+            }),
+          },
+        },
+        {
+          // check if they hold DEC on ETH
+          accessControlConditions: [
+            {
+              contractAddress: '0x9393fdc77090f31c7db989390d43f454b1a6e7f3',
+              standardContractType: 'ERC721',
+              chain: 'ethereum',
+              method: 'balanceOf',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '>',
+                value: '1000',
+              },
+            },
+          ],
+          resourceId: {
+            baseUrl: 'litgateway.com',
+            path: '/offers/hodlgod',
+            orgId: '',
+            role: '',
+            extraData: JSON.stringify({
+              chain: 'ethereum',
+              contractAddress: '0x9393fdc77090f31c7db989390d43f454b1a6e7f3',
+            }),
+          },
+        },
+        {
+          // check if they hold DEC on BSC
+          accessControlConditions: [
+            {
+              contractAddress: '0xe9d7023f2132d55cbd4ee1f78273cb7a3e74f10a',
+              standardContractType: 'ERC721',
+              chain: 'bsc',
+              method: 'balanceOf',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '>',
+                value: '1000',
+              },
+            },
+          ],
+          resourceId: {
+            baseUrl: 'litgateway.com',
+            path: '/offers/hodlgod',
+            orgId: '',
+            role: '',
+            extraData: JSON.stringify({
+              chain: 'bsc',
+              contractAddress: '0xe9d7023f2132d55cbd4ee1f78273cb7a3e74f10a',
+            }),
+          },
+        },
+      ]
+
+      const jwts = await Promise.all(
+        conditions.map(async (rid) => {
+          const resourceId = rid.resourceId
+          const chain = rid.accessControlConditions[0].chain
+          const accessControlConditions = rid.accessControlConditions
+
+          try {
+            const jwt = await window.litNodeClient.getSignedToken({
+              accessControlConditions,
+              chain,
+              authSig,
+              resourceId,
+            })
+            return { rid, jwt }
+          } catch (e) {
+            return { rid, error: e }
+          }
+        }),
+      )
+      console.log('jwts: ', jwts)
+      const validJwts = jwts.filter((j) => j.jwt)
+      console.log('validJwts: ', validJwts)
+
+      if (validJwts.length > 0) {
+        // save their wax address to a claimed offers db table
+        await claimHodlgodOffer({
+          resources: validJwts,
+          waxAddress,
+        })
+
+        window.location = 'https://hodlgod.com/'
+      } else {
+        setGlobalError({
+          title: 'Sorry, you are not eligible for this offer.',
+        })
+        setLoading(false)
+      }
+    })
   }
 
   const offers = [
@@ -185,6 +320,64 @@ const SingleOfferPage = () => {
             but also offers sustainable investment returns. When you sign up via
             this offer, you’ll get a 30% automatic rebate paid in $INSUR tokens
             for your first month and 10% thereafter.
+          </p>
+        </>
+      ),
+      more: [
+        {
+          title: 'Lit Genesis Gate NFT',
+          titleIcon: litMiniLogo,
+          tags: ['Lit Protocol'],
+          id: 'lit-protocol-nft',
+          requirement: (
+            <span>
+              Own ETH & follow{' '}
+              <a
+                className={styles.link}
+                href="https://twitter.com/litprotocol"
+                target="_blank"
+              >
+                @LitProtocol
+              </a>
+            </span>
+          ),
+          reward: 'Genesis NFT',
+          img: litBack,
+        },
+      ],
+    },
+    {
+      id: 'hodlgod',
+      title: 'HodlGod - Play to Earn',
+      tags: ['Gaming'],
+      logo: hodlgodLogo,
+      mainBtnLabel: 'Play',
+      twitterBtn: false,
+      requirement: '150 $SLP or 1000 $DEC',
+      timeRemaining: '10 days, 2 hours',
+      imgText: 'Find, Collect, and Combine the Immortal Shards',
+      mainImg: hodlgodBack,
+      handleMainButtonClick: handleHodlgodClick,
+      textBlock: (
+        <>
+          <p>
+            If you’re an Axie Infinity or Splinterlands player, this is an
+            opportunity to earn 50,000 $VOID tokens by playing HodlGod and
+            earning at least 12,500 XP.
+          </p>
+          <p>
+            The reward of 50,000 $VOID is available to the first 1000 players
+            who sign up via this offer and reach the XP milestone. Also, this
+            offer is only available to be claimed by players who have 150 $SLP
+            or 1000 $DEC in their ETH or BSC wallets.
+          </p>
+          <p>
+            To claim the offer, connect your wallet where you’re holding your
+            SLP or DEC, enter your WAX blockchain address, and start playing
+            HodlGod with that same address. This offer is still live as long as
+            this page is up, and once 1000 players have reached 12,500 XP this
+            offer will be closed and the $VOID will be directly distributed to
+            your WAX address.
           </p>
         </>
       ),
@@ -353,6 +546,31 @@ const SingleOfferPage = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={showingHodlgodModal}
+        hasOverlay
+        onClickOutside={() => setShowingHodlgodModal(false)}
+        onEsc={() => setShowingHodlgodModal(false)}
+      >
+        <div className={styles.hodlgodModal}>
+          <InputWrapper
+            id="waxAddress"
+            value={waxAddress}
+            handleChange={(e) => setWaxAddress(e)}
+            label="Enter your WAX Wallet Address"
+          />
+          <div style={{ height: 24 }} />
+          <div>
+            <Button
+              size="m"
+              view="primary"
+              label="Submit"
+              width="default"
+              onClick={handleHodlgodWaxWalletEntered}
+            />
+          </div>
+        </div>
+      </Modal>
     </>
   )
 }

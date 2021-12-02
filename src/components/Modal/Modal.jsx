@@ -58,10 +58,9 @@ const ModalComponent = (props) => {
           <Icons.Close onClick={handleClose} />
         </div>
       ) : null}
-      <div>
-        {title ? <div className={styles.title}>{title}</div> : null}
-        {children}
-      </div>
+
+      {title ? <div className={styles.title}>{title}</div> : null}
+      {children}
     </Modal>
   )
 }

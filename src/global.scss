@@ -33,6 +33,11 @@ code {
 //   border: none !important;
 // }
 
+body .Modal-Window {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (max-width: 1400px) {
   body .Modal {
     padding: 20px;
@@ -62,4 +67,8 @@ code {
   body .Modal-Window {
     min-width: 100%;
   }
+}
+
+body .Modal {
+  z-index: 100;
 }

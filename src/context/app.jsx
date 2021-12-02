@@ -11,6 +11,7 @@ export const AppContext = createContext({
 export const AppContextProvider = (props) => {
   const { children } = props
 
+  const [appIsLoaded, setAppIsLoaded] = useState(false)
   const [sideBar, setSideBar] = useState(false)
   const [authSig, setAuthSig] = useState(null)
   const [username, setUsername] = useState(null)
@@ -87,6 +88,9 @@ export const AppContextProvider = (props) => {
     const go = async () => {
       const tokens = await LitJsSdk.getTokenList()
       setTokenList(tokens)
+      await getUsername()
+        .then((username) => setUsername(username))
+        .finally(() => setAppIsLoaded(true))
     }
     go()
 
@@ -118,6 +122,7 @@ export const AppContextProvider = (props) => {
         setGlobalError,
         handleLogout,
         validateEmail,
+        appIsLoaded,
       }}
     >
       {children}
