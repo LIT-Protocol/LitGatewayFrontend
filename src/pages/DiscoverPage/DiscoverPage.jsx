@@ -29,14 +29,6 @@ const DiscoverPage = () => {
 
   const [email, setEmail] = useState('')
 
-  const handleConnectWallet = () => {
-    performWithAuthSig((authSig) => {
-      console.log(`${authSig.address} connected`)
-
-      setShowingEmailCaptureModal(true)
-    })
-  }
-
   const handleSubmitEmail = async () => {
     console.log('submitting email', email)
     await putUser({
