@@ -264,7 +264,7 @@ const SingleOfferPage = () => {
           <p>
             The Lit Genesis Gate NFT is available to the first 9,500 people who
             claim it! In order to claim, you must have more than 0.005 ETH in
-            your wallets and follow @LitProtocol on twitter.
+            your wallet and follow @LitProtocol on twitter.
           </p>
           <p>
             Once you own the NFT, give it a click and be transported through the
