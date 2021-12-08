@@ -73,6 +73,7 @@ export const AppContextProvider = (props) => {
 
   const handleLogout = () => {
     localStorage.removeItem('lit-auth-signature')
+    LitJsSdk.disconnectWeb3()
     setUsername(null)
     setAuthSig(null)
   }
