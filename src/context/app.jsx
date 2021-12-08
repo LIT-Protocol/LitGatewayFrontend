@@ -90,9 +90,6 @@ export const AppContextProvider = (props) => {
       const tokens = await LitJsSdk.getTokenList()
       setTokenList(tokens)
       setAppIsLoaded(true)
-      // await getUsername()
-      //   .then((username) => setUsername(username))
-      //   .finally(() => setAppIsLoaded(true))
     }
     go()
 
