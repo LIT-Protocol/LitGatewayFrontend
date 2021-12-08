@@ -89,9 +89,10 @@ export const AppContextProvider = (props) => {
     const go = async () => {
       const tokens = await LitJsSdk.getTokenList()
       setTokenList(tokens)
-      await getUsername()
-        .then((username) => setUsername(username))
-        .finally(() => setAppIsLoaded(true))
+      setAppIsLoaded(true)
+      // await getUsername()
+      //   .then((username) => setUsername(username))
+      //   .finally(() => setAppIsLoaded(true))
     }
     go()
 
