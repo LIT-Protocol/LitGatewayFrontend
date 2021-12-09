@@ -31,6 +31,8 @@ const SingleAppPage = () => {
     history.push(`/apps/${id}`)
   }
 
+  console.log('WINDOW', window.location)
+
   const handleLaunchButtonClick = async (app) => {
     if (app.url) {
       if (app.url.startsWith('http')) {
