@@ -22,3 +22,13 @@ export const claimOgNft = (body) => {
     body: JSON.stringify(body),
   }).then((response) => response.json())
 }
+
+export const getNftCount = () => {
+  return fetch('https://api.opensea.io/api/v1/collection/lit-genesis-gate ', {
+    method: 'get',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((response) => response.json())
+}

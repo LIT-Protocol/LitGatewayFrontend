@@ -13,7 +13,7 @@ import { Card, InputWrapper } from '../../components'
 
 import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
-import { twitterOauthUrl } from '../../api/claimNft'
+import { getNftCount, twitterOauthUrl } from '../../api/claimNft'
 import { getUserHoldings } from '../../api/users'
 import { claimHodlgodOffer } from '../../api/offers'
 
@@ -26,8 +26,6 @@ import discountMiniLogo from '../OffersPage/assets/discount-offer-icon.png'
 import litMiniLogo from '../OffersPage/assets/lit-offer-icon.png'
 import discountBack from '../OffersPage/assets/discountBack.png'
 import litBack from '../OffersPage/assets/litBack.png'
-import hodlgodBack from '../OffersPage/assets/hodlgodBack.jpg'
-import hodlgodLogo from '../OffersPage/assets/hodlgodLogo.png'
 import blankCanvas from '../OffersPage/assets/blank-canvas.png'
 
 const SingleOfferPage = () => {
@@ -37,6 +35,7 @@ const SingleOfferPage = () => {
   const [loading, setLoading] = useState(false)
   const [waxAddress, setWaxAddress] = useState('')
   const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
+  const [nftsRemaining, setNftsRemaining] = useState(null)
 
   // clear global error when the user navigates away
   useEffect(() => {
@@ -44,6 +43,14 @@ const SingleOfferPage = () => {
       setGlobalError(null)
     }
   }, [])
+
+  useEffect(() => {
+    if (!nftsRemaining) {
+      getNftCount().then((data) => {
+        setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
+      })
+    }
+  }, [nftsRemaining])
 
   const handleConnectTwitter = async () => {
     performWithAuthSig(async (authSig) => {
@@ -254,7 +261,7 @@ const SingleOfferPage = () => {
           </div>
         </div>
       ),
-      segmentCenterValue: '0/10,000',
+      segmentCenterValue: nftsRemaining,
       timeRemaining: '10 days, 2 hours',
       imgText: "Join the Lit community and let's make an NFT together!",
       segmentCenterTitle: 'NFTS CLAIMED',
@@ -432,8 +439,8 @@ const SingleOfferPage = () => {
               <div className={styles.titles}>
                 <h1 className={styles.title}>{offer.title}</h1>
                 <div className={styles.tags}>
-                  {offer.tags.map((tag) => (
-                    <Badge status="system" label={tag} size="l" />
+                  {offer.tags.map((tag, i) => (
+                    <Badge key={i} status="system" label={tag} size="l" />
                   ))}
                 </div>
               </div>
@@ -480,9 +487,20 @@ const SingleOfferPage = () => {
                 <h3>REQUIREMENT</h3>
                 {offer.requirement}
               </div>
-              <div className={styles.segment}>
-                <h3>TIME REMAINING</h3>
-                <div className={styles.text}>{offer.timeRemaining}</div>
+              <div>
+                {!!offer['segmentCenterTitle'] ? (
+                  <div className={styles.segment}>
+                    <h3>{offer['segmentCenterTitle']}</h3>
+                    <div className={styles.text}>
+                      {offer['segmentCenterValue']}
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles.segment}>
+                    <h3>TIME REMAINING</h3>
+                    <div className={styles.text}>{offer.timeRemaining}</div>
+                  </div>
+                )}
               </div>
             </div>
             <div
@@ -511,8 +529,8 @@ const SingleOfferPage = () => {
                 }}
               >
                 {offer?.more.length &&
-                  offer.more.map((item) => (
-                    <GridItem>
+                  offer.more.map((item, i) => (
+                    <GridItem key={i}>
                       <Card
                         title={item.title}
                         titleIcon={item.titleIcon}
