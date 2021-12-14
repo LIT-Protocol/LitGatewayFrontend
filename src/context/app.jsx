@@ -24,6 +24,7 @@ export const AppContextProvider = (props) => {
     action,
     { chain, getHoldings } = { chain: 'ethereum', getHoldings: true },
   ) => {
+    setGlobalError(null) // clear out any errors
     //TODO add chain selection???
 
     let currentAuthSig = authSig

@@ -9200,10 +9200,10 @@ lit-access-control-conditions-modal@^1.1.22:
     react-windowed-select "^3.1.2"
     sass "^1.42.0"
 
-lit-js-sdk@^1.1.90:
-  version "1.1.90"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.90.tgz#81615e56b9653f4e15691bd768c3a88f4cd07b3d"
-  integrity sha512-pdgL8sW8E47gVpqLqJ3zssY4dm3zFfKDKmjvBiuzJUKsB4KQBs9vrL6JG4zDN8kAiMdO8XHpn1k4ECCbFSFpRQ==
+lit-js-sdk@^1.1.97:
+  version "1.1.97"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.97.tgz#e65166ff67cc0565953d36a238bd27938e3941dc"
+  integrity sha512-kfsmEy19nTPgYjqVEendMmk22GgKBjY31QYOytw2tw+uf6Pb0vyt70CrFyjHCsyJ+dGVofpkBeBGKQmy21+hPA==
   dependencies:
     "@ethersproject/abi" "^5.5.0"
     "@ethersproject/bytes" "^5.5.0"
