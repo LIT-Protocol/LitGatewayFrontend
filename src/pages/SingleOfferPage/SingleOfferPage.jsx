@@ -13,7 +13,11 @@ import { Card, InputWrapper } from '../../components'
 
 import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
-import { getNftCount, twitterOauthUrl } from '../../api/claimNft'
+import {
+  checkForClaimedOgNft,
+  getNftCount,
+  twitterOauthUrl,
+} from '../../api/claimNft'
 import { getUserHoldings } from '../../api/users'
 import { claimHodlgodOffer } from '../../api/offers'
 
@@ -36,6 +40,7 @@ const SingleOfferPage = () => {
   const [waxAddress, setWaxAddress] = useState('')
   const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
   const [nftsRemaining, setNftsRemaining] = useState(null)
+  const [ogNftClaimed, setOgNftClaimed] = useState(null)
 
   // clear global error when the user navigates away
   useEffect(() => {
@@ -52,6 +57,10 @@ const SingleOfferPage = () => {
     }
   }, [nftsRemaining])
 
+  // useEffect(() => {
+  //
+  // }, [ogNftClaimed])
+
   const handleConnectTwitter = async () => {
     performWithAuthSig(async (authSig) => {
       setGlobalError(null)
@@ -65,6 +74,16 @@ const SingleOfferPage = () => {
       window.location = resp.url
     })
   }
+
+  const handleCheckForOgNftClaims = async () => {
+    performWithAuthSig(async (authSig) => {
+      console.log('auth', authSig)
+      const resp = await checkForClaimedOgNft({ authSig })
+      console.log('CHECK FOR CLAIM', resp)
+    })
+  }
+
+  handleCheckForOgNftClaims()
 
   const handleCheckInsuraceEligibility = async () => {
     setGlobalError(null)
@@ -271,7 +290,8 @@ const SingleOfferPage = () => {
           <p>
             The Lit Genesis Gate NFT is available to the first 9,500 people who
             claim it! In order to claim, you must have more than 0.005 ETH in
-            your wallet and follow @LitProtocol on twitter.
+            your wallet (though you will not have to pay any ETH for the
+            transaction) and follow @LitProtocol on twitter.
           </p>
           <p>
             Once you own the NFT, give it a click and be transported through the

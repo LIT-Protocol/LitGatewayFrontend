@@ -23,6 +23,18 @@ export const claimOgNft = (body) => {
   }).then((response) => response.json())
 }
 
+export const checkForClaimedOgNft = (body) => {
+  // return fetch(apiUrl + '/ogNft/checkForClaim', {
+  return fetch('https://backend.litgateway.com/ogNft/checkForClaim', {
+    method: 'post',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  }).then((response) => response.json())
+}
+
 export const getNftCount = () => {
   return fetch('https://api.opensea.io/api/v1/collection/lit-genesis-gate ', {
     method: 'get',
