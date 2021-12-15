@@ -55,7 +55,8 @@ const SingleOfferPage = () => {
         setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
       })
     }
-  }, [nftsRemaining])
+    handleCheckForOgNftClaims()
+  }, [nftsRemaining, ogNftClaimed])
 
   // useEffect(() => {
   //
@@ -77,13 +78,10 @@ const SingleOfferPage = () => {
 
   const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
-      console.log('auth', authSig)
       const resp = await checkForClaimedOgNft({ authSig })
       console.log('CHECK FOR CLAIM', resp)
     })
   }
-
-  handleCheckForOgNftClaims()
 
   const handleCheckInsuraceEligibility = async () => {
     setGlobalError(null)
