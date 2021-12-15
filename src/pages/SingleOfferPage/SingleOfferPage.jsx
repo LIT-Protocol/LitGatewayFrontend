@@ -6,6 +6,7 @@ import styles from './single-offer-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
+import { IconCheck } from '@consta/uikit/IconCheck'
 import { Modal } from '@consta/uikit/Modal'
 import { Badge } from '@consta/uikit/Badge'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
@@ -58,10 +59,6 @@ const SingleOfferPage = () => {
     handleCheckForOgNftClaims()
   }, [nftsRemaining, ogNftClaimed])
 
-  // useEffect(() => {
-  //
-  // }, [ogNftClaimed])
-
   const handleConnectTwitter = async () => {
     performWithAuthSig(async (authSig) => {
       setGlobalError(null)
@@ -70,8 +67,6 @@ const SingleOfferPage = () => {
         setGlobalError({ title: resp.error })
         return
       }
-
-      console.log(resp)
       window.location = resp.url
     })
   }
@@ -79,7 +74,7 @@ const SingleOfferPage = () => {
   const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
       const resp = await checkForClaimedOgNft({ authSig })
-      console.log('CHECK FOR CLAIM', resp)
+      setOgNftClaimed(resp)
     })
   }
 
@@ -466,11 +461,20 @@ const SingleOfferPage = () => {
             <div className={styles.right}>
               {offer.twitterBtn ? (
                 <>
-                  <Follow
-                    username="litprotocol"
-                    options={{ size: 'large', showCount: false }}
-                  />
-                  <div style={{ height: 16 }} />
+                  {ogNftClaimed ? (
+                    <span className={'claimed-status'}>
+                      <IconCheck className={'claimed-icon'} />
+                      <p className={'claimed-text'}>Claimed!</p>
+                    </span>
+                  ) : (
+                    <>
+                      <Follow
+                        username="litprotocol"
+                        options={{ size: 'large', showCount: false }}
+                      />
+                      <div style={{ height: 16 }} />
+                    </>
+                  )}
                 </>
               ) : // <button className={styles.customBtn}>
               //   <svg
