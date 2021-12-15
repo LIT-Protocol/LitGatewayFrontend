@@ -24,8 +24,7 @@ export const claimOgNft = (body) => {
 }
 
 export const checkForClaimedOgNft = (body) => {
-  // return fetch(apiUrl + '/ogNft/checkForClaim', {
-  return fetch('https://backend.litgateway.com/ogNft/checkForClaim', {
+  return fetch(apiUrl + '/ogNft/checkForClaim', {
     method: 'post',
     mode: 'cors',
     headers: {
