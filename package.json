@@ -19,7 +19,7 @@
     "feather-icons": "^4.28.0",
     "jsonp": "^0.2.1",
     "lit-access-control-conditions-modal": "^1.1.22",
-    "lit-js-sdk": "^1.1.83",
+    "lit-js-sdk": "^1.1.97",
     "node-sass": "^6.0.1",
     "prismjs": "^1.24.1",
     "react": "^17.0.2",

@@ -21,21 +21,13 @@ import { Card, GetUpdates, InputWrapper } from '../../components'
 import { putUser } from '../../api/users'
 
 const DiscoverPage = () => {
-  const { performWithAuthSig, authSig } = useAppContext()
+  const { authSig } = useAppContext()
   const history = useHistory()
 
   const [showingEmailCaptureModal, setShowingEmailCaptureModal] =
     useState(false)
 
   const [email, setEmail] = useState('')
-
-  const handleConnectWallet = () => {
-    performWithAuthSig((authSig) => {
-      console.log(`${authSig.address} connected`)
-
-      setShowingEmailCaptureModal(true)
-    })
-  }
 
   const handleSubmitEmail = async () => {
     console.log('submitting email', email)

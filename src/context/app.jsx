@@ -24,6 +24,7 @@ export const AppContextProvider = (props) => {
     action,
     { chain, getHoldings } = { chain: 'ethereum', getHoldings: true },
   ) => {
+    setGlobalError(null) // clear out any errors
     //TODO add chain selection???
 
     let currentAuthSig = authSig
@@ -72,7 +73,7 @@ export const AppContextProvider = (props) => {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('lit-auth-signature')
+    LitJsSdk.disconnectWeb3()
     setUsername(null)
     setAuthSig(null)
   }
@@ -88,9 +89,7 @@ export const AppContextProvider = (props) => {
     const go = async () => {
       const tokens = await LitJsSdk.getTokenList()
       setTokenList(tokens)
-      await getUsername()
-        .then((username) => setUsername(username))
-        .finally(() => setAppIsLoaded(true))
+      setAppIsLoaded(true)
     }
     go()
 
