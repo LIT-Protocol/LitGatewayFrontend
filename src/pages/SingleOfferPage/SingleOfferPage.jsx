@@ -462,9 +462,9 @@ const SingleOfferPage = () => {
               {offer.twitterBtn ? (
                 <>
                   {ogNftClaimed ? (
-                    <span className={'claimed-status'}>
-                      <IconCheck className={'claimed-icon'} />
-                      <p className={'claimed-text'}>Claimed!</p>
+                    <span className={styles.claimedStatus}>
+                      <IconCheck className={styles.claimedIcon} />
+                      <p className={styles.claimedText}>Claimed!</p>
                     </span>
                   ) : (
                     <>

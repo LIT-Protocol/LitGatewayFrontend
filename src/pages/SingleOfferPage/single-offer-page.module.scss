@@ -24,6 +24,7 @@
   background-size: cover;
   position: relative;
   margin-top: 70px;
+
   > div {
     top: 50%;
     width: 100%;
@@ -33,6 +34,7 @@
     transform: translateY(-45%);
     height: 60px;
   }
+
   h3 {
     top: 50%;
     width: 100%;
@@ -53,9 +55,11 @@
   width: 100%;
   margin: 30px auto 0px;
   box-sizing: border-box;
+
   .backIcon {
     margin-right: 10px;
   }
+
   .link {
     display: flex;
     align-items: center;
@@ -67,20 +71,25 @@
   align-items: center;
   margin-bottom: 2em;
   justify-content: space-between;
+
   .left {
     display: flex;
     align-items: center;
+
     img {
       object-fit: contain;
     }
   }
+
   .right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
     button {
       min-width: 160px;
     }
+
     .customBtn {
       margin-bottom: 12px;
       color: $brand;
@@ -94,11 +103,32 @@
       cursor: pointer;
       box-shadow: none;
       appearance: none;
+
       svg {
         margin-right: 12px;
       }
     }
+
+    .claimedStatus {
+      display: flex;
+      align-items: center;
+
+      .claimedIcon {
+        color: #0a96d1;
+        margin-right: 0.5rem;
+        border-radius: 100%;
+        padding: 0.15rem;
+        height: 1.1rem;
+        border: 1px solid #0a96d1;
+        width: 1.1rem;
+      }
+
+      .claimedText {
+        color: #0a96d1;
+      }
+    }
   }
+
   h1 {
     color: var(--color-typo-primary);
     margin-top: 0;
@@ -107,6 +137,7 @@
     line-height: 150%;
     margin-bottom: 16px;
   }
+
   img {
     height: 140px;
     width: 140px;
@@ -114,6 +145,7 @@
     object-fit: cover;
     margin-right: 30px;
   }
+
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
@@ -142,6 +174,7 @@
 
 .tags {
   margin: 0 -5px;
+
   div {
     margin: 5px;
     text-transform: none;
@@ -153,14 +186,17 @@
 
 .descList {
   margin-bottom: 14px;
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
     li {
       font-weight: 600;
       font-size: 14px;
       margin-bottom: 4px;
+
       span {
         font-weight: normal;
       }
@@ -173,9 +209,11 @@
   font-size: 20px;
   line-height: 150%;
   padding-bottom: var(--space-m);
+
   p {
     margin: var(--space-2xl) 0;
   }
+
   display: flex;
   flex-direction: column;
 }
@@ -191,12 +229,15 @@
   margin-top: 15px;
   display: block;
   transition: all 0.3s;
+
   &:hover {
     color: var(--color-typo-link-hover);
+
     svg {
       color: var(--color-typo-link-hover);
     }
   }
+
   svg {
     stroke: var(--color-typo-link);
     height: 18px;
@@ -214,6 +255,7 @@
   color: var(--color-typo-link);
   text-decoration: none;
   transition: all 0.3s;
+
   &:hover {
     color: var(--color-typo-link-hover);
   }
@@ -229,6 +271,7 @@
   font-size: 22.5px;
   line-height: 150%;
   color: $brand;
+
   img {
     margin-right: 5px;
   }
@@ -259,18 +302,22 @@
   padding: 0 38px;
   flex: 1 1 auto;
   text-align: center;
+
   &:last-child {
     border-right: none;
   }
+
   .text {
     font-size: 20px;
     line-height: 150%;
   }
+
   .plus {
     margin: 0 10px;
     color: rgba(0, 5, 51, 0.6);
     font-size: 24px;
   }
+
   h3 {
     color: rgba(0, 5, 51, 0.6);
     font-weight: normal;
@@ -278,15 +325,18 @@
     line-height: 150%;
     margin-bottom: 8px;
   }
+
   svg {
     width: 30px;
     height: 30px;
     margin-right: 10px;
   }
+
   > div {
     display: flex;
     align-items: center;
   }
+
   @media (max-width: 640px) {
     h3 {
       font-size: 16px;
@@ -305,10 +355,12 @@
     margin-bottom: 2em;
     flex-direction: column;
     align-items: flex-start;
+
     .right {
       flex-direction: row;
       margin-top: 30px;
       justify-content: flex-start;
+
       button {
         margin-top: 0;
         margin-bottom: 0 !important;
@@ -324,9 +376,11 @@
     border-bottom: 1px solid $border;
     flex-direction: row;
     padding: 15px 0;
+
     &:last-child {
       border-bottom: none;
     }
+
     h3 {
       margin: 0;
       margin-right: 20px;
@@ -346,6 +400,7 @@
   }
   .segment {
     flex-direction: column;
+
     h3 {
       margin: 0 0 5px;
     }
@@ -358,6 +413,7 @@
   }
   .mainImg {
     margin-top: 20px;
+
     h3 {
       font-size: 16px;
     }
@@ -372,6 +428,7 @@
       flex-direction: column;
       text-align: center;
       width: 100%;
+
       img {
         margin-right: 0;
         height: 100px;
@@ -379,10 +436,12 @@
         margin-bottom: 10px;
       }
     }
+
     .right {
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
+
       button {
         margin-bottom: 15px !important;
         margin-left: 20px;
