@@ -59,22 +59,26 @@ const SingleOfferPage = () => {
     handleCheckForOgNftClaims()
   }, [nftsRemaining, ogNftClaimed])
 
-  const handleConnectTwitter = async () => {
-    performWithAuthSig(async (authSig) => {
-      setGlobalError(null)
-      const resp = await twitterOauthUrl({ authSig })
-      if (resp && resp.error) {
-        setGlobalError({ title: resp.error })
-        return
-      }
-      window.location = resp.url
-    })
+  const handleOgNftButtonAction = async () => {
+    if (ogNftClaimed) {
+    } else {
+      performWithAuthSig(async (authSig) => {
+        setGlobalError(null)
+        const resp = await twitterOauthUrl({ authSig })
+        if (resp && resp.error) {
+          setGlobalError({ title: resp.error })
+          return
+        }
+        window.location = resp.url
+      })
+    }
   }
 
   const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
       const resp = await checkForClaimedOgNft({ authSig })
-      setOgNftClaimed(resp)
+      console.log('NFT RESP ', resp)
+      // setOgNftClaimed(resp)
     })
   }
 
@@ -240,9 +244,11 @@ const SingleOfferPage = () => {
       title: 'Lit Genesis Gate NFT',
       logo: litLogo,
       tags: ['Lit Protocol'],
-      mainBtnLabel: 'Connect Twitter and Claim NFT',
+      mainBtnLabel: ogNftClaimed
+        ? 'Enter NFT Portal'
+        : 'Connect Twitter and Claim NFT',
       twitterBtn: true,
-      handleMainButtonClick: handleConnectTwitter,
+      handleMainButtonClick: handleOgNftButtonAction,
       requirement: (
         <div>
           <svg
