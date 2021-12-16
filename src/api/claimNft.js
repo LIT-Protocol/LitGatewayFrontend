@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const apiUrl = process.env.REACT_APP_LIT_GATEWAY_FRONTEND_API_URL
 
 export const twitterOauthUrl = (body) => {
@@ -44,16 +46,14 @@ export const getNftCount = () => {
   }).then((response) => response.json())
 }
 
-export const getNftLink = (tokenId) => {
-  return fetch(
-    `https://arweave.net/GGzACWpbo6-gx95Y7Ydtty1EeZvlLKTldmY6GErA-Z0/${tokenId}.json `,
+export const getNftLink = async (tokenId) => {
+  console.log('CHECK TOKEN ID', tokenId)
+  return await axios.get(
+    `https://arweave.net/GGzACWpbo6-gx95Y7Ydtty1EeZvlLKTldmY6GErA-Z0/${tokenId}.json`,
     {
-      method: 'post',
-      mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: tokenId,
     },
-  ).then((response) => response.json())
+  )
 }
