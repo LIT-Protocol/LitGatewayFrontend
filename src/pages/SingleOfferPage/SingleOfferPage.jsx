@@ -64,7 +64,7 @@ const SingleOfferPage = () => {
 
   const handleOgNftButtonAction = async () => {
     if (ogNftTokenId !== -1) {
-      const resp = getNftLink(ogNftTokenId)
+      const resp = await getNftLink(ogNftTokenId)
       console.log('GET NFT LINK', resp)
     } else {
       performWithAuthSig(async (authSig) => {
