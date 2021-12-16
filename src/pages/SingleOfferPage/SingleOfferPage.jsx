@@ -17,6 +17,7 @@ import { useAppContext } from '../../context'
 import {
   checkForClaimedOgNft,
   getNftCount,
+  getNftLink,
   twitterOauthUrl,
 } from '../../api/claimNft'
 import { getUserHoldings } from '../../api/users'
@@ -41,7 +42,7 @@ const SingleOfferPage = () => {
   const [waxAddress, setWaxAddress] = useState('')
   const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
   const [nftsRemaining, setNftsRemaining] = useState(null)
-  const [ogNftClaimed, setOgNftClaimed] = useState(null)
+  const [ogNftTokenId, setOgNftTokenId] = useState(null)
 
   // clear global error when the user navigates away
   useEffect(() => {
@@ -56,11 +57,15 @@ const SingleOfferPage = () => {
         setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
       })
     }
-    handleCheckForOgNftClaims()
-  }, [nftsRemaining, ogNftClaimed])
+    if (!ogNftTokenId) {
+      handleCheckForOgNftClaims()
+    }
+  }, [nftsRemaining, ogNftTokenId])
 
   const handleOgNftButtonAction = async () => {
-    if (ogNftClaimed) {
+    if (ogNftTokenId !== -1) {
+      const resp = getNftLink(ogNftTokenId)
+      console.log('GET NFT LINK', resp)
     } else {
       performWithAuthSig(async (authSig) => {
         setGlobalError(null)
@@ -77,8 +82,7 @@ const SingleOfferPage = () => {
   const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
       const resp = await checkForClaimedOgNft({ authSig })
-      console.log('NFT RESP ', resp)
-      // setOgNftClaimed(resp)
+      setOgNftTokenId(resp)
     })
   }
 
@@ -244,9 +248,10 @@ const SingleOfferPage = () => {
       title: 'Lit Genesis Gate NFT',
       logo: litLogo,
       tags: ['Lit Protocol'],
-      mainBtnLabel: ogNftClaimed
-        ? 'Enter NFT Portal'
-        : 'Connect Twitter and Claim NFT',
+      mainBtnLabel:
+        ogNftTokenId !== -1
+          ? 'Enter NFT Portal'
+          : 'Connect Twitter and Claim NFT',
       twitterBtn: true,
       handleMainButtonClick: handleOgNftButtonAction,
       requirement: (
@@ -467,7 +472,7 @@ const SingleOfferPage = () => {
             <div className={styles.right}>
               {offer.twitterBtn ? (
                 <>
-                  {ogNftClaimed ? (
+                  {ogNftTokenId !== -1 ? (
                     <span className={styles.claimedStatus}>
                       <IconCheck className={styles.claimedIcon} />
                       <p className={styles.claimedText}>Claimed!</p>
