@@ -6,6 +6,7 @@ import styles from './single-offer-page.module.scss'
 import { Button } from '@consta/uikit/Button'
 import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
+import { IconCheck } from '@consta/uikit/IconCheck'
 import { Modal } from '@consta/uikit/Modal'
 import { Badge } from '@consta/uikit/Badge'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
@@ -13,7 +14,12 @@ import { Card, InputWrapper } from '../../components'
 
 import { Follow } from 'react-twitter-widgets'
 import { useAppContext } from '../../context'
-import { twitterOauthUrl } from '../../api/claimNft'
+import {
+  checkForClaimedOgNft,
+  getNftCount,
+  getNftLink,
+  twitterOauthUrl,
+} from '../../api/claimNft'
 import { getUserHoldings } from '../../api/users'
 import { claimHodlgodOffer } from '../../api/offers'
 
@@ -26,8 +32,6 @@ import discountMiniLogo from '../OffersPage/assets/discount-offer-icon.png'
 import litMiniLogo from '../OffersPage/assets/lit-offer-icon.png'
 import discountBack from '../OffersPage/assets/discountBack.png'
 import litBack from '../OffersPage/assets/litBack.png'
-import hodlgodBack from '../OffersPage/assets/hodlgodBack.jpg'
-import hodlgodLogo from '../OffersPage/assets/hodlgodLogo.png'
 import blankCanvas from '../OffersPage/assets/blank-canvas.png'
 
 const SingleOfferPage = () => {
@@ -37,6 +41,8 @@ const SingleOfferPage = () => {
   const [loading, setLoading] = useState(false)
   const [waxAddress, setWaxAddress] = useState('')
   const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
+  const [nftsRemaining, setNftsRemaining] = useState(null)
+  const [ogNftTokenId, setOgNftTokenId] = useState(null)
 
   // clear global error when the user navigates away
   useEffect(() => {
@@ -45,17 +51,38 @@ const SingleOfferPage = () => {
     }
   }, [])
 
-  const handleConnectTwitter = async () => {
-    performWithAuthSig(async (authSig) => {
-      setGlobalError(null)
-      const resp = await twitterOauthUrl({ authSig })
-      if (resp && resp.error) {
-        setGlobalError({ title: resp.error })
-        return
-      }
+  useEffect(() => {
+    if (!nftsRemaining) {
+      getNftCount().then((data) => {
+        setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
+      })
+    }
+    if (!ogNftTokenId) {
+      handleCheckForOgNftClaims()
+    }
+  }, [nftsRemaining, ogNftTokenId])
 
-      console.log(resp)
-      window.location = resp.url
+  const handleOgNftButtonAction = async () => {
+    if (ogNftTokenId !== -1) {
+      const resp = await getNftLink(ogNftTokenId)
+      window.open(resp.data.external_url, '_blank')
+    } else {
+      performWithAuthSig(async (authSig) => {
+        setGlobalError(null)
+        const resp = await twitterOauthUrl({ authSig })
+        if (resp && resp.error) {
+          setGlobalError({ title: resp.error })
+          return
+        }
+        window.location = resp.url
+      })
+    }
+  }
+
+  const handleCheckForOgNftClaims = async () => {
+    performWithAuthSig(async (authSig) => {
+      const resp = await checkForClaimedOgNft({ authSig })
+      setOgNftTokenId(resp)
     })
   }
 
@@ -221,9 +248,12 @@ const SingleOfferPage = () => {
       title: 'Lit Genesis Gate NFT',
       logo: litLogo,
       tags: ['Lit Protocol'],
-      mainBtnLabel: 'Connect Twitter and Claim NFT',
+      mainBtnLabel:
+        ogNftTokenId !== -1
+          ? 'Enter NFT Portal'
+          : 'Connect Twitter and Claim NFT',
       twitterBtn: true,
-      handleMainButtonClick: handleConnectTwitter,
+      handleMainButtonClick: handleOgNftButtonAction,
       requirement: (
         <div>
           <svg
@@ -254,7 +284,7 @@ const SingleOfferPage = () => {
           </div>
         </div>
       ),
-      segmentCenterValue: '0/10,000',
+      segmentCenterValue: nftsRemaining,
       timeRemaining: '10 days, 2 hours',
       imgText: "Join the Lit community and let's make an NFT together!",
       segmentCenterTitle: 'NFTS CLAIMED',
@@ -264,7 +294,8 @@ const SingleOfferPage = () => {
           <p>
             The Lit Genesis Gate NFT is available to the first 9,500 people who
             claim it! In order to claim, you must have more than 0.005 ETH in
-            your wallets and follow @LitProtocol on twitter.
+            your wallet (though you will not have to pay any ETH for the
+            transaction) and follow @LitProtocol on twitter.
           </p>
           <p>
             Once you own the NFT, give it a click and be transported through the
@@ -432,8 +463,8 @@ const SingleOfferPage = () => {
               <div className={styles.titles}>
                 <h1 className={styles.title}>{offer.title}</h1>
                 <div className={styles.tags}>
-                  {offer.tags.map((tag) => (
-                    <Badge status="system" label={tag} size="l" />
+                  {offer.tags.map((tag, i) => (
+                    <Badge key={i} status="system" label={tag} size="l" />
                   ))}
                 </div>
               </div>
@@ -441,11 +472,20 @@ const SingleOfferPage = () => {
             <div className={styles.right}>
               {offer.twitterBtn ? (
                 <>
-                  <Follow
-                    username="litprotocol"
-                    options={{ size: 'large', showCount: false }}
-                  />
-                  <div style={{ height: 16 }} />
+                  {ogNftTokenId !== -1 ? (
+                    <span className={styles.claimedStatus}>
+                      <IconCheck className={styles.claimedIcon} />
+                      <p className={styles.claimedText}>Claimed!</p>
+                    </span>
+                  ) : (
+                    <>
+                      <Follow
+                        username="litprotocol"
+                        options={{ size: 'large', showCount: false }}
+                      />
+                      <div style={{ height: 16 }} />
+                    </>
+                  )}
                 </>
               ) : // <button className={styles.customBtn}>
               //   <svg
@@ -480,9 +520,20 @@ const SingleOfferPage = () => {
                 <h3>REQUIREMENT</h3>
                 {offer.requirement}
               </div>
-              <div className={styles.segment}>
-                <h3>TIME REMAINING</h3>
-                <div className={styles.text}>{offer.timeRemaining}</div>
+              <div>
+                {!!offer['segmentCenterTitle'] ? (
+                  <div className={styles.segment}>
+                    <h3>{offer['segmentCenterTitle']}</h3>
+                    <div className={styles.text}>
+                      {offer['segmentCenterValue']}
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles.segment}>
+                    <h3>TIME REMAINING</h3>
+                    <div className={styles.text}>{offer.timeRemaining}</div>
+                  </div>
+                )}
               </div>
             </div>
             <div
@@ -511,8 +562,8 @@ const SingleOfferPage = () => {
                 }}
               >
                 {offer?.more.length &&
-                  offer.more.map((item) => (
-                    <GridItem>
+                  offer.more.map((item, i) => (
+                    <GridItem key={i}>
                       <Card
                         title={item.title}
                         titleIcon={item.titleIcon}

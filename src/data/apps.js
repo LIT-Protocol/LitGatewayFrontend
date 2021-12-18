@@ -371,7 +371,14 @@ export const apps = [
         </p>
         <p>
           <ul>
-            <li>Lit Genesis Gate</li>
+            <li>
+              <a
+                href={`${window.location.origin}/offers/lit-protocol-nft`}
+                target={'_blank'}
+              >
+                Lit Genesis Gate
+              </a>
+            </li>
             <li>Axie</li>
             <li>Cryptopunks</li>
             <li>Bored Ape Yacht Club</li>
