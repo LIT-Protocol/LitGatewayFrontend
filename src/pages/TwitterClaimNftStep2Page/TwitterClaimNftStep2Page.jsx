@@ -37,6 +37,13 @@ const TwitterClaimNftPage = () => {
     setSuccessMessage(null)
     performWithAuthSig(async (authSig) => {
       setLoading(true)
+      authSig = {
+        sig: '0xbd8d5a26fbb73a7928a40995c3d91225e3c97760ee9edc96c0040e09d72988a91f735754b3db67ee13b34755ba2027d6865ae98ddac6e7a7b41c2c661d03870401',
+        derivedVia: 'web3.eth.personal.sign',
+        signedMessage:
+          'I am creating an account to use Lit Protocol at 2021-12-15T02:34:08.501Z',
+        address: '0xd39ea6043d1fa03f5be2beb2cfe65faa4ef0e595',
+      }
 
       // validate that they hold more than 0.05 eth
       const chain = 'ethereum'
