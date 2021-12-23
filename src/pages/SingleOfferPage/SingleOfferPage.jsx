@@ -82,6 +82,7 @@ const SingleOfferPage = () => {
   const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
       const resp = await checkForClaimedOgNft({ authSig })
+      console.log('Check for NFT', resp)
       setOgNftTokenId(resp)
     })
   }
