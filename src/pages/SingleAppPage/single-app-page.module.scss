@@ -10,6 +10,7 @@
 
 .secondary {
   background: white !important;
+
   &:hover {
     background: white !important;
   }
@@ -19,9 +20,11 @@
   max-width: 1240px;
   width: 100%;
   box-sizing: border-box;
+
   .backIcon {
     margin-right: 10px;
   }
+
   .link {
     display: flex;
     align-items: center;
@@ -33,21 +36,26 @@
   align-items: center;
   margin-bottom: 2em;
   justify-content: space-between;
+
   .left {
     display: flex;
     align-items: center;
+
     img {
       object-fit: contain;
     }
   }
+
   .right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
     button {
       min-width: 160px;
     }
   }
+
   h1 {
     color: var(--color-typo-primary);
     margin-top: 0;
@@ -56,6 +64,7 @@
     line-height: 150%;
     margin-bottom: 16px;
   }
+
   .logo {
     height: 140px;
     width: 140px;
@@ -63,6 +72,7 @@
     object-fit: cover;
     margin-right: 30px;
   }
+
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
@@ -91,6 +101,7 @@
 
 .tags {
   margin: 0 -5px;
+
   div {
     margin: 5px;
     text-transform: none;
@@ -109,6 +120,7 @@
   font-size: 20px;
   line-height: 150%;
   padding-bottom: var(--space-m);
+
   p {
     margin: var(--space-2xl) 0;
   }
@@ -122,6 +134,7 @@
   color: var(--color-typo-link);
   text-decoration: none;
   transition: all 0.3s;
+
   &:hover {
     color: var(--color-typo-link-hover);
   }
@@ -137,6 +150,7 @@
   font-size: 22.5px;
   line-height: 150%;
   color: $brand;
+
   img {
     margin-right: 5px;
   }
@@ -153,15 +167,41 @@
   min-height: 250px;
 }
 
+.subtitle {
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 150%;
+  text-align: center;
+  //color: $secondary-text;
+  margin: 0 0 1rem;
+}
+
+.form {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  margin: 0 auto 32px;
+
+  .btn {
+    margin-left: 14px;
+  }
+
+  .input {
+    flex: 1 1 auto;
+  }
+}
+
 @media (max-width: 1230px) {
   .top {
     margin-bottom: 2em;
     flex-direction: column;
     align-items: flex-start;
+
     .right {
       flex-direction: row;
       margin-top: 30px;
       justify-content: flex-start;
+
       button {
         margin-top: 0;
         margin-bottom: 0 !important;
@@ -197,6 +237,7 @@
       flex-direction: column;
       text-align: center;
       width: 100%;
+
       img {
         margin-right: 0;
         height: 100px;
@@ -204,10 +245,12 @@
         margin-bottom: 10px;
       }
     }
+
     .right {
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
+
       button {
         margin-bottom: 15px !important;
         margin-right: 0px !important;

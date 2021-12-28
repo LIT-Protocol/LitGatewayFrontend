@@ -18,6 +18,7 @@ export const apps = [
     url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST,
     mainBtnLabel: 'Coming Soon',
     backgroundImg: driveBack,
+    showEmailSignup: true,
     shortDesc:
       'Provide coupons selectively on your Shopify store with blockchain requirements',
     textBlock: (

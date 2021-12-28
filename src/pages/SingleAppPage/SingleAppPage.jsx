@@ -8,7 +8,7 @@ import { Grid, GridItem } from '@consta/uikit/Grid'
 import { IconBackward } from '@consta/uikit/IconBackward'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 import { Badge } from '@consta/uikit/Badge'
-import { Card } from '../../components'
+import { Card, GetUpdates } from '../../components'
 import { apps } from '../../data/apps'
 import { useAppContext } from '../../context'
 
@@ -87,6 +87,14 @@ const SingleAppPage = () => {
             </div>
           </div>
           <div className={styles.content}>
+            {!!app['showEmailSignup'] && (
+              <div>
+                <p className={styles.subtitle}>
+                  Sign up to be notified when the {app.title} App launches:
+                </p>
+                <GetUpdates className={styles.form} />
+              </div>
+            )}
             <div className={styles.textBlock}>{app.textBlock}</div>
           </div>
         </div>
