@@ -274,6 +274,7 @@ const SingleOfferPage = () => {
             className={styles.link}
             href="https://twitter.com/litprotocol"
             target="_blank"
+            rel="noreferrer"
           >
             @LitProtocol
           </a>{' '}
@@ -368,6 +369,7 @@ const SingleOfferPage = () => {
                 className={styles.link}
                 href="https://twitter.com/litprotocol"
                 target="_blank"
+                rel="noreferrer"
               >
                 @LitProtocol
               </a>
@@ -509,6 +511,7 @@ const SingleOfferPage = () => {
               ) : (
                 <Button
                   label={offer.mainBtnLabel}
+                  disabled={offer.mainBtnLabel === 'Coming Soon'}
                   size="l"
                   onClick={offer.handleMainButtonClick}
                 />

@@ -59,7 +59,11 @@ const AppsPage = () => {
           </div>
           <div className={styles.toastContent}>
             Contact us{' '}
-            <a href="https://airtable.com/shrltHvcGxKObzYxl" target="_blank">
+            <a
+              href="https://airtable.com/shrltHvcGxKObzYxl"
+              target="_blank"
+              rel="noreferrer"
+            >
               here
             </a>
             .
@@ -116,10 +120,22 @@ const AppsPage = () => {
                       />
                     ) : (
                       <Button
-                        label="Launch"
+                        label={app.mainBtnLabel}
+                        disabled={app.mainBtnLabel !== 'Launch'}
+                        className={
+                          app.mainBtnLabel !== 'Launch'
+                            ? styles.disabledButton
+                            : ''
+                        }
                         size="l"
                         onClick={() => handleLaunchButtonClick(app)}
                       />
+                      // <Button
+                      //   label={offer.mainBtnLabel}
+                      //   disabled={offer.mainBtnLabel === 'Coming Soon'}
+                      //   size="l"
+                      //   onClick={offer.handleMainButtonClick}
+                      // />
                     )}
                   </>
                 }

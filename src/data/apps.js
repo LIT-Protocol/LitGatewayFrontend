@@ -2,13 +2,62 @@ import zoomLogo from '../pages/SingleAppPage/assets/zoom.png'
 import gDriveLogo from '../pages/SingleAppPage/assets/googleDrive.png'
 import driveBack from '../pages/SingleAppPage/assets/driveBack.png'
 import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
-
+// import shopifyGlyph from '../pages/AppsPage/assets/shopifyGlyph.png'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
+import shopifyLogo from '../pages/SingleAppPage/assets/shopifyLogo.svg'
 
 import { storeHoldingsFromLit } from '../api/users'
 
 export const apps = [
+  {
+    id: 'shopify',
+    title: 'Shopify',
+    logo: shopifyLogo,
+    tags: ['E-Commerce'],
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST,
+    mainBtnLabel: 'Coming Soon',
+    backgroundImg: driveBack,
+    shortDesc:
+      'Provide coupons selectively on your Shopify store with blockchain requirements',
+    textBlock: (
+      <>
+        <p>
+          With this App, Shopify merchants can provide discounts and access to
+          select items in their Shopify store, based on token holdings and
+          blockchain identity.
+        </p>
+        <p>
+          For example, merchants can create a discount for a t-shirt that only
+          the holder of a given NFT can claim or a hat that only DAO members are
+          able to purchase.
+        </p>
+        {/*TODO: fill out instructions when deployed*/}
+        {/*<h4>Documentation</h4>*/}
+        {/*<p>*/}
+        {/*  <u>Installation</u>: To install this, click the Launch button above*/}
+        {/*  and connect your Zoom account.*/}
+        {/*</p>*/}
+        {/*<p>*/}
+        {/*  <u>Usage</u>: To share meetings and webinars with other users based on*/}
+        {/*  ownership of crypto assets and blockchain identity, you must grant our*/}
+        {/*  Zoom app the following Zoom oAuth scopes: user:read, meeting:write,*/}
+        {/*  and webinar:write. We use these scopes to grant users access to your*/}
+        {/*  meetings and webinars if they meet the requirements you defined when*/}
+        {/*  you shared a meeting or webinar. These will be automatically granted*/}
+        {/*  when you connect your Zoom account by clicking the Launch button*/}
+        {/*  above.*/}
+        {/*</p>*/}
+        {/*<p>*/}
+        {/*  <u>Uninstallation</u>: To uninstall this, log in to your Zoom account*/}
+        {/*  and and navigate to the Zoom App Marketplace. Click Manage {'>'}{' '}*/}
+        {/*  Installed Apps or search for the Lit Protocol app. Click the Lit*/}
+        {/*  Protocol app. Click "Uninstall".*/}
+        {/*</p>*/}
+      </>
+    ),
+    more: [],
+  },
   {
     id: 'zoom',
     title: 'Zoom',
@@ -375,6 +424,7 @@ export const apps = [
               <a
                 href={`${window.location.origin}/offers/lit-protocol-nft`}
                 target={'_blank'}
+                rel="noreferrer"
               >
                 Lit Genesis Gate
               </a>
