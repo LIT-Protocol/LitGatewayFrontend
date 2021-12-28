@@ -2,7 +2,7 @@ import zoomLogo from '../pages/SingleAppPage/assets/zoom.png'
 import gDriveLogo from '../pages/SingleAppPage/assets/googleDrive.png'
 import driveBack from '../pages/SingleAppPage/assets/driveBack.png'
 import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
-// import shopifyGlyph from '../pages/AppsPage/assets/shopifyGlyph.png'
+import shopifyBack from '../pages/SingleAppPage/assets/shopifyBack.jpg'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 import shopifyLogo from '../pages/SingleAppPage/assets/shopifyLogo.svg'
@@ -17,7 +17,7 @@ export const apps = [
     tags: ['E-Commerce'],
     url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST,
     mainBtnLabel: 'Coming Soon',
-    backgroundImg: driveBack,
+    backgroundImg: shopifyBack,
     showEmailSignup: true,
     shortDesc:
       'Provide coupons selectively on your Shopify store with blockchain requirements',
