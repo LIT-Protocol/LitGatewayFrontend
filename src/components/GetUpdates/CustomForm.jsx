@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { putUser } from '../../api/users'
 import cx from 'classnames'
 import { InputWrapper } from '../index'
@@ -22,6 +22,7 @@ const CustomForm = ({ status, message, onValidated, className }) => {
       setMessageStatus('success')
       setInputMessage(message)
     } else if (message && message.includes('already subscribed')) {
+      console.log('Already subscribed')
       setMessageStatus('success')
       setInputMessage('This email is already subscribed!')
     }

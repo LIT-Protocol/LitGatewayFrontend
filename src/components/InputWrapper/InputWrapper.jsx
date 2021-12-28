@@ -25,12 +25,12 @@ const InputWrapper = ({
   onClear = () => false,
   rows,
 }) => {
-  const getState = () => {
-    if (error) {
-      return 'alert'
-    }
-    return undefined
-  }
+  // const getState = () => {
+  //   if (status === 'error') {
+  //     return 'alert'
+  //   }
+  //   return undefined
+  // }
   return (
     <div className={cx(styles.input, className)}>
       {label && <label htmlFor={id}>{label}</label>}
@@ -42,7 +42,7 @@ const InputWrapper = ({
           readOnly={readOnly}
           type={type}
           id={id}
-          state={getState()}
+          status={status}
           value={value}
           onChange={({ value }) => handleChange(value)}
           autoFocus={autoFocus}
