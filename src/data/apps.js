@@ -33,7 +33,7 @@ export const apps = [
           the holder of a given NFT can claim or a hat that only DAO members are
           able to purchase.
         </p>
-        {/*TODO: fill out instructions when deployed*/}
+        {/*TODO: fill out instructions when deployed. These are for zoom. Only here for structure*/}
         {/*<h4>Documentation</h4>*/}
         {/*<p>*/}
         {/*  <u>Installation</u>: To install this, click the Launch button above*/}

@@ -41,8 +41,8 @@ const AboutPage = () => {
           </p>
         </div>
         <p className={styles.secondaryText}>
-          Don’t forget to drop your email address in so we can notify you when
-          new offers that apply to you become available!
+          Don’t forget to drop your email address so we can notify you when new
+          offers that apply to you become available!
         </p>
 
         <GetUpdates className={styles.form} />

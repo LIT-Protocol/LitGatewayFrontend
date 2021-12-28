@@ -1,5 +1,4 @@
 import MailchimpSubscribe from './MailchimpSubscribe'
-import styles from './get-updates.module.scss'
 
 import CustomForm from './CustomForm'
 
@@ -14,6 +13,7 @@ const GetUpdates = (props) => {
       <MailchimpSubscribe
         url={addUrl}
         render={({ subscribe, status, message }) => {
+          console.log('email submit status', status)
           return (
             <CustomForm
               className={className}
