@@ -296,8 +296,8 @@ const SingleOfferPage = () => {
           <p>
             The Lit Genesis Gate NFT is available to the first 9,500 people who
             claim it! In order to claim, you must have more than 0.005 ETH in
-            your wallet (though you will not have to pay any ETH for the
-            transaction) and follow @LitProtocol on twitter.
+            your wallet (you will not have to pay any ETH for the transaction)
+            and follow @LitProtocol on twitter.
           </p>
           <p>
             Once you own the NFT, give it a click and be transported through the
@@ -511,7 +511,6 @@ const SingleOfferPage = () => {
               ) : (
                 <Button
                   label={offer.mainBtnLabel}
-                  disabled={offer.mainBtnLabel !== 'Launch'}
                   size="l"
                   onClick={offer.handleMainButtonClick}
                 />
