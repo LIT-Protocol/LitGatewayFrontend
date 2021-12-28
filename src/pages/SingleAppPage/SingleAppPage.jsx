@@ -79,6 +79,7 @@ const SingleAppPage = () => {
               ) : (
                 <Button
                   label={app.mainBtnLabel}
+                  disabled={app.mainBtnLabel !== 'Launch'}
                   size="l"
                   onClick={() => handleLaunchButtonClick(app)}
                 />

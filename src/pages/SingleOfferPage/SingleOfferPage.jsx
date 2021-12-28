@@ -511,7 +511,7 @@ const SingleOfferPage = () => {
               ) : (
                 <Button
                   label={offer.mainBtnLabel}
-                  disabled={offer.mainBtnLabel === 'Coming Soon'}
+                  disabled={offer.mainBtnLabel !== 'Launch'}
                   size="l"
                   onClick={offer.handleMainButtonClick}
                 />
