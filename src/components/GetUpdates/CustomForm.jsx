@@ -29,7 +29,7 @@ const CustomForm = ({ status, message, onValidated, className }) => {
 
   const submit = async () => {
     if (!validateEmail(emailVal)) {
-      setMessageStatus('error')
+      setMessageStatus('warning')
       setInputMessage('Please enter a valid email')
       return
     }

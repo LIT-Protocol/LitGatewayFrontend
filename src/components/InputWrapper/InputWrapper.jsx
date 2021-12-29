@@ -25,12 +25,6 @@ const InputWrapper = ({
   onClear = () => false,
   rows,
 }) => {
-  // const getState = () => {
-  //   if (status === 'error') {
-  //     return 'alert'
-  //   }
-  //   return undefined
-  // }
   return (
     <div className={cx(styles.input, className)}>
       {label && <label htmlFor={id}>{label}</label>}

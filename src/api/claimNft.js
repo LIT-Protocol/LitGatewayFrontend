@@ -47,7 +47,6 @@ export const getNftCount = () => {
 }
 
 export const getNftLink = async (tokenId) => {
-  console.log('CHECK TOKEN ID', tokenId)
   return await axios.get(
     `https://arweave.net/GGzACWpbo6-gx95Y7Ydtty1EeZvlLKTldmY6GErA-Z0/${tokenId}.json`,
     {
