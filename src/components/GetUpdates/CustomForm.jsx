@@ -22,7 +22,6 @@ const CustomForm = ({ status, message, onValidated, className }) => {
       setMessageStatus('success')
       setInputMessage(message)
     } else if (message && message.includes('already subscribed')) {
-      console.log('Already subscribed')
       setMessageStatus('success')
       setInputMessage('This email is already subscribed!')
     }
