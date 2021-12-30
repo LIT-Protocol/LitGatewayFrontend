@@ -483,7 +483,9 @@ const SingleOfferPage = () => {
             <div className={styles.right}>
               {offer.twitterBtn ? (
                 <>
-                  {!ogNftTokenId || ogNftTokenId !== -1 ? (
+                  {!!ogNftTokenId &&
+                  ogNftTokenId !== -1 &&
+                  ogNftTokenId > -1 ? (
                     <span className={styles.claimedStatus}>
                       <IconCheck className={styles.claimedIcon} />
                       <p className={styles.claimedText}>Claimed!</p>
