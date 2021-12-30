@@ -64,8 +64,12 @@ const SingleOfferPage = () => {
 
   const handleOgNftButtonAction = async () => {
     if (ogNftTokenId !== -1) {
-      const resp = await getNftLink(ogNftTokenId)
-      window.open(resp.data.external_url, '_blank')
+      try {
+        const resp = await getNftLink(ogNftTokenId)
+        window.open(resp.data.external_url, '_blank')
+      } catch (err) {
+        console.log('Error retrieving NFT link:', err)
+      }
     } else {
       performWithAuthSig(async (authSig) => {
         setGlobalError(null)
@@ -81,9 +85,13 @@ const SingleOfferPage = () => {
 
   const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
-      const resp = await checkForClaimedOgNft({ authSig })
-      console.log('Check for NFT:', resp)
-      setOgNftTokenId(resp)
+      try {
+        const resp = await checkForClaimedOgNft({ authSig })
+        console.log('Check for NFT:', resp)
+        setOgNftTokenId(resp)
+      } catch (err) {
+        console.log('Error checking for claimed NFT', err)
+      }
     })
   }
 
@@ -475,7 +483,7 @@ const SingleOfferPage = () => {
             <div className={styles.right}>
               {offer.twitterBtn ? (
                 <>
-                  {ogNftTokenId !== -1 ? (
+                  {!ogNftTokenId || ogNftTokenId !== -1 ? (
                     <span className={styles.claimedStatus}>
                       <IconCheck className={styles.claimedIcon} />
                       <p className={styles.claimedText}>Claimed!</p>
