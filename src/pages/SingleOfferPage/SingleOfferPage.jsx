@@ -33,6 +33,8 @@ import litMiniLogo from '../OffersPage/assets/lit-offer-icon.png'
 import discountBack from '../OffersPage/assets/discountBack.png'
 import litBack from '../OffersPage/assets/litBack.png'
 import blankCanvas from '../OffersPage/assets/blank-canvas.png'
+import hodlgodLogo from '../OffersPage/assets/hodlgodLogo.png'
+import hodlgodBack from '../OffersPage/assets/hodlgodBack.jpg'
 
 const SingleOfferPage = () => {
   const { title } = useParams()
@@ -388,64 +390,64 @@ const SingleOfferPage = () => {
         },
       ],
     },
-    // {
-    //   id: 'hodlgod',
-    //   title: 'HodlGod - Play to Earn',
-    //   tags: ['Gaming'],
-    //   logo: hodlgodLogo,
-    //   mainBtnLabel: 'Play',
-    //   twitterBtn: false,
-    //   requirement: '150 $SLP or 1000 $DEC',
-    //   timeRemaining: '10 days, 2 hours',
-    //   imgText: 'Find, Collect, and Combine the Immortal Shards',
-    //   mainImg: hodlgodBack,
-    //   handleMainButtonClick: handleHodlgodClick,
-    //   textBlock: (
-    //     <>
-    //       <p>
-    //         If you’re an Axie Infinity or Splinterlands player, this is an
-    //         opportunity to earn 50,000 $VOID tokens by playing HodlGod and
-    //         earning at least 12,500 XP.
-    //       </p>
-    //       <p>
-    //         The reward of 50,000 $VOID is available to the first 1000 players
-    //         who sign up via this offer and reach the XP milestone. Also, this
-    //         offer is only available to be claimed by players who have 150 $SLP
-    //         or 1000 $DEC in their ETH or BSC wallets.
-    //       </p>
-    //       <p>
-    //         To claim the offer, connect your wallet where you’re holding your
-    //         SLP or DEC, enter your WAX blockchain address, and start playing
-    //         HodlGod with that same address. This offer is still live as long as
-    //         this page is up, and once 1000 players have reached 12,500 XP this
-    //         offer will be closed and the $VOID will be directly distributed to
-    //         your WAX address.
-    //       </p>
-    //     </>
-    //   ),
-    //   more: [
-    //     {
-    //       title: 'Lit Genesis Gate NFT',
-    //       titleIcon: litMiniLogo,
-    //       tags: ['Lit Protocol'],
-    //       id: 'lit-protocol-nft',
-    //       requirement: (
-    //         <span>
-    //           Own ETH & follow{' '}
-    //           <a
-    //             className={styles.link}
-    //             href="https://twitter.com/litprotocol"
-    //             target="_blank"
-    //           >
-    //             @LitProtocol
-    //           </a>
-    //         </span>
-    //       ),
-    //       reward: 'Genesis NFT',
-    //       img: litBack,
-    //     },
-    //   ],
-    // },
+    {
+      id: 'hodlgod',
+      title: 'HodlGod - Play to Earn',
+      tags: ['Gaming'],
+      logo: hodlgodLogo,
+      mainBtnLabel: 'Play',
+      twitterBtn: false,
+      requirement: '150 $SLP or 1000 $DEC',
+      timeRemaining: '10 days, 2 hours',
+      imgText: 'Find, Collect, and Combine the Immortal Shards',
+      mainImg: hodlgodBack,
+      handleMainButtonClick: handleHodlgodClick,
+      textBlock: (
+        <>
+          <p>
+            If you’re an Axie Infinity or Splinterlands player, this is an
+            opportunity to earn 50,000 $VOID tokens by playing HodlGod and
+            earning at least 12,500 XP.
+          </p>
+          <p>
+            The reward of 50,000 $VOID is available to the first 1000 players
+            who sign up via this offer and reach the XP milestone. Also, this
+            offer is only available to be claimed by players who have 150 $SLP
+            or 1000 $DEC in their ETH or BSC wallets.
+          </p>
+          <p>
+            To claim the offer, connect your wallet where you’re holding your
+            SLP or DEC, enter your WAX blockchain address, and start playing
+            HodlGod with that same address. This offer is still live as long as
+            this page is up, and once 1000 players have reached 12,500 XP this
+            offer will be closed and the $VOID will be directly distributed to
+            your WAX address.
+          </p>
+        </>
+      ),
+      more: [
+        {
+          title: 'Lit Genesis Gate NFT',
+          titleIcon: litMiniLogo,
+          tags: ['Lit Protocol'],
+          id: 'lit-protocol-nft',
+          requirement: (
+            <span>
+              Own ETH & follow{' '}
+              <a
+                className={styles.link}
+                href="https://twitter.com/litprotocol"
+                target="_blank"
+              >
+                @LitProtocol
+              </a>
+            </span>
+          ),
+          reward: 'Genesis NFT',
+          img: litBack,
+        },
+      ],
+    },
   ]
 
   const offer = offers.find((offer) => offer.id === title)
