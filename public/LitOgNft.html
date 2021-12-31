@@ -2,7 +2,7 @@
 <!-- saved from url=(0079)https://ipfs.litgateway.com/ipfs/QmSdpeKXvGcDV6B68motie56pBrmufEKvNLtcQjcZQwC8n -->
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <meta content="text/html; charset=windows-1252" http-equiv="Content-Type" />
     <title>Lit Genesis Gate NFT</title>
     <style>
       html,
@@ -15,15 +15,19 @@
       .Informer_status_system {
         --informer-status-color: var(--color-bg-system);
       }
+
       .Informer_status_alert {
         --informer-status-color: var(--color-bg-alert);
       }
+
       .Informer_status_warning {
         --informer-status-color: var(--color-bg-warning);
       }
+
       .Informer_status_success {
         --informer-status-color: var(--color-bg-success);
       }
+
       .Theme {
         --graphics-size-xs: 12px;
         --graphics-size-s: 16px;
@@ -34,6 +38,7 @@
         --graphics-size-3xl: 80px;
         --graphics-size-4xl: 120px;
       }
+
       .Theme_color_gpnDefault {
         --color-bg-default: rgb(255, 255, 255);
         --color-bg-secondary: rgb(236, 241, 244);
@@ -98,6 +103,7 @@
         --color-control-bg-border-disable: rgba(0, 66, 105, 0);
         --color-control-typo-disable: rgba(0, 32, 51, 0.26);
       }
+
       .Theme_color_gpnDark {
         --color-bg-default: rgb(34, 39, 43);
         --color-bg-secondary: rgb(22, 26, 29);
@@ -162,6 +168,7 @@
         --color-control-bg-border-disable: rgba(250, 250, 250, 0);
         --color-control-typo-disable: rgba(255, 255, 255, 0.24);
       }
+
       .Theme_control_gpnDefault {
         --control-radius: 4px;
         --control-border-width: 1px;
@@ -180,6 +187,7 @@
         --control-text-size-s: var(--size-text-s);
         --control-text-size-xs: var(--size-text-xs);
       }
+
       .Theme_font_gpnDefault {
         --font-primary: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto',
           'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -188,6 +196,7 @@
           monospace;
         font-family: var(--font-primary);
       }
+
       .Theme_size_gpnDefault {
         --size-text-2xs: 10px;
         --size-text-xs: 12px;
@@ -212,6 +221,7 @@
         --font-weight-text-bold: bold;
         --font-weight-text-black: 900;
       }
+
       .Theme_space_gpnDefault {
         --space-3xs: 2px;
         --space-2xs: 4px;
@@ -226,6 +236,7 @@
         --space-5xl: 72px;
         --space-6xl: 96px;
       }
+
       .Theme_shadow_gpnDefault {
         --shadow-group: 0 2px 2px rgba(0, 32, 51, 0.02),
           0 2px 8px rgba(0, 32, 51, 0.16);
@@ -234,6 +245,7 @@
         --shadow-modal: 0 8px 8px rgba(0, 32, 51, 0.04),
           0 12px 28px rgba(0, 32, 51, 0.12);
       }
+
       .Theme_color_gpnDisplay {
         --color-bg-default: rgb(0, 32, 51);
         --color-bg-secondary: rgb(0, 45, 71);
@@ -298,41 +310,49 @@
         --color-control-bg-border-disable: rgba(246, 251, 253, 0);
         --color-control-typo-disable: rgba(246, 251, 253, 0.24);
       }
+
       .Button_size_xs {
         --button-height: var(--control-height-xs);
         --button-font-size: var(--control-text-size-xs);
         --button-space: var(--control-space-xs);
       }
+
       .Button_size_s {
         --button-height: var(--control-height-s);
         --button-font-size: var(--control-text-size-s);
         --button-space: var(--control-space-s);
       }
+
       .Button_size_m {
         --button-height: var(--control-height-m);
         --button-font-size: var(--control-text-size-m);
         --button-space: var(--control-space-m);
       }
+
       .Button_size_l {
         --button-height: var(--control-height-l);
         --button-font-size: var(--control-text-size-l);
         --button-space: var(--control-space-l);
       }
+
       .Button_view_clear {
         --color-hover: var(--color-control-typo-clear-hover);
         color: var(--color-control-typo-clear);
         background-color: var(--color-control-bg-clear);
       }
+
       .Button_view_ghost {
         --color-hover: var(--color-control-typo-ghost-hover);
         color: var(--color-control-typo-ghost);
         background-color: var(--color-control-bg-ghost);
       }
+
       .Button_view_primary {
         --color-hover: var(--color-control-typo-primary-hover);
         color: var(--color-control-typo-primary);
         background-color: var(--color-control-bg-primary);
       }
+
       .Button_view_secondary {
         --color-hover: var(--color-control-typo-secondary-hover);
         color: var(--color-control-typo-secondary);
@@ -343,25 +363,30 @@
           var(--button-height) - var(--control-border-width) * 2
         );
       }
+
       .Button_withIcon {
         --icon-indent: calc(var(--button-space) * 0.7);
         display: inline-flex;
         align-items: center;
       }
+
       .Button_loading .Button-Loader {
         --loaderBackgroundColor: var(--color-control-typo-disable);
         position: absolute;
       }
+
       .Checkbox_size_m {
         --checkbox-font-size: var(--control-text-size-m);
         --box-size: var(--control-box-size-m);
         --offset: var(--space-xs);
       }
+
       .Checkbox_size_l {
         --checkbox-font-size: var(--control-text-size-l);
         --box-size: var(--control-box-size-l);
         --offset: var(--space-s);
       }
+
       .Checkbox_view_primary {
         --checkbox-checked-border: var(--color-control-bg-primary);
         --checkbox-checked-background: var(--color-control-bg-primary);
@@ -371,6 +396,7 @@
           --color-control-bg-primary-hover
         );
       }
+
       .Checkbox_view_ghost {
         --checkbox-checked-border: var(--color-control-bg-border-default);
         --checkbox-checked-background: var(--color-control-bg-ghost);
@@ -380,50 +406,61 @@
           --color-control-bg-ghost-hover
         );
       }
+
       .Select_size_xs {
         --input-height: var(--control-height-xs);
         --input-font-size: var(--control-text-size-xs);
         --input-space: calc(var(--control-space-xs) * 0.5);
       }
+
       .Select_size_s {
         --input-height: var(--control-height-s);
         --input-font-size: var(--control-text-size-s);
         --input-space: calc(var(--control-space-s) * 0.5);
         --tag-space: calc(var(--space-xs) / 2 - var(--control-border-width));
       }
+
       .Select_size_m {
         --input-height: var(--control-height-m);
         --input-font-size: var(--control-text-size-m);
         --input-space: calc(var(--control-space-m) * 0.5);
         --tag-space: calc(var(--space-s) / 2 - var(--control-border-width));
       }
+
       .Select_size_l {
         --input-height: var(--control-height-l);
         --input-font-size: var(--control-text-size-l);
         --input-space: calc(var(--control-space-l) * 0.5);
         --tag-space: calc(var(--space-m) / 2 - var(--control-border-width));
       }
+
       .Icon_size_xs {
         --icon-size: var(--graphics-size-xs);
       }
+
       .Icon_size_s {
         --icon-size: var(--graphics-size-s);
       }
+
       .Icon_size_m {
         --icon-size: var(--graphics-size-m);
       }
+
       .Timer_size_s {
         --timer-size: 16px;
       }
+
       .Timer_size_m {
         --timer-size: 24px;
       }
+
       .Timer-Progress.ProgressSpin {
         --animation-duration: 1s;
         position: absolute;
         top: 2px;
         left: 2px;
       }
+
       .ProgressSpin {
         --animation-duration: 0.3s;
         color: var(--color-control-typo-ghost);
@@ -431,26 +468,31 @@
         transform: rotate(-90deg);
         fill: none;
       }
+
       .TextField_size_xs {
         --input-height: var(--control-height-xs);
         --input-font-size: var(--control-text-size-xs);
         --input-space: calc(var(--control-space-xs) * 0.5);
       }
+
       .TextField_size_s {
         --input-height: var(--control-height-s);
         --input-font-size: var(--control-text-size-s);
         --input-space: calc(var(--control-space-s) * 0.5);
       }
+
       .TextField_size_m {
         --input-height: var(--control-height-m);
         --input-font-size: var(--control-text-size-m);
         --input-space: calc(var(--control-space-m) * 0.5);
       }
+
       .TextField_size_l {
         --input-height: var(--control-height-l);
         --input-font-size: var(--control-text-size-l);
         --input-space: calc(var(--control-space-l) * 0.5);
       }
+
       .Loader {
         --backgroundColor: var(
           --loaderBackgroundColor,
@@ -463,1823 +505,2416 @@
         height: calc(100% - var(--loader-size));
         transform: translate(-50%, -50%);
       }
+
       .Loader_size_s {
         --loader-size: 4px;
       }
+
       .Loader_size_m {
         --loader-size: 8px;
       }
+
       .Grid_cols_1 {
         --cols: 1;
       }
+
       .Grid_cols_2 {
         --cols: 2;
       }
+
       .Grid_cols_3 {
         --cols: 3;
       }
+
       .Grid_cols_4 {
         --cols: 4;
       }
+
       .Grid_cols_5 {
         --cols: 5;
       }
+
       .Grid_cols_6 {
         --cols: 6;
       }
+
       .Grid_cols_7 {
         --cols: 7;
       }
+
       .Grid_cols_8 {
         --cols: 8;
       }
+
       .Grid_cols_9 {
         --cols: 9;
       }
+
       .Grid_cols_10 {
         --cols: 10;
       }
+
       .Grid_cols_11 {
         --cols: 11;
       }
+
       .Grid_cols_12 {
         --cols: 12;
       }
+
       @media screen and (min-width: 360px) {
         .Grid_xs\:cols_1 {
           --cols: 1;
         }
+
         .Grid_xs\:cols_2 {
           --cols: 2;
         }
+
         .Grid_xs\:cols_3 {
           --cols: 3;
         }
+
         .Grid_xs\:cols_4 {
           --cols: 4;
         }
+
         .Grid_xs\:cols_5 {
           --cols: 5;
         }
+
         .Grid_xs\:cols_6 {
           --cols: 6;
         }
+
         .Grid_xs\:cols_7 {
           --cols: 7;
         }
+
         .Grid_xs\:cols_8 {
           --cols: 8;
         }
+
         .Grid_xs\:cols_9 {
           --cols: 9;
         }
+
         .Grid_xs\:cols_10 {
           --cols: 10;
         }
+
         .Grid_xs\:cols_11 {
           --cols: 11;
         }
+
         .Grid_xs\:cols_12 {
           --cols: 12;
         }
+
         .Grid_xs\:xAlign_left {
           justify-items: start;
         }
+
         .Grid_xs\:xAlign_center {
           justify-items: center;
         }
+
         .Grid_xs\:xAlign_right {
           justify-items: end;
         }
+
         .Grid_xs\:yAlign_top {
           align-items: start;
         }
+
         .Grid_xs\:yAlign_center {
           align-items: center;
         }
+
         .Grid_xs\:yAlign_bottom {
           align-items: end;
         }
+
         .Grid_xs\:gap_0 {
           gap: 0px;
         }
+
         .Grid_xs\:gap_2xs {
           grid-gap: var(--space-2xs);
         }
+
         .Grid_xs\:gap_xs {
           grid-gap: var(--space-xs);
         }
+
         .Grid_xs\:gap_s {
           grid-gap: var(--space-s);
         }
+
         .Grid_xs\:gap_m {
           grid-gap: var(--space-m);
         }
+
         .Grid_xs\:gap_l {
           grid-gap: var(--space-l);
         }
+
         .Grid_xs\:gap_xl {
           grid-gap: var(--space-xl);
         }
+
         .Grid_xs\:gap_2xl {
           grid-gap: var(--space-2xl);
         }
+
         .Grid_xs\:gap_3xl {
           grid-gap: var(--space-3xl);
         }
+
         .Grid_xs\:gap_4xl {
           grid-gap: var(--space-4xl);
         }
+
         .Grid_xs\:gap_5xl {
           grid-gap: var(--space-5xl);
         }
+
         .Grid_xs\:gap_6xl {
           grid-gap: var(--space-6xl);
         }
+
         .Grid_xs\:colGap_0 {
           column-gap: 0px;
         }
+
         .Grid_xs\:colGap_2xs {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_xs {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_s {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_m {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_l {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_xl {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_2xl {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_3xl {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_4xl {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_5xl {
           column-gap: ;
         }
+
         .Grid_xs\:colGap_6xl {
           column-gap: ;
         }
+
         .Grid_xs\:rowGap_0 {
           row-gap: 0px;
         }
+
         .Grid_xs\:rowGap_2xs {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_xs {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_s {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_m {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_l {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_xl {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_2xl {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_3xl {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_4xl {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_5xl {
           row-gap: ;
         }
+
         .Grid_xs\:rowGap_6xl {
           row-gap: ;
         }
       }
+
       @media screen and (min-width: 640px) {
         .Grid_s\:cols_1 {
           --cols: 1;
         }
+
         .Grid_s\:cols_2 {
           --cols: 2;
         }
+
         .Grid_s\:cols_3 {
           --cols: 3;
         }
+
         .Grid_s\:cols_4 {
           --cols: 4;
         }
+
         .Grid_s\:cols_5 {
           --cols: 5;
         }
+
         .Grid_s\:cols_6 {
           --cols: 6;
         }
+
         .Grid_s\:cols_7 {
           --cols: 7;
         }
+
         .Grid_s\:cols_8 {
           --cols: 8;
         }
+
         .Grid_s\:cols_9 {
           --cols: 9;
         }
+
         .Grid_s\:cols_10 {
           --cols: 10;
         }
+
         .Grid_s\:cols_11 {
           --cols: 11;
         }
+
         .Grid_s\:cols_12 {
           --cols: 12;
         }
+
         .Grid_s\:xAlign_left {
           justify-items: start;
         }
+
         .Grid_s\:xAlign_center {
           justify-items: center;
         }
+
         .Grid_s\:xAlign_right {
           justify-items: end;
         }
+
         .Grid_s\:yAlign_top {
           align-items: start;
         }
+
         .Grid_s\:yAlign_center {
           align-items: center;
         }
+
         .Grid_s\:yAlign_bottom {
           align-items: end;
         }
+
         .Grid_s\:gap_0 {
           gap: 0px;
         }
+
         .Grid_s\:gap_2xs {
           grid-gap: var(--space-2xs);
         }
+
         .Grid_s\:gap_xs {
           grid-gap: var(--space-xs);
         }
+
         .Grid_s\:gap_s {
           grid-gap: var(--space-s);
         }
+
         .Grid_s\:gap_m {
           grid-gap: var(--space-m);
         }
+
         .Grid_s\:gap_l {
           grid-gap: var(--space-l);
         }
+
         .Grid_s\:gap_xl {
           grid-gap: var(--space-xl);
         }
+
         .Grid_s\:gap_2xl {
           grid-gap: var(--space-2xl);
         }
+
         .Grid_s\:gap_3xl {
           grid-gap: var(--space-3xl);
         }
+
         .Grid_s\:gap_4xl {
           grid-gap: var(--space-4xl);
         }
+
         .Grid_s\:gap_5xl {
           grid-gap: var(--space-5xl);
         }
+
         .Grid_s\:gap_6xl {
           grid-gap: var(--space-6xl);
         }
+
         .Grid_s\:colGap_0 {
           column-gap: 0px;
         }
+
         .Grid_s\:colGap_2xs {
           column-gap: ;
         }
+
         .Grid_s\:colGap_xs {
           column-gap: ;
         }
+
         .Grid_s\:colGap_s {
           column-gap: ;
         }
+
         .Grid_s\:colGap_m {
           column-gap: ;
         }
+
         .Grid_s\:colGap_l {
           column-gap: ;
         }
+
         .Grid_s\:colGap_xl {
           column-gap: ;
         }
+
         .Grid_s\:colGap_2xl {
           column-gap: ;
         }
+
         .Grid_s\:colGap_3xl {
           column-gap: ;
         }
+
         .Grid_s\:colGap_4xl {
           column-gap: ;
         }
+
         .Grid_s\:colGap_5xl {
           column-gap: ;
         }
+
         .Grid_s\:colGap_6xl {
           column-gap: ;
         }
+
         .Grid_s\:rowGap_0 {
           row-gap: 0px;
         }
+
         .Grid_s\:rowGap_2xs {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_xs {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_s {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_m {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_l {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_xl {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_2xl {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_3xl {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_4xl {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_5xl {
           row-gap: ;
         }
+
         .Grid_s\:rowGap_6xl {
           row-gap: ;
         }
       }
+
       @media screen and (min-width: 1024px) {
         .Grid_m\:cols_1 {
           --cols: 1;
         }
+
         .Grid_m\:cols_2 {
           --cols: 2;
         }
+
         .Grid_m\:cols_3 {
           --cols: 3;
         }
+
         .Grid_m\:cols_4 {
           --cols: 4;
         }
+
         .Grid_m\:cols_5 {
           --cols: 5;
         }
+
         .Grid_m\:cols_6 {
           --cols: 6;
         }
+
         .Grid_m\:cols_7 {
           --cols: 7;
         }
+
         .Grid_m\:cols_8 {
           --cols: 8;
         }
+
         .Grid_m\:cols_9 {
           --cols: 9;
         }
+
         .Grid_m\:cols_10 {
           --cols: 10;
         }
+
         .Grid_m\:cols_11 {
           --cols: 11;
         }
+
         .Grid_m\:cols_12 {
           --cols: 12;
         }
+
         .Grid_m\:xAlign_left {
           justify-items: start;
         }
+
         .Grid_m\:xAlign_center {
           justify-items: center;
         }
+
         .Grid_m\:xAlign_right {
           justify-items: end;
         }
+
         .Grid_m\:yAlign_top {
           align-items: start;
         }
+
         .Grid_m\:yAlign_center {
           align-items: center;
         }
+
         .Grid_m\:yAlign_bottom {
           align-items: end;
         }
+
         .Grid_m\:gap_0 {
           gap: 0px;
         }
+
         .Grid_m\:gap_2xs {
           grid-gap: var(--space-2xs);
         }
+
         .Grid_m\:gap_xs {
           grid-gap: var(--space-xs);
         }
+
         .Grid_m\:gap_s {
           grid-gap: var(--space-s);
         }
+
         .Grid_m\:gap_m {
           grid-gap: var(--space-m);
         }
+
         .Grid_m\:gap_l {
           grid-gap: var(--space-l);
         }
+
         .Grid_m\:gap_xl {
           grid-gap: var(--space-xl);
         }
+
         .Grid_m\:gap_2xl {
           grid-gap: var(--space-2xl);
         }
+
         .Grid_m\:gap_3xl {
           grid-gap: var(--space-3xl);
         }
+
         .Grid_m\:gap_4xl {
           grid-gap: var(--space-4xl);
         }
+
         .Grid_m\:gap_5xl {
           grid-gap: var(--space-5xl);
         }
+
         .Grid_m\:gap_6xl {
           grid-gap: var(--space-6xl);
         }
+
         .Grid_m\:colGap_0 {
           column-gap: 0px;
         }
+
         .Grid_m\:colGap_2xs {
           column-gap: ;
         }
+
         .Grid_m\:colGap_xs {
           column-gap: ;
         }
+
         .Grid_m\:colGap_s {
           column-gap: ;
         }
+
         .Grid_m\:colGap_m {
           column-gap: ;
         }
+
         .Grid_m\:colGap_l {
           column-gap: ;
         }
+
         .Grid_m\:colGap_xl {
           column-gap: ;
         }
+
         .Grid_m\:colGap_2xl {
           column-gap: ;
         }
+
         .Grid_m\:colGap_3xl {
           column-gap: ;
         }
+
         .Grid_m\:colGap_4xl {
           column-gap: ;
         }
+
         .Grid_m\:colGap_5xl {
           column-gap: ;
         }
+
         .Grid_m\:colGap_6xl {
           column-gap: ;
         }
+
         .Grid_m\:rowGap_0 {
           row-gap: 0px;
         }
+
         .Grid_m\:rowGap_2xs {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_xs {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_s {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_m {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_l {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_xl {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_2xl {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_3xl {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_4xl {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_5xl {
           row-gap: ;
         }
+
         .Grid_m\:rowGap_6xl {
           row-gap: ;
         }
       }
+
       @media screen and (min-width: 1280px) {
         .Grid_l\:cols_1 {
           --cols: 1;
         }
+
         .Grid_l\:cols_2 {
           --cols: 2;
         }
+
         .Grid_l\:cols_3 {
           --cols: 3;
         }
+
         .Grid_l\:cols_4 {
           --cols: 4;
         }
+
         .Grid_l\:cols_5 {
           --cols: 5;
         }
+
         .Grid_l\:cols_6 {
           --cols: 6;
         }
+
         .Grid_l\:cols_7 {
           --cols: 7;
         }
+
         .Grid_l\:cols_8 {
           --cols: 8;
         }
+
         .Grid_l\:cols_9 {
           --cols: 9;
         }
+
         .Grid_l\:cols_10 {
           --cols: 10;
         }
+
         .Grid_l\:cols_11 {
           --cols: 11;
         }
+
         .Grid_l\:cols_12 {
           --cols: 12;
         }
+
         .Grid_l\:xAlign_left {
           justify-items: start;
         }
+
         .Grid_l\:xAlign_center {
           justify-items: center;
         }
+
         .Grid_l\:xAlign_right {
           justify-items: end;
         }
+
         .Grid_l\:yAlign_top {
           align-items: start;
         }
+
         .Grid_l\:yAlign_center {
           align-items: center;
         }
+
         .Grid_l\:yAlign_bottom {
           align-items: end;
         }
+
         .Grid_l\:gap_0 {
           gap: 0px;
         }
+
         .Grid_l\:gap_2xs {
           grid-gap: var(--space-2xs);
         }
+
         .Grid_l\:gap_xs {
           grid-gap: var(--space-xs);
         }
+
         .Grid_l\:gap_s {
           grid-gap: var(--space-s);
         }
+
         .Grid_l\:gap_m {
           grid-gap: var(--space-m);
         }
+
         .Grid_l\:gap_l {
           grid-gap: var(--space-l);
         }
+
         .Grid_l\:gap_xl {
           grid-gap: var(--space-xl);
         }
+
         .Grid_l\:gap_2xl {
           grid-gap: var(--space-2xl);
         }
+
         .Grid_l\:gap_3xl {
           grid-gap: var(--space-3xl);
         }
+
         .Grid_l\:gap_4xl {
           grid-gap: var(--space-4xl);
         }
+
         .Grid_l\:gap_5xl {
           grid-gap: var(--space-5xl);
         }
+
         .Grid_l\:gap_6xl {
           grid-gap: var(--space-6xl);
         }
+
         .Grid_l\:colGap_0 {
           column-gap: 0px;
         }
+
         .Grid_l\:colGap_2xs {
           column-gap: ;
         }
+
         .Grid_l\:colGap_xs {
           column-gap: ;
         }
+
         .Grid_l\:colGap_s {
           column-gap: ;
         }
+
         .Grid_l\:colGap_m {
           column-gap: ;
         }
+
         .Grid_l\:colGap_l {
           column-gap: ;
         }
+
         .Grid_l\:colGap_xl {
           column-gap: ;
         }
+
         .Grid_l\:colGap_2xl {
           column-gap: ;
         }
+
         .Grid_l\:colGap_3xl {
           column-gap: ;
         }
+
         .Grid_l\:colGap_4xl {
           column-gap: ;
         }
+
         .Grid_l\:colGap_5xl {
           column-gap: ;
         }
+
         .Grid_l\:colGap_6xl {
           column-gap: ;
         }
+
         .Grid_l\:rowGap_0 {
           row-gap: 0px;
         }
+
         .Grid_l\:rowGap_2xs {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_xs {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_s {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_m {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_l {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_xl {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_2xl {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_3xl {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_4xl {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_5xl {
           row-gap: ;
         }
+
         .Grid_l\:rowGap_6xl {
           row-gap: ;
         }
       }
+
       @media screen and (min-width: 1440px) {
         .Grid_xl\:cols_1 {
           --cols: 1;
         }
+
         .Grid_xl\:cols_2 {
           --cols: 2;
         }
+
         .Grid_xl\:cols_3 {
           --cols: 3;
         }
+
         .Grid_xl\:cols_4 {
           --cols: 4;
         }
+
         .Grid_xl\:cols_5 {
           --cols: 5;
         }
+
         .Grid_xl\:cols_6 {
           --cols: 6;
         }
+
         .Grid_xl\:cols_7 {
           --cols: 7;
         }
+
         .Grid_xl\:cols_8 {
           --cols: 8;
         }
+
         .Grid_xl\:cols_9 {
           --cols: 9;
         }
+
         .Grid_xl\:cols_10 {
           --cols: 10;
         }
+
         .Grid_xl\:cols_11 {
           --cols: 11;
         }
+
         .Grid_xl\:cols_12 {
           --cols: 12;
         }
+
         .Grid_xl\:xAlign_left {
           justify-items: start;
         }
+
         .Grid_xl\:xAlign_center {
           justify-items: center;
         }
+
         .Grid_xl\:xAlign_right {
           justify-items: end;
         }
+
         .Grid_xl\:yAlign_top {
           align-items: start;
         }
+
         .Grid_xl\:yAlign_center {
           align-items: center;
         }
+
         .Grid_xl\:yAlign_bottom {
           align-items: end;
         }
+
         .Grid_xl\:gap_0 {
           gap: 0px;
         }
+
         .Grid_xl\:gap_2xs {
           grid-gap: var(--space-2xs);
         }
+
         .Grid_xl\:gap_xs {
           grid-gap: var(--space-xs);
         }
+
         .Grid_xl\:gap_s {
           grid-gap: var(--space-s);
         }
+
         .Grid_xl\:gap_m {
           grid-gap: var(--space-m);
         }
+
         .Grid_xl\:gap_l {
           grid-gap: var(--space-l);
         }
+
         .Grid_xl\:gap_xl {
           grid-gap: var(--space-xl);
         }
+
         .Grid_xl\:gap_2xl {
           grid-gap: var(--space-2xl);
         }
+
         .Grid_xl\:gap_3xl {
           grid-gap: var(--space-3xl);
         }
+
         .Grid_xl\:gap_4xl {
           grid-gap: var(--space-4xl);
         }
+
         .Grid_xl\:gap_5xl {
           grid-gap: var(--space-5xl);
         }
+
         .Grid_xl\:gap_6xl {
           grid-gap: var(--space-6xl);
         }
+
         .Grid_xl\:colGap_0 {
           column-gap: 0px;
         }
+
         .Grid_xl\:colGap_2xs {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_xs {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_s {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_m {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_l {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_xl {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_2xl {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_3xl {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_4xl {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_5xl {
           column-gap: ;
         }
+
         .Grid_xl\:colGap_6xl {
           column-gap: ;
         }
+
         .Grid_xl\:rowGap_0 {
           row-gap: 0px;
         }
+
         .Grid_xl\:rowGap_2xs {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_xs {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_s {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_m {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_l {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_xl {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_2xl {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_3xl {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_4xl {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_5xl {
           row-gap: ;
         }
+
         .Grid_xl\:rowGap_6xl {
           row-gap: ;
         }
       }
+
       @media screen and (min-width: 1920px) {
         .Grid_2xl\:cols_1 {
           --cols: 1;
         }
+
         .Grid_2xl\:cols_2 {
           --cols: 2;
         }
+
         .Grid_2xl\:cols_3 {
           --cols: 3;
         }
+
         .Grid_2xl\:cols_4 {
           --cols: 4;
         }
+
         .Grid_2xl\:cols_5 {
           --cols: 5;
         }
+
         .Grid_2xl\:cols_6 {
           --cols: 6;
         }
+
         .Grid_2xl\:cols_7 {
           --cols: 7;
         }
+
         .Grid_2xl\:cols_8 {
           --cols: 8;
         }
+
         .Grid_2xl\:cols_9 {
           --cols: 9;
         }
+
         .Grid_2xl\:cols_10 {
           --cols: 10;
         }
+
         .Grid_2xl\:cols_11 {
           --cols: 11;
         }
+
         .Grid_2xl\:cols_12 {
           --cols: 12;
         }
+
         .Grid_2xl\:xAlign_left {
           justify-items: start;
         }
+
         .Grid_2xl\:xAlign_center {
           justify-items: center;
         }
+
         .Grid_2xl\:xAlign_right {
           justify-items: end;
         }
+
         .Grid_2xl\:yAlign_top {
           align-items: start;
         }
+
         .Grid_2xl\:yAlign_center {
           align-items: center;
         }
+
         .Grid_2xl\:yAlign_bottom {
           align-items: end;
         }
+
         .Grid_2xl\:gap_0 {
           gap: 0px;
         }
+
         .Grid_2xl\:gap_2xs {
           grid-gap: var(--space-2xs);
         }
+
         .Grid_2xl\:gap_xs {
           grid-gap: var(--space-xs);
         }
+
         .Grid_2xl\:gap_s {
           grid-gap: var(--space-s);
         }
+
         .Grid_2xl\:gap_m {
           grid-gap: var(--space-m);
         }
+
         .Grid_2xl\:gap_l {
           grid-gap: var(--space-l);
         }
+
         .Grid_2xl\:gap_xl {
           grid-gap: var(--space-xl);
         }
+
         .Grid_2xl\:gap_2xl {
           grid-gap: var(--space-2xl);
         }
+
         .Grid_2xl\:gap_3xl {
           grid-gap: var(--space-3xl);
         }
+
         .Grid_2xl\:gap_4xl {
           grid-gap: var(--space-4xl);
         }
+
         .Grid_2xl\:gap_5xl {
           grid-gap: var(--space-5xl);
         }
+
         .Grid_2xl\:gap_6xl {
           grid-gap: var(--space-6xl);
         }
+
         .Grid_2xl\:colGap_0 {
           column-gap: 0px;
         }
+
         .Grid_2xl\:colGap_2xs {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_xs {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_s {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_m {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_l {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_xl {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_2xl {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_3xl {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_4xl {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_5xl {
           column-gap: ;
         }
+
         .Grid_2xl\:colGap_6xl {
           column-gap: ;
         }
+
         .Grid_2xl\:rowGap_0 {
           row-gap: 0px;
         }
+
         .Grid_2xl\:rowGap_2xs {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_xs {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_s {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_m {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_l {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_xl {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_2xl {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_3xl {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_4xl {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_5xl {
           row-gap: ;
         }
+
         .Grid_2xl\:rowGap_6xl {
           row-gap: ;
         }
       }
+
       .GridItem_col_1 {
         --col-end: 1;
       }
+
       .GridItem_col_2 {
         --col-end: 2;
       }
+
       .GridItem_col_3 {
         --col-end: 3;
       }
+
       .GridItem_col_4 {
         --col-end: 4;
       }
+
       .GridItem_col_5 {
         --col-end: 5;
       }
+
       .GridItem_col_6 {
         --col-end: 6;
       }
+
       .GridItem_col_7 {
         --col-end: 7;
       }
+
       .GridItem_col_8 {
         --col-end: 8;
       }
+
       .GridItem_col_9 {
         --col-end: 9;
       }
+
       .GridItem_col_10 {
         --col-end: 10;
       }
+
       .GridItem_col_11 {
         --col-end: 11;
       }
+
       .GridItem_col_12 {
         --col-end: 12;
       }
+
       .GridItem_colStart_1 {
         --col-start: 1 / span;
       }
+
       .GridItem_colStart_2 {
         --col-start: 2 / span;
       }
+
       .GridItem_colStart_3 {
         --col-start: 3 / span;
       }
+
       .GridItem_colStart_4 {
         --col-start: 4 / span;
       }
+
       .GridItem_colStart_5 {
         --col-start: 5 / span;
       }
+
       .GridItem_colStart_6 {
         --col-start: 6 / span;
       }
+
       .GridItem_colStart_7 {
         --col-start: 7 / span;
       }
+
       .GridItem_colStart_8 {
         --col-start: 8 / span;
       }
+
       .GridItem_colStart_9 {
         --col-start: 9 / span;
       }
+
       .GridItem_colStart_10 {
         --col-start: 10 / span;
       }
+
       .GridItem_colStart_11 {
         --col-start: 11 / span;
       }
+
       .GridItem_colStart_12 {
         --col-start: 12 / span;
       }
+
       .GridItem_row_1 {
         --row-end: 1;
       }
+
       .GridItem_row_2 {
         --row-end: 2;
       }
+
       .GridItem_row_3 {
         --row-end: 3;
       }
+
       .GridItem_row_4 {
         --row-end: 4;
       }
+
       .GridItem_rowStart_1 {
         --row-start: 1 / span;
       }
+
       .GridItem_rowStart_2 {
         --row-start: 2 / span;
       }
+
       .GridItem_rowStart_3 {
         --row-start: 3 / span;
       }
+
       .GridItem_rowStart_4 {
         --row-start: 4 / span;
       }
+
       @media screen and (min-width: 360px) {
         .GridItem_xs\:col_1 {
           --col-end: 1;
         }
+
         .GridItem_xs\:col_2 {
           --col-end: 2;
         }
+
         .GridItem_xs\:col_3 {
           --col-end: 3;
         }
+
         .GridItem_xs\:col_4 {
           --col-end: 4;
         }
+
         .GridItem_xs\:col_5 {
           --col-end: 5;
         }
+
         .GridItem_xs\:col_6 {
           --col-end: 6;
         }
+
         .GridItem_xs\:col_7 {
           --col-end: 7;
         }
+
         .GridItem_xs\:col_8 {
           --col-end: 8;
         }
+
         .GridItem_xs\:col_9 {
           --col-end: 9;
         }
+
         .GridItem_xs\:col_10 {
           --col-end: 10;
         }
+
         .GridItem_xs\:col_11 {
           --col-end: 11;
         }
+
         .GridItem_xs\:col_12 {
           --col-end: 12;
         }
+
         .GridItem_xs\:colStart_1 {
           --col-start: 1 / span;
         }
+
         .GridItem_xs\:colStart_2 {
           --col-start: 2 / span;
         }
+
         .GridItem_xs\:colStart_3 {
           --col-start: 3 / span;
         }
+
         .GridItem_xs\:colStart_4 {
           --col-start: 4 / span;
         }
+
         .GridItem_xs\:colStart_5 {
           --col-start: 5 / span;
         }
+
         .GridItem_xs\:colStart_6 {
           --col-start: 6 / span;
         }
+
         .GridItem_xs\:colStart_7 {
           --col-start: 7 / span;
         }
+
         .GridItem_xs\:colStart_8 {
           --col-start: 8 / span;
         }
+
         .GridItem_xs\:colStart_9 {
           --col-start: 9 / span;
         }
+
         .GridItem_xs\:colStart_10 {
           --col-start: 10 / span;
         }
+
         .GridItem_xs\:colStart_11 {
           --col-start: 11 / span;
         }
+
         .GridItem_xs\:colStart_12 {
           --col-start: 12 / span;
         }
+
         .GridItem_xs\:row_1 {
           --row-end: 1;
         }
+
         .GridItem_xs\:row_2 {
           --row-end: 2;
         }
+
         .GridItem_xs\:row_3 {
           --row-end: 3;
         }
+
         .GridItem_xs\:row_4 {
           --row-end: 4;
         }
+
         .GridItem_xs\:rowStart_1 {
           --row-start: 1 / span;
         }
+
         .GridItem_xs\:rowStart_2 {
           --row-start: 2 / span;
         }
+
         .GridItem_xs\:rowStart_3 {
           --row-start: 3 / span;
         }
+
         .GridItem_xs\:rowStart_4 {
           --row-start: 4 / span;
         }
+
         .GridItem_xs\:order_-1 {
           order: -1;
         }
+
         .GridItem_xs\:order_0 {
           order: 0;
         }
+
         .GridItem_xs\:order_1 {
           order: 1;
         }
       }
+
       @media screen and (min-width: 640px) {
         .GridItem_s\:col_1 {
           --col-end: 1;
         }
+
         .GridItem_s\:col_2 {
           --col-end: 2;
         }
+
         .GridItem_s\:col_3 {
           --col-end: 3;
         }
+
         .GridItem_s\:col_4 {
           --col-end: 4;
         }
+
         .GridItem_s\:col_5 {
           --col-end: 5;
         }
+
         .GridItem_s\:col_6 {
           --col-end: 6;
         }
+
         .GridItem_s\:col_7 {
           --col-end: 7;
         }
+
         .GridItem_s\:col_8 {
           --col-end: 8;
         }
+
         .GridItem_s\:col_9 {
           --col-end: 9;
         }
+
         .GridItem_s\:col_10 {
           --col-end: 10;
         }
+
         .GridItem_s\:col_11 {
           --col-end: 11;
         }
+
         .GridItem_s\:col_12 {
           --col-end: 12;
         }
+
         .GridItem_s\:colStart_1 {
           --col-start: 1 / span;
         }
+
         .GridItem_s\:colStart_2 {
           --col-start: 2 / span;
         }
+
         .GridItem_s\:colStart_3 {
           --col-start: 3 / span;
         }
+
         .GridItem_s\:colStart_4 {
           --col-start: 4 / span;
         }
+
         .GridItem_s\:colStart_5 {
           --col-start: 5 / span;
         }
+
         .GridItem_s\:colStart_6 {
           --col-start: 6 / span;
         }
+
         .GridItem_s\:colStart_7 {
           --col-start: 7 / span;
         }
+
         .GridItem_s\:colStart_8 {
           --col-start: 8 / span;
         }
+
         .GridItem_s\:colStart_9 {
           --col-start: 9 / span;
         }
+
         .GridItem_s\:colStart_10 {
           --col-start: 10 / span;
         }
+
         .GridItem_s\:colStart_11 {
           --col-start: 11 / span;
         }
+
         .GridItem_s\:colStart_12 {
           --col-start: 12 / span;
         }
+
         .GridItem_s\:row_1 {
           --row-end: 1;
         }
+
         .GridItem_s\:row_2 {
           --row-end: 2;
         }
+
         .GridItem_s\:row_3 {
           --row-end: 3;
         }
+
         .GridItem_s\:row_4 {
           --row-end: 4;
         }
+
         .GridItem_s\:rowStart_1 {
           --row-start: 1 / span;
         }
+
         .GridItem_s\:rowStart_2 {
           --row-start: 2 / span;
         }
+
         .GridItem_s\:rowStart_3 {
           --row-start: 3 / span;
         }
+
         .GridItem_s\:rowStart_4 {
           --row-start: 4 / span;
         }
+
         .GridItem_s\:order_-1 {
           order: -1;
         }
+
         .GridItem_s\:order_0 {
           order: 0;
         }
+
         .GridItem_s\:order_1 {
           order: 1;
         }
       }
+
       @media screen and (min-width: 1024px) {
         .GridItem_m\:col_1 {
           --col-end: 1;
         }
+
         .GridItem_m\:col_2 {
           --col-end: 2;
         }
+
         .GridItem_m\:col_3 {
           --col-end: 3;
         }
+
         .GridItem_m\:col_4 {
           --col-end: 4;
         }
+
         .GridItem_m\:col_5 {
           --col-end: 5;
         }
+
         .GridItem_m\:col_6 {
           --col-end: 6;
         }
+
         .GridItem_m\:col_7 {
           --col-end: 7;
         }
+
         .GridItem_m\:col_8 {
           --col-end: 8;
         }
+
         .GridItem_m\:col_9 {
           --col-end: 9;
         }
+
         .GridItem_m\:col_10 {
           --col-end: 10;
         }
+
         .GridItem_m\:col_11 {
           --col-end: 11;
         }
+
         .GridItem_m\:col_12 {
           --col-end: 12;
         }
+
         .GridItem_m\:colStart_1 {
           --col-start: 1 / span;
         }
+
         .GridItem_m\:colStart_2 {
           --col-start: 2 / span;
         }
+
         .GridItem_m\:colStart_3 {
           --col-start: 3 / span;
         }
+
         .GridItem_m\:colStart_4 {
           --col-start: 4 / span;
         }
+
         .GridItem_m\:colStart_5 {
           --col-start: 5 / span;
         }
+
         .GridItem_m\:colStart_6 {
           --col-start: 6 / span;
         }
+
         .GridItem_m\:colStart_7 {
           --col-start: 7 / span;
         }
+
         .GridItem_m\:colStart_8 {
           --col-start: 8 / span;
         }
+
         .GridItem_m\:colStart_9 {
           --col-start: 9 / span;
         }
+
         .GridItem_m\:colStart_10 {
           --col-start: 10 / span;
         }
+
         .GridItem_m\:colStart_11 {
           --col-start: 11 / span;
         }
+
         .GridItem_m\:colStart_12 {
           --col-start: 12 / span;
         }
+
         .GridItem_m\:row_1 {
           --row-end: 1;
         }
+
         .GridItem_m\:row_2 {
           --row-end: 2;
         }
+
         .GridItem_m\:row_3 {
           --row-end: 3;
         }
+
         .GridItem_m\:row_4 {
           --row-end: 4;
         }
+
         .GridItem_m\:rowStart_1 {
           --row-start: 1 / span;
         }
+
         .GridItem_m\:rowStart_2 {
           --row-start: 2 / span;
         }
+
         .GridItem_m\:rowStart_3 {
           --row-start: 3 / span;
         }
+
         .GridItem_m\:rowStart_4 {
           --row-start: 4 / span;
         }
+
         .GridItem_m\:order_-1 {
           order: -1;
         }
+
         .GridItem_m\:order_0 {
           order: 0;
         }
+
         .GridItem_m\:order_1 {
           order: 1;
         }
       }
+
       @media screen and (min-width: 1280px) {
         .GridItem_l\:col_1 {
           --col-end: 1;
         }
+
         .GridItem_l\:col_2 {
           --col-end: 2;
         }
+
         .GridItem_l\:col_3 {
           --col-end: 3;
         }
+
         .GridItem_l\:col_4 {
           --col-end: 4;
         }
+
         .GridItem_l\:col_5 {
           --col-end: 5;
         }
+
         .GridItem_l\:col_6 {
           --col-end: 6;
         }
+
         .GridItem_l\:col_7 {
           --col-end: 7;
         }
+
         .GridItem_l\:col_8 {
           --col-end: 8;
         }
+
         .GridItem_l\:col_9 {
           --col-end: 9;
         }
+
         .GridItem_l\:col_10 {
           --col-end: 10;
         }
+
         .GridItem_l\:col_11 {
           --col-end: 11;
         }
+
         .GridItem_l\:col_12 {
           --col-end: 12;
         }
+
         .GridItem_l\:colStart_1 {
           --col-start: 1 / span;
         }
+
         .GridItem_l\:colStart_2 {
           --col-start: 2 / span;
         }
+
         .GridItem_l\:colStart_3 {
           --col-start: 3 / span;
         }
+
         .GridItem_l\:colStart_4 {
           --col-start: 4 / span;
         }
+
         .GridItem_l\:colStart_5 {
           --col-start: 5 / span;
         }
+
         .GridItem_l\:colStart_6 {
           --col-start: 6 / span;
         }
+
         .GridItem_l\:colStart_7 {
           --col-start: 7 / span;
         }
+
         .GridItem_l\:colStart_8 {
           --col-start: 8 / span;
         }
+
         .GridItem_l\:colStart_9 {
           --col-start: 9 / span;
         }
+
         .GridItem_l\:colStart_10 {
           --col-start: 10 / span;
         }
+
         .GridItem_l\:colStart_11 {
           --col-start: 11 / span;
         }
+
         .GridItem_l\:colStart_12 {
           --col-start: 12 / span;
         }
+
         .GridItem_l\:row_1 {
           --row-end: 1;
         }
+
         .GridItem_l\:row_2 {
           --row-end: 2;
         }
+
         .GridItem_l\:row_3 {
           --row-end: 3;
         }
+
         .GridItem_l\:row_4 {
           --row-end: 4;
         }
+
         .GridItem_l\:rowStart_1 {
           --row-start: 1 / span;
         }
+
         .GridItem_l\:rowStart_2 {
           --row-start: 2 / span;
         }
+
         .GridItem_l\:rowStart_3 {
           --row-start: 3 / span;
         }
+
         .GridItem_l\:rowStart_4 {
           --row-start: 4 / span;
         }
+
         .GridItem_l\:order_-1 {
           order: -1;
         }
+
         .GridItem_l\:order_0 {
           order: 0;
         }
+
         .GridItem_l\:order_1 {
           order: 1;
         }
       }
+
       @media screen and (min-width: 1440px) {
         .GridItem_xl\:col_1 {
           --col-end: 1;
         }
+
         .GridItem_xl\:col_2 {
           --col-end: 2;
         }
+
         .GridItem_xl\:col_3 {
           --col-end: 3;
         }
+
         .GridItem_xl\:col_4 {
           --col-end: 4;
         }
+
         .GridItem_xl\:col_5 {
           --col-end: 5;
         }
+
         .GridItem_xl\:col_6 {
           --col-end: 6;
         }
+
         .GridItem_xl\:col_7 {
           --col-end: 7;
         }
+
         .GridItem_xl\:col_8 {
           --col-end: 8;
         }
+
         .GridItem_xl\:col_9 {
           --col-end: 9;
         }
+
         .GridItem_xl\:col_10 {
           --col-end: 10;
         }
+
         .GridItem_xl\:col_11 {
           --col-end: 11;
         }
+
         .GridItem_xl\:col_12 {
           --col-end: 12;
         }
+
         .GridItem_xl\:colStart_1 {
           --col-start: 1 / span;
         }
+
         .GridItem_xl\:colStart_2 {
           --col-start: 2 / span;
         }
+
         .GridItem_xl\:colStart_3 {
           --col-start: 3 / span;
         }
+
         .GridItem_xl\:colStart_4 {
           --col-start: 4 / span;
         }
+
         .GridItem_xl\:colStart_5 {
           --col-start: 5 / span;
         }
+
         .GridItem_xl\:colStart_6 {
           --col-start: 6 / span;
         }
+
         .GridItem_xl\:colStart_7 {
           --col-start: 7 / span;
         }
+
         .GridItem_xl\:colStart_8 {
           --col-start: 8 / span;
         }
+
         .GridItem_xl\:colStart_9 {
           --col-start: 9 / span;
         }
+
         .GridItem_xl\:colStart_10 {
           --col-start: 10 / span;
         }
+
         .GridItem_xl\:colStart_11 {
           --col-start: 11 / span;
         }
+
         .GridItem_xl\:colStart_12 {
           --col-start: 12 / span;
         }
+
         .GridItem_xl\:row_1 {
           --row-end: 1;
         }
+
         .GridItem_xl\:row_2 {
           --row-end: 2;
         }
+
         .GridItem_xl\:row_3 {
           --row-end: 3;
         }
+
         .GridItem_xl\:row_4 {
           --row-end: 4;
         }
+
         .GridItem_xl\:rowStart_1 {
           --row-start: 1 / span;
         }
+
         .GridItem_xl\:rowStart_2 {
           --row-start: 2 / span;
         }
+
         .GridItem_xl\:rowStart_3 {
           --row-start: 3 / span;
         }
+
         .GridItem_xl\:rowStart_4 {
           --row-start: 4 / span;
         }
+
         .GridItem_xl\:order_-1 {
           order: -1;
         }
+
         .GridItem_xl\:order_0 {
           order: 0;
         }
+
         .GridItem_xl\:order_1 {
           order: 1;
         }
       }
+
       @media screen and (min-width: 1920px) {
         .GridItem_2xl\:col_1 {
           --col-end: 1;
         }
+
         .GridItem_2xl\:col_2 {
           --col-end: 2;
         }
+
         .GridItem_2xl\:col_3 {
           --col-end: 3;
         }
+
         .GridItem_2xl\:col_4 {
           --col-end: 4;
         }
+
         .GridItem_2xl\:col_5 {
           --col-end: 5;
         }
+
         .GridItem_2xl\:col_6 {
           --col-end: 6;
         }
+
         .GridItem_2xl\:col_7 {
           --col-end: 7;
         }
+
         .GridItem_2xl\:col_8 {
           --col-end: 8;
         }
+
         .GridItem_2xl\:col_9 {
           --col-end: 9;
         }
+
         .GridItem_2xl\:col_10 {
           --col-end: 10;
         }
+
         .GridItem_2xl\:col_11 {
           --col-end: 11;
         }
+
         .GridItem_2xl\:col_12 {
           --col-end: 12;
         }
+
         .GridItem_2xl\:colStart_1 {
           --col-start: 1 / span;
         }
+
         .GridItem_2xl\:colStart_2 {
           --col-start: 2 / span;
         }
+
         .GridItem_2xl\:colStart_3 {
           --col-start: 3 / span;
         }
+
         .GridItem_2xl\:colStart_4 {
           --col-start: 4 / span;
         }
+
         .GridItem_2xl\:colStart_5 {
           --col-start: 5 / span;
         }
+
         .GridItem_2xl\:colStart_6 {
           --col-start: 6 / span;
         }
+
         .GridItem_2xl\:colStart_7 {
           --col-start: 7 / span;
         }
+
         .GridItem_2xl\:colStart_8 {
           --col-start: 8 / span;
         }
+
         .GridItem_2xl\:colStart_9 {
           --col-start: 9 / span;
         }
+
         .GridItem_2xl\:colStart_10 {
           --col-start: 10 / span;
         }
+
         .GridItem_2xl\:colStart_11 {
           --col-start: 11 / span;
         }
+
         .GridItem_2xl\:colStart_12 {
           --col-start: 12 / span;
         }
+
         .GridItem_2xl\:row_1 {
           --row-end: 1;
         }
+
         .GridItem_2xl\:row_2 {
           --row-end: 2;
         }
+
         .GridItem_2xl\:row_3 {
           --row-end: 3;
         }
+
         .GridItem_2xl\:row_4 {
           --row-end: 4;
         }
+
         .GridItem_2xl\:rowStart_1 {
           --row-start: 1 / span;
         }
+
         .GridItem_2xl\:rowStart_2 {
           --row-start: 2 / span;
         }
+
         .GridItem_2xl\:rowStart_3 {
           --row-start: 3 / span;
         }
+
         .GridItem_2xl\:rowStart_4 {
           --row-start: 4 / span;
         }
+
         .GridItem_2xl\:order_-1 {
           order: -1;
         }
+
         .GridItem_2xl\:order_0 {
           order: 0;
         }
+
         .GridItem_2xl\:order_1 {
           order: 1;
         }
       }
+
       .Badge_size_s {
         --badge-size: var(--control-box-size-l);
         --badge-text-size: var(--size-text-2xs);
         padding: 0 var(--space-2xs);
       }
+
       .Badge_size_m {
         --badge-size: var(--control-height-xs);
         --badge-text-size: var(--size-text-xs);
         padding: 0 var(--space-xs);
       }
+
       .Badge_size_l {
         --badge-size: var(--control-height-s);
         --badge-text-size: var(--size-text-s);
         padding: 0 var(--space-xs);
       }
+
       .Badge_status_success {
         --badge-bg-color: var(--color-bg-success);
         --badge-text-color: var(--color-typo-success);
         --badge-border-color: var(--color-bg-success);
       }
+
       .Badge_status_error {
         --badge-bg-color: var(--color-bg-alert);
         --badge-text-color: var(--color-typo-alert);
         --badge-border-color: var(--color-bg-alert);
       }
+
       .Badge_status_warning {
         --badge-bg-color: var(--color-bg-warning);
         --badge-text-color: var(--color-typo-warning);
         --badge-border-color: var(--color-bg-warning);
       }
+
       .Badge_status_normal {
         --badge-bg-color: var(--color-bg-normal);
         --badge-text-color: var(--color-typo-normal);
         --badge-border-color: var(--color-bg-normal);
       }
+
       .Badge_status_system {
         --badge-bg-color: var(--color-bg-system);
         --badge-border-color: var(--color-bg-system);
       }
+
       .Badge_view_stroked.Badge_status_system {
         --badge-text-color: var(--color-typo-system);
       }
+
       .Badge_minified {
         --badge-text-size: 0;
         background: transparent;
         border-radius: 50%;
       }
+
       .File-Loader_size_s {
         --loader-size: 16px;
       }
+
       .File-Loader_size_m {
         --loader-size: 24px;
       }
+
       .Tooltip {
         --tooltip-bg-color: var(--color-bg-default);
         --tooltip-bg-opacity: 0.9;
@@ -2287,30 +2922,39 @@
         --tooltip-arrow-offset: 0;
         position: relative;
       }
+
       .Tooltip_status_alert {
         --tooltip-bg-color: var(--color-bg-alert);
       }
+
       .Tooltip_status_warning {
         --tooltip-bg-color: var(--color-bg-warning);
       }
+
       .Tooltip_status_success {
         --tooltip-bg-color: var(--color-bg-success);
       }
+
       .Tooltip_status_normal {
         --tooltip-bg-color: var(--color-bg-normal);
       }
+
       .Tooltip[class*='status'] {
         --tooltip-bg-opacity: 1;
       }
+
       .Icon_size_xs {
         --icon-size: var(--graphics-size-xs);
       }
+
       .Icon_size_s {
         --icon-size: var(--graphics-size-s);
       }
+
       .Icon_size_m {
         --icon-size: var(--graphics-size-m);
       }
+
       .Theme {
         --graphics-size-xs: 12px;
         --graphics-size-s: 16px;
@@ -2321,6 +2965,7 @@
         --graphics-size-3xl: 80px;
         --graphics-size-4xl: 120px;
       }
+
       .Theme_color_gpnDefault {
         --color-bg-default: rgb(255, 255, 255);
         --color-bg-secondary: rgb(236, 241, 244);
@@ -2385,6 +3030,7 @@
         --color-control-bg-border-disable: rgba(0, 66, 105, 0);
         --color-control-typo-disable: rgba(0, 32, 51, 0.26);
       }
+
       .Theme_color_gpnDark {
         --color-bg-default: rgb(34, 39, 43);
         --color-bg-secondary: rgb(22, 26, 29);
@@ -2449,6 +3095,7 @@
         --color-control-bg-border-disable: rgba(250, 250, 250, 0);
         --color-control-typo-disable: rgba(255, 255, 255, 0.24);
       }
+
       .Theme_control_gpnDefault {
         --control-radius: 4px;
         --control-border-width: 1px;
@@ -2467,6 +3114,7 @@
         --control-text-size-s: var(--size-text-s);
         --control-text-size-xs: var(--size-text-xs);
       }
+
       .Theme_font_gpnDefault {
         --font-primary: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto',
           'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -2475,6 +3123,7 @@
           monospace;
         font-family: var(--font-primary);
       }
+
       .Theme_size_gpnDefault {
         --size-text-2xs: 10px;
         --size-text-xs: 12px;
@@ -2499,6 +3148,7 @@
         --font-weight-text-bold: bold;
         --font-weight-text-black: 900;
       }
+
       .Theme_space_gpnDefault {
         --space-3xs: 2px;
         --space-2xs: 4px;
@@ -2513,6 +3163,7 @@
         --space-5xl: 72px;
         --space-6xl: 96px;
       }
+
       .Theme_shadow_gpnDefault {
         --shadow-group: 0 2px 2px rgba(0, 32, 51, 0.02),
           0 2px 8px rgba(0, 32, 51, 0.16);
@@ -2521,6 +3172,7 @@
         --shadow-modal: 0 8px 8px rgba(0, 32, 51, 0.04),
           0 12px 28px rgba(0, 32, 51, 0.12);
       }
+
       .Theme_color_gpnDisplay {
         --color-bg-default: rgb(0, 32, 51);
         --color-bg-secondary: rgb(0, 45, 71);
@@ -2585,41 +3237,49 @@
         --color-control-bg-border-disable: rgba(246, 251, 253, 0);
         --color-control-typo-disable: rgba(246, 251, 253, 0.24);
       }
+
       .Button_size_xs {
         --button-height: var(--control-height-xs);
         --button-font-size: var(--control-text-size-xs);
         --button-space: var(--control-space-xs);
       }
+
       .Button_size_s {
         --button-height: var(--control-height-s);
         --button-font-size: var(--control-text-size-s);
         --button-space: var(--control-space-s);
       }
+
       .Button_size_m {
         --button-height: var(--control-height-m);
         --button-font-size: var(--control-text-size-m);
         --button-space: var(--control-space-m);
       }
+
       .Button_size_l {
         --button-height: var(--control-height-l);
         --button-font-size: var(--control-text-size-l);
         --button-space: var(--control-space-l);
       }
+
       .Button_view_clear {
         --color-hover: var(--color-control-typo-clear-hover);
         color: var(--color-control-typo-clear);
         background-color: var(--color-control-bg-clear);
       }
+
       .Button_view_ghost {
         --color-hover: var(--color-control-typo-ghost-hover);
         color: var(--color-control-typo-ghost);
         background-color: var(--color-control-bg-ghost);
       }
+
       .Button_view_primary {
         --color-hover: var(--color-control-typo-primary-hover);
         color: var(--color-control-typo-primary);
         background-color: var(--color-control-bg-primary);
       }
+
       .Button_view_secondary {
         --color-hover: var(--color-control-typo-secondary-hover);
         color: var(--color-control-typo-secondary);
@@ -2630,15 +3290,18 @@
           var(--button-height) - var(--control-border-width) * 2
         );
       }
+
       .Button_withIcon {
         --icon-indent: calc(var(--button-space) * 0.7);
         display: inline-flex;
         align-items: center;
       }
+
       .Button_loading .Button-Loader {
         --loaderBackgroundColor: var(--color-control-typo-disable);
         position: absolute;
       }
+
       .Loader {
         --backgroundColor: var(
           --loaderBackgroundColor,
@@ -2651,22 +3314,27 @@
         height: calc(100% - var(--loader-size));
         transform: translate(-50%, -50%);
       }
+
       .Loader_size_s {
         --loader-size: 4px;
       }
+
       .Loader_size_m {
         --loader-size: 8px;
       }
+
       .Checkbox_size_m {
         --checkbox-font-size: var(--control-text-size-m);
         --box-size: var(--control-box-size-m);
         --offset: var(--space-xs);
       }
+
       .Checkbox_size_l {
         --checkbox-font-size: var(--control-text-size-l);
         --box-size: var(--control-box-size-l);
         --offset: var(--space-s);
       }
+
       .Checkbox_view_primary {
         --checkbox-checked-border: var(--color-control-bg-primary);
         --checkbox-checked-background: var(--color-control-bg-primary);
@@ -2676,6 +3344,7 @@
           --color-control-bg-primary-hover
         );
       }
+
       .Checkbox_view_ghost {
         --checkbox-checked-border: var(--color-control-bg-border-default);
         --checkbox-checked-background: var(--color-control-bg-ghost);
@@ -2685,61 +3354,73 @@
           --color-control-bg-ghost-hover
         );
       }
+
       .Select_size_xs {
         --input-height: var(--control-height-xs);
         --input-font-size: var(--control-text-size-xs);
         --input-space: calc(var(--control-space-xs) * 0.5);
       }
+
       .Select_size_s {
         --input-height: var(--control-height-s);
         --input-font-size: var(--control-text-size-s);
         --input-space: calc(var(--control-space-s) * 0.5);
         --tag-space: calc(var(--space-xs) / 2 - var(--control-border-width));
       }
+
       .Select_size_m {
         --input-height: var(--control-height-m);
         --input-font-size: var(--control-text-size-m);
         --input-space: calc(var(--control-space-m) * 0.5);
         --tag-space: calc(var(--space-s) / 2 - var(--control-border-width));
       }
+
       .Select_size_l {
         --input-height: var(--control-height-l);
         --input-font-size: var(--control-text-size-l);
         --input-space: calc(var(--control-space-l) * 0.5);
         --tag-space: calc(var(--space-m) / 2 - var(--control-border-width));
       }
+
       .TextField_size_xs {
         --input-height: var(--control-height-xs);
         --input-font-size: var(--control-text-size-xs);
         --input-space: calc(var(--control-space-xs) * 0.5);
       }
+
       .TextField_size_s {
         --input-height: var(--control-height-s);
         --input-font-size: var(--control-text-size-s);
         --input-space: calc(var(--control-space-s) * 0.5);
       }
+
       .TextField_size_m {
         --input-height: var(--control-height-m);
         --input-font-size: var(--control-text-size-m);
         --input-space: calc(var(--control-space-m) * 0.5);
       }
+
       .TextField_size_l {
         --input-height: var(--control-height-l);
         --input-font-size: var(--control-text-size-l);
         --input-space: calc(var(--control-space-l) * 0.5);
       }
+
       .Timer_size_s {
         --timer-size: 16px;
       }
+
       .Timer_size_m {
         --timer-size: 24px;
       }
+
       .Timer-Progress.ProgressSpin {
         --animation-duration: 1s;
         position: absolute;
         top: 2px;
         left: 2px;
       }
+
       .ProgressSpin {
         --animation-duration: 0.3s;
         color: var(--color-control-typo-ghost);
@@ -2747,18 +3428,23 @@
         transform: rotate(-90deg);
         fill: none;
       }
+
       .Informer_status_system {
         --informer-status-color: var(--color-bg-system);
       }
+
       .Informer_status_alert {
         --informer-status-color: var(--color-bg-alert);
       }
+
       .Informer_status_warning {
         --informer-status-color: var(--color-bg-warning);
       }
+
       .Informer_status_success {
         --informer-status-color: var(--color-bg-success);
       }
+
       .Table {
         --table-z: 0;
         --sticky-left-z: calc(var(--table-z) + 1);
@@ -2776,21 +3462,26 @@
         max-width: 100%;
         max-height: 100%;
       }
+
       .Table_size_s {
         --cell-padding-vertical: var(--space-2xs);
         --cell-padding-horizontal: var(--space-xs);
       }
+
       .Table_size_m {
         --cell-padding-vertical: var(--space-xs);
         --cell-padding-horizontal: var(--space-s);
       }
+
       .Table_size_l {
         --cell-padding-vertical: var(--space-s);
         --cell-padding-horizontal: var(--space-m);
       }
+
       .Table_isResizable {
         --resizer-width: 5px;
       }
+
       .TableCell {
         --buttons-wrapper-size: calc(0 * 1px);
         z-index: var(--table-z);
@@ -2799,13 +3490,16 @@
         background-color: var(--color-bg-default);
         grid-row-end: var(--row-span);
       }
+
       .TableCell_isSortable,
       .TableCell_isFilterable {
         --buttons-wrapper-size: var(--space-xl);
       }
+
       .TableCell_isSortable.TableCell_isFilterable {
         --buttons-wrapper-size: var(--space-4xl);
       }
+
       .TableHeader-Buttons {
         --half-cell-padding-horizontal: calc(
           var(--cell-padding-horizontal) * 0.5
@@ -2814,6 +3508,7 @@
         right: calc(var(--half-cell-padding-horizontal) + var(--resizer-width));
         display: flex;
       }
+
       .TableResizer {
         --inner-line-width: 1px;
         --fast-transition: 0.15s ease-out;
@@ -2828,6 +3523,7 @@
         user-select: none;
         transition: opacity var(--fast-transition);
       }
+
       .TagBase {
         --tag-base-typo-color: var(--color-control-typo-ghost);
         --tag-base-half-space: calc(var(--tag-base-spaсe) / 2);
@@ -2851,138 +3547,173 @@
         transition: box-shadow 0.15s ease 0s, background 0.15s ease 0s,
           color 0.15s ease 0s;
       }
+
       .TagBase_view_stroked {
         --tag-base-border-color: var(--color-control-bg-border-default);
         --tag-base-bg-color: var(--color-bg-default);
       }
+
       .TagBase_view_filled {
         --tag-base-border-color: transparent;
         --tag-base-bg-color: var(--color-control-bg-ghost);
       }
+
       .TagBase_withAction.TagBase_view_stroked:hover {
         --tag-base-border-color: var(--color-control-bg-border-default-hover);
       }
+
       .TagBase_withAction.TagBase_view_filled:hover {
         --tag-base-bg-color: var(--color-control-bg-ghost-hover);
         --tag-base-border-color: transparent;
       }
+
       .TagBase_size_xs {
         --tag-base-height: var(--space-l);
         --tag-base-spaсe: var(--space-2xs);
         --tag-base-font-size: var(--size-text-xs);
       }
+
       .TagBase_size_s {
         --tag-base-height: var(--space-xl);
         --tag-base-spaсe: var(--space-xs);
         --tag-base-font-size: var(--size-text-xs);
       }
+
       .TagBase_size_m {
         --tag-base-height: calc(var(--space-2xl) - var(--space-2xs));
         --tag-base-spaсe: var(--space-xs);
         --tag-base-font-size: var(--size-text-s);
       }
+
       .TagBase_size_l {
         --tag-base-height: var(--space-2xl);
         --tag-base-spaсe: var(--space-s);
         --tag-base-font-size: var(--size-text-m);
       }
+
       .TagBase_group_1 {
         --tag-base-group-color: #e92064;
       }
+
       .TagBase_group_2 {
         --tag-base-group-color: #b92eff;
       }
+
       .TagBase_group_3 {
         --tag-base-group-color: #1160ff;
       }
+
       .TagBase_group_4 {
         --tag-base-group-color: #0fafff;
       }
+
       .TagBase_group_5 {
         --tag-base-group-color: #02e2ff;
       }
+
       .TagBase_group_6 {
         --tag-base-group-color: #0c6;
       }
+
       .TagBase_group_7 {
         --tag-base-group-color: #b4d50b;
       }
+
       .TagBase_group_8 {
         --tag-base-group-color: #f5b800;
       }
+
       .TagBase_group_9 {
         --tag-base-group-color: #f56600;
       }
+
       .CheckboxGroup_size_m {
         --offset: var(--space-xs);
       }
+
       .CheckboxGroup_size_l {
         --offset: var(--space-s);
       }
+
       .ChoiceGroup_view_primary {
         --choice-bg-color: var(--color-control-bg-primary);
         --choice-text-color: var(--color-control-typo-primary);
       }
+
       .ChoiceGroup_view_ghost {
         --choice-bg-color: var(--color-control-bg-ghost);
         --choice-text-color: var(--color-control-typo-ghost);
       }
+
       .ChoiceGroup_view_secondary {
         --choice-bg-color: var(--color-control-bg-secondary);
         --choice-text-color: var(--color-control-typo-secondary);
       }
+
       .ChoiceGroup_size_xs {
         --choice-height: var(--control-height-xs);
         --choice-font-size: var(--control-text-size-xs);
         --choice-space: var(--control-space-xs);
       }
+
       .ChoiceGroup_size_s {
         --choice-height: var(--control-height-s);
         --choice-font-size: var(--control-text-size-s);
         --choice-space: var(--control-space-s);
       }
+
       .ChoiceGroup_size_m {
         --choice-height: var(--control-height-m);
         --choice-font-size: var(--control-text-size-m);
         --choice-space: var(--control-space-m);
       }
+
       .ChoiceGroup_size_l {
         --choice-height: var(--control-height-l);
         --choice-font-size: var(--control-text-size-l);
         --choice-space: var(--control-space-l);
       }
+
       .ChoiceGroup_form_default,
       .ChoiceGroup_form_brick {
         --divider-width: var(--control-border-width);
         --divider-height: 65%;
       }
+
       .ChoiceGroup_form_default {
         --choice-radius: var(--control-radius);
       }
+
       .ChoiceGroup_form_brick {
         --choice-radius: 0;
       }
+
       .ChoiceGroup_form_round {
         --choice-radius: 99em;
         --divider-width: 4px;
         --divider-height: 4px;
       }
+
       .Breadcrumbs_size_xs {
         --delimiter-space: var(--space-xs);
         font-size: var(--control-text-size-xs);
       }
+
       .Breadcrumbs_size_s {
         --delimiter-space: var(--space-s);
         font-size: var(--control-text-size-s);
       }
+
       .Breadcrumbs_size_m {
         --delimiter-space: var(--space-m);
         font-size: var(--control-text-size-m);
       }
+
       .Breadcrumbs_size_l {
         --delimiter-space: var(--space-l);
         font-size: var(--control-text-size-l);
       }
+
       .Table {
         --table-z: 0;
         --sticky-left-z: calc(var(--table-z) + 1);
@@ -3000,21 +3731,26 @@
         max-width: 100%;
         max-height: 100%;
       }
+
       .Table_size_s {
         --cell-padding-vertical: var(--space-2xs);
         --cell-padding-horizontal: var(--space-xs);
       }
+
       .Table_size_m {
         --cell-padding-vertical: var(--space-xs);
         --cell-padding-horizontal: var(--space-s);
       }
+
       .Table_size_l {
         --cell-padding-vertical: var(--space-s);
         --cell-padding-horizontal: var(--space-m);
       }
+
       .Table_isResizable {
         --resizer-width: 5px;
       }
+
       .TableCell {
         --buttons-wrapper-size: calc(0 * 1px);
         z-index: var(--table-z);
@@ -3023,13 +3759,16 @@
         background-color: var(--color-bg-default);
         grid-row-end: var(--row-span);
       }
+
       .TableCell_isSortable,
       .TableCell_isFilterable {
         --buttons-wrapper-size: var(--space-xl);
       }
+
       .TableCell_isSortable.TableCell_isFilterable {
         --buttons-wrapper-size: var(--space-4xl);
       }
+
       .TableHeader-Buttons {
         --half-cell-padding-horizontal: calc(
           var(--cell-padding-horizontal) * 0.5
@@ -3038,6 +3777,7 @@
         right: calc(var(--half-cell-padding-horizontal) + var(--resizer-width));
         display: flex;
       }
+
       .TableResizer {
         --inner-line-width: 1px;
         --fast-transition: 0.15s ease-out;
@@ -3052,6 +3792,7 @@
         user-select: none;
         transition: opacity var(--fast-transition);
       }
+
       .TagBase {
         --tag-base-typo-color: var(--color-control-typo-ghost);
         --tag-base-half-space: calc(var(--tag-base-spaсe) / 2);
@@ -3075,122 +3816,153 @@
         transition: box-shadow 0.15s ease 0s, background 0.15s ease 0s,
           color 0.15s ease 0s;
       }
+
       .TagBase_view_stroked {
         --tag-base-border-color: var(--color-control-bg-border-default);
         --tag-base-bg-color: var(--color-bg-default);
       }
+
       .TagBase_view_filled {
         --tag-base-border-color: transparent;
         --tag-base-bg-color: var(--color-control-bg-ghost);
       }
+
       .TagBase_withAction.TagBase_view_stroked:hover {
         --tag-base-border-color: var(--color-control-bg-border-default-hover);
       }
+
       .TagBase_withAction.TagBase_view_filled:hover {
         --tag-base-bg-color: var(--color-control-bg-ghost-hover);
         --tag-base-border-color: transparent;
       }
+
       .TagBase_size_xs {
         --tag-base-height: var(--space-l);
         --tag-base-spaсe: var(--space-2xs);
         --tag-base-font-size: var(--size-text-xs);
       }
+
       .TagBase_size_s {
         --tag-base-height: var(--space-xl);
         --tag-base-spaсe: var(--space-xs);
         --tag-base-font-size: var(--size-text-xs);
       }
+
       .TagBase_size_m {
         --tag-base-height: calc(var(--space-2xl) - var(--space-2xs));
         --tag-base-spaсe: var(--space-xs);
         --tag-base-font-size: var(--size-text-s);
       }
+
       .TagBase_size_l {
         --tag-base-height: var(--space-2xl);
         --tag-base-spaсe: var(--space-s);
         --tag-base-font-size: var(--size-text-m);
       }
+
       .TagBase_group_1 {
         --tag-base-group-color: #e92064;
       }
+
       .TagBase_group_2 {
         --tag-base-group-color: #b92eff;
       }
+
       .TagBase_group_3 {
         --tag-base-group-color: #1160ff;
       }
+
       .TagBase_group_4 {
         --tag-base-group-color: #0fafff;
       }
+
       .TagBase_group_5 {
         --tag-base-group-color: #02e2ff;
       }
+
       .TagBase_group_6 {
         --tag-base-group-color: #0c6;
       }
+
       .TagBase_group_7 {
         --tag-base-group-color: #b4d50b;
       }
+
       .TagBase_group_8 {
         --tag-base-group-color: #f5b800;
       }
+
       .TagBase_group_9 {
         --tag-base-group-color: #f56600;
       }
+
       .CheckboxGroup_size_m {
         --offset: var(--space-xs);
       }
+
       .CheckboxGroup_size_l {
         --offset: var(--space-s);
       }
+
       .ChoiceGroup_view_primary {
         --choice-bg-color: var(--color-control-bg-primary);
         --choice-text-color: var(--color-control-typo-primary);
       }
+
       .ChoiceGroup_view_ghost {
         --choice-bg-color: var(--color-control-bg-ghost);
         --choice-text-color: var(--color-control-typo-ghost);
       }
+
       .ChoiceGroup_view_secondary {
         --choice-bg-color: var(--color-control-bg-secondary);
         --choice-text-color: var(--color-control-typo-secondary);
       }
+
       .ChoiceGroup_size_xs {
         --choice-height: var(--control-height-xs);
         --choice-font-size: var(--control-text-size-xs);
         --choice-space: var(--control-space-xs);
       }
+
       .ChoiceGroup_size_s {
         --choice-height: var(--control-height-s);
         --choice-font-size: var(--control-text-size-s);
         --choice-space: var(--control-space-s);
       }
+
       .ChoiceGroup_size_m {
         --choice-height: var(--control-height-m);
         --choice-font-size: var(--control-text-size-m);
         --choice-space: var(--control-space-m);
       }
+
       .ChoiceGroup_size_l {
         --choice-height: var(--control-height-l);
         --choice-font-size: var(--control-text-size-l);
         --choice-space: var(--control-space-l);
       }
+
       .ChoiceGroup_form_default,
       .ChoiceGroup_form_brick {
         --divider-width: var(--control-border-width);
         --divider-height: 65%;
       }
+
       .ChoiceGroup_form_default {
         --choice-radius: var(--control-radius);
       }
+
       .ChoiceGroup_form_brick {
         --choice-radius: 0;
       }
+
       .ChoiceGroup_form_round {
         --choice-radius: 99em;
         --divider-width: 4px;
         --divider-height: 4px;
       }
+
       .SelectDropdown {
         --transition-spase: var(--space-2xs);
         z-index: 9999;
@@ -3208,70 +3980,83 @@
         font-size: var(--font-size);
         transform: translateY(var(--transition-spase));
       }
+
       .SelectDropdown_size_xs {
         --input-height: var(--control-height-xs);
         --font-size: var(--control-text-size-xs);
         --input-space: calc(var(--control-space-xs) * 0.5);
         --list-spase: var(--space-2xs);
       }
+
       .SelectDropdown_size_s {
         --input-height: var(--control-height-s);
         --font-size: var(--control-text-size-s);
         --input-space: calc(var(--control-space-s) * 0.5);
         --list-spase: var(--space-2xs);
       }
+
       .SelectDropdown_size_m {
         --input-height: var(--control-height-m);
         --font-size: var(--control-text-size-m);
         --input-space: calc(var(--control-space-m) * 0.5);
         --list-spase: var(--space-xs);
       }
+
       .SelectDropdown_size_l {
         --input-height: var(--control-height-l);
         --font-size: var(--control-text-size-l);
         --input-space: calc(var(--control-space-l) * 0.5);
         --list-spase: var(--space-xs);
       }
+
       .SelectCreateButton_size_xs {
         --horizontal-space: calc(var(--control-space-xs) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.25);
         --font-size: var(--control-text-size-xs);
       }
+
       .SelectCreateButton_size_s {
         --horizontal-space: calc(var(--control-space-s) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.25);
         --font-size: var(--control-text-size-s);
       }
+
       .SelectCreateButton_size_m {
         --horizontal-space: calc(var(--control-space-m) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.5);
         --font-size: var(--control-text-size-m);
       }
+
       .SelectCreateButton_size_l {
         --horizontal-space: calc(var(--control-space-l) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.5);
         --font-size: var(--control-text-size-l);
       }
+
       .SelectGroupLabel_size_xs {
         --horizontal-space: calc(var(--control-space-xs) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.25);
         --font-size: calc(var(--control-text-size-xs) - 2px);
       }
+
       .SelectGroupLabel_size_s {
         --horizontal-space: calc(var(--control-space-s) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.25);
         --font-size: calc(var(--control-text-size-s) - 4px);
       }
+
       .SelectGroupLabel_size_m {
         --horizontal-space: calc(var(--control-space-m) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.5);
         --font-size: calc(var(--control-text-size-m) - 4px);
       }
+
       .SelectGroupLabel_size_l {
         --horizontal-space: calc(var(--control-space-l) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.5);
         --font-size: calc(var(--control-text-size-l) - 4px);
       }
+
       .SelectItem {
         --text-color: var(--color-control-typo-default);
         position: relative;
@@ -3281,54 +4066,65 @@
         font-size: var(--font-size);
         cursor: pointer;
       }
+
       .SelectItem_size_xs {
         --horizontal-space: calc(var(--control-space-xs) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.25);
         --font-size: var(--control-text-size-xs);
       }
+
       .SelectItem_size_s {
         --horizontal-space: calc(var(--control-space-s) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.25);
         --font-size: var(--control-text-size-s);
       }
+
       .SelectItem_size_m {
         --horizontal-space: calc(var(--control-space-m) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.5);
         --font-size: var(--control-text-size-m);
       }
+
       .SelectItem_size_l {
         --horizontal-space: calc(var(--control-space-l) * 0.5);
         --vertical-space: calc(var(--control-space-s) * 0.5);
         --font-size: var(--control-text-size-l);
       }
+
       .SelectItem_active {
         --text-color: var(--color-control-typo-secondary);
       }
+
       .SelectItem_disabled {
         --text-color: var(--color-control-typo-disable);
       }
+
       .User-IconRightButton {
         --indent-r: var(--space-xs);
         margin-left: var(--space-2xs);
       }
+
       .User_size_s {
         --avatar-space: var(--space-3xs);
         --indent-r: var(--space-xs);
         --indent: var(--space-xs);
         --icon-indent: var(--space-s);
       }
+
       .User_size_m {
         --avatar-space: var(--space-2xs);
         --indent-r: var(--space-s);
         --indent: var(--space-xs);
         --icon-indent: var(--space-m);
       }
+
       .User_size_l {
         --avatar-space: var(--space-2xs);
         --indent-r: var(--space-m);
         --indent: var(--space-s);
         --icon-indent: var(--space-l);
       }
+
       .Avatar {
         --avatar-color: transparent;
         --avatar-color-0: #f9a825;
@@ -3360,6 +4156,7 @@
         text-align: center;
         letter-spacing: 0.1em;
       }
+
       .Header {
         --header-height: 60px;
         display: flex;
@@ -3370,24 +4167,31 @@
         background-color: var(--color-bg-default);
         border-bottom: 1px solid var(--color-bg-border);
       }
+
       .HeaderModule_indent_s {
         --module-indent: var(--space-xs);
       }
+
       .HeaderModule_indent_m {
         --module-indent: var(--space-m);
       }
+
       .HeaderModule_indent_l {
         --module-indent: var(--space-2xl);
       }
+
       .Text_size_m {
         font-size: var(--size-text-m);
       }
+
       .Text_lineHeight_m {
         line-height: var(--line-height-text-m);
       }
+
       .Text_view_primary {
         color: var(--color-typo-primary);
       }
+
       .Theme {
         --graphics-size-xs: 12px;
         --graphics-size-s: 16px;
@@ -3398,6 +4202,7 @@
         --graphics-size-3xl: 80px;
         --graphics-size-4xl: 120px;
       }
+
       .Theme_color_gpnDefault {
         --color-bg-default: rgb(255, 255, 255);
         --color-bg-secondary: rgb(236, 241, 244);
@@ -3462,6 +4267,7 @@
         --color-control-bg-border-disable: rgba(0, 66, 105, 0);
         --color-control-typo-disable: rgba(0, 32, 51, 0.26);
       }
+
       .Theme_control_gpnDefault {
         --control-radius: 4px;
         --control-border-width: 1px;
@@ -3480,6 +4286,7 @@
         --control-text-size-s: var(--size-text-s);
         --control-text-size-xs: var(--size-text-xs);
       }
+
       .Theme_font_gpnDefault {
         --font-primary: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto',
           'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -3488,6 +4295,7 @@
           monospace;
         font-family: var(--font-primary);
       }
+
       .Theme_size_gpnDefault {
         --size-text-2xs: 10px;
         --size-text-xs: 12px;
@@ -3512,6 +4320,7 @@
         --font-weight-text-bold: bold;
         --font-weight-text-black: 900;
       }
+
       .Theme_space_gpnDefault {
         --space-3xs: 2px;
         --space-2xs: 4px;
@@ -3526,6 +4335,7 @@
         --space-5xl: 72px;
         --space-6xl: 96px;
       }
+
       .Theme_shadow_gpnDefault {
         --shadow-group: 0 2px 2px rgba(0, 32, 51, 0.02),
           0 2px 8px rgba(0, 32, 51, 0.16);
@@ -3534,6 +4344,7 @@
         --shadow-modal: 0 8px 8px rgba(0, 32, 51, 0.04),
           0 12px 28px rgba(0, 32, 51, 0.12);
       }
+
       .Button {
         position: relative;
         display: inline-block;
@@ -3558,28 +4369,34 @@
         flex-shrink: 0;
         appearance: none;
       }
+
       .Button_size_m {
         --button-height: var(--control-height-m);
         --button-font-size: var(--control-text-size-m);
         --button-space: var(--control-space-m);
       }
+
       .Button_view_primary {
         --color-hover: var(--color-control-typo-primary-hover);
         color: var(--color-control-typo-primary);
         background-color: var(--color-control-bg-primary);
       }
+
       .Button_withIcon {
         --icon-indent: calc(var(--button-space) * 0.7);
         display: inline-flex;
         align-items: center;
       }
+
       .Button-Icon {
         display: block;
         flex-shrink: 0;
       }
+
       .Button-Icon_position_left {
         margin-right: var(--icon-indent);
       }
+
       .Button-Label {
         overflow: hidden;
         text-align: center;
@@ -3587,6 +4404,7 @@
         flex-grow: 1;
         flex-shrink: 1;
       }
+
       .Icon {
         display: inline-flex;
         overflow: hidden;
@@ -3596,18 +4414,22 @@
         height: var(--icon-size);
         line-height: 0;
       }
+
       .Icon_size_s {
         --icon-size: var(--graphics-size-s);
       }
+
       .Icon-Svg {
         display: block;
         width: 100%;
         height: 100%;
         fill: currentcolor;
       }
+
       .media-grid-layout_root__RopUF {
         height: 100%;
       }
+
       .media-grid-layout_grid__2kSa2 {
         display: flex;
         height: 100%;
@@ -3615,6 +4437,7 @@
         align-items: center;
         flex-direction: column;
       }
+
       .Icon {
         display: inline-flex;
         overflow: hidden;
@@ -3624,15 +4447,18 @@
         height: var(--icon-size);
         line-height: 0;
       }
+
       .Icon_size_s {
         --icon-size: var(--graphics-size-s);
       }
+
       .Icon-Svg {
         display: block;
         width: 100%;
         height: 100%;
         fill: currentcolor;
       }
+
       .Theme {
         --graphics-size-xs: 12px;
         --graphics-size-s: 16px;
@@ -3643,6 +4469,7 @@
         --graphics-size-3xl: 80px;
         --graphics-size-4xl: 120px;
       }
+
       .Theme_color_gpnDefault {
         --color-bg-default: rgb(255, 255, 255);
         --color-bg-secondary: rgb(236, 241, 244);
@@ -3707,6 +4534,7 @@
         --color-control-bg-border-disable: rgba(0, 66, 105, 0);
         --color-control-typo-disable: rgba(0, 32, 51, 0.26);
       }
+
       .Theme_control_gpnDefault {
         --control-radius: 4px;
         --control-border-width: 1px;
@@ -3725,6 +4553,7 @@
         --control-text-size-s: var(--size-text-s);
         --control-text-size-xs: var(--size-text-xs);
       }
+
       .Theme_font_gpnDefault {
         --font-primary: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto',
           'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -3733,6 +4562,7 @@
           monospace;
         font-family: var(--font-primary);
       }
+
       .Theme_size_gpnDefault {
         --size-text-2xs: 10px;
         --size-text-xs: 12px;
@@ -3757,6 +4587,7 @@
         --font-weight-text-bold: bold;
         --font-weight-text-black: 900;
       }
+
       .Theme_space_gpnDefault {
         --space-3xs: 2px;
         --space-2xs: 4px;
@@ -3771,6 +4602,7 @@
         --space-5xl: 72px;
         --space-6xl: 96px;
       }
+
       .Theme_shadow_gpnDefault {
         --shadow-group: 0 2px 2px rgba(0, 32, 51, 0.02),
           0 2px 8px rgba(0, 32, 51, 0.16);
@@ -3779,6 +4611,7 @@
         --shadow-modal: 0 8px 8px rgba(0, 32, 51, 0.04),
           0 12px 28px rgba(0, 32, 51, 0.12);
       }
+
       .Button {
         position: relative;
         display: inline-block;
@@ -3803,28 +4636,34 @@
         flex-shrink: 0;
         appearance: none;
       }
+
       .Button_size_m {
         --button-height: var(--control-height-m);
         --button-font-size: var(--control-text-size-m);
         --button-space: var(--control-space-m);
       }
+
       .Button_view_primary {
         --color-hover: var(--color-control-typo-primary-hover);
         color: var(--color-control-typo-primary);
         background-color: var(--color-control-bg-primary);
       }
+
       .Button_withIcon {
         --icon-indent: calc(var(--button-space) * 0.7);
         display: inline-flex;
         align-items: center;
       }
+
       .Button-Icon {
         display: block;
         flex-shrink: 0;
       }
+
       .Button-Icon_position_left {
         margin-right: var(--icon-indent);
       }
+
       .Button-Label {
         overflow: hidden;
         text-align: center;
@@ -3832,15 +4671,19 @@
         flex-grow: 1;
         flex-shrink: 1;
       }
+
       .Text_size_m {
         font-size: var(--size-text-m);
       }
+
       .Text_lineHeight_m {
         line-height: var(--line-height-text-m);
       }
+
       .Text_view_primary {
         color: var(--color-typo-primary);
       }
+
       .TableTextFilter-Controls .Button {
         height: auto;
         margin-right: var(--space-3xl);
@@ -3849,11 +4692,13 @@
         background-color: transparent;
         line-height: var(--line-height-text-xs);
       }
+
       .TableFilterContainer-Buttons > .Button {
         flex-basis: 50%;
         flex-shrink: 1;
         margin-right: var(--space-s);
       }
+
       .TableTextFilter-Controls .Button {
         height: auto;
         margin-right: var(--space-3xl);
@@ -3862,21 +4707,25 @@
         background-color: transparent;
         line-height: var(--line-height-text-xs);
       }
+
       .TableFilterContainer-Buttons > .Button {
         flex-basis: 50%;
         flex-shrink: 1;
         margin-right: var(--space-s);
       }
+
       .html-nft-layout_htmlNft__3AyCA .html-nft-layout_lockedText__1mAF1 {
         text-align: center;
         font-size: 0.6em;
         font-weight: bold;
       }
+
       .html-nft-layout_htmlNft__3AyCA .html-nft-layout_loadingText__25AGc {
         font-size: 1em;
         text-align: center;
         margin-top: 16px;
       }
+
       .html-nft-layout_htmlNft__3AyCA .html-nft-layout_card__1-RwA {
         max-width: 600px;
         margin-left: auto;
@@ -3886,12 +4735,14 @@
         border-radius: 4px;
         position: relative;
       }
+
       .html-nft-layout_htmlNft__3AyCA
         .html-nft-layout_card__1-RwA
         .html-nft-layout_img__1r9gW {
         display: flex;
         justify-content: center;
       }
+
       .html-nft-layout_htmlNft__3AyCA
         .html-nft-layout_card__1-RwA
         .html-nft-layout_img__1r9gW
@@ -3901,11 +4752,13 @@
         object-fit: contain;
         border-radius: 4px;
       }
+
       .html-nft-layout_htmlNft__3AyCA
         .html-nft-layout_card__1-RwA
         .html-nft-layout_mainContent__2uQaD {
         padding: var(--space-xl);
       }
+
       .html-nft-layout_htmlNft__3AyCA
         .html-nft-layout_card__1-RwA
         .html-nft-layout_topBar__2XBOM {
@@ -3918,12 +4771,14 @@
         font-weight: 600;
         font-size: 1.5em;
       }
+
       .lds-ripple {
         display: inline-block;
         position: relative;
         width: 44px;
         height: 40px;
       }
+
       .lds-ripple div {
         position: absolute;
         border: 4px solid #000;
@@ -3931,9 +4786,11 @@
         border-radius: 50%;
         animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
       }
+
       .lds-ripple div:nth-child(2) {
         animation-delay: -0.5s;
       }
+
       @keyframes lds-ripple {
         0% {
           top: 16px;
@@ -4035,20 +4892,12 @@
   <body>
     <div id="root">
       <div
-        class="
-          Theme
-          Theme_color_gpnDefault
-          Theme_control_gpnDefault
-          Theme_font_gpnDefault
-          Theme_size_gpnDefault
-          Theme_space_gpnDefault
-          Theme_shadow_gpnDefault
-        "
+        class="Theme Theme_color_gpnDefault Theme_control_gpnDefault Theme_font_gpnDefault Theme_size_gpnDefault Theme_space_gpnDefault Theme_shadow_gpnDefault"
       >
         <div class="html-nft-layout_htmlNft__3AyCA">
           <div class="html-nft-layout_card__1-RwA" style="border: 0">
             <div class="html-nft-layout_loadingText__25AGc" id="loadingText">
-              Connecting to Lit Network...
+              Connecting to Lit Protocol...
             </div>
             <div id="mediaGridHolder">
               <div class="html-nft-layout_img__1r9gW" id="imageHolder">

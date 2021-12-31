@@ -1,22 +1,15 @@
 import React, { useState } from 'react'
-import AceEditor from 'react-ace'
+import ace from 'ace-builds/src-min-noconflict/ace'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-monokai'
-import Slider from 'react-slick'
 
 import styles from './html-nft-layout.module.scss'
-
-import { Grid, GridItem } from '@consta/uikit/Grid'
-import { Badge } from '@consta/uikit/Badge'
 import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
 import { IconLock } from '@consta/uikit/IconLock'
 import { IconUnlock } from '@consta/uikit/IconUnlock'
 
-import { sliderSettings } from '../../../../../../config'
-
-import { getExtension, getImg } from '../../../../../../utils'
-import { File } from '@consta/uikit/File'
+import { getImg } from '../../../../../../utils'
 import MediaGrid from './MediaGrid'
 
 const HtmlNft = ({
@@ -63,7 +56,7 @@ const HtmlNft = ({
           </div>
           {!previewMode ? (
             <div className={styles.loadingText} id="loadingText">
-              Connecting to Lit Network...
+              Connecting to Lit Protocol...
             </div>
           ) : null}
           <div id="mediaGridHolder" className={styles.lockedContentView}>
