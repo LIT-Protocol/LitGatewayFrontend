@@ -260,7 +260,7 @@ const SingleOfferPage = () => {
       logo: litLogo,
       tags: ['Lit Protocol'],
       mainBtnLabel:
-        ogNftTokenId !== -1
+        !!ogNftTokenId && (ogNftTokenId !== -1 || ogNftTokenId > -1)
           ? 'Enter NFT Portal'
           : 'Connect Twitter and Claim NFT',
       twitterBtn: true,
@@ -438,6 +438,7 @@ const SingleOfferPage = () => {
                 className={styles.link}
                 href="https://twitter.com/litprotocol"
                 target="_blank"
+                rel="noreferrer"
               >
                 @LitProtocol
               </a>
@@ -486,8 +487,7 @@ const SingleOfferPage = () => {
               {offer.twitterBtn ? (
                 <>
                   {!!ogNftTokenId &&
-                  ogNftTokenId !== -1 &&
-                  ogNftTokenId > -1 ? (
+                  (ogNftTokenId !== -1 || ogNftTokenId > -1) ? (
                     <span className={styles.claimedStatus}>
                       <IconCheck className={styles.claimedIcon} />
                       <p className={styles.claimedText}>Claimed!</p>

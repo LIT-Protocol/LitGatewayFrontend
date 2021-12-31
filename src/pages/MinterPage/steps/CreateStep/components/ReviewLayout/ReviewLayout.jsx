@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import LitJsSdk from 'lit-js-sdk'
-import AceEditor from 'react-ace'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-noconflict/theme-monokai'
 import Slider from 'react-slick'
@@ -8,26 +7,19 @@ import Slider from 'react-slick'
 import { putTokenMetadata } from '../../../../../../api/minter'
 
 import styles from './review-layout.module.scss'
-
-import { Grid, GridItem } from '@consta/uikit/Grid'
-import { Badge } from '@consta/uikit/Badge'
-import { Text } from '@consta/uikit/Text'
 import { Button } from '@consta/uikit/Button'
-import { IconLock } from '@consta/uikit/IconLock'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 
 import { sliderSettings } from '../../../../../../config'
 
 import {
-  getExtension,
-  getImg,
-  createMediaGridHtmlString,
   createHtmlWrapper,
+  createMediaGridHtmlString,
   fileToDataUrl,
+  getExtension,
 } from '../../../../../../utils'
 import { File } from '@consta/uikit/File'
 import HtmlNft from '../HtmlNft'
-import { classExpression } from '@babel/types'
 
 const PINATA_API_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkZTRlMWFkOC0xZDg3LTRlMzMtYmYyMC0zYWE3NjRhODc3YzQiLCJlbWFpbCI6ImNocmlzQGhlbGxvYXByaWNvdC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlfSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiNzYyMDg4ZGZjYWI0MGRhNmEzYTIiLCJzY29wZWRLZXlTZWNyZXQiOiIxNWQ1NWMzM2M3YzRjZjkyZTRmNzkxNzYxMjMxNTg5Zjc3NWFmMDNjNGYyOWU5NWE0NTAzNjU4NjRjNzQ2MWJlIiwiaWF0IjoxNjIxMjk5MTUxfQ.rBlfJOgcpDNhecYV2-lNqWg5YRwhN7wvrnmxjRu7LEY'
