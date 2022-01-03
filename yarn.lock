@@ -8983,10 +8983,10 @@ lit-access-control-conditions-modal@^1.1.24:
     sass "^1.42.0"
     styled-components "^5.3.3"
 
-lit-js-sdk@^1.1.97:
-  version "1.1.98"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.98.tgz#0b7f592cd3021ae166cd49db1bd5e95601005cde"
-  integrity sha512-CbY/A2tmYTEuKRRzdLPW1lHcbZgxCp8i8/Xg3wgp6JmOdD5nW6I9u+vZ8emHS0dVkD8HUrY9l36cugPkkoC0iw==
+lit-js-sdk@^1.1.99:
+  version "1.1.99"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.99.tgz#c986741c33e4e952379feb255a5718acd64ed232"
+  integrity sha512-+FsL8lo5DDqeZzif+c1V5mTUkJaDuyuTlKygRHXzQm1K/WIY/P8FOepTBGTVW6BmLRcUhkBC7JAG5sBRkjuOQg==
   dependencies:
     "@ethersproject/abi" "^5.5.0"
     "@ethersproject/bytes" "^5.5.0"
