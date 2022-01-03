@@ -102,7 +102,11 @@ const FilesList = (props) => {
   const downloadFile = async (file) => {
     setError(false)
     setDownloadingIds((prev) => [...prev, file.id])
-    const { error } = await decryptAndDownload({ file, tokenList })
+    const { error } = await decryptAndDownload({
+      file,
+      tokenList,
+      performWithAuthSig,
+    })
     setDownloadingIds((prev) => prev.filter((f) => f !== file.id))
     if (error) {
       setError(error)

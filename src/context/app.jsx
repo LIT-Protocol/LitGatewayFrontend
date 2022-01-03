@@ -96,7 +96,6 @@ export const AppContextProvider = (props) => {
   }
 
   useEffect(() => {
-    window.performWithAuthSig = performWithAuthSig
     const go = async () => {
       const tokens = await LitJsSdk.getTokenList()
       setTokenList(tokens)
