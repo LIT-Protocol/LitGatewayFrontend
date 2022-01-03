@@ -20,10 +20,17 @@ export const AppContextProvider = (props) => {
   const [userHoldings, setUserHoldings] = useState(null)
   const [eligibleOffes, setEligibleOffers] = useState(null)
 
+  let obtainingAuthSig = false
+
   const performWithAuthSig = async (
     action,
     { chain, getHoldings } = { chain: 'ethereum', getHoldings: true },
   ) => {
+    // only do this one at a time
+    if (obtainingAuthSig) {
+      return
+    }
+    obtainingAuthSig = true
     setGlobalError(null) // clear out any errors
     //TODO add chain selection???
 
@@ -48,14 +55,17 @@ export const AppContextProvider = (props) => {
               </>
             ),
           })
+          obtainingAuthSig = false
           return false
         } else if (e?.errorCode === 'wrong_network') {
           setGlobalError({
             title: e.message,
             details: '',
           })
+          obtainingAuthSig = false
           return false
         } else {
+          obtainingAuthSig = false
           throw e
         }
       }
@@ -69,6 +79,7 @@ export const AppContextProvider = (props) => {
       })
     }
 
+    obtainingAuthSig = false
     return await action(currentAuthSig)
   }
 
