@@ -44,11 +44,15 @@ export function humanFileSize(bytes, si = true, dp = 0) {
   return bytes.toFixed(dp) + ' ' + units[u]
 }
 
-export const decryptAndDownload = async ({ file, tokenList }) => {
+export const decryptAndDownload = async ({
+  file,
+  tokenList,
+  performWithAuthSig,
+}) => {
   console.log('decryptAndDownload ', file)
   const chain = file.accessControlConditions[0].chain
 
-  return await window.performWithAuthSig(
+  return await performWithAuthSig(
     async (authSig) => {
       //get the file
       const ipfsGateway = 'https://ipfs.litgateway.com/ipfs/'

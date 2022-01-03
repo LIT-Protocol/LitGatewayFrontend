@@ -13,7 +13,7 @@ import { useAppContext } from '../../context/app'
 
 const ViewFilePage = () => {
   let { fileId } = useParams()
-  const { tokenList } = useAppContext()
+  const { tokenList, performWithAuthSig } = useAppContext()
   const [file, setFile] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -32,7 +32,11 @@ const ViewFilePage = () => {
   const downloadFile = async () => {
     setLoading(true)
     setError(false)
-    const { error } = await decryptAndDownload({ file, tokenList })
+    const { error } = await decryptAndDownload({
+      file,
+      tokenList,
+      performWithAuthSig,
+    })
     setLoading(false)
     if (error) {
       setError(error)
