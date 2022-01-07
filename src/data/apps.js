@@ -6,6 +6,8 @@ import shopifyBack from '../pages/SingleAppPage/assets/shopifyBack.jpg'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 import shopifyLogo from '../pages/SingleAppPage/assets/shopifyLogo.svg'
+import cfLogo from '../pages/SingleAppPage/assets/cfLogo.svg'
+import cfBack from '../pages/SingleAppPage/assets/cfBack.jpg'
 
 import { storeHoldingsFromLit } from '../api/users'
 
@@ -146,6 +148,50 @@ export const apps = [
         </p>
 
         <p>Google Chrome is the recommended browser for using this app.</p>
+      </>
+    ),
+    more: [
+      {
+        title: 'Zoom',
+        titleIcon: zoomLogo,
+        id: 'zoom',
+        desc: 'Grant access to Zoom with blockchain requirements',
+        img: driveBack,
+      },
+    ],
+    btnsWithoutMargin: true,
+  },
+  {
+    id: 'cloudflare',
+    title: 'Cloudflare Stream',
+    logo: cfLogo,
+    tags: ['Video', 'Live Streaming', 'Content'],
+    mainBtnLabel: 'Launch',
+    backgroundImg: cfBack,
+    url: 'https://cf-deploy.lit-protocol.workers.dev/',
+    shortDesc:
+      'Embed videos and livestreams on your site gated with blockchain requirements',
+    textBlock: (
+      <>
+        <p>
+          With Lit Protocol + Cloudflare Stream, you can embed token and
+          blockchain identity gated videos and livestreams, using Cloudflare for
+          serverless hosting.
+        </p>
+        <p>
+          To use this app, a free Cloudflare account and Github account are
+          required.
+        </p>
+        <p>
+          This app will deploy a Cloudflare worker to your account that will
+          gate access to videos and livestreams, and serve a dashboard website
+          for your internal use. The dashboard website will let you upload
+          videos/livestreams and set the conditions for access.
+        </p>
+        <p>
+          *This application is open source and built by members of the Lit
+          Protocol community*
+        </p>
       </>
     ),
     more: [
