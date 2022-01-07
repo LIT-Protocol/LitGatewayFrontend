@@ -6,7 +6,7 @@ import shopifyBack from '../pages/SingleAppPage/assets/shopifyBack.jpg'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 import shopifyLogo from '../pages/SingleAppPage/assets/shopifyLogo.svg'
-import cfLogo from '../pages/SingleAppPage/assets/cfLogo.svg'
+import cfLogo from '../pages/SingleAppPage/assets/cfLogo.png'
 import cfBack from '../pages/SingleAppPage/assets/cfBack.jpg'
 
 import { storeHoldingsFromLit } from '../api/users'
