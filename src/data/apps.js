@@ -1,5 +1,7 @@
 import zoomLogo from '../pages/SingleAppPage/assets/zoom.png'
 import gDriveLogo from '../pages/SingleAppPage/assets/googleDrive.png'
+import cloudflareLogo from '../pages/SingleAppPage/assets/cloudflare.png'
+import cloudflareCard from '../pages/SingleAppPage/assets/cloudflareCard.png'
 import driveBack from '../pages/SingleAppPage/assets/driveBack.png'
 import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
 import shopifyBack from '../pages/SingleAppPage/assets/shopifyBack.jpg'
@@ -16,9 +18,9 @@ export const apps = [
     logo: shopifyLogo,
     tags: ['E-Commerce'],
     url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST,
-    mainBtnLabel: 'Coming Soon',
+    mainBtnLabel: 'Get Early Access',
     backgroundImg: shopifyBack,
-    showEmailSignup: true,
+    showEmailSignup: false,
     shortDesc:
       'Provide coupons selectively on your Shopify store with blockchain requirements',
     textBlock: (
@@ -65,7 +67,7 @@ export const apps = [
     logo: zoomLogo,
     tags: ['Productivity'],
     url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/zoom',
-    mainBtnLabel: 'Launch',
+    mainBtnLabel: 'Coming Soon',
     backgroundImg: driveBack,
     shortDesc:
       'Grant access to Zoom meetings and webinars with blockchain requirements',
@@ -79,6 +81,12 @@ export const apps = [
           Connect your account and use the Lit Protocol permissions builder to
           allow access to Zoom meetings based on token or NFT ownership as well
           as other wallet attributes, like membership in a DAO.
+        </p>
+        <p>
+          <strong style={{ color: '#0c6edc' }}>
+            NOTE: App will be live later this month pending Zoom security
+            approval.
+          </strong>
         </p>
         <h4>Documentation</h4>
         <p>
@@ -157,6 +165,52 @@ export const apps = [
         img: driveBack,
       },
     ],
+    btnsWithoutMargin: true,
+  },
+  {
+    id: 'cloudflare',
+    title: 'Cloudflare Stream',
+    logo: cloudflareLogo,
+    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/cloudflare',
+    tags: ['Content'],
+    mainBtnLabel: 'Coming Soon',
+    backgroundImg: cloudflareCard,
+    shortDesc:
+      'Embed videos and livestreams on your site gated with blockchain requirements',
+    textBlock: (
+      <>
+        <p>
+          With Lit Protocol + Cloudflare Stream, you can embed token and
+          blockchain identity gated videos and livestreams, using Cloudflare for
+          serverless hosting.
+        </p>
+        <p>
+          To use this application, a Cloudflare Stream account is required and
+          you can sign up for one
+          <a href="https://www.cloudflare.com/products/cloudflare-stream/">
+            here.
+          </a>
+        </p>
+        <p>
+          Here’s a demo video on how to use this integration:{' '}
+          <strong>-Video to go here-</strong>
+        </p>
+        <p>
+          Follow these steps to embed token gated livestreams:{' '}
+          <strong>-Steps to go here-</strong>
+        </p>
+        <p>
+          Follow these steps to embed token gated videos:{' '}
+          <strong>-Steps to go here-</strong>
+        </p>
+
+        <p>
+          *This application is open sourced and build by members of the Lit
+          Protocol community*
+        </p>
+      </>
+    ),
+    more: [],
     btnsWithoutMargin: true,
   },
   {

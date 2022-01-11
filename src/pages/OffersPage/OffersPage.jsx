@@ -8,7 +8,7 @@ import litLogo from '../SingleOfferPage/assets/lit-offer-icon.png'
 import discountBack from './assets/discountBack.png'
 import litBack from './assets/litBack.png'
 
-import hodlgodBack from './assets/hodlgodBack.jpg'
+import hodlgodBanner from './assets/hodlgodBanner.png'
 import hodlgodLogo from './assets/hodlgodLogo.png'
 
 import { Button } from '@consta/uikit/Button'
@@ -108,7 +108,7 @@ const OffersPage = () => {
                   </ul>
                 </div>
               }
-              img={hodlgodBack}
+              img={hodlgodBanner}
             />
           </GridItem>
           <GridItem>
@@ -135,6 +135,7 @@ const OffersPage = () => {
                           className={styles.link}
                           href="https://twitter.com/litprotocol"
                           target="_blank"
+                          rel="noreferrer"
                         >
                           @LitProtocol
                         </a>

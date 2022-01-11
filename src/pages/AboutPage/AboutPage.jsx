@@ -21,7 +21,13 @@ const AboutPage = () => {
       <div className={styles.center}>
         <p className={styles.subtitle}>
           Lit Gateway is your portal for connecting blockchain wallets to the
-          rest of the internet.
+          rest of the internet, powered by{' '}
+          <a
+            href={'https://www.litprotocol.com'}
+            style={{ textDecoration: 'none' }}
+          >
+            Lit Protocol.
+          </a>
         </p>
         <div className={styles.textBlock}>
           <p>

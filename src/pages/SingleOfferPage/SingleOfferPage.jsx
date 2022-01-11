@@ -34,7 +34,7 @@ import discountBack from '../OffersPage/assets/discountBack.png'
 import litBack from '../OffersPage/assets/litBack.png'
 import blankCanvas from '../OffersPage/assets/blank-canvas.png'
 import hodlgodLogo from '../OffersPage/assets/hodlgodLogo.png'
-import hodlgodBack from '../OffersPage/assets/hodlgodBack.jpg'
+import hodlgodBanner from '../OffersPage/assets/hodlgodBanner.png'
 
 const SingleOfferPage = () => {
   const { title } = useParams()
@@ -328,6 +328,13 @@ const SingleOfferPage = () => {
             of ETH and connect your twitter account to claim the NFT. We’ll
             cover the transaction fee :)
           </p>
+          <p>
+            <a href={'https://opensea.io/collection/lit-genesis-gate'}>
+              View the collection on OpenSea.
+            </a>
+            {` `}
+            Can't find your NFT? Check the "Hidden" tab.
+          </p>
         </>
       ),
       more: [
@@ -400,7 +407,7 @@ const SingleOfferPage = () => {
       requirement: '150 $SLP or 1000 $DEC',
       timeRemaining: '10 days, 2 hours',
       imgText: 'Find, Collect, and Combine the Immortal Shards',
-      mainImg: hodlgodBack,
+      mainImg: hodlgodBanner,
       handleMainButtonClick: handleHodlgodClick,
       textBlock: (
         <>
@@ -537,16 +544,20 @@ const SingleOfferPage = () => {
               </div>
               <div>
                 {!!offer['segmentCenterTitle'] ? (
-                  <div className={styles.segment}>
+                  <div
+                    className={styles.segment}
+                    style={{ borderLeft: '1px solid #bfa7f3' }}
+                  >
                     <h3>{offer['segmentCenterTitle']}</h3>
                     <div className={styles.text}>
                       {offer['segmentCenterValue']}
                     </div>
                   </div>
                 ) : (
-                  <div className={styles.segment}>
-                    <h3>TIME REMAINING</h3>
-                    <div className={styles.text}>{offer.timeRemaining}</div>
+                  // <div className={styles.segment}>
+                  <div>
+                    {/*<h3>TIME REMAINING</h3>*/}
+                    {/*<div className={styles.text}>{offer.timeRemaining}</div>*/}
                   </div>
                 )}
               </div>
