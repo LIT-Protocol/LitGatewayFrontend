@@ -83,7 +83,7 @@ const OffersPage = () => {
               img={discountBack}
             />
           </GridItem>
-          <GridItem>
+          {/* <GridItem>
             <Card
               title="HodlGod - Play to Earn"
               titleIcon={hodlgodLogo}
@@ -110,7 +110,7 @@ const OffersPage = () => {
               }
               img={hodlgodBanner}
             />
-          </GridItem>
+          </GridItem> */}
           <GridItem>
             <Card
               title="Lit Genesis Gate NFT"

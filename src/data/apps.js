@@ -1,13 +1,13 @@
 import zoomLogo from '../pages/SingleAppPage/assets/zoom.png'
 import gDriveLogo from '../pages/SingleAppPage/assets/googleDrive.png'
-import cloudflareLogo from '../pages/SingleAppPage/assets/cloudflare.png'
-import cloudflareCard from '../pages/SingleAppPage/assets/cloudflareCard.png'
 import driveBack from '../pages/SingleAppPage/assets/driveBack.png'
 import signInWithGoogle from '../pages/AppsPage/assets/sign_in_with_google.png'
 import shopifyBack from '../pages/SingleAppPage/assets/shopifyBack.jpg'
 import gatherLogo from '../pages/SingleAppPage/assets/gather.svg'
 import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 import shopifyLogo from '../pages/SingleAppPage/assets/shopifyLogo.svg'
+import cfLogo from '../pages/SingleAppPage/assets/cfLogo.png'
+import cfBack from '../pages/SingleAppPage/assets/cfBack.jpg'
 
 import { storeHoldingsFromLit } from '../api/users'
 
@@ -27,7 +27,7 @@ export const apps = [
       <>
         <p>
           With this App, Shopify merchants can provide discounts and access to
-          select items in their Shopify store, based on token holdings and
+          select items in their Shopify store based on token holdings and
           blockchain identity.
         </p>
         <p>
@@ -170,11 +170,11 @@ export const apps = [
   {
     id: 'cloudflare',
     title: 'Cloudflare Stream',
-    logo: cloudflareLogo,
-    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/cloudflare',
-    tags: ['Content'],
-    mainBtnLabel: 'Coming Soon',
-    backgroundImg: cloudflareCard,
+    logo: cfLogo,
+    tags: ['Video', 'Live Streaming', 'Content'],
+    mainBtnLabel: 'Launch',
+    backgroundImg: cfBack,
+    url: 'https://cf-deploy.lit-protocol.workers.dev/',
     shortDesc:
       'Embed videos and livestreams on your site gated with blockchain requirements',
     textBlock: (
@@ -185,32 +185,30 @@ export const apps = [
           serverless hosting.
         </p>
         <p>
-          To use this application, a Cloudflare Stream account is required and
-          you can sign up for one
-          <a href="https://www.cloudflare.com/products/cloudflare-stream/">
-            here.
-          </a>
+          To use this app, a free Cloudflare account and Github account are
+          required.
         </p>
         <p>
-          Here’s a demo video on how to use this integration:{' '}
-          <strong>-Video to go here-</strong>
+          This app will deploy a Cloudflare worker to your account that will
+          gate access to videos and livestreams, and serve a dashboard website
+          for your internal use. The dashboard website will let you upload
+          videos/livestreams and set the conditions for access.
         </p>
         <p>
-          Follow these steps to embed token gated livestreams:{' '}
-          <strong>-Steps to go here-</strong>
-        </p>
-        <p>
-          Follow these steps to embed token gated videos:{' '}
-          <strong>-Steps to go here-</strong>
-        </p>
-
-        <p>
-          *This application is open sourced and build by members of the Lit
+          *This application is open source and built by members of the Lit
           Protocol community*
         </p>
       </>
     ),
-    more: [],
+    more: [
+      {
+        title: 'Zoom',
+        titleIcon: zoomLogo,
+        id: 'zoom',
+        desc: 'Grant access to Zoom with blockchain requirements',
+        img: driveBack,
+      },
+    ],
     btnsWithoutMargin: true,
   },
   {

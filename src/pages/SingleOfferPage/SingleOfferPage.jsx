@@ -260,7 +260,9 @@ const SingleOfferPage = () => {
       logo: litLogo,
       tags: ['Lit Protocol'],
       mainBtnLabel:
-        !!ogNftTokenId && (ogNftTokenId !== -1 || ogNftTokenId > -1)
+        ogNftTokenId === null
+          ? 'Loading...'
+          : !!ogNftTokenId && (ogNftTokenId !== -1 || ogNftTokenId > -1)
           ? 'Enter NFT Portal'
           : 'Connect Twitter and Claim NFT',
       twitterBtn: true,
@@ -329,7 +331,11 @@ const SingleOfferPage = () => {
             cover the transaction fee :)
           </p>
           <p>
-            <a href={'https://opensea.io/collection/lit-genesis-gate'}>
+            <a
+              href={'https://opensea.io/collection/lit-genesis-gate'}
+              target="_blank"
+              rel="noreferrer"
+            >
               View the collection on OpenSea.
             </a>
             {` `}

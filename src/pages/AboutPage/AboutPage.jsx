@@ -24,7 +24,9 @@ const AboutPage = () => {
           rest of the internet, powered by{' '}
           <a
             href={'https://www.litprotocol.com'}
+            target="_blank"
             style={{ textDecoration: 'none' }}
+            rel="noreferrer"
           >
             Lit Protocol.
           </a>
