@@ -54,7 +54,7 @@ const AppsPage = () => {
           className={styles.title}
           icon={titleIcon}
           title="Lit Apps"
-          subtitle="The power of blockchain-defined access combined with your current tool suite."
+          subtitle="The power of blockchain-defined access combined with your apps and services."
         />
 
         <Toast className={styles.toast}>

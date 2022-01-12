@@ -291,7 +291,7 @@ const SingleOfferPage = () => {
             @LitProtocol
           </a>{' '}
           <span className={styles.plus}>+</span>
-          >0.005{' '}
+          hold >0.005{' '}
           <div className={styles.badge}>
             <img src={ethIcon} alt="" />
             ETH
@@ -306,7 +306,7 @@ const SingleOfferPage = () => {
       textBlock: (
         <>
           <p>
-            The Lit Genesis Gate NFT is available to the first 9,500 people who
+            The Lit Genesis Gate NFT is available to the first 10,000 people who
             claim it! In order to claim, you must have more than 0.005 ETH in
             your wallet (you will not have to pay any ETH for the transaction)
             and follow @LitProtocol on twitter.
@@ -320,9 +320,8 @@ const SingleOfferPage = () => {
           <img src={blankCanvas} className={styles.blankCanvas} />
           <br />
           <p>
-            After 30 days, we’ll turn the resulting canvas, we’ll create two
-            NFTs. One will be given to someone in the community and the other
-            will be fractionalized and distributed to the artists.
+            After 30 days, we’ll turn the resulting canvas into an NFT which
+            will be gifted to a few random and select contributors.
           </p>
           <p>More community projects ahead too!</p>
           <p>

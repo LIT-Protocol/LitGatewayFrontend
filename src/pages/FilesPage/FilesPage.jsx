@@ -42,7 +42,7 @@ const FilesPage = () => {
         folderId || '',
         { authSig },
       )
-      // console.log('got files', files)
+      console.log('got files', files)
       // add key
       setRows([
         ...folders.map((f) => ({ ...f, key: f.id })),
