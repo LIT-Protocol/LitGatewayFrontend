@@ -411,7 +411,6 @@ const SingleOfferPage = () => {
       twitterBtn: false,
       requirement: '150 $SLP or 1000 $DEC',
       timeRemaining: '10 days, 2 hours',
-      imgText: 'Find, Collect, and Combine the Immortal Shards',
       mainImg: hodlgodBanner,
       handleMainButtonClick: handleHodlgodClick,
       textBlock: (
@@ -573,8 +572,12 @@ const SingleOfferPage = () => {
                 backgroundImage: `url(${offer.mainImg})`,
               }}
             >
-              <div></div>
-              <h3>{offer.imgText}</h3>
+              {offer.imgText ? (
+                <>
+                  <div></div>
+                  <h3>{offer.imgText}</h3>
+                </>
+              ) : null}
             </div>
             <div className={styles.textBlock}>{offer.textBlock}</div>
           </div>
