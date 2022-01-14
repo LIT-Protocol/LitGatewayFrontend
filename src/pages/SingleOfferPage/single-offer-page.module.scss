@@ -411,6 +411,10 @@
   }
   .mainImg {
     margin-top: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 4.5rem;
+    height: auto;
 
     h3 {
       font-size: 16px;
@@ -418,7 +422,7 @@
   }
   .textBlock {
     font-size: 16px;
-    margin-top: 20px;
+    margin-top: 0;
     margin-bottom: 10px;
   }
   .top {
