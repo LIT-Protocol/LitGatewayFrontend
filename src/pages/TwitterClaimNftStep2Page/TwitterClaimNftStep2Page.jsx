@@ -9,13 +9,14 @@ import { Informer } from '@consta/uikit/Informer'
 import { ProgressSpin } from '@consta/uikit/ProgressSpin'
 import { useAppContext } from '../../context'
 import LitJsSdk from 'lit-js-sdk'
-import { claimOgNft, twitterOauthUrl } from '../../api/claimNft'
+import { claimOgNft, twitterOauthUrl, getNftLink } from '../../api/claimNft'
 import { REACT_APP_LIT_GATEWAY_LIT_OG_NFT_TOKEN_ADDRESS } from '../../config'
 
 const TwitterClaimNftPage = () => {
   const { performWithAuthSig, setGlobalError, tokenList } = useAppContext()
   const [successMessage, setSuccessMessage] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [nftUrl, setNftUrl] = useState(null)
 
   useEffect(() => {
     if (window.litNodeClient.ready) {
@@ -31,6 +32,10 @@ const TwitterClaimNftPage = () => {
       )
     }
   }, [])
+
+  const handleEnterNft = () => {
+    window.open(nftUrl, '_blank')
+  }
 
   const handleClaimNft = () => {
     setGlobalError(null)
@@ -81,6 +86,8 @@ const TwitterClaimNftPage = () => {
               myWalletAddress: authSig.address,
             }),
           ]
+          setLoading(false)
+          setNftUrl(null)
           setGlobalError({
             title:
               "Unable to claim NFT.  You probably don't meet the access control conditions below",
@@ -101,9 +108,12 @@ const TwitterClaimNftPage = () => {
       if (resp.error) {
         setGlobalError({ title: 'Error: ' + resp.error })
         setLoading(false)
+        setNftUrl(null)
         return
       }
       const { tokenId, txHash } = resp
+
+      const nftLinkResp = await getNftLink(tokenId)
 
       setSuccessMessage({
         title: 'NFT sent on Polygon',
@@ -112,19 +122,11 @@ const TwitterClaimNftPage = () => {
             <a target="_blank" href={`https://polygonscan.com/tx/${txHash}`}>
               View on PolygonScan
             </a>
-            <br />
-            <br />
-            <a
-              target="_blank"
-              href={`https://opensea.io/assets/matic/${REACT_APP_LIT_GATEWAY_LIT_OG_NFT_TOKEN_ADDRESS}/${tokenId}`}
-            >
-              View on OpenSea
-            </a>
-            <div>Note: it may take a few minutes to show up on OpenSea</div>
           </>
         ),
       })
       setLoading(false)
+      setNftUrl(nftLinkResp.data.external_url)
     })
   }
 
@@ -139,6 +141,8 @@ const TwitterClaimNftPage = () => {
           Minting NFT on Polygon, please wait for it to be mined...{' '}
           <ProgressSpin />
         </>
+      ) : nftUrl ? (
+        <Button label="Enter NFT Portal" onClick={handleEnterNft} />
       ) : (
         <Button label="Claim NFT" onClick={handleClaimNft} />
       )}
