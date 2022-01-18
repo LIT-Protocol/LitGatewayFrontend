@@ -103,12 +103,17 @@ const TwitterClaimNftPage = () => {
         setLoading(false)
         return
       }
-      const { tokenId } = resp
+      const { tokenId, txHash } = resp
 
       setSuccessMessage({
         title: 'NFT sent on Polygon',
         details: (
           <>
+            <a target="_blank" href={`https://polygonscan.com/tx/${txHash}`}>
+              View on PolygonScan
+            </a>
+            <br />
+            <br />
             <a
               target="_blank"
               href={`https://opensea.io/assets/matic/${REACT_APP_LIT_GATEWAY_LIT_OG_NFT_TOKEN_ADDRESS}/${tokenId}`}
@@ -131,7 +136,8 @@ const TwitterClaimNftPage = () => {
 
       {loading ? (
         <>
-          Minting NFT, please wait for it to be mined... <ProgressSpin />
+          Minting NFT on Polygon, please wait for it to be mined...{' '}
+          <ProgressSpin />
         </>
       ) : (
         <Button label="Claim NFT" onClick={handleClaimNft} />
