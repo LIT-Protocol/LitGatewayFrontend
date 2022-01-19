@@ -8,6 +8,7 @@ import gatherBack from '../pages/SingleAppPage/assets/gatherBack.jpg'
 import shopifyLogo from '../pages/SingleAppPage/assets/shopifyLogo.svg'
 import cfLogo from '../pages/SingleAppPage/assets/cfLogo.png'
 import cfBack from '../pages/SingleAppPage/assets/cfBack.jpg'
+import wordpressLogo from '../pages/SingleAppPage/assets/wordpressLogo.png'
 
 import { storeHoldingsFromLit } from '../api/users'
 
@@ -507,6 +508,41 @@ export const apps = [
         titleIcon: zoomLogo,
         id: 'zoom',
         desc: 'Grant access to Zoom with blockchain requirements',
+        img: driveBack,
+      },
+    ],
+  },
+  {
+    id: 'wordpress',
+    title: 'WordPress',
+    logo: wordpressLogo,
+    tags: ['Blogging', 'Content Creation'],
+    url: 'https://github.com/LIT-Protocol/lit-wp-lit-gated',
+    mainBtnLabel: 'Launch',
+    backgroundImg: driveBack,
+    showEmailSignup: false,
+    shortDesc:
+      'Protect WordPress sites and pages with blockchain-based requirements',
+    textBlock: (
+      <>
+        <p>
+          Add blockchain permissions-based access to your posts or pages in
+          Wordpress. With our flexible permissions builder, you can allow access
+          based on token or NFT ownership as well as other wallet attributes,
+          like membership in a DAO.
+        </p>
+        <p>
+          You can add access requirements to existing content or new content in
+          your Wordpress instance.
+        </p>
+      </>
+    ),
+    more: [
+      {
+        title: 'Google Drive',
+        titleIcon: gDriveLogo,
+        id: 'google-drive',
+        desc: 'Grant access to Google Drive files with blockchain requirements',
         img: driveBack,
       },
     ],
