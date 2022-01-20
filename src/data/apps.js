@@ -69,6 +69,7 @@ export const apps = [
     tags: ['Productivity'],
     url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/zoom',
     mainBtnLabel: 'Coming Soon',
+    githubLink: 'https://github.com/LIT-Protocol/lit-oauth',
     backgroundImg: driveBack,
     shortDesc:
       'Grant access to Zoom meetings and webinars with blockchain requirements',
@@ -131,6 +132,7 @@ export const apps = [
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     mainBtnImage: signInWithGoogle,
+    githubLink: 'https://github.com/LIT-Protocol/lit-oauth',
     shortDesc:
       'Grant access to Google Drive files with blockchain requirements',
     textBlock: (
