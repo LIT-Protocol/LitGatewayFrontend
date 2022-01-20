@@ -11,7 +11,7 @@ import { Badge } from '@consta/uikit/Badge'
 import { Card, GetUpdates } from '../../components'
 import { apps } from '../../data/apps'
 import { useAppContext } from '../../context'
-import { IconForward } from '@consta/uikit/IconForward'
+import githubForwardIcon from './assets/githubForwardIcon.svg'
 
 import githubFavicon from './assets/githubFavicon.png'
 
@@ -68,11 +68,21 @@ const SingleAppPage = () => {
               <div className={styles.titles}>
                 <h1 className={styles.title}>{app.title}</h1>
                 {!!app.githubLink && (
-                  <span className={styles.githubLink}>
-                    <img className={styles.githubIcon} src={githubFavicon} />
-                    <p className={styles.githubText}>View on Github</p>
-                    <IconForward size={'m'} class={styles.githubOpenIcon} />
-                  </span>
+                  <a
+                    className={styles.githubATag}
+                    href={app.githubLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className={styles.githubLink}>
+                      <img className={styles.githubIcon} src={githubFavicon} />
+                      <p className={styles.githubText}>View on Github</p>
+                      <img
+                        class={styles.githubForwardIcon}
+                        src={githubForwardIcon}
+                      />
+                    </span>
+                  </a>
                 )}
                 <div className={styles.tags}>
                   {app.tags.map((tag) => (
