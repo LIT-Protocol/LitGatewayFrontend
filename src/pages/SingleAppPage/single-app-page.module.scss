@@ -72,6 +72,45 @@
     margin-right: 30px;
   }
 
+  .githubATag {
+    text-decoration: none;
+
+    .githubLink {
+      display: flex;
+      background-color: $brandLight;
+      padding: 0.4rem;
+      justify-content: space-around;
+      align-items: center;
+      border-radius: 25px;
+      height: 1.2rem;
+      width: 11rem;
+      margin-bottom: 0.9rem;
+
+      .githubIcon {
+        height: 1.3rem;
+        width: 1.3rem;
+        padding: 0;
+        margin: 0;
+      }
+
+      .githubText {
+        padding: 0;
+        margin: 0;
+        color: $brand-4;
+        font-size: 0.95rem;
+        text-decoration: none;
+      }
+
+      .githubForwardIcon {
+        height: 0.75rem !important;
+        width: 0.75rem;
+        color: $brand-4;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: flex-start;
