@@ -20,6 +20,7 @@ import SingleOfferPage from '../pages/SingleOfferPage'
 import AppsPage from '../pages/AppsPage'
 import AboutPage from '../pages/AboutPage'
 import FramePage from '../pages/FramePage'
+import CryptoArcadeGatherPage from '../pages/CryptoArcadeGatherPage/CryptoArcadeGatherPage'
 
 import Navigation from '../components/Navigation'
 
@@ -72,6 +73,11 @@ const Routes = () => {
                 window.location.href = 'https://discord.gg/nm9aBG8z9w'
                 return null
               }}
+            />
+            <Route
+              path="/cryptoarcade"
+              exact
+              component={CryptoArcadeGatherPage}
             />
           </div>
         </>
