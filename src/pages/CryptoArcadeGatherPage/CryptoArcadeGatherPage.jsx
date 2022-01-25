@@ -45,16 +45,12 @@ const CryptoArcadeGatherPage = () => {
       ]
 
       const resourceId = {
-        addr: '0x508f6057612b30b024dd054cabdf0c46a7124087',
-        resourceId: {
-          baseUrl: 'gather.town',
-          path: 'IIiU7UpulMdbsQ3w/nostalgea',
-          orgId: '',
-          role: '',
-          extraData:
-            '{"chain":"harmony","contractAddress":"0x508f6057612b30b024dd054cabdf0c46a7124087"}',
-        },
-        chain,
+        baseUrl: 'gather.town',
+        path: '/app/IIiU7UpulMdbsQ3w/nostalgea',
+        orgId: '',
+        role: '',
+        extraData:
+          '{"chain":"harmony","contractAddress":"0x508f6057612b30b024dd054cabdf0c46a7124087"}',
       }
 
       let jwt
@@ -86,9 +82,9 @@ const CryptoArcadeGatherPage = () => {
         new URLSearchParams(q).toString() +
         '&'
       console.log('redirectUrl', redirectUrl)
-      window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
-        redirectUrl,
-      )}`
+      // window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
+      //   redirectUrl,
+      // )}`
     })
     setLaunchButtonLoading(false)
   }
