@@ -82,9 +82,9 @@ const CryptoArcadeGatherPage = () => {
         new URLSearchParams(q).toString() +
         '&'
       console.log('redirectUrl', redirectUrl)
-      // window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
-      //   redirectUrl,
-      // )}`
+      window.location = `https://gather.town/getPublicId?redirectTo=${encodeURIComponent(
+        redirectUrl,
+      )}`
     })
     setLaunchButtonLoading(false)
   }
