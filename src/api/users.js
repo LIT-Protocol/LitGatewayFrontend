@@ -13,7 +13,7 @@ export const putUser = (body) => {
 }
 
 export const postUser = (body) => {
-  return fetch(apiUrl + '/saveSubscribe', {
+  return fetch(apiUrl + '/users/saveSubscribe', {
     method: 'POST',
     mode: 'cors',
     headers: {
