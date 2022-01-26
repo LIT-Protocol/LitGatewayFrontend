@@ -36,7 +36,6 @@
     "react-slick": "^0.28.1",
     "react-twitter-widgets": "^1.10.0",
     "sass": "^1.37.5",
-    "sib-api-v3-typescript": "^2.2.2",
     "slick-carousel": "^1.8.1",
     "to-querystring": "^1.1.1",
     "uint8arrays": "^2.1.10",
