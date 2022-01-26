@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { putUser } from '../../api/users'
+import { postUser } from '../../api/users'
 import cx from 'classnames'
 import { InputWrapper } from '../index'
 import { Button } from '@consta/uikit/Button'
@@ -21,7 +21,7 @@ const CustomForm = ({ status, message, onValidated, className }) => {
     if (message && message.includes('Thank you')) {
       setMessageStatus('success')
       setInputMessage(message)
-    } else if (message && message.includes('already subscribed')) {
+    } else if (message === 'duplicate_parameter') {
       setMessageStatus('success')
       setInputMessage('This email is already subscribed!')
     }
@@ -37,14 +37,10 @@ const CustomForm = ({ status, message, onValidated, className }) => {
     if (!added) {
       setMessageStatus('regular')
       setInputMessage(null)
-      await putUser({
-        email: emailVal,
-        authSig: null,
-      })
     }
 
     onValidated({
-      EMAIL: emailVal,
+      email: emailVal,
     })
   }
 

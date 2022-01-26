@@ -18,7 +18,7 @@ import { useAppContext } from '../../context'
 
 import { Card, GetUpdates, InputWrapper } from '../../components'
 
-import { putUser } from '../../api/users'
+import { postUser, putUser } from '../../api/users'
 
 const DiscoverPage = () => {
   const { authSig } = useAppContext()
@@ -31,8 +31,7 @@ const DiscoverPage = () => {
 
   const handleSubmitEmail = async () => {
     console.log('submitting email', email)
-    await putUser({
-      authSig,
+    await postUser({
       email,
     })
     setShowingEmailCaptureModal(false)
@@ -115,6 +114,7 @@ const DiscoverPage = () => {
                       className={styles.link}
                       href="https://twitter.com/litprotocol"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       @LitProtocol
                     </a>
