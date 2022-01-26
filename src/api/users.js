@@ -1,4 +1,3 @@
-// import SibApiV3Sdk from "sib-api-v3-typescript";
 const SibApiV3Sdk = require('sib-api-v3-typescript')
 
 const apiUrl = process.env.REACT_APP_LIT_GATEWAY_FRONTEND_API_URL
