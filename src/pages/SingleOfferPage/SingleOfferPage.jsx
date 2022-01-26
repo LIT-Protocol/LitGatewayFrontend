@@ -59,41 +59,46 @@ const SingleOfferPage = () => {
         setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
       })
     }
-    if (!ogNftTokenId) {
-      handleCheckForOgNftClaims()
-    }
-  }, [nftsRemaining, ogNftTokenId])
+  }, [nftsRemaining])
 
   const handleOgNftButtonAction = async () => {
-    if (ogNftTokenId !== -1) {
-      try {
-        const resp = await getNftLink(ogNftTokenId)
-        window.open(resp.data.external_url, '_blank')
-      } catch (err) {
-        console.log('Error retrieving NFT link:', err)
-      }
-    } else {
-      performWithAuthSig(async (authSig) => {
-        setGlobalError(null)
-        const resp = await twitterOauthUrl({ authSig })
-        if (resp && resp.error) {
-          setGlobalError({ title: resp.error })
-          return
-        }
-        window.location = resp.url
-      })
-    }
-  }
-
-  const handleCheckForOgNftClaims = async () => {
     performWithAuthSig(async (authSig) => {
+      setGlobalError(null)
+      let ogNftId
       try {
-        const resp = await checkForClaimedOgNft({ authSig })
-        console.log('Check for NFT:', resp)
-        setOgNftTokenId(resp)
+        ogNftId = await checkForClaimedOgNft({ authSig })
+        setOgNftTokenId(ogNftId)
+        // console.log('Check for NFT:', resp)
       } catch (err) {
         console.log('Error checking for claimed NFT', err)
+        setGlobalError({
+          title:
+            'An error occured checking if you claimed the NFT.  Please try again later.',
+        })
+        return
       }
+
+      if (ogNftId !== -1) {
+        try {
+          const resp = await getNftLink(ogNftId)
+          window.open(resp.data.external_url, '_blank')
+          return
+        } catch (err) {
+          console.log('Error retrieving NFT link:', err)
+          setGlobalError({
+            title:
+              'An error occured retrieving nft link.  Please try again later.',
+          })
+          return
+        }
+      }
+
+      const resp = await twitterOauthUrl({ authSig })
+      if (resp && resp.error) {
+        setGlobalError({ title: resp.error })
+        return
+      }
+      window.location = resp.url
     })
   }
 
@@ -260,9 +265,7 @@ const SingleOfferPage = () => {
       logo: litLogo,
       tags: ['Lit Protocol'],
       mainBtnLabel:
-        ogNftTokenId === null
-          ? 'Loading...'
-          : !!ogNftTokenId && (ogNftTokenId !== -1 || ogNftTokenId > -1)
+        !!ogNftTokenId && (ogNftTokenId !== -1 || ogNftTokenId > -1)
           ? 'Enter NFT Portal'
           : 'Connect Twitter and Claim NFT',
       twitterBtn: true,
