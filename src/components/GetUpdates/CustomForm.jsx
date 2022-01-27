@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { postUser } from '../../api/users'
+import { putUser } from '../../api/users'
 import cx from 'classnames'
 import { InputWrapper } from '../index'
 import { Button } from '@consta/uikit/Button'
@@ -37,6 +37,10 @@ const CustomForm = ({ status, message, onValidated, className }) => {
     if (!added) {
       setMessageStatus('regular')
       setInputMessage(null)
+      await putUser({
+        email: emailVal,
+        authSig: null,
+      })
     }
 
     onValidated({
