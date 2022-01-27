@@ -44,6 +44,7 @@ const SingleOfferPage = () => {
   const [waxAddress, setWaxAddress] = useState('')
   const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
   const [nftsRemaining, setNftsRemaining] = useState(null)
+  const [allNftsClaimed, setAllNftsClaimed] = useState(false)
   const [ogNftTokenId, setOgNftTokenId] = useState(null)
 
   // clear global error when the user navigates away
@@ -56,12 +57,22 @@ const SingleOfferPage = () => {
   useEffect(() => {
     if (!nftsRemaining) {
       getNftCount().then((data) => {
+        if (data.collection.stats.total_supply >= 10000) {
+          setAllNftsClaimed(true)
+        }
         setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
       })
     }
   }, [nftsRemaining])
 
   const handleOgNftButtonAction = async () => {
+    if (allNftsClaimed) {
+      setGlobalError({
+        title:
+          'Sorry, all NFTs have been claimed.  Follow us on Twitter and join our Discord for updates on future drops',
+      })
+      return
+    }
     performWithAuthSig(async (authSig) => {
       setGlobalError(null)
       let ogNftId
