@@ -43,7 +43,7 @@ const SingleOfferPage = () => {
   const [loading, setLoading] = useState(false)
   const [waxAddress, setWaxAddress] = useState('')
   const [showingHodlgodModal, setShowingHodlgodModal] = useState(false)
-  const [nftsRemaining, setNftsRemaining] = useState(null)
+  const [nftsRemaining, setNftsRemaining] = useState('10,000/10,000')
   const [allNftsClaimed, setAllNftsClaimed] = useState(false)
   const [ogNftTokenId, setOgNftTokenId] = useState(null)
 
@@ -54,16 +54,16 @@ const SingleOfferPage = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (!nftsRemaining) {
-      getNftCount().then((data) => {
-        if (data.collection.stats.total_supply >= 10000) {
-          setAllNftsClaimed(true)
-        }
-        setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
-      })
-    }
-  }, [nftsRemaining])
+  // useEffect(() => {
+  //   if (!nftsRemaining) {
+  //     getNftCount().then((data) => {
+  //       if (data.collection.stats.total_supply >= 10000) {
+  //         setAllNftsClaimed(true)
+  //       }
+  //       setNftsRemaining(`${data.collection.stats.total_supply}/10,000`)
+  //     })
+  //   }
+  // }, [nftsRemaining])
 
   const handleOgNftButtonAction = async () => {
     if (allNftsClaimed) {
@@ -104,12 +104,14 @@ const SingleOfferPage = () => {
         }
       }
 
-      const resp = await twitterOauthUrl({ authSig })
-      if (resp && resp.error) {
-        setGlobalError({ title: resp.error })
-        return
-      }
-      window.location = resp.url
+      window.location = 'https://opensea.io/collection/lit-genesis-gate'
+      // this was then claim flow before we ran out of NFTs
+      // const resp = await twitterOauthUrl({ authSig })
+      // if (resp && resp.error) {
+      //   setGlobalError({ title: resp.error })
+      //   return
+      // }
+      // window.location = resp.url
     })
   }
 
@@ -278,7 +280,7 @@ const SingleOfferPage = () => {
       mainBtnLabel:
         !!ogNftTokenId && (ogNftTokenId !== -1 || ogNftTokenId > -1)
           ? 'Enter NFT Portal'
-          : 'Connect Twitter and Claim NFT',
+          : 'Enter',
       twitterBtn: true,
       handleMainButtonClick: handleOgNftButtonAction,
       requirement: (
