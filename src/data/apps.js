@@ -68,7 +68,7 @@ export const apps = [
     logo: zoomLogo,
     tags: ['Productivity'],
     url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST + '/zoom',
-    mainBtnLabel: 'Coming Soon',
+    mainBtnLabel: 'Launch',
     githubLink: 'https://github.com/LIT-Protocol/lit-oauth',
     backgroundImg: driveBack,
     shortDesc:
