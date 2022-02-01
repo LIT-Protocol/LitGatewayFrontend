@@ -76,35 +76,48 @@ export const apps = [
     textBlock: (
       <>
         <p>
-          Create permissions based Zoom meetings and webinars based on ownership
-          of crypto assets and blockchain identity.
+          Grant access to Zoom meetings and webinars based on ownership of
+          crypto assets and blockchain identity.
         </p>
         <p>
           Connect your account and use the Lit Protocol permissions builder to
           allow access to Zoom meetings based on token or NFT ownership as well
           as other wallet attributes, like membership in a DAO.
         </p>
-        <h4>Documentation</h4>
         <p>
-          <u>Installation</u>: To install this, click the Launch button above
-          and connect your Zoom account.
+          Once you've connected your Zoom account, click "Provision Access" to
+          gate an already-scheduled Zoom meeting or webinar. If you don't have
+          any scheduled Zoom meetings, create one on Zoom and then refresh the
+          Lit Protocol Zoom app page.
         </p>
-        <p>
-          <u>Usage</u>: To share meetings and webinars with other users based on
-          ownership of crypto assets and blockchain identity, you must grant our
-          Zoom app the following Zoom oAuth scopes: user:read, meeting:write,
-          and webinar:write. We use these scopes to grant users access to your
-          meetings and webinars if they meet the requirements you defined when
-          you shared a meeting or webinar. These will be automatically granted
-          when you connect your Zoom account by clicking the Launch button
-          above.
-        </p>
-        <p>
-          <u>Uninstallation</u>: To uninstall this, log in to your Zoom account
-          and and navigate to the Zoom App Marketplace. Click Manage {'>'}{' '}
-          Installed Apps or search for the Lit Protocol app. Click the Lit
-          Protocol app. Click "Uninstall".
-        </p>
+        <h4 style={{ fontSize: 16 }}>Documentation</h4>
+        <div
+          style={{
+            fontSize: 12,
+            lineHeight: 1,
+          }}
+        >
+          <p style={{ marginTop: 16, marginBottom: 16 }}>
+            <u>Installation</u>: To install this, click the Launch button above
+            and connect your Zoom account.
+          </p>
+          <p style={{ marginTop: 16, marginBottom: 16 }}>
+            <u>Usage</u>: To share meetings and webinars with other users based
+            on ownership of crypto assets and blockchain identity, you must
+            grant our Zoom app the following Zoom oAuth scopes: user:read,
+            meeting:write, and webinar:write. We use these scopes to grant users
+            access to your meetings and webinars if they meet the requirements
+            you defined when you shared a meeting or webinar. These will be
+            automatically granted when you connect your Zoom account by clicking
+            the Launch button above.
+          </p>
+          <p style={{ marginTop: 16, marginBottom: 16 }}>
+            <u>Uninstallation</u>: To uninstall this, log in to your Zoom
+            account and and navigate to the Zoom App Marketplace. Click Manage{' '}
+            {'>'} Installed Apps or search for the Lit Protocol app. Click the
+            Lit Protocol app. Click "Uninstall".
+          </p>
+        </div>
       </>
     ),
     more: [
