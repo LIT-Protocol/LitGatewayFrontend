@@ -84,12 +84,6 @@ export const apps = [
           allow access to Zoom meetings based on token or NFT ownership as well
           as other wallet attributes, like membership in a DAO.
         </p>
-        <p>
-          <strong style={{ color: '#0c6edc' }}>
-            NOTE: App will be live later this month pending Zoom security
-            approval.
-          </strong>
-        </p>
         <h4>Documentation</h4>
         <p>
           <u>Installation</u>: To install this, click the Launch button above
