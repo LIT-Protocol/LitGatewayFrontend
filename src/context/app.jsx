@@ -79,6 +79,13 @@ export const AppContextProvider = (props) => {
       })
     }
 
+    window.gtag('config', 'G-LT17LQFBL8', {
+      user_id: currentAuthSig.address,
+    })
+    window.gtag('set', 'user_properties', {
+      wallet_address: currentAuthSig.address,
+    })
+
     obtainingAuthSig = false
     return await action(currentAuthSig)
   }
