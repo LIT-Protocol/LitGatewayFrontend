@@ -526,7 +526,7 @@ export const apps = [
     title: 'WordPress',
     logo: wordpressLogo,
     tags: ['Blogging', 'Content Creation'],
-    url: 'https://github.com/LIT-Protocol/lit-wp-lit-gated',
+    url: 'https://wordpress.org/plugins/litprotocol-wp-lit-gated/',
     mainBtnLabel: 'Launch',
     backgroundImg: driveBack,
     showEmailSignup: false,
