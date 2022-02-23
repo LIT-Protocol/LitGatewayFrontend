@@ -85,7 +85,18 @@ const MinterFileDropper = (props) => {
 
   const thumbs = selectedFiles?.map((file) => (
     <div className={styles.imgWrap} key={file.name}>
-      <img src={file.dataUrl} />
+      {file.type.includes('video') ? (
+        <video
+          src={file.dataUrl}
+          className={styles.imgWrap}
+          autoPlay
+          muted
+          loop
+          controls
+        />
+      ) : (
+        <img src={file.dataUrl} />
+      )}
       <IconTrash
         className={styles.icon}
         view="brand"

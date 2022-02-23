@@ -63,12 +63,25 @@ const HtmlNft = ({
             {(locked && previewMode) || !previewMode ? (
               <>
                 <div className={styles.img}>
-                  <img
-                    className={styles.imgPreview}
-                    src={
-                      publicCover?.length ? publicCover[0].dataUrl : getImg()
-                    }
-                  />
+                  {publicCover?.length &&
+                  publicCover[0] &&
+                  publicCover[0].type.includes('video') ? (
+                    <video
+                      className={styles.imgPreview}
+                      autoPlay
+                      muted
+                      loop
+                      controls
+                      src={publicCover[0].dataUrl}
+                    />
+                  ) : (
+                    <img
+                      className={styles.imgPreview}
+                      src={
+                        publicCover?.length ? publicCover[0].dataUrl : getImg()
+                      }
+                    />
+                  )}
                 </div>
                 <div className={styles.mainContent}>
                   <h4>{title}</h4>
