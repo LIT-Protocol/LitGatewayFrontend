@@ -80,14 +80,21 @@ const ReviewLayout = ({
     )
 
     console.log('minting')
-    const {
-      tokenId,
-      tokenAddress,
-      mintingAddress,
-      txHash,
-      errorCode,
-      authSig,
-    } = await LitJsSdk.mintLIT({ chain, quantity })
+    const tokenAddress = '0xbc991a1bdc34064be5f03726e8369a0229266c37'
+    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
+    const tokenId = '1'
+    const txHash =
+      '0x3a45b844cbbcaf7a3138b2e33d027d9d451ca407472d1738c3bdcb5fabcc4bae'
+    const errorCode = null
+    const mintingAddress = '0x50e2dac5e78B5905CB09495547452cEE64426db2'
+    // const {
+    //   tokenId,
+    //   tokenAddress,
+    //   mintingAddress,
+    //   txHash,
+    //   errorCode,
+    //   authSig,
+    // } = await LitJsSdk.mintLIT({ chain, quantity })
 
     if (errorCode) {
       if (errorCode === 'wrong_chain') {
@@ -114,10 +121,10 @@ const ReviewLayout = ({
     const accessControlConditions = [
       {
         contractAddress: tokenAddress,
-        standardContractType: 'ERC1155',
+        standardContractType: 'ERC721',
         chain,
         method: 'balanceOf',
-        parameters: [':userAddress', tokenId.toString()],
+        parameters: [':userAddress'],
         returnValueTest: {
           comparator: '>',
           value: '0',
