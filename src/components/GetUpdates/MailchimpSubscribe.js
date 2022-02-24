@@ -11,39 +11,43 @@ class MailchimpSubscribe extends React.Component {
     message: null,
   }
   subscribe = (data) => {
-    const params = toQueryString(data)
-    const url = getAjaxUrl(this.props.url) + '&' + params
-    this.setState(
-      {
-        status: 'sending',
-        message: null,
-      },
-      () =>
-        jsonp(
-          url,
-          {
-            param: 'c',
-          },
-          (err, data) => {
-            if (err) {
-              this.setState({
-                status: 'error',
-                message: err,
-              })
-            } else if (data.result !== 'success') {
-              this.setState({
-                status: 'error',
-                message: data.msg,
-              })
-            } else {
-              this.setState({
-                status: 'success',
-                message: data.msg,
-              })
-            }
-          },
-        ),
-    )
+    this.setState({
+      status: 'success',
+      message: data.msg,
+    })
+    // const params = toQueryString(data)
+    // const url = getAjaxUrl(this.props.url) + '&' + params
+    // this.setState(
+    //   {
+    //     status: 'sending',
+    //     message: null,
+    //   },
+    //   () =>
+    //     jsonp(
+    //       url,
+    //       {
+    //         param: 'c',
+    //       },
+    //       (err, data) => {
+    //         if (err) {
+    //           this.setState({
+    //             status: 'error',
+    //             message: err,
+    //           })
+    //         } else if (data.result !== 'success') {
+    //           this.setState({
+    //             status: 'error',
+    //             message: data.msg,
+    //           })
+    //         } else {
+    //           this.setState({
+    //             status: 'success',
+    //             message: data.msg,
+    //           })
+    //         }
+    //       },
+    //     ),
+    // )
   }
 
   render() {
