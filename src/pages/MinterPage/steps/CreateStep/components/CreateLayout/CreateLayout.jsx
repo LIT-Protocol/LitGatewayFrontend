@@ -103,6 +103,16 @@ const CreateLayout = ({
         >
           Upload images, videos or gif files (25mb max total)
         </Text>
+        {/* <InputWrapper
+          value={url}
+          className={styles.input}
+          label="Social Media URL (Optional)"
+          id="url"
+          size="l"
+          handleChange={(value) => setUrl(value)}
+        /> */}
+      </div>
+      <div className={styles.bottom}>
         <InputWrapper
           value={description}
           className={styles.input}
@@ -114,16 +124,6 @@ const CreateLayout = ({
           rows="4"
           type="textarea"
         />
-        {/* <InputWrapper
-          value={url}
-          className={styles.input}
-          label="Social Media URL (Optional)"
-          id="url"
-          size="l"
-          handleChange={(value) => setUrl(value)}
-        /> */}
-      </div>
-      <div className={styles.bottom}>
         <Button
           className={styles.btn}
           label="Next"
