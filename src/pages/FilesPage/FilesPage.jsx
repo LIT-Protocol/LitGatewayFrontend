@@ -8,7 +8,6 @@ import { Button } from '@consta/uikit/Button'
 import { TextField } from '@consta/uikit/TextField'
 import { IconAdd } from '@consta/uikit/IconAdd'
 import { Breadcrumbs } from '@consta/uikit/Breadcrumbs'
-import { SnackBar } from '@consta/uikit/SnackBar'
 
 import UploadFilesModal from './UploadFilesModal'
 import FilesList from './FilesList'
@@ -251,7 +250,11 @@ const FilesPage = () => {
 
       <div style={{ height: 32 }} />
 
-      <FilesList rows={rows} loadFiles={loadFiles} />
+      <FilesList
+        rows={rows}
+        loadFiles={loadFiles}
+        goToCreateConditions={() => setShareModalOpen(true)}
+      />
     </div>
   )
 }

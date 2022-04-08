@@ -81,7 +81,13 @@ const WhatToDo = ({
               className={styles.btnBlock}
               onClick={() => goToCreateConditions()}
             >
-              <button className={styles.btnBock}>
+              <button
+                className={styles.btnBock}
+                onClick={() => {
+                  goToCreateConditions()
+                  onClose()
+                }}
+              >
                 <h5 className={styles.link}>CREATE REQUIREMENT(S)</h5>
               </button>
             </div>
