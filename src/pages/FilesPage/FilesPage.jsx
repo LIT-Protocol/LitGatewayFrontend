@@ -102,7 +102,7 @@ const FilesPage = () => {
 
   const onAccessControlConditionsSelected = (conditions) => {
     console.log('onAccessControlConditionsSelected:', conditions)
-    setAccessControlConditions(conditions)
+    setAccessControlConditions(conditions.accessControlConditions)
     setShareModalOpen(false)
     setUploadingModalOpen(true)
   }
@@ -253,7 +253,7 @@ const FilesPage = () => {
       <FilesList
         rows={rows}
         loadFiles={loadFiles}
-        goToCreateConditions={() => setShareModalOpen(true)}
+        openShareModal={() => setShareModalOpen(true)}
       />
     </div>
   )

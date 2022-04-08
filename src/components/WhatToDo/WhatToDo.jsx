@@ -5,7 +5,7 @@ import union from '../../assets/union.svg'
 
 const WhatToDo = ({
   onClose,
-  goToCreateConditions,
+  openShareModal,
   sharingItems,
   onlyAllowCopySharingLink,
   getSharingLink,
@@ -77,14 +77,11 @@ const WhatToDo = ({
 
         <div className={styles.types}>
           {!onlyAllowCopySharingLink ? (
-            <div
-              className={styles.btnBlock}
-              onClick={() => goToCreateConditions()}
-            >
+            <div className={styles.btnBlock}>
               <button
                 className={styles.btnBock}
                 onClick={() => {
-                  goToCreateConditions()
+                  openShareModal()
                   onClose()
                 }}
               >

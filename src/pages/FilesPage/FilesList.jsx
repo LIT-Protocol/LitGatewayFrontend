@@ -23,7 +23,7 @@ import { patchFile } from '../../api/files'
 import WhatToDo from '../../components/WhatToDo/WhatToDo'
 
 const FilesList = (props) => {
-  const { rows, loadFiles, goToCreateConditions } = props
+  const { rows, loadFiles, openShareModal } = props
   console.log('rows', rows)
 
   const { performWithAuthSig, tokenList, authSig } = useAppContext()
@@ -248,7 +248,7 @@ const FilesList = (props) => {
           sharingItems={[selectedItem]}
           getSharingLink={getSharingLink}
           onlyAllowCopySharingLink={!selectedItem.ipfsHash}
-          goToCreateConditions={goToCreateConditions}
+          openShareModal={openShareModal}
         />
       )}
       {/*{showShareModal ? (*/}
