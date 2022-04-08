@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import styles from './what-to-do.module.scss'
-import union from '../assets/union.svg'
+import union from '../../assets/union.svg'
 
 const WhatToDo = ({
   onClose,
