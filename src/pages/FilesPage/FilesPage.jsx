@@ -102,6 +102,7 @@ const FilesPage = () => {
 
   const onAccessControlConditionsSelected = (conditions) => {
     console.log('onAccessControlConditionsSelected:', conditions)
+    console.log('selectedFiles', selectedFiles)
     setAccessControlConditions(conditions.accessControlConditions)
     setShareModalOpen(false)
     setUploadingModalOpen(true)
