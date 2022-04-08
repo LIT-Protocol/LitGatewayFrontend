@@ -53,6 +53,7 @@
 .titles {
   margin: 1rem 0 16px;
 }
+
 .titles h3 {
   font-size: 1.5em;
   @media (max-width: 600px) {
@@ -64,6 +65,7 @@
     margin: 0 0 10px;
   }
 }
+
 .titles p {
   //color: $primary-text;
   font-weight: 300;
@@ -107,6 +109,7 @@
 .type {
   margin: 4px;
   height: auto;
+
   h4 {
     font-size: 1.2em;
     text-align: center;
@@ -116,9 +119,22 @@
       font-size: 1em;
     }
   }
+
+  .copied {
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    background-color: #42974a;
+    margin: 0.25rem auto 0.75rem;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
   .btnBock {
     border-radius: 0.25rem;
-    padding: 0.75rem 1.5rem 0.5rem;
+    padding: 0.75rem 1.5rem;
     display: flex;
     background-color: #8159d9;
     margin: 0.25rem auto 1rem;
@@ -126,49 +142,18 @@
     box-sizing: border-box;
     cursor: pointer;
     transition: all 0.3s;
-    @media (max-width: 600px) {
-      //padding: 10px;
-      svg {
-        //height: 100px;
-      }
-      .lockIcon,
-      .linkIcon {
-        width: 30px;
-        height: 30px;
-        top: 48%;
-        left: 34%;
-      }
-    }
+
     &:hover {
-      background: #777;
-      svg {
-        path {
-          fill: white;
-        }
-      }
-      h5 {
-        color: white;
-      }
-      .link {
-        color: white;
-      }
+      background: #2c0c72;
     }
-    .img {
-      margin-bottom: 20px;
-      position: relative;
-    }
-    svg {
-      path {
-        fill: #777;
-      }
-    }
-    h5 {
-      font-family: Roboto, 'Open Sans', sans-serif;
-      font-weight: 500;
-      color: white;
-      text-align: center;
-      margin: 0 auto;
-      //color: $primary-text;
-    }
+  }
+
+  h5 {
+    font-family: Roboto, 'Open Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
   }
 }

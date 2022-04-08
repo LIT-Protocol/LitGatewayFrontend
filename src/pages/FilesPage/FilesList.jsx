@@ -20,7 +20,6 @@ import {
   getSharingLink,
 } from '../../utils/files'
 import { patchFile } from '../../api/files'
-import AccessCreated from '../../components/CopyLink/AccessCreated'
 import WhatToDo from '../../components/WhatToDo/WhatToDo'
 
 const FilesList = (props) => {
@@ -249,13 +248,23 @@ const FilesList = (props) => {
           sharingItems={[selectedItem]}
           getSharingLink={getSharingLink}
           onlyAllowCopySharingLink={!selectedItem.ipfsHash}
-          copyLinkText={
-            !selectedItem.ipfsHash
-              ? 'Anyone with the link can see the files, but only authorized wallets can open them'
-              : null
-          }
         />
       )}
+      {/*{showShareModal ? (*/}
+      {/*  <ShareModal*/}
+      {/*    onClose={() => closeShareModal()}*/}
+      {/*    sharingItems={[selectedItem]}*/}
+      {/*    onAccessControlConditionsSelected={onAccessControlConditionsSelected}*/}
+      {/*    getSharingLink={getSharingLink}*/}
+      {/*    onlyAllowCopySharingLink={!selectedItem.ipfsHash} // true if folder*/}
+      {/*    copyLinkText={*/}
+      {/*      !selectedItem.ipfsHash*/}
+      {/*        ? 'Anyone with the link can see the files, but only authorized wallets can open them'*/}
+      {/*        : null*/}
+      {/*    }*/}
+      {/*    myWalletAddress={authSig && authSig.address}*/}
+      {/*  />*/}
+      {/*) : null}*/}
     </>
   )
 }

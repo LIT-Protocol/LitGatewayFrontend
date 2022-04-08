@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-// import { ShareModal } from 'lit-access-control-conditions-modal'
 import ShareModal from 'lit-share-modal'
 
 import styles from './files-page.module.scss'
@@ -9,6 +8,7 @@ import { Button } from '@consta/uikit/Button'
 import { TextField } from '@consta/uikit/TextField'
 import { IconAdd } from '@consta/uikit/IconAdd'
 import { Breadcrumbs } from '@consta/uikit/Breadcrumbs'
+import { SnackBar } from '@consta/uikit/SnackBar'
 
 import UploadFilesModal from './UploadFilesModal'
 import FilesList from './FilesList'
@@ -20,7 +20,7 @@ import { useAppContext } from '../../context'
 
 import { getFolder, putFolder } from '../../api/files'
 import { getSharingLink } from '../../utils/files'
-import AccessCreated from '../../components/CopyLink/AccessCreated'
+import AccessCreated from '../../components/AccessCreated/AccessCreated'
 
 const FilesPage = () => {
   const { folderId } = useParams()

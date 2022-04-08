@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import union from '../../assets/union.svg'
 import styles from './access-created.module.scss'
 
@@ -8,16 +8,30 @@ const AccessCreated = ({
   getSharingLink,
   onClose,
 }) => {
+  const [showCopied, setShowCopied] = useState(false)
+
   const copyToClipboard = async () => {
     const fileUrl = getSharingLink(sharingItems[0])
     await navigator.clipboard.writeText(fileUrl)
+    setShowCopied(true)
     // setShowingSnackbar(true);
     // setTimeout(() => setShowingSnackbar(false), 5000);
   }
 
+  const closeModal = () => {
+    setShowCopied(false)
+    onClose()
+  }
+
   return (
-    <div className={styles.accessCreatedModalOverlay}>
-      <div className={styles.accessCreatedModal} onClick={() => {}}>
+    <div
+      className={styles.accessCreatedModalOverlay}
+      onClick={() => closeModal()}
+    >
+      <div
+        className={styles.accessCreatedModal}
+        onClick={(e) => e.stopPropagation()}
+      >
         <header className={styles.accessCreatedHeaderContainer}>
           <h3 className={styles.accessCreatedHeaderTitle}>ACCESS CONTROL</h3>
           <button className={styles.accessCreatedHeaderClose}>
@@ -25,7 +39,7 @@ const AccessCreated = ({
               alt={'close'}
               className={'lsm-h-4'}
               src={union}
-              onClick={() => onClose()}
+              onClick={() => closeModal()}
             />
           </button>
         </header>
@@ -74,19 +88,33 @@ const AccessCreated = ({
           </div>
         )}
 
-        <div className={styles.types}>
-          <div
-            className={styles.type}
-            onClick={async () => {
-              await copyToClipboard()
-              onClose()
-            }}
-          >
-            <div className={styles.btnBock}>
-              <h5 className={styles.link}>COPY LINK</h5> <br />{' '}
+        {!showCopied ? (
+          <div className={styles.types}>
+            <div
+              className={styles.type}
+              onClick={async () => {
+                await copyToClipboard()
+              }}
+            >
+              <div className={styles.btnBock}>
+                <h5 className={styles.link}>COPY LINK</h5>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.types}>
+            <div
+              className={styles.type}
+              onClick={async () => {
+                await copyToClipboard()
+              }}
+            >
+              <div className={styles.copied}>
+                <h5 className={styles.link}>COPIED!</h5>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
