@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { ShareModal } from 'lit-access-control-conditions-modal'
+// import { ShareModal } from 'lit-access-control-conditions-modal'
+import ShareModal from 'lit-share-modal'
 
 import styles from './files-page.module.scss'
 
@@ -19,6 +20,7 @@ import { useAppContext } from '../../context'
 
 import { getFolder, putFolder } from '../../api/files'
 import { getSharingLink } from '../../utils/files'
+import AccessCreated from '../../components/CopyLink/AccessCreated'
 
 const FilesPage = () => {
   const { folderId } = useParams()
@@ -32,6 +34,8 @@ const FilesPage = () => {
   const [newFolderName, setNewFolderName] = useState('')
   const [selectedFiles, setSelectedFiles] = useState(null)
   const [shareModalOpen, setShareModalOpen] = useState(false)
+  const [accessCreatedModalOpen, setAccessCreatedModalOpen] = useState(false)
+  const [whatToDoModalOpen, setWhatToDoModalOpen] = useState(false)
   const [accessControlConditions, setAccessControlConditions] = useState(null)
   const [uploadingModalOpen, setUploadingModalOpen] = useState(false)
   const [shareModalStep, setShareModalStep] = useState(null)
@@ -76,7 +80,9 @@ const FilesPage = () => {
     console.log(selectedFiles)
     setSelectedFiles(selectedFiles)
     setFileDropperModalOpen(false)
-    setShareModalStep('ableToAccess')
+
+    // todo: remove sharemodalstep
+    // setShareModalStep('ableToAccess')
     setShareModalOpen(true)
   }
 
@@ -87,7 +93,12 @@ const FilesPage = () => {
   const closeShareModal = () => {
     setShareModalOpen(false)
     setSelectedFiles(null)
-    setShareModalStep(null)
+    // setShareModalStep(null)
+    // todo: show whattodo modal
+  }
+
+  const closeAccessCreatedModal = () => {
+    setAccessCreatedModalOpen(false)
   }
 
   const onAccessControlConditionsSelected = (conditions) => {
@@ -102,8 +113,9 @@ const FilesPage = () => {
     if (selectedFiles.length === 1) {
       setUploadingModalOpen(false)
       setSelectedFiles(fileMetadatas)
-      setShareModalStep('accessCreated')
-      setShareModalOpen(true)
+      // setShareModalStep('accessCreated')
+      // setShareModalOpen(true)
+      setAccessCreatedModalOpen(true)
     } else {
       setUploadingModalOpen(false)
     }
@@ -127,8 +139,10 @@ const FilesPage = () => {
   }
 
   const handleBackFromShareModal = () => {
-    setShareModalOpen(false)
-    setShareModalStep(null)
+    // setShareModalOpen(false)
+    // setShareModalStep(null)
+    // todo: show whattodomodal
+    setWhatToDoModalOpen(true)
     setFileDropperModalOpen(true)
   }
 
@@ -208,14 +222,30 @@ const FilesPage = () => {
         />
       ) : null}
 
-      {shareModalOpen ? (
+      {/*{shareModalOpen ? (*/}
+      {/*  <ShareModal*/}
+      {/*    onClose={() => closeShareModal()}*/}
+      {/*    onBack={handleBackFromShareModal}*/}
+      {/*    sharingItems={selectedFiles}*/}
+      {/*    onAccessControlConditionsSelected={onAccessControlConditionsSelected}*/}
+      {/*    getSharingLink={getSharingLink}*/}
+      {/*    showStep={shareModalStep}*/}
+      {/*  />*/}
+      {/*) : null}*/}
+
+      {shareModalOpen && (
         <ShareModal
+          showModal={shareModalOpen}
           onClose={() => closeShareModal()}
-          onBack={handleBackFromShareModal}
-          sharingItems={selectedFiles}
           onAccessControlConditionsSelected={onAccessControlConditionsSelected}
+        />
+      )}
+
+      {accessCreatedModalOpen ? (
+        <AccessCreated
+          onClose={() => closeAccessCreatedModal()}
+          sharingItems={selectedFiles}
           getSharingLink={getSharingLink}
-          showStep={shareModalStep}
         />
       ) : null}
 

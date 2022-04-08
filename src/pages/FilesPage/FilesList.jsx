@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import uint8arrayToString from 'uint8arrays/to-string'
-import { ShareModal } from 'lit-access-control-conditions-modal'
+// import { ShareModal } from 'lit-access-control-conditions-modal'
 
 import { Button } from '@consta/uikit/Button'
 import { Table } from '@consta/uikit/Table'
@@ -20,15 +20,20 @@ import {
   getSharingLink,
 } from '../../utils/files'
 import { patchFile } from '../../api/files'
+import AccessCreated from '../../components/CopyLink/AccessCreated'
+import WhatToDo from '../../components/WhatToDo/WhatToDo'
 
 const FilesList = (props) => {
   const { rows, loadFiles } = props
+  console.log('rows', rows)
 
   const { performWithAuthSig, tokenList, authSig } = useAppContext()
 
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
-  const [showShareModal, setShowShareModal] = useState(false)
+  //todo remove access created modal
+  const [showAccessCreatedModal, setShowAccessCreatedModal] = useState(false)
+  const [whatToDoModalOpen, setWhatToDoModalOpen] = useState(false)
   const [error, setError] = useState(false)
 
   // called when an additional access control requirement is added to an existing
@@ -96,7 +101,8 @@ const FilesList = (props) => {
 
   const showFileLink = (file) => {
     setSelectedItem(file)
-    setShowShareModal(true)
+    // setShowAccessCreatedModal(true);
+    setWhatToDoModalOpen(true)
   }
 
   const downloadFile = async (file) => {
@@ -113,8 +119,9 @@ const FilesList = (props) => {
     }
   }
 
-  const closeShareModal = () => {
-    setShowShareModal(false)
+  const closeWhatToDoModal = () => {
+    // setShowAccessCreatedModal(false)
+    setWhatToDoModalOpen(false)
     setSelectedItem(null)
   }
 
@@ -222,21 +229,33 @@ const FilesList = (props) => {
         emptyRowsPlaceholder="No files yet.  Upload some and they will show up here."
       />
 
-      {showShareModal ? (
-        <ShareModal
-          onClose={() => closeShareModal()}
+      {/*{showAccessCreatedModal && (*/}
+      {/*  <AccessCreated*/}
+      {/*    onClose={() => closeWhatToDoModal()}*/}
+      {/*    sharingItems={[selectedItem]}*/}
+      {/*    getSharingLink={getSharingLink}*/}
+      {/*    onlyAllowCopySharingLink={!selectedItem.ipfsHash}*/}
+      {/*    copyLinkText={*/}
+      {/*      !selectedItem.ipfsHash*/}
+      {/*        ? 'Anyone with the link can see the files, but only authorized wallets can open them'*/}
+      {/*        : null*/}
+      {/*    }*/}
+      {/*  />*/}
+      {/*)}*/}
+
+      {whatToDoModalOpen && (
+        <WhatToDo
+          onClose={() => closeWhatToDoModal()}
           sharingItems={[selectedItem]}
-          onAccessControlConditionsSelected={onAccessControlConditionsSelected}
           getSharingLink={getSharingLink}
-          onlyAllowCopySharingLink={!selectedItem.ipfsHash} // true if folder
+          onlyAllowCopySharingLink={!selectedItem.ipfsHash}
           copyLinkText={
             !selectedItem.ipfsHash
               ? 'Anyone with the link can see the files, but only authorized wallets can open them'
               : null
           }
-          myWalletAddress={authSig && authSig.address}
         />
-      ) : null}
+      )}
     </>
   )
 }
