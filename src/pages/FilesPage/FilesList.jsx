@@ -30,8 +30,6 @@ const FilesList = (props) => {
 
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
-  //todo remove access created modal
-  const [showAccessCreatedModal, setShowAccessCreatedModal] = useState(false)
   const [whatToDoModalOpen, setWhatToDoModalOpen] = useState(false)
   const [error, setError] = useState(false)
 
@@ -248,7 +246,10 @@ const FilesList = (props) => {
           sharingItems={[selectedItem]}
           getSharingLink={getSharingLink}
           onlyAllowCopySharingLink={!selectedItem.ipfsHash}
-          openShareModal={openShareModal}
+          openShareModal={() => {
+            console.log('selectedItem', selectedItem)
+            openShareModal()
+          }}
         />
       )}
       {/*{showShareModal ? (*/}
