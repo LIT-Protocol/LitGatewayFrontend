@@ -251,11 +251,7 @@ const FilesPage = () => {
 
       <div style={{ height: 32 }} />
 
-      <FilesList
-        rows={rows}
-        loadFiles={loadFiles}
-        openShareModal={() => setShareModalOpen(true)}
-      />
+      <FilesList rows={rows} loadFiles={loadFiles} />
     </div>
   )
 }

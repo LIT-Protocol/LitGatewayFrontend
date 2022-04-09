@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import uint8arrayToString from 'uint8arrays/to-string'
 // import { ShareModal } from 'lit-access-control-conditions-modal'
+import ShareModal from 'lit-share-modal'
 
 import { Button } from '@consta/uikit/Button'
 import { Table } from '@consta/uikit/Table'
@@ -21,21 +22,25 @@ import {
 } from '../../utils/files'
 import { patchFile } from '../../api/files'
 import WhatToDo from '../../components/WhatToDo/WhatToDo'
+import AccessCreated from '../../components/AccessCreated/AccessCreated'
 
 const FilesList = (props) => {
-  const { rows, loadFiles, openShareModal } = props
+  const { rows, loadFiles } = props
   console.log('rows', rows)
 
   const { performWithAuthSig, tokenList, authSig } = useAppContext()
 
   const [selectedItem, setSelectedItem] = useState(null)
   const [downloadingIds, setDownloadingIds] = useState([])
+  const [accessCreatedModalOpen, setAccessCreatedModalOpen] = useState(false)
+  const [shareModalOpen, setShareModalOpen] = useState(false)
   const [whatToDoModalOpen, setWhatToDoModalOpen] = useState(false)
   const [error, setError] = useState(false)
 
   // called when an additional access control requirement is added to an existing
   // file
-  const onAccessControlConditionsSelected = async (accessControlConditions) => {
+  const onAccessControlConditionsSelected = async (conditions) => {
+    const accessControlConditions = conditions.accessControlConditions
     console.log(
       'in FilesList and onAccessControlConditionsSelected callback called to add an additional condition with conditions',
       accessControlConditions,
@@ -89,6 +94,8 @@ const FilesList = (props) => {
         const newFile = files.find((r) => r.id === selectedItem.id)
         console.log('new file is', newFile)
         setSelectedItem(newFile)
+        setShareModalOpen(false)
+        setAccessCreatedModalOpen(true)
       },
       {
         chain,
@@ -226,19 +233,18 @@ const FilesList = (props) => {
         emptyRowsPlaceholder="No files yet.  Upload some and they will show up here."
       />
 
-      {/*{showAccessCreatedModal && (*/}
-      {/*  <AccessCreated*/}
-      {/*    onClose={() => closeWhatToDoModal()}*/}
-      {/*    sharingItems={[selectedItem]}*/}
-      {/*    getSharingLink={getSharingLink}*/}
-      {/*    onlyAllowCopySharingLink={!selectedItem.ipfsHash}*/}
-      {/*    copyLinkText={*/}
-      {/*      !selectedItem.ipfsHash*/}
-      {/*        ? 'Anyone with the link can see the files, but only authorized wallets can open them'*/}
-      {/*        : null*/}
-      {/*    }*/}
-      {/*  />*/}
-      {/*)}*/}
+      {accessCreatedModalOpen && (
+        <AccessCreated
+          onClose={() => setAccessCreatedModalOpen(false)}
+          sharingItems={[selectedItem]}
+          getSharingLink={getSharingLink}
+          copyLinkText={
+            !selectedItem.ipfsHash
+              ? 'Anyone with the link can see the files, but only authorized wallets can open them'
+              : null
+          }
+        />
+      )}
 
       {whatToDoModalOpen && (
         <WhatToDo
@@ -248,8 +254,19 @@ const FilesList = (props) => {
           onlyAllowCopySharingLink={!selectedItem.ipfsHash}
           openShareModal={() => {
             console.log('selectedItem', selectedItem)
-            openShareModal()
+            setWhatToDoModalOpen(false)
+            setShareModalOpen(true)
           }}
+        />
+      )}
+
+      {shareModalOpen && (
+        <ShareModal
+          showModal={shareModalOpen}
+          onClose={() => {
+            setShareModalOpen(false)
+          }}
+          onAccessControlConditionsSelected={onAccessControlConditionsSelected}
         />
       )}
       {/*{showShareModal ? (*/}
