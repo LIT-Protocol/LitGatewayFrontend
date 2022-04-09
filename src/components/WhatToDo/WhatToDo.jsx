@@ -82,7 +82,6 @@ const WhatToDo = ({
                 className={styles.btnBock}
                 onClick={() => {
                   openShareModal()
-                  onClose()
                 }}
               >
                 <h5 className={styles.link}>CREATE REQUIREMENT(S)</h5>
