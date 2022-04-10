@@ -90,6 +90,7 @@ const FilesPage = () => {
   }
 
   const closeShareModal = () => {
+    console.log('closeShareModal')
     setShareModalOpen(false)
     setSelectedFiles(null)
     // setShareModalStep(null)
@@ -142,7 +143,7 @@ const FilesPage = () => {
     // setShareModalOpen(false)
     // setShareModalStep(null)
     // todo: show whattodomodal
-    setWhatToDoModalOpen(true)
+    // setWhatToDoModalOpen(true)
     setFileDropperModalOpen(true)
   }
 
@@ -236,7 +237,7 @@ const FilesPage = () => {
       {shareModalOpen && (
         <ShareModal
           showModal={shareModalOpen}
-          onClose={() => closeShareModal()}
+          onClose={() => handleBackFromShareModal()}
           onAccessControlConditionsSelected={onAccessControlConditionsSelected}
         />
       )}
