@@ -115,7 +115,7 @@ const FilesPage = () => {
       setUploadingModalOpen(false)
       setSelectedFiles(fileMetadatas)
       // setShareModalStep('accessCreated')
-      // setShareModalOpen(true)
+      setShareModalOpen(false)
       setAccessCreatedModalOpen(true)
     } else {
       setUploadingModalOpen(false)
