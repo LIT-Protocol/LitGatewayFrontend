@@ -8809,10 +8809,10 @@ lit-connect-modal@^0.1.8:
   dependencies:
     micromodal "^0.4.10"
 
-lit-js-sdk@^1.1.153:
-  version "1.1.153"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.153.tgz#b3f893a9de8784d186d9683d4e78af69809dcfdc"
-  integrity sha512-L0jcBhqH6E8BCCKVYLHTJHbMvkCj8XinbewXU8Vpk1BJ9JbySvRAgAtSSYE4HzKMSDv/PiZ4Piwsx9p89fGV5g==
+lit-js-sdk@^1.1.156, lit-js-sdk@^1.1.157:
+  version "1.1.157"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.157.tgz#84881ef4c35face3199962f4c69ccf15c545d0c4"
+  integrity sha512-RI/XK1X8W2r6rwYPVb+orjcvwzvVm6wdZLEEwhRdbZoSp7vSTPLzRip+NYGq02BUEr0iFa0tRvc+SsP7LrlMoQ==
   dependencies:
     "@ethersproject/abi" "^5.5.0"
     "@ethersproject/bytes" "^5.5.0"
@@ -8838,14 +8838,14 @@ lit-js-sdk@^1.1.153:
     uint8arrays "^3.0.0"
     utf-8-validate "^5.0.8"
 
-lit-share-modal@^0.1.62:
-  version "0.1.62"
-  resolved "https://registry.yarnpkg.com/lit-share-modal/-/lit-share-modal-0.1.62.tgz#09859ac4aa4f01aeba0fecb3046ec6653391e7a8"
-  integrity sha512-yeTTnMIHR7dcO3Mu19VT34RXl087Ok6wR0mscV5P+qGB/FfC+rnTW+Hg0cNHcAydGpIJ2Oh2Cchv5zW82kSh3g==
+lit-share-modal@^0.1.66:
+  version "0.1.66"
+  resolved "https://registry.yarnpkg.com/lit-share-modal/-/lit-share-modal-0.1.66.tgz#78dff2b79107d807048019d85d374a465626e290"
+  integrity sha512-e6xiCaFZ+3mkVejXJOSa+iKvSQV6k35gZsW4jahaeXAnEaMRKL+WL9tRrDePTsnClI/j6G3IPu3Zop/Uzv556w==
   dependencies:
     ethers "^5.5.4"
     events "^3.3.0"
-    lit-js-sdk "^1.1.153"
+    lit-js-sdk "^1.1.156"
     react "^17.0.2"
     react-dom "^17.0.2"
     react-select "^5.2.2"
@@ -11532,10 +11532,23 @@ react-select@^4.3.0, react-select@^4.3.1:
     react-input-autosize "^3.0.0"
     react-transition-group "^4.3.0"
 
-react-select@^5.2.1, react-select@^5.2.2:
+react-select@^5.2.1:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.2.2.tgz#3d5edf0a60f1276fd5f29f9f90a305f0a25a5189"
   integrity sha512-miGS2rT1XbFNjduMZT+V73xbJEeMzVkJOz727F6MeAr2hKE0uUSA8Ff7vD44H32x2PD3SRB6OXTY/L+fTV3z9w==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+    "@emotion/cache" "^11.4.0"
+    "@emotion/react" "^11.1.1"
+    "@types/react-transition-group" "^4.4.0"
+    memoize-one "^5.0.0"
+    prop-types "^15.6.0"
+    react-transition-group "^4.3.0"
+
+react-select@^5.2.2:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.3.0.tgz#dc77c1f95e1037ec4cb01c5e5d6272d80be8d3f6"
+  integrity sha512-GM6Fbv1+X+kb3e5Fc4oNeyOJkCIesY/D4NBiReKlGY4RxoeztFYm3J0KREgwMaIKQqwTiuLqTlpUBY3SYw5goQ==
   dependencies:
     "@babel/runtime" "^7.12.0"
     "@emotion/cache" "^11.4.0"
