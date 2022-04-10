@@ -140,7 +140,7 @@ const FilesPage = () => {
   }
 
   const handleBackFromShareModal = () => {
-    // setShareModalOpen(false)
+    setShareModalOpen(false)
     // setShareModalStep(null)
     // todo: show whattodomodal
     // setWhatToDoModalOpen(true)
