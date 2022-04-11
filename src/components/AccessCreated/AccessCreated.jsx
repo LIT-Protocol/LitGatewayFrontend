@@ -11,6 +11,7 @@ const AccessCreated = ({
   const [showCopied, setShowCopied] = useState(false)
 
   const copyToClipboard = async () => {
+    console.log('sharingItems', sharingItems)
     const fileUrl = getSharingLink(sharingItems[0])
     await navigator.clipboard.writeText(fileUrl)
     setShowCopied(true)
