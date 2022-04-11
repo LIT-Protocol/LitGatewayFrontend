@@ -8838,10 +8838,10 @@ lit-js-sdk@^1.1.156, lit-js-sdk@^1.1.157:
     uint8arrays "^3.0.0"
     utf-8-validate "^5.0.8"
 
-lit-share-modal@^0.1.73:
-  version "0.1.73"
-  resolved "https://registry.yarnpkg.com/lit-share-modal/-/lit-share-modal-0.1.73.tgz#3cf288d2f2d3a782be512482dde14f339a65c6d3"
-  integrity sha512-M9RSGLabny8VpWBlNl14O5A3Ovy68lLfAK6d4AnHAzVSlQ6N+0CxMiCZh0QVTv8GeBXBZfc14s5onldvoq+R6w==
+lit-share-modal@^0.1.74:
+  version "0.1.74"
+  resolved "https://registry.yarnpkg.com/lit-share-modal/-/lit-share-modal-0.1.74.tgz#7dec9a29954502c9529530a596896e7d133dd7a2"
+  integrity sha512-GDmobSBGMz8+VvhgmS/SO1IlR++gZP6wp46t8V0hJJcHu7uecLRDpQ5yQgBrl7051lnMcLsXVPFaj1Deh34OCA==
   dependencies:
     ethers "^5.5.4"
     events "^3.3.0"
