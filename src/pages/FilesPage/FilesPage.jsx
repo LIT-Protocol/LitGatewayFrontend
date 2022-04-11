@@ -239,11 +239,10 @@ const FilesPage = () => {
       {shareModalOpen && (
         <ShareModal
           showModal={shareModalOpen}
-          // onClose={() => {
-          //   console.log('ShareModal onClose')
-          //   handleBackFromShareModal()
-          // }}
-          onClose={() => closeShareModal()}
+          onClose={() => {
+            console.log('ShareModal onClose')
+            handleBackFromShareModal()
+          }}
           onAccessControlConditionsSelected={onAccessControlConditionsSelected}
         />
       )}

@@ -35,161 +35,161 @@ const Uploader = ({
     console.log('check use effect in uploader')
     console.log('uploadItems', uploadItems)
     console.log('accessControlConditions', accessControlConditions)
-    // ;(async function () {
-    //   const chain = accessControlConditions[0].chain
-    //
-    //   // get the auth sig first, because if the user denies this, we have nothing to do
-    //   performWithAuthSig(
-    //     async (authSig) => {
-    //       setUploading(true)
-    //       console.log('Uploading...')
-    //       console.log(`There are ${uploadItems.length} items to upload`)
-    //
-    //       const creatorAccessControlCondition = [
-    //         {
-    //           contractAddress: '',
-    //           standardContractType: '',
-    //           chain,
-    //           method: '',
-    //           parameters: [':userAddress'],
-    //           returnValueTest: {
-    //             comparator: '=',
-    //             value: authSig.address,
-    //           },
-    //         },
-    //       ]
-    //
-    //       console.log(
-    //         'creatorAccessControlCondition',
-    //         creatorAccessControlCondition,
-    //       )
-    //       console.log(
-    //         'rest of accessControlConditions',
-    //         accessControlConditions,
-    //       )
-    //
-    //       const fileUploadPromises = []
-    //       const fileMetadatas = []
-    //       for (let i = 0; i < uploadItems.length; i++) {
-    //         console.log(`processing ${i + 1} of ${uploadItems.length}`)
-    //
-    //         const file = uploadItems[i]
-    //         console.log('file is ', file)
-    //         const fileId = uuidv4()
-    //         const fileShareUrl = getSharingLink({ id: fileId, ipfsHash: true })
-    //         const readme = `Well hello there!  If you're reading this, then you are looking at a zip file with assets encrypted via the Lit Protocol.  You won't be able to open these encrypted assets unless you meet the on-chain access control conditions and use the Lit JS SDK to decrypt them.  To decrypt this file, please visit this url in your browser: ${fileShareUrl}`
-    //
-    //         // so first, we encrypt the file itself with a random symmetric key
-    //         // using the creator's address as the access control condition.
-    //         // this ensures that the creator will always be able to access and
-    //         // reencrypt the file if needed
-    //         const { zipBlob, encryptedSymmetricKey, symmetricKey } =
-    //           await LitJsSdk.encryptFileAndZipWithMetadata({
-    //             authSig,
-    //             accessControlConditions: creatorAccessControlCondition,
-    //             chain,
-    //             file,
-    //             litNodeClient: window.litNodeClient,
-    //             readme,
-    //           })
-    //
-    //         // second, we encrypt the symmetric key generated above under the
-    //         // access control conditions defined by the user in the modal
-    //         // this is added as an additionalAccessControlCondition on the file
-    //         // the BLS encryption is non-deterministic so this will "just work"
-    //         // even though we are storing the same symmetric key
-    //         const additionalAccessControlConditionEncryptedSymmetricKey =
-    //           await window.litNodeClient.saveEncryptionKey({
-    //             accessControlConditions,
-    //             chain,
-    //             authSig,
-    //             symmetricKey,
-    //           })
-    //
-    //         const additionalAccessControlConditions = [
-    //           {
-    //             accessControlConditions,
-    //             encryptedSymmetricKey: uint8arrayToString(
-    //               additionalAccessControlConditionEncryptedSymmetricKey,
-    //               'base16',
-    //             ),
-    //           },
-    //         ]
-    //
-    //         const formData = new FormData()
-    //         formData.append('file', zipBlob)
-    //
-    //         fileUploadPromises.push(
-    //           axios
-    //             .post(
-    //               'https://api.pinata.cloud/pinning/pinFileToIPFS',
-    //               formData,
-    //               {
-    //                 headers: {
-    //                   Authorization: `Bearer ${PINATA_API_KEY}`,
-    //                   'Content-Type': 'multipart/form-data',
-    //                 },
-    //                 onUploadProgress: function (progressEvent) {
-    //                   var percentCompleted = Math.round(
-    //                     (progressEvent.loaded * 100) / progressEvent.total,
-    //                   )
-    //                   setUploadProgress((prevUploadProgress) => ({
-    //                     ...prevUploadProgress,
-    //                     [file.name]: percentCompleted,
-    //                   }))
-    //                 },
-    //               },
-    //             )
-    //             .then((response) => {
-    //               const { data } = response
-    //               console.log('file uploaded: ', data)
-    //               return LitJsSdk.hashAccessControlConditions(
-    //                 creatorAccessControlCondition,
-    //               ).then((accessControlConditionsHashAsArrayBuffer) => {
-    //                 const accessControlConditionsHash = uint8arrayToString(
-    //                   new Uint8Array(accessControlConditionsHashAsArrayBuffer),
-    //                   'base16',
-    //                 )
-    //                 let extension = ''
-    //                 const fileParts = file.name.split('.')
-    //                 if (fileParts.length > 1) {
-    //                   extension = fileParts[fileParts.length - 1]
-    //                 }
-    //                 const fileMetadata = {
-    //                   name: file.name,
-    //                   type: file.type,
-    //                   size: file.size,
-    //                   ipfsHash: data.IpfsHash,
-    //                   extension,
-    //                   uploadedAt: Math.floor(Date.now() / 1000),
-    //                   accessControlConditions: creatorAccessControlCondition,
-    //                   accessControlConditionsHash,
-    //                   additionalAccessControlConditions,
-    //                   fileId,
-    //                   chain,
-    //                   encryptedSymmetricKey: uint8arrayToString(
-    //                     encryptedSymmetricKey,
-    //                     'base16',
-    //                   ),
-    //                   folderId: folderId ? folderId : null,
-    //                 }
-    //                 fileMetadatas.push({ ...fileMetadata, id: fileId })
-    //
-    //                 return putFile({ file: fileMetadata, authSig })
-    //               })
-    //             }),
-    //         )
-    //       }
-    //
-    //       const fileUploads = await Promise.all(fileUploadPromises)
-    //       console.log('file upload complete:', fileUploads)
-    //       setUploading(false)
-    //       setUploadComplete(true)
-    //       onUploaded(fileMetadatas)
-    //     },
-    //     { chain },
-    //   )
-    // })()
+    ;(async function () {
+      const chain = accessControlConditions[0].chain
+
+      // get the auth sig first, because if the user denies this, we have nothing to do
+      performWithAuthSig(
+        async (authSig) => {
+          setUploading(true)
+          console.log('Uploading...')
+          console.log(`There are ${uploadItems.length} items to upload`)
+
+          const creatorAccessControlCondition = [
+            {
+              contractAddress: '',
+              standardContractType: '',
+              chain,
+              method: '',
+              parameters: [':userAddress'],
+              returnValueTest: {
+                comparator: '=',
+                value: authSig.address,
+              },
+            },
+          ]
+
+          console.log(
+            'creatorAccessControlCondition',
+            creatorAccessControlCondition,
+          )
+          console.log(
+            'rest of accessControlConditions',
+            accessControlConditions,
+          )
+
+          const fileUploadPromises = []
+          const fileMetadatas = []
+          for (let i = 0; i < uploadItems.length; i++) {
+            console.log(`processing ${i + 1} of ${uploadItems.length}`)
+
+            const file = uploadItems[i]
+            console.log('file is ', file)
+            const fileId = uuidv4()
+            const fileShareUrl = getSharingLink({ id: fileId, ipfsHash: true })
+            const readme = `Well hello there!  If you're reading this, then you are looking at a zip file with assets encrypted via the Lit Protocol.  You won't be able to open these encrypted assets unless you meet the on-chain access control conditions and use the Lit JS SDK to decrypt them.  To decrypt this file, please visit this url in your browser: ${fileShareUrl}`
+
+            // so first, we encrypt the file itself with a random symmetric key
+            // using the creator's address as the access control condition.
+            // this ensures that the creator will always be able to access and
+            // reencrypt the file if needed
+            const { zipBlob, encryptedSymmetricKey, symmetricKey } =
+              await LitJsSdk.encryptFileAndZipWithMetadata({
+                authSig,
+                accessControlConditions: creatorAccessControlCondition,
+                chain,
+                file,
+                litNodeClient: window.litNodeClient,
+                readme,
+              })
+
+            // second, we encrypt the symmetric key generated above under the
+            // access control conditions defined by the user in the modal
+            // this is added as an additionalAccessControlCondition on the file
+            // the BLS encryption is non-deterministic so this will "just work"
+            // even though we are storing the same symmetric key
+            const additionalAccessControlConditionEncryptedSymmetricKey =
+              await window.litNodeClient.saveEncryptionKey({
+                accessControlConditions,
+                chain,
+                authSig,
+                symmetricKey,
+              })
+
+            const additionalAccessControlConditions = [
+              {
+                accessControlConditions,
+                encryptedSymmetricKey: uint8arrayToString(
+                  additionalAccessControlConditionEncryptedSymmetricKey,
+                  'base16',
+                ),
+              },
+            ]
+
+            const formData = new FormData()
+            formData.append('file', zipBlob)
+
+            fileUploadPromises.push(
+              axios
+                .post(
+                  'https://api.pinata.cloud/pinning/pinFileToIPFS',
+                  formData,
+                  {
+                    headers: {
+                      Authorization: `Bearer ${PINATA_API_KEY}`,
+                      'Content-Type': 'multipart/form-data',
+                    },
+                    onUploadProgress: function (progressEvent) {
+                      var percentCompleted = Math.round(
+                        (progressEvent.loaded * 100) / progressEvent.total,
+                      )
+                      setUploadProgress((prevUploadProgress) => ({
+                        ...prevUploadProgress,
+                        [file.name]: percentCompleted,
+                      }))
+                    },
+                  },
+                )
+                .then((response) => {
+                  const { data } = response
+                  console.log('file uploaded: ', data)
+                  return LitJsSdk.hashAccessControlConditions(
+                    creatorAccessControlCondition,
+                  ).then((accessControlConditionsHashAsArrayBuffer) => {
+                    const accessControlConditionsHash = uint8arrayToString(
+                      new Uint8Array(accessControlConditionsHashAsArrayBuffer),
+                      'base16',
+                    )
+                    let extension = ''
+                    const fileParts = file.name.split('.')
+                    if (fileParts.length > 1) {
+                      extension = fileParts[fileParts.length - 1]
+                    }
+                    const fileMetadata = {
+                      name: file.name,
+                      type: file.type,
+                      size: file.size,
+                      ipfsHash: data.IpfsHash,
+                      extension,
+                      uploadedAt: Math.floor(Date.now() / 1000),
+                      accessControlConditions: creatorAccessControlCondition,
+                      accessControlConditionsHash,
+                      additionalAccessControlConditions,
+                      fileId,
+                      chain,
+                      encryptedSymmetricKey: uint8arrayToString(
+                        encryptedSymmetricKey,
+                        'base16',
+                      ),
+                      folderId: folderId ? folderId : null,
+                    }
+                    fileMetadatas.push({ ...fileMetadata, id: fileId })
+
+                    return putFile({ file: fileMetadata, authSig })
+                  })
+                }),
+            )
+          }
+
+          const fileUploads = await Promise.all(fileUploadPromises)
+          console.log('file upload complete:', fileUploads)
+          setUploading(false)
+          setUploadComplete(true)
+          onUploaded(fileMetadatas)
+        },
+        { chain },
+      )
+    })()
   }, [uploadItems, accessControlConditions])
 
   const columns = [
