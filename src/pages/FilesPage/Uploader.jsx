@@ -187,7 +187,7 @@ const Uploader = ({
         { chain },
       )
     })()
-  }, [accessControlConditions])
+  }, [uploadItems, accessControlConditions])
   // }, [uploadItems, accessControlConditions])
 
   const columns = [
