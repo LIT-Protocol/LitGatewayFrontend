@@ -70,9 +70,9 @@ const FilesPage = () => {
   }, [folderId])
 
   const onFirstFilesSelected = (selectedFiles) => {
-    console.log('onFirstFilesSelected', selectedFiles)
-    setSelectedFiles(selectedFiles)
-    setFileDropperModalOpen(true)
+    // console.log('onFirstFilesSelected', selectedFiles)
+    // setSelectedFiles(selectedFiles)
+    // setFileDropperModalOpen(true)
   }
 
   const onFilesSelected = (selectedFiles) => {
@@ -117,7 +117,7 @@ const FilesPage = () => {
       setUploadingModalOpen(false)
       // setSelectedFiles(fileMetadatas)
       // setShareModalStep('accessCreated')
-      // setShareModalOpen(false)
+      setShareModalOpen(false)
       setAccessCreatedModalOpen(true)
     } else {
       setUploadingModalOpen(false)
@@ -187,15 +187,6 @@ const FilesPage = () => {
         size="m"
       />
 
-      {fileDropperModalOpen ? (
-        <UploadFilesModal
-          updateFiles={updateFiles}
-          selectedFiles={selectedFiles}
-          onFilesSelected={onFilesSelected}
-          onClose={() => setFileDropperModalOpen(false)}
-        />
-      ) : null}
-
       <Modal
         isOpen={newFolderModalOpen}
         hasOverlay
@@ -216,6 +207,15 @@ const FilesPage = () => {
           />
         </div>
       </Modal>
+
+      {fileDropperModalOpen ? (
+        <UploadFilesModal
+          updateFiles={updateFiles}
+          selectedFiles={selectedFiles}
+          onFilesSelected={onFilesSelected}
+          onClose={() => setFileDropperModalOpen(false)}
+        />
+      ) : null}
 
       {uploadingModalOpen && (
         <Uploader
