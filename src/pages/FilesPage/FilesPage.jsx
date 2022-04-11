@@ -70,9 +70,9 @@ const FilesPage = () => {
   }, [folderId])
 
   const onFirstFilesSelected = (selectedFiles) => {
-    // console.log('onFirstFilesSelected', selectedFiles)
-    // setSelectedFiles(selectedFiles)
-    // setFileDropperModalOpen(true)
+    console.log('onFirstFilesSelected', selectedFiles)
+    setSelectedFiles(selectedFiles)
+    setFileDropperModalOpen(true)
   }
 
   const onFilesSelected = (selectedFiles) => {
