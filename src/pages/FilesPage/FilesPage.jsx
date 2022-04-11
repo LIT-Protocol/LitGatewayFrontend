@@ -114,8 +114,7 @@ const FilesPage = () => {
     console.log('upload complete!', fileMetadatas)
     if (selectedFiles.length === 1) {
       setUploadingModalOpen(false)
-      // setSelectedFiles(fileMetadatas)
-      // setShareModalStep('accessCreated')
+      setSelectedFiles(fileMetadatas)
       setShareModalOpen(false)
       setAccessCreatedModalOpen(true)
     } else {
