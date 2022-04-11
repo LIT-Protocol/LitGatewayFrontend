@@ -89,13 +89,13 @@ const FilesPage = () => {
     setSelectedFiles(updatedFiles)
   }
 
-  const closeShareModal = () => {
-    console.log('closeShareModal')
-    setShareModalOpen(false)
-    setSelectedFiles(null)
-    // setShareModalStep(null)
-    // todo: show whattodo modal
-  }
+  // const closeShareModal = () => {
+  //   console.log('closeShareModal')
+  //   setShareModalOpen(false)
+  //   setSelectedFiles(null)
+  //   // setShareModalStep(null)
+  //   // todo: show whattodo modal
+  // }
 
   const closeAccessCreatedModal = () => {
     setAccessCreatedModalOpen(false)
@@ -113,7 +113,7 @@ const FilesPage = () => {
     console.log('upload complete!', fileMetadatas)
     if (selectedFiles.length === 1) {
       setUploadingModalOpen(false)
-      setSelectedFiles(fileMetadatas)
+      // setSelectedFiles(fileMetadatas)
       // setShareModalStep('accessCreated')
       // setShareModalOpen(false)
       setAccessCreatedModalOpen(true)
@@ -215,14 +215,14 @@ const FilesPage = () => {
         </div>
       </Modal>
 
-      {uploadingModalOpen ? (
+      {uploadingModalOpen && (
         <Uploader
           uploadItems={selectedFiles}
           accessControlConditions={accessControlConditions}
           folderId={folderId}
           onUploaded={onUploaded}
         />
-      ) : null}
+      )}
 
       {/*{shareModalOpen ? (*/}
       {/*  <ShareModal*/}
