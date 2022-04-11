@@ -26,7 +26,7 @@ import AccessCreated from '../../components/AccessCreated/AccessCreated'
 
 const FilesList = (props) => {
   const { rows, loadFiles } = props
-  console.log('rows', rows)
+  // console.log('rows', rows)
 
   const { performWithAuthSig, tokenList, authSig } = useAppContext()
 
@@ -176,7 +176,7 @@ const FilesList = (props) => {
     {
       title: 'Actions',
       renderCell: (row) => {
-        console.log('row', row)
+        // console.log('row', row)
 
         return (
           <>
