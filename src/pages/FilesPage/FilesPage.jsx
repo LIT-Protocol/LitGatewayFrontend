@@ -77,7 +77,6 @@ const FilesPage = () => {
 
   const onFilesSelected = (selectedFiles) => {
     console.log('onFilesSelected', selectedFiles)
-    console.log(selectedFiles)
     setSelectedFiles(selectedFiles)
     setFileDropperModalOpen(false)
 
