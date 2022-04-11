@@ -90,13 +90,13 @@ const FilesPage = () => {
     setSelectedFiles(updatedFiles)
   }
 
-  // const closeShareModal = () => {
-  //   console.log('closeShareModal')
-  //   setShareModalOpen(false)
-  //   setSelectedFiles(null)
-  //   // setShareModalStep(null)
-  //   // todo: show whattodo modal
-  // }
+  const closeShareModal = () => {
+    console.log('closeShareModal')
+    setShareModalOpen(false)
+    setSelectedFiles(null)
+    // setShareModalStep(null)
+    // todo: show whattodo modal
+  }
 
   const closeAccessCreatedModal = () => {
     setAccessCreatedModalOpen(false)
@@ -239,10 +239,11 @@ const FilesPage = () => {
       {shareModalOpen && (
         <ShareModal
           showModal={shareModalOpen}
-          onClose={() => {
-            console.log('ShareModal onClose')
-            handleBackFromShareModal()
-          }}
+          // onClose={() => {
+          //   console.log('ShareModal onClose')
+          //   handleBackFromShareModal()
+          // }}
+          onClose={() => closeShareModal()}
           onAccessControlConditionsSelected={onAccessControlConditionsSelected}
         />
       )}
