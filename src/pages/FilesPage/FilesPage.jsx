@@ -71,7 +71,7 @@ const FilesPage = () => {
 
   const onFirstFilesSelected = (selectedFiles) => {
     setSelectedFiles(selectedFiles)
-    setFileDropperModalOpen(true)
+    // setFileDropperModalOpen(true)
   }
 
   const onFilesSelected = (selectedFiles) => {
@@ -115,7 +115,7 @@ const FilesPage = () => {
       setUploadingModalOpen(false)
       setSelectedFiles(fileMetadatas)
       // setShareModalStep('accessCreated')
-      setShareModalOpen(false)
+      // setShareModalOpen(false)
       setAccessCreatedModalOpen(true)
     } else {
       setUploadingModalOpen(false)
