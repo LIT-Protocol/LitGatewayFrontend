@@ -87,22 +87,20 @@ const FileDropper = (props) => {
 
   return (
     <div>
-      {selectedFiles.length > 0 ? (
-        <>
-          <Table
-            className={styles.tableWrapper}
-            columns={fileTableColumns}
-            rows={selectedFiles.map((f) => ({
-              name: f.name,
-              size: humanFileSize(f.size),
-              id: f.name,
-            }))}
-            onRemove={removeFile}
-          />
-        </>
-      ) : (
-        <span className={styles.spacer} />
-      )}
+      {/*{selectedFiles.length > 0 ? (*/}
+      <>
+        <Table
+          className={styles.tableWrapper}
+          columns={fileTableColumns}
+          rows={selectedFiles.map((f) => ({
+            name: f.name,
+            size: humanFileSize(f.size),
+            id: f.name,
+          }))}
+          onRemove={removeFile}
+        />
+      </>
+      {/*) : null}*/}
 
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
