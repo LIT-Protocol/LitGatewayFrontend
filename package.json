@@ -20,7 +20,7 @@
     "jsonp": "^0.2.1",
     "lit-access-control-conditions-modal": "^1.1.28",
     "lit-js-sdk": "^1.1.157",
-    "lit-share-modal": "^0.1.74",
+    "lit-share-modal": "^0.1.78",
     "node-sass": "^6.0.1",
     "prismjs": "^1.24.1",
     "react": "^17.0.2",

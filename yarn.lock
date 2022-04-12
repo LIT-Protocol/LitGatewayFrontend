@@ -5780,9 +5780,9 @@ es-abstract@^1.17.2, es-abstract@^1.19.0, es-abstract@^1.19.1:
     unbox-primitive "^1.0.1"
 
 es-abstract@^1.18.5:
-  version "1.19.2"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.19.2.tgz#8f7b696d8f15b167ae3640b4060670f3d054143f"
-  integrity sha512-gfSBJoZdlL2xRiOCy0g8gLMryhoe1TlimjzU99L/31Z8QEGIhVQI+EWwt5lT+AuU9SnorVupXFqqOGqGfsyO6w==
+  version "1.19.4"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.19.4.tgz#79a95527af382eb276075627e53762393ce8b57a"
+  integrity sha512-flV8e5g9/xulChMG48Fygk1ptpo4lQRJ0eJYtxJFgi7pklLx7EFcOJ34jnvr8pbWlaFN/AT1cZpe0hiFel9Hqg==
   dependencies:
     call-bind "^1.0.2"
     es-to-primitive "^1.2.1"
@@ -5795,7 +5795,7 @@ es-abstract@^1.18.5:
     is-callable "^1.2.4"
     is-negative-zero "^2.0.2"
     is-regex "^1.1.4"
-    is-shared-array-buffer "^1.0.1"
+    is-shared-array-buffer "^1.0.2"
     is-string "^1.0.7"
     is-weakref "^1.0.2"
     object-inspect "^1.12.0"
@@ -7844,6 +7844,13 @@ is-shared-array-buffer@^1.0.1:
   resolved "https://registry.yarnpkg.com/is-shared-array-buffer/-/is-shared-array-buffer-1.0.1.tgz#97b0c85fbdacb59c9c446fe653b82cf2b5b7cfe6"
   integrity sha512-IU0NmyknYZN0rChcKhRO1X8LYz5Isj/Fsqh8NJOSf+N/hCOTwy29F32Ik7a+QszE63IdvmwdTPDd6cZ5pg4cwA==
 
+is-shared-array-buffer@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-shared-array-buffer/-/is-shared-array-buffer-1.0.2.tgz#8f259c573b60b6a32d4058a1a07430c0a7344c79"
+  integrity sha512-sqN2UDu1/0y6uvXyStCOzyhAjCSlHceFoMKJW8W9EU9cvic/QdsZ0kEU93HEy3IUEFZIiH/3w+AH/UQbPHNdhA==
+  dependencies:
+    call-bind "^1.0.2"
+
 is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
@@ -8838,10 +8845,10 @@ lit-js-sdk@^1.1.156, lit-js-sdk@^1.1.157:
     uint8arrays "^3.0.0"
     utf-8-validate "^5.0.8"
 
-lit-share-modal@^0.1.74:
-  version "0.1.74"
-  resolved "https://registry.yarnpkg.com/lit-share-modal/-/lit-share-modal-0.1.74.tgz#7dec9a29954502c9529530a596896e7d133dd7a2"
-  integrity sha512-GDmobSBGMz8+VvhgmS/SO1IlR++gZP6wp46t8V0hJJcHu7uecLRDpQ5yQgBrl7051lnMcLsXVPFaj1Deh34OCA==
+lit-share-modal@^0.1.78:
+  version "0.1.78"
+  resolved "https://registry.yarnpkg.com/lit-share-modal/-/lit-share-modal-0.1.78.tgz#fa3d1840bea40a9ef28a21b4b5055a5039c4eb35"
+  integrity sha512-8bDyyvR2dEUQrf6Wf8r9O1im7zdU636QacIxs6E1hhq+8QYPD9m2ThEL7YgT3Qbm7/dDLLoFYl60+o8F6Qoj1Q==
   dependencies:
     ethers "^5.5.4"
     events "^3.3.0"

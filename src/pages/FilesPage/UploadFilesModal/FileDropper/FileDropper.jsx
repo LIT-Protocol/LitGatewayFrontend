@@ -100,7 +100,9 @@ const FileDropper = (props) => {
             onRemove={removeFile}
           />
         </>
-      ) : null}
+      ) : (
+        <span className={styles.spacer} />
+      )}
 
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />

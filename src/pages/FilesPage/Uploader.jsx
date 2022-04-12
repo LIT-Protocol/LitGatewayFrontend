@@ -32,9 +32,6 @@ const Uploader = ({
   const [uploadComplete, setUploadComplete] = useState(false)
 
   useEffect(() => {
-    console.log('check use effect in uploader')
-    console.log('uploadItems', uploadItems)
-    console.log('accessControlConditions', accessControlConditions)
     ;(async function () {
       const chain = accessControlConditions[0].chain
 
@@ -199,7 +196,6 @@ const Uploader = ({
       align: 'left',
       sortable: true,
       renderCell: (row) => {
-        console.log('rendering', row)
         return row.file.name
       },
     },
