@@ -196,7 +196,6 @@ const Uploader = ({
       align: 'left',
       sortable: true,
       renderCell: (row) => {
-        console.log('rendering', row)
         return row.file.name
       },
     },

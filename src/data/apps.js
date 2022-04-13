@@ -18,8 +18,8 @@ export const apps = [
     title: 'Shopify',
     logo: shopifyLogo,
     tags: ['E-Commerce'],
-    url: process.env.REACT_APP_LIT_GATEWAY_OAUTH_APP_HOST,
-    mainBtnLabel: 'Get Early Access',
+    url: 'https://apps.shopify.com/lit-token-access',
+    mainBtnLabel: 'Shopify App Store',
     backgroundImg: shopifyBack,
     showEmailSignup: false,
     shortDesc:
@@ -27,37 +27,47 @@ export const apps = [
     textBlock: (
       <>
         <p>
-          With this App, Shopify merchants can provide discounts and access to
-          select items in their Shopify store based on token holdings and
-          blockchain identity.
+          Lit Token Access is now in public beta! We will be rolling out new
+          features over the coming weeks to make the app more robust and useful
+          for merchants. Contact us with any questions, problems or suggestions
+          at{' '}
+          <a href="mailto:shopifysupport@litprotocol.com?subject = Shopify Feedback">
+            shopifysupport@litprotocol.com
+          </a>
         </p>
         <p>
-          For example, merchants can create a discount for a t-shirt that only
-          the holder of a given NFT can claim or a hat that only DAO members are
-          able to purchase.
+          Lit Token Access is the most secure way to add token-gating based on
+          wallet holdings to your Shopify store.
         </p>
-        {/*TODO: fill out instructions when deployed. These are for zoom. Only here for structure*/}
-        {/*<h4>Documentation</h4>*/}
-        {/*<p>*/}
-        {/*  <u>Installation</u>: To install this, click the Launch button above*/}
-        {/*  and connect your Zoom account.*/}
-        {/*</p>*/}
-        {/*<p>*/}
-        {/*  <u>Usage</u>: To share meetings and webinars with other users based on*/}
-        {/*  ownership of crypto assets and blockchain identity, you must grant our*/}
-        {/*  Zoom app the following Zoom oAuth scopes: user:read, meeting:write,*/}
-        {/*  and webinar:write. We use these scopes to grant users access to your*/}
-        {/*  meetings and webinars if they meet the requirements you defined when*/}
-        {/*  you shared a meeting or webinar. These will be automatically granted*/}
-        {/*  when you connect your Zoom account by clicking the Launch button*/}
-        {/*  above.*/}
-        {/*</p>*/}
-        {/*<p>*/}
-        {/*  <u>Uninstallation</u>: To uninstall this, log in to your Zoom account*/}
-        {/*  and and navigate to the Zoom App Marketplace. Click Manage {'>'}{' '}*/}
-        {/*  Installed Apps or search for the Lit Protocol app. Click the Lit*/}
-        {/*  Protocol app. Click "Uninstall".*/}
-        {/*</p>*/}
+        <p>
+          Powered by Lit Protocol, our access control condition builder allows
+          you to specify exactly who should be able to purchase items in your
+          store or receive discounts. Lit Token Access only recognizes
+          real-time, verified wallet contents.
+        </p>
+        <p>Our access control app includes:</p>
+        <ul>
+          <li>individual wallet access</li>
+          <li>access based on a group of tokens</li>
+          <li>access based on a group of NFTs</li>
+          <li>access for specific DAO members</li>
+          <li>access for specific POAP owners</li>
+          <li>easy search tools to find any NFT, POAP, or token</li>
+          <li>AND/OR logic for you to build advanced permissions</li>
+          <li>
+            the ability to review your specified conditions before saving them
+          </li>
+          <li>the ability to delete conditions and revoke access</li>
+          <li>
+            the ability to customize the theme to fit your store’s look and feel
+          </li>
+        </ul>
+        <p>
+          Because Lit Protocol uses a decentralized access control network, you
+          maintain exclusive control over your discounts and product drops. This
+          means even we can’t purchase the gated product without the correct
+          token!
+        </p>
       </>
     ),
     more: [],

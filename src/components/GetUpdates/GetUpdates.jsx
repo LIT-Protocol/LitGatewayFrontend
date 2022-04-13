@@ -1,17 +1,13 @@
-import MailchimpSubscribe from './MailchimpSubscribe'
+import EmailSubscribe from './EmailSubscribe'
 
 import CustomForm from './CustomForm'
 
 const GetUpdates = (props) => {
   const { className } = props
 
-  const addUrl =
-    'https://litprotocol.us20.list-manage.com/subscribe/post?u=37eeb6bbc8f1fee01838fd9df&id=4f37de62dc'
-
   return (
     <div>
-      <MailchimpSubscribe
-        url={addUrl}
+      <EmailSubscribe
         render={({ subscribe, status, message }) => {
           return (
             <CustomForm

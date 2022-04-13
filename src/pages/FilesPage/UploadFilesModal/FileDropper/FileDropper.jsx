@@ -100,7 +100,9 @@ const FileDropper = (props) => {
             onRemove={removeFile}
           />
         </>
-      ) : null}
+      ) : (
+        <p className={styles.noFilesText}>No files selected</p>
+      )}
 
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
