@@ -30,7 +30,7 @@ export const apps = [
           Lit Token Access is now in public beta! We will be rolling out new
           features over the coming weeks to make the app more robust and useful
           for merchants. Contact us with any questions, problems or suggestions
-          at
+          at{' '}
           <a href="mailto:shopifysupport@litprotocol.com?subject = Shopify Feedback">
             shopifysupport@litprotocol.com
           </a>
