@@ -194,7 +194,7 @@ const FilesList = (props) => {
             {/* only show share button if user is the original creator */}
             {/* or, show it if the thing is a folder */}
             {(authSig && authSig.address === row.creatorId) || !row.ipfsHash ? (
-              <Button1
+              <Button
                 label="Share"
                 onClick={() => showFileLink(row)}
                 iconLeft={IconConnection}
