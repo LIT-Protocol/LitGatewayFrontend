@@ -35,10 +35,6 @@ const SingleAppPage = () => {
   }
 
   const handleLaunchButtonClick = async (app) => {
-    if (app.id === 'shopify') {
-      window.location.href = 'https://airtable.com/shrHitt3tdHvUpDlB'
-      return
-    }
     if (app.url) {
       if (app.url.startsWith('http')) {
         // open in new page
