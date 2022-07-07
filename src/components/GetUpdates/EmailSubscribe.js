@@ -16,17 +16,10 @@ class EmailSubscribe extends React.Component {
       email: data.email,
     })
       .then((data) => {
-        if (!!data['id']) {
-          this.setState({
-            status: 'success',
-            message: 'Thank you for subscribing!',
-          })
-        } else {
-          this.setState({
-            status: 'error',
-            message: 'duplicate_parameter',
-          })
-        }
+        this.setState({
+          status: data.status,
+          message: data.message,
+        })
       })
       .catch((err) => {
         this.setState({

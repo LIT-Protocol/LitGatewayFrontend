@@ -18,11 +18,11 @@ const CustomForm = ({ status, message, onValidated, className }) => {
     if (status === 'success') {
       setAdded(true)
     }
-    if (message && message.includes('Thank you')) {
-      setMessageStatus('success')
+    if (status === 'success') {
+      setInputMessage('success')
       setInputMessage(message)
-    } else if (message === 'duplicate_parameter') {
-      setMessageStatus('success')
+    } else if (status === 'duplicate_parameter') {
+      setInputMessage('success')
       setInputMessage('This email is already subscribed!')
     }
   }, [message, status])
