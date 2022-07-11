@@ -30,7 +30,6 @@ const DiscoverPage = () => {
   const [email, setEmail] = useState('')
 
   const handleSubmitEmail = async () => {
-    console.log('submitting email', email)
     await postUser({
       email,
     })

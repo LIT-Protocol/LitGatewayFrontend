@@ -1,5 +1,5 @@
 import EmailSubscribe from './EmailSubscribe'
-
+import styles from './get-updates.module.scss'
 import CustomForm from './CustomForm'
 
 const GetUpdates = (props) => {
@@ -7,18 +7,22 @@ const GetUpdates = (props) => {
 
   return (
     <div>
-      <EmailSubscribe
-        render={({ subscribe, status, message }) => {
-          return (
-            <CustomForm
-              className={className}
-              status={status}
-              message={message}
-              onValidated={(formData) => subscribe(formData)}
-            />
-          )
-        }}
-      />
+      <div
+        id="custom-substack-embed"
+        className={styles.customSubstackEmbed}
+      ></div>
+      {/*<EmailSubscribe*/}
+      {/*  render={({ subscribe, status, message }) => {*/}
+      {/*    return (*/}
+      {/*      <CustomForm*/}
+      {/*        className={className}*/}
+      {/*        status={status}*/}
+      {/*        message={message}*/}
+      {/*        onValidated={(formData) => subscribe(formData)}*/}
+      {/*      />*/}
+      {/*    )*/}
+      {/*  }}*/}
+      {/*/>*/}
     </div>
   )
 }

@@ -18,6 +18,25 @@
   }
 }
 
+.customSubstackEmbed {
+  width: 30rem;
+  min-height: 6rem;
+
+  form {
+    border-width: 1px !important;
+    max-width: 100% !important;
+  }
+
+  button {
+    //min-width: 10rem !important;
+    justify-content: center;
+    white-space: nowrap;
+    //font-family: 'Space Grotesk';
+    font-size: 1rem !important;
+    padding: 0 1.5rem !important;
+  }
+}
+
 @media (max-width: 500px) {
   .form {
     flex-direction: column;
@@ -28,6 +47,33 @@
       width: 100%;
       display: flex;
       justify-content: center;
+    }
+  }
+  .customSubstackEmbed {
+    width: auto;
+    min-height: 6rem;
+
+    form {
+      flex-direction: column !important;
+      align-items: start !important;
+      border: none;
+
+      input {
+        border-width: 1px !important;
+        padding: 1rem !important;
+      }
+    }
+
+    button {
+      //white-space: normal;
+      text-align: left;
+      width: 100%;
+      font-size: 0.9rem !important;
+      font-weight: 300 !important;
+      padding: 0.6rem 1rem !important;
+      border: 1px solid #fff !important;
+      margin-top: 0.5rem;
+      border-radius: 0.25rem;
     }
   }
 }
