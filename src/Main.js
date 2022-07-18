@@ -76,10 +76,18 @@ const Main = () => {
               </a>
 
               <div className={styles.privacyPolicy}>
-                <a href="https://litgateway.com/LitPrivacyPolicy.html">
+                <a
+                  target="_blank"
+                  href="https://litgateway.com/LitPrivacyPolicy.html"
+                  rel="noreferrer"
+                >
                   Privacy Policy
                 </a>
-                <a href="https://litgateway.com/LitTermsofService.html">
+                <a
+                  target="_blank"
+                  href="https://litgateway.com/LitTermsofService.html"
+                  rel="noreferrer"
+                >
                   Terms of Service
                 </a>
               </div>
