@@ -75,12 +75,14 @@ const Main = () => {
                 <Button size="s" view="secondary" label="Submit Feedback" />
               </a>
 
-              <a
-                className={styles.privacyPolicy}
-                href="https://litgateway.com/LitPrivacyPolicy.html"
-              >
-                Privacy Policy
-              </a>
+              <div className={styles.privacyPolicy}>
+                <a href="https://litgateway.com/LitPrivacyPolicy.html">
+                  Privacy Policy
+                </a>
+                <a href="https://litgateway.com/LitTermsofService.html">
+                  Terms of Service
+                </a>
+              </div>
             </div>
           </div>
         ) : null}
