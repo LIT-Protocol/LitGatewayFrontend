@@ -79,6 +79,14 @@ const Routes = () => {
               exact
               component={CryptoArcadeGatherPage}
             />
+            <Route
+              path="/calendar"
+              component={() => {
+                window.location.href =
+                  'https://calendar.google.com/calendar/u/5?cid=Y19hMnVxZDNjaHVqZ2Q0a3FqbGlvcDdxY2JhMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t'
+                return null
+              }}
+            />
           </div>
         </>
       </Switch>
