@@ -1,5 +1,5 @@
 # Lit Gateway Frontend
-
+  
 ## Access Control Conditions apps
 
 The Lit Gateway Front end is a compilation of apps for creating token and DAO gated meetings, documents, NFTs, and more.  Find sample code to claim offers and airdrops based on your wallet holdings and history!

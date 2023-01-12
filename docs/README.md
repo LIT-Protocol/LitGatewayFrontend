@@ -3,7 +3,7 @@
 # Predefined access control conditions used on the frontend
 
 ## User holds more than 0.005 ETH
-
+  
 ```
 const chain = 'ethereum'
 const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain })
