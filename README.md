@@ -17,6 +17,7 @@ Some of the apps described are part of this repo, others can be found in their d
 
 The actual LIT Gateway can be found at [https://litgateway.com/](https://litgateway.com/).
 
-License
+## License
+
 The Lit Gateway Fronted is released under the terms of the MIT license. See [License](LITCENSE_MIT.md) for more information.
 
