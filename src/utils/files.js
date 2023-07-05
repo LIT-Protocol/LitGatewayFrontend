@@ -61,12 +61,13 @@ export const decryptAndDownload = async ({
       const fileAsArrayBuffer = await fetch(url, {
         method: 'GET',
       }).then((response) => response.arrayBuffer())
+      const fileAsBlob = new Blob([fileAsArrayBuffer])
 
       let decryptedFile, metadata
       try {
         const resp = await LitJsSdk.decryptZipFileWithMetadata({
           authSig,
-          file: fileAsArrayBuffer,
+          file: fileAsBlob,
           litNodeClient: window.litNodeClient,
           additionalAccessControlConditions:
             file.additionalAccessControlConditions,
